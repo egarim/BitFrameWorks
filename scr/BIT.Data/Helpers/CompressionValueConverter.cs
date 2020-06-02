@@ -4,7 +4,7 @@ using System.IO;
 
 namespace BIT.Data.Helpers
 {
-    public class CompressionConverter : ValueConverter
+    public class CompressionValueConverter : ValueConverter
     {
         public override object ConvertToStorageType(object value)
         {

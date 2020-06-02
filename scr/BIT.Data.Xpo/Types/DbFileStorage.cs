@@ -75,7 +75,7 @@ namespace BIT.Data.Models
             set { SetPropertyValue("FileName", ref fileName, value); }
         }
         [Persistent, Delayed(true)]
-        [ValueConverter(typeof(CompressionConverter))]
+        [ValueConverter(typeof(CompressionValueConverter))]
         [MemberDesignTimeVisibility(false)]
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public byte[] Content
