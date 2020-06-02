@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>688ad5c4-2dbf-4d68-9f6d-e881e9dd7c04</ProjectGuid>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release</Configurations>
+    <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+    <Authors>José Manuel Ojeda Melgar</Authors>
+    <PackageTags>DevExpress XPO XAF Xamarin AspNetCore</PackageTags>
+    <Company>BIT Frameworks</Company>
+    <Description>IDataStore implementation agnostic </Description>
+    <DebugType>Full</DebugType>
+    <PackageProjectUrl>https://www.bitframeworks.com</PackageProjectUrl>
+    <DebugSymbols>True</DebugSymbols>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
+  </ItemGroup>
+  <!--Nuget Generation Section Start-->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyName>BIT.Xpo.Providers.WebApi.Client.v$(NugetVersion)</AssemblyName>
+    <Version>$(NugetVersion)</Version>
+    <PackageId>BIT.Xpo.Providers.WebApi.Client</PackageId>
+  </PropertyGroup>
+  <!--Nuget Generation Section End-->
+  <!--Nuget Reference Section Start-->
+  <ItemGroup>
+    <PackageReference Include="RestSharp" Version="106.10.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <ProjectReference Include="..\BIT.Data\BIT.Data.csproj" />
+  </ItemGroup>
+  <!--NugetProject ReferencesSection End-->
+  <!--Extra Start-->
+  <!--Extra End-->
+  <Target Name="CopyPackage" AfterTargets="Pack">
+    <Copy SourceFiles="bin\$(ConfigurationName)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(USERPROFILE)\Documents\MyNugets\" />
+  </Target>
+</Project>

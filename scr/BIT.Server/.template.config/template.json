@@ -1,0 +1,21 @@
+{
+  "author": "José Manuel Ojeda Melga",
+  "classifications": [],
+  "description": "An AspNetCore Server ",
+  "name": "BIT.Server",
+  "defaultName": "BIT.Server",
+  "identity": "BIT.Server",
+  "groupIdentity": "BIT",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "shortName": "BITServer",
+  "sourceName": "BIT.Server",
+  "guids": [],
+  "primaryOutputs": [
+    {
+      "path": "BIT.Server.csproj"
+    }
+  ]
+}

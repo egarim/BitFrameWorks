@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk"> 
+  <PropertyGroup>
+    <ProjectGuid>a2fe64bf-7479-4b13-ada1-ea2e80a95e13</ProjectGuid>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release</Configurations>
+    <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+    <Authors>José Manuel Ojeda Melgar</Authors>
+    <PackageTags>DevExpress XPO XAF</PackageTags>
+    <Company>BIT Frameworks</Company>
+    <Description>Common Data Operations</Description>
+    <DebugType>Full</DebugType>
+    <PackageProjectUrl>https://www.bitframeworks.com</PackageProjectUrl>
+    <DebugSymbols>True</DebugSymbols>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
+  </ItemGroup>
+  <!--<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <AssemblyName>BIT.Data.vDebug</AssemblyName>
+    <Version>1</Version>
+  </PropertyGroup>-->
+  <!--Nuget Generation Section Start-->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyName>BIT.Data.v$(NugetVersion)</AssemblyName>
+    <Version>$(NugetVersion)</Version>
+    <PackageId>BIT.Data</PackageId>
+  </PropertyGroup>
+  <!--Nuget Generation Section End-->
+  <!--Nuget Reference Section Start-->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.3.0" />
+    <!--<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.3.0" /> 
+	<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.3.0" />
+	<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.3.0" />-->
+	<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.3.0" />
+	<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.3.0" />
+    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.5.0" />
+    <PackageReference Include="System.Text.Json" Version="4.7.1" />
+    <PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.5.0" />
+  </ItemGroup>
+  <!--NugetProject ReferencesSection End-->
+  <!--Extra Start-->
+  <!--Extra End-->
+  <Target Name="CopyPackage" AfterTargets="Pack">
+    <Copy SourceFiles="bin\$(ConfigurationName)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(USERPROFILE)\Documents\MyNugets\" />
+  </Target>
+</Project>
