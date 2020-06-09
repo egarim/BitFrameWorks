@@ -9,7 +9,7 @@ using System.Text;
 
 namespace BIT.Data.Helpers
 {
-    public class CompressionUtils
+    public class CompressionHelper
     {
         private const int RatesArraySize = 256;
         private const float RangeWidth = 0.1F;
@@ -150,19 +150,6 @@ namespace BIT.Data.Helpers
             }
             return data;
         }
-        #region Obsolete 9.1
-        [Obsolete("Use 'Compress' instead.", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters")]
-        public static byte[] CompressData(byte[] data)
-        {
-            throw new NotImplementedException();
-        }
-        [Obsolete("Use 'Decompress' instead.", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters")]
-        public static byte[] DecompressData(byte[] data)
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
+   
     }
 }

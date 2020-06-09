@@ -16,7 +16,7 @@ namespace BIT.Data.Helpers
             {
                 return value;
             }
-            return CompressionUtils.Compress(new MemoryStream((byte[])value)).ToArray();
+            return CompressionHelper.Compress(new MemoryStream((byte[])value)).ToArray();
         }
         public override object ConvertFromStorageType(object value)
         {
@@ -28,7 +28,7 @@ namespace BIT.Data.Helpers
             {
                 return value;
             }
-            return CompressionUtils.Decompress(new MemoryStream((byte[])value)).ToArray();
+            return CompressionHelper.Decompress(new MemoryStream((byte[])value)).ToArray();
         }
         public override Type StorageType
         {

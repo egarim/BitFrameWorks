@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace BIT.Data.Transfer
 {
-    public interface IParams
-    {
-        
-    }
-    public interface IResult
-    {
-        
-    }
     interface IClient
     {
         IResult ExecuteFunction(IParams Parameters);
