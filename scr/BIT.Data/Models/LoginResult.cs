@@ -83,8 +83,6 @@ namespace BIT.Data.Models
 
             }
         }
-
-
         private object _LastError;
         [JsonIgnore()]
         public string LastError
