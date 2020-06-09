@@ -38,7 +38,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{E646DCD0-4274-4363-9854-B61EAEDE5858}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIT.Data.Transfer", "BIT.Data.Transfer\BIT.Data.Transfer.csproj", "{76B3B497-168E-4234-A547-7DF7D6A59499}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Data.Transfer", "BIT.Data.Transfer\BIT.Data.Transfer.csproj", "{76B3B497-168E-4234-A547-7DF7D6A59499}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

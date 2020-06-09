@@ -43,7 +43,7 @@ namespace Tests
 
         }
         [Test]
-        public void CompareTokens()
+        public void CompareTokens_ShouldPass()
         {
             //in production you should not generate a random key but use a fixed key
             var Key = JwtHelper.GenerateKey(128);
@@ -63,11 +63,36 @@ namespace Tests
             var StringToken = JwtHelper.GenerateToken(Key, InitialPayload);
             Debug.WriteLine(string.Format("{0}:{1}", "Token", StringToken));
 
-           
+
             var PayloadFromValidation = JwtHelper.ReadToken(StringToken);
 
             Assert.AreEqual(InitialPayload.SerializeToJson(), PayloadFromValidation.SerializeToJson());
-           
+
+        }
+        [Test]
+        public void GenerateTokenWithInvalidKey_ShouldFail()
+        {
+            //in production you should not generate a random key but use a fixed key
+            var Key = "abcd";
+
+
+
+
+            const string Issuer = "Jose Manuel Ojeda";
+
+            JwtPayload InitialPayload;
+            InitialPayload = new JwtPayload 
+            {
+                        { "UserOid ", "001" },
+                        { JwtRegisteredClaimNames.Iat, JwtHelper.ConvertToUnixTime(DateTime.Now).ToString() },
+                          { JwtRegisteredClaimNames.Iss, Issuer },
+            };
+
+            Assert.Throws<ArgumentException>(() =>
+            JwtHelper.GenerateToken(Key, InitialPayload));
+
+
+
         }
     }
 }
