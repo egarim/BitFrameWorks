@@ -9,9 +9,9 @@ using System.Xml.Serialization;
 
 namespace BIT.Data.Helpers
 {
-    public static class SerializationHelper
+    public class SimpleObjectSerializationHelper : IObjectSerializationHelper
     {
-        private static byte[] Compress(byte[] raw)
+        private byte[] Compress(byte[] raw)
         {
             using (MemoryStream memory = new MemoryStream())
             {
@@ -25,7 +25,7 @@ namespace BIT.Data.Helpers
             }
         }
 
-        public static T GetObjectsFromByteArray<T>(byte[] bytes)
+        public T GetObjectsFromByteArray<T>(byte[] bytes)
         {
             var Type = typeof(T);
             using (MemoryStream fs = new MemoryStream(bytes))
@@ -40,27 +40,7 @@ namespace BIT.Data.Helpers
                 }
             }
         }
-        public static T DeserializeObjectFromString<T>(string Object)
-        {
-            var Type = typeof(T);
-            using (TextReader reader = new StringReader(Object))
-            {
-                XmlSerializer serializer = new XmlSerializer(Type);
-                var Statement = (T)Convert.ChangeType(serializer.Deserialize(reader), Type);
-                return Statement;
-            }
-        }
-        public static string SerializeObjectToString<T>(T toSerialize)
-        {
-            XmlSerializer xmlSerializer = new XmlSerializer(toSerialize.GetType());
-
-            using (StringWriter textWriter = new StringWriter())
-            {
-                xmlSerializer.Serialize(textWriter, toSerialize);
-                return textWriter.ToString();
-            }
-        }
-        public static byte[] ToByteArray<T>(T Data)
+        public byte[] ToByteArray<T>(T Data)
         {
             try
             {
@@ -95,5 +75,33 @@ namespace BIT.Data.Helpers
             }
             return null;
         }
+        public SimpleObjectSerializationHelper()
+        {
+
+        }
+    }
+    public class StringSerializationHelper : IStringSerializationHelper
+    {
+        public virtual T DeserializeObjectFromString<T>(string Object)
+        {
+            var Type = typeof(T);
+            using (TextReader reader = new StringReader(Object))
+            {
+                XmlSerializer serializer = new XmlSerializer(Type);
+                var Statement = (T)Convert.ChangeType(serializer.Deserialize(reader), Type);
+                return Statement;
+            }
+        }
+        public virtual string SerializeObjectToString<T>(T toSerialize)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(toSerialize.GetType());
+
+            using (StringWriter textWriter = new StringWriter())
+            {
+                xmlSerializer.Serialize(textWriter, toSerialize);
+                return textWriter.ToString();
+            }
+        }
+      
     }
 }

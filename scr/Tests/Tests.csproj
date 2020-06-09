@@ -9,6 +9,7 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="NewConnectionString.json" />
+    <None Remove="StringDate.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +23,9 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+    <Content Include="StringDate.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +37,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BIT.Data\BIT.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="SerializationHelper_Test.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
 </Project>
