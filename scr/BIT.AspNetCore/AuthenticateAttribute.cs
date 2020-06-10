@@ -1,16 +1,13 @@
-﻿using BIT.Data.Helpers;
+﻿
+
+using BIT.Data.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
 
-namespace BIT.Xpo.AspNetCore
+namespace BIT.AspNetCore
 {
     public class AuthenticateAttribute : ActionFilterAttribute
     {

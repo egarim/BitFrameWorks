@@ -32,6 +32,7 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.3.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.3.0" />
 		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
+		<ProjectReference Include="..\BIT.AspNetCore\BIT.AspNetCore.csproj" />
 		<ProjectReference Include="..\BIT.Data\BIT.Data.csproj" />
 	</ItemGroup>
 	<!--NugetProject ReferencesSection End-->

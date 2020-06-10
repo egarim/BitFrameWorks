@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using BIT.AspNetCore.Controllers;
 using BIT.Data.Models;
 using DevExpress.Xpo;
 using DevExpress.Xpo.DB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BIT.Xpo.AspNetCore
+namespace BIT.Xpo.AspNetCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

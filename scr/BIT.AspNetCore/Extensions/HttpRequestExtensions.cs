@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BIT.Xpo.AspNetCore
+namespace BIT.AspNetCore.Extensions
 {
     public static class HttpRequestExtensions
     {

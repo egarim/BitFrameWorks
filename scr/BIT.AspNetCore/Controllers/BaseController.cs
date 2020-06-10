@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace BIT.Xpo.AspNetCore
+namespace BIT.AspNetCore.Controllers
 {
     
     public class BaseController : ControllerBase
