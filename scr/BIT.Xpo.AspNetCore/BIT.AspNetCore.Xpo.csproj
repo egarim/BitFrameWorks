@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 	<!--<Import Project="BIT.Xpo.props"/>-->
 	<PropertyGroup>
 		<ProjectGuid>c4396657-dc12-4d0a-8816-c5d0db025151</ProjectGuid>
@@ -28,11 +28,9 @@
 	<!--Nuget Generation Section End-->
 	<!--Nuget Reference Section Start-->
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.App"/>
-		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.3.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.3.0" />
 		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
 		<ProjectReference Include="..\BIT.AspNetCore\BIT.AspNetCore.csproj" />
+		<ProjectReference Include="..\BIT.Data.Xpo\BIT.Xpo.csproj" />
 		<ProjectReference Include="..\BIT.Data\BIT.Data.csproj" />
 	</ItemGroup>
 	<!--NugetProject ReferencesSection End-->
