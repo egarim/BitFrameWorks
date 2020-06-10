@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <ProjectGuid>688ad5c4-2dbf-4d68-9f6d-e881e9dd7c04</ProjectGuid>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <Configurations>Debug;Release</Configurations>
     <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
     <Authors>José Manuel Ojeda Melgar</Authors>
@@ -27,6 +27,7 @@
   <!--Nuget Generation Section End-->
   <!--Nuget Reference Section Start-->
   <ItemGroup>
+	<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
     <PackageReference Include="RestSharp" Version="106.10.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <ProjectReference Include="..\BIT.Data\BIT.Data.csproj" />
