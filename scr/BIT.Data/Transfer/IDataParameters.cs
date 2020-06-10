@@ -2,7 +2,7 @@
 
 namespace BIT.Data.Transfer
 {
-    public interface IParams
+    public interface IDataParameters
     {
         string MemberName { get; set; }
         byte[] ParametersValue { get; set; }

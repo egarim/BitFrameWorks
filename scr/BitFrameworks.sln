@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Xpo.Functions.GIS", "BI
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{5054F9BD-CEF8-44C3-BA6B-B36745297033}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{2656694F-D872-44F2-B917-C3E53DE31D96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Data.Tests", "Tests\BIT.Data.Tests.csproj", "{2656694F-D872-44F2-B917-C3E53DE31D96}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Xpo.Providers.SqliteEncrypted", "BIT.Xpo.SqliteEncrypted\BIT.Xpo.Providers.SqliteEncrypted.csproj", "{A6958979-E4A6-43A0-876F-F3046B93937A}"
 EndProject

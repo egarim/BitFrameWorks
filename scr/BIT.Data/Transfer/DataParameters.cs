@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace BIT.Data.Transfer
 {
-    public class Parameters : Dictionary<string, object>, IParams
+    public class DataParameters : Dictionary<string, object>, IDataParameters
     {
 
         [JsonIgnore()]

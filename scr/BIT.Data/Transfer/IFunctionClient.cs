@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace BIT.Data.Transfer
 {
-    interface IClient
+    public interface IFunctionClient
     {
-        IResult ExecuteFunction(IParams Parameters);
-        void ExecuteMethod(IParams Parameters);
+        Task<IDataResult> ExecuteFunction(IDataParameters Parameters);
+      
     }
 }
