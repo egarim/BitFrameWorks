@@ -5,7 +5,7 @@ using System;
 using System.IO;
 using System.Linq;
 
-namespace Tests
+namespace BIT.Data.Tests
 {
     public class ConfigurationResolverBase_Test
     {

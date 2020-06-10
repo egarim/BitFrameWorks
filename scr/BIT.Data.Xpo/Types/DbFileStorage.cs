@@ -1,4 +1,4 @@
-﻿using BIT.Data.Helpers;
+﻿using BIT.Xpo.Converters;
 using DevExpress.Utils;
 using DevExpress.Xpo;
 using DevExpress.Xpo.Metadata;

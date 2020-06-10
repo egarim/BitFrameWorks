@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Data", "BIT.Data\BIT.Data.csproj", "{A2FE64BF-7479-4B13-ADA1-EA2E80A95E13}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Jwt", "BIT.Jwt\BIT.Jwt.csproj", "{95B7077D-F7D9-427C-9F04-A079381D64FE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Xpo.Providers.WebApi.Client", "BIT.Xpo.XPOWebApi.Client\BIT.Xpo.Providers.WebApi.Client.csproj", "{688AD5C4-2DBF-4D68-9F6D-E881E9DD7C04}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Xpo.Providers.WebApi.Server", "BIT.Xpo.XPOWebApi.Server\BIT.Xpo.Providers.WebApi.Server.csproj", "{3FC7EC9D-CB72-4D57-9B72-C3A8182F72BD}"
@@ -38,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{E646DCD0-4274-4363-9854-B61EAEDE5858}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIT.Xpo.Providers.WebApi.Test", "BIT.Xpo.Providers.WebApi.Test\BIT.Xpo.Providers.WebApi.Test.csproj", "{658C8C13-00C6-4A61-8CD6-BD18C4E0C3FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,10 +48,6 @@ Global
 		{A2FE64BF-7479-4B13-ADA1-EA2E80A95E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2FE64BF-7479-4B13-ADA1-EA2E80A95E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2FE64BF-7479-4B13-ADA1-EA2E80A95E13}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95B7077D-F7D9-427C-9F04-A079381D64FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95B7077D-F7D9-427C-9F04-A079381D64FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95B7077D-F7D9-427C-9F04-A079381D64FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95B7077D-F7D9-427C-9F04-A079381D64FE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{688AD5C4-2DBF-4D68-9F6D-E881E9DD7C04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{688AD5C4-2DBF-4D68-9F6D-E881E9DD7C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{688AD5C4-2DBF-4D68-9F6D-E881E9DD7C04}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -88,6 +84,10 @@ Global
 		{3CF6C49A-3DB2-44B2-89AA-E4A4FCB0BBCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CF6C49A-3DB2-44B2-89AA-E4A4FCB0BBCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CF6C49A-3DB2-44B2-89AA-E4A4FCB0BBCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{658C8C13-00C6-4A61-8CD6-BD18C4E0C3FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{658C8C13-00C6-4A61-8CD6-BD18C4E0C3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{658C8C13-00C6-4A61-8CD6-BD18C4E0C3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{658C8C13-00C6-4A61-8CD6-BD18C4E0C3FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +99,7 @@ Global
 		{A6958979-E4A6-43A0-876F-F3046B93937A} = {65D2D6D7-D5E9-4F1B-980F-D441438C47C9}
 		{A6450AD7-A7FC-482B-B2B9-EBC28118E9EB} = {8A69BB44-20E2-438F-9290-6592B9F3960C}
 		{E646DCD0-4274-4363-9854-B61EAEDE5858} = {65D2D6D7-D5E9-4F1B-980F-D441438C47C9}
+		{658C8C13-00C6-4A61-8CD6-BD18C4E0C3FB} = {5054F9BD-CEF8-44C3-BA6B-B36745297033}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F42ADCA-F738-4569-AAE0-F1ACA0C2F6BC}

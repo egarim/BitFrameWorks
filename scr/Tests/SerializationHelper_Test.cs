@@ -1,14 +1,25 @@
 ﻿using BIT.Data.Helpers;
+using BIT.Data.Tests.Infrastructure;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Tests
+namespace BIT.Data.Tests
 {
     public class SerializationHelper_Test
     {
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+         WebHost.CreateDefaultBuilder(args)
+           .UseUrls("http://127.0.0.1:6001")
+             .UseStartup<Startup>();
 
         //TODO add more test cases with complex objects
 
@@ -16,8 +27,45 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-           
+         
         }
+
+        [Test]
+        public void ServerTest()
+        {
+            Task.Run(() =>
+            {
+
+                string[] args = null;
+                CreateWebHostBuilder(args).Build().Run();
+            });
+
+
+            Task.Run(async () =>
+            {
+
+                //string[] args = null;
+                //CreateWebHostBuilder(args).Build().Run();
+
+                try
+                {
+                    HttpClient client = new HttpClient();
+                    var test = await client.GetAsync("http://127.0.0.1:6001/api/Test");
+                    Debug.WriteLine(test);
+                    Assert.IsNotNull(test);
+                }
+                catch (Exception ex)
+                {
+                    var message = ex.Message;
+                    throw ex;
+                }
+             
+            });
+
+
+          
+        }
+
 
         [Test]
         public void SerializeDatetime_ShouldPass()

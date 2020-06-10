@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using BIT.Data.Helpers;
 using BIT.Data.Models;
 using DevExpress.Xpo;
 using DevExpress.Xpo.DB;
