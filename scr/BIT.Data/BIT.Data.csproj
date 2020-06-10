@@ -17,10 +17,6 @@
   <ItemGroup>
     <None Include="LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
   </ItemGroup>
-  <!--<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <AssemblyName>BIT.Data.vDebug</AssemblyName>
-    <Version>1</Version>
-  </PropertyGroup>-->
   <!--Nuget Generation Section Start-->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -32,16 +28,10 @@
   <!--Nuget Reference Section Start-->
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.3.0" />
-    <!--<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.3.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.3.0" /> 
-	<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.3.0" />
-	<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.3.0" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.3.0" />-->
 	<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.3.0" />
 	<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.3.0" />
     <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.5.0" />
     <PackageReference Include="System.Text.Json" Version="4.7.1" />
-    <PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.5.0" />
   </ItemGroup>
   <!--NugetProject ReferencesSection End-->

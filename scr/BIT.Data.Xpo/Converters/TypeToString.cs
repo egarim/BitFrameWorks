@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BIT.Data.TypeConverters
+namespace BIT.Xpo.Converters
 {
     public class TypeToString : ValueConverter
     {
