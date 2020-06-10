@@ -47,7 +47,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\BIT.Data\BIT.Data.csproj" />
-		<ProjectReference Include="..\BIT.Xpo.AspNetCore\BIT.Xpo.AspNetCore.csproj" />
+		<ProjectReference Include="..\BIT.Xpo.AspNetCore\BIT.AspNetCore.Xpo.csproj" />
 	</ItemGroup>
 	<!--NugetProject ReferencesSection End-->
 	<!--Extra Start-->

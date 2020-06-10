@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Xpo.Providers.WebApi.Cl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Xpo.Providers.WebApi.Server", "BIT.Xpo.XPOWebApi.Server\BIT.Xpo.Providers.WebApi.Server.csproj", "{3FC7EC9D-CB72-4D57-9B72-C3A8182F72BD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Xpo.AspNetCore", "BIT.Xpo.AspNetCore\BIT.Xpo.AspNetCore.csproj", "{C4396657-DC12-4D0A-8816-C5D0DB025151}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.AspNetCore.Xpo", "BIT.Xpo.AspNetCore\BIT.AspNetCore.Xpo.csproj", "{C4396657-DC12-4D0A-8816-C5D0DB025151}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Xpo.Functions.GIS", "BIT.Xpo.Functions\BIT.Xpo.Functions.GIS.csproj", "{05EFB4F9-1C22-4CA0-A6C2-EC225C21E5C3}"
 EndProject
