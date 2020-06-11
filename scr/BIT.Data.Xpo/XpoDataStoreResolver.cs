@@ -46,27 +46,8 @@ namespace BIT.Xpo
                     AutoCreateOptions.Add(Split[1], Value.Value);
             }
 
-            //foreach (KeyValuePair<string, string> Connection in ConnectionStrings)
-            //{
-            //    //Parsing connection strings
-            //    var IdAndConnectionString = Connection.Key.Split(':');
-            //    if (IdAndConnectionString.Length > 1)
-            //    {
-            //        if (IdAndConnectionString[1] != null)
-            //        {
-
-            //            string autoCreateOptions;
-            //            AutoCreateOptions.TryGetValue(IdAndConnectionString[1], out autoCreateOptions);
-
-            //            if (string.IsNullOrEmpty(autoCreateOptions))
-            //                continue;
-
-            //            string dataStoreId = IdAndConnectionString[1];
-            //            InitDataStore(dataStoreId, autoCreateOptions);
-            //        }
-            //    }
-
-            //}
+            if (!AutoCreateOptions.ContainsKey(Id))
+                throw new ArgumentException($"Missin AutoCreateOptions:{Id}");
 
 
             AutoCreateOption autoCreateOptionEnum = AutoCreateOption.None;
