@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BIT.Data.Xpo\BIT.Xpo.csproj" />
-    <ProjectReference Include="..\..\..\BIT.Xpo.XPOWebApi.Server\BIT.Xpo.Providers.WebApi.Server.csproj" />
+    <ProjectReference Include="..\..\..\BIT.Xpo.Providers.WebApi.Server\BIT.Xpo.Providers.WebApi.Server.csproj" />
   </ItemGroup>
 
 
