@@ -1,1 +1,652 @@
-﻿<?xml version="1.0" encoding="utf-8"?><DefaultName><xs:schema id="DefaultName" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="DefaultName" msdata:IsDataSet="true" msdata:UseCurrentLocale="true"><xs:complexType><xs:choice minOccurs="0" maxOccurs="unbounded"><xs:element name="Invoice"><xs:complexType><xs:sequence><xs:element name="InvoiceNumber" type="xs:int" minOccurs="0" /><xs:element name="Date" type="xs:dateTime" minOccurs="0" /><xs:element name="Customer" type="xs:int" minOccurs="0" /></xs:sequence></xs:complexType></xs:element><xs:element name="Customer"><xs:complexType><xs:sequence><xs:element name="Code" type="xs:int" minOccurs="0" /><xs:element name="Name" minOccurs="0"><xs:simpleType><xs:restriction base="xs:string"><xs:maxLength value="100" /></xs:restriction></xs:simpleType></xs:element><xs:element name="Active" type="xs:boolean" minOccurs="0" /><xs:element name="MaxCredit" type="xs:decimal" minOccurs="0" /></xs:sequence></xs:complexType></xs:element></xs:choice></xs:complexType><xs:unique name="Idx_InvoiceNumber" msdata:PrimaryKey="true"><xs:selector xpath=".//Invoice" /><xs:field xpath="InvoiceNumber" /></xs:unique><xs:unique name="Idx_Code" msdata:PrimaryKey="true"><xs:selector xpath=".//Customer" /><xs:field xpath="Code" /></xs:unique><xs:unique name="FK__Customer_x0023_Code_x0023_Invoice_x0023_CustomerIdx"><xs:selector xpath=".//Customer" /><xs:field xpath="Code" /></xs:unique><xs:keyref name="FK__Customer_x0023_Code_x0023_Invoice_x0023_Customer" refer="FK__Customer_x0023_Code_x0023_Invoice_x0023_CustomerIdx"><xs:selector xpath=".//Invoice" /><xs:field xpath="Customer" /></xs:keyref></xs:element></xs:schema></DefaultName>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DefaultName>
+	<xs:schema id="DefaultName" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+		<xs:element name="DefaultName" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+			<xs:complexType>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="Invoice">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="InvoiceNumber" type="xs:int" minOccurs="0" />
+								<xs:element name="Date" type="xs:dateTime" minOccurs="0" />
+								<xs:element name="Customer" msdata:DataType="System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" type="xs:string" minOccurs="0" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Customer">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Code" msdata:DataType="System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" type="xs:string" minOccurs="0" />
+								<xs:element name="Name" minOccurs="0">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:maxLength value="100" />
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="Active" type="xs:boolean" minOccurs="0" />
+								<xs:element name="MaxCredit" type="xs:decimal" minOccurs="0" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+			</xs:complexType>
+			<xs:unique name="Idx_InvoiceNumber" msdata:PrimaryKey="true">
+				<xs:selector xpath=".//Invoice" />
+				<xs:field xpath="InvoiceNumber" />
+			</xs:unique>
+			<xs:unique name="Idx_Code" msdata:PrimaryKey="true">
+				<xs:selector xpath=".//Customer" />
+				<xs:field xpath="Code" />
+			</xs:unique>
+			<xs:unique name="FK__Customer_x0023_Code_x0023_Invoice_x0023_CustomerIdx">
+				<xs:selector xpath=".//Customer" />
+				<xs:field xpath="Code" />
+			</xs:unique>
+			<xs:keyref name="FK__Customer_x0023_Code_x0023_Invoice_x0023_Customer" refer="FK__Customer_x0023_Code_x0023_Invoice_x0023_CustomerIdx">
+				<xs:selector xpath=".//Invoice" />
+				<xs:field xpath="Customer" />
+			</xs:keyref>
+		</xs:element>
+	</xs:schema>
+	<Customer>
+		<Code>bde455be-39a1-4b3b-991b-6317a113f6e8</Code>
+		<Name>Dwight Kihn</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>f3c66dfe-fe10-476e-b290-a7fbec921d49</Code>
+		<Name>Rocio Smith</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>749a2f5a-7506-4212-b2f8-c3e23fc0be8a</Code>
+		<Name>Sheila Stiedemann</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>1a5bd216-ab75-4b39-a4bb-6c099fac5326</Code>
+		<Name>Coleman Ernser</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>fd917c91-5b9e-4ceb-b0ea-74dc053c07ff</Code>
+		<Name>Jammie Hayes</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>286b12be-364a-46d5-9cf5-2c330cd27e9d</Code>
+		<Name>Weldon Grady</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>b991959f-557b-44d1-a2e7-6f7f365c653e</Code>
+		<Name>Mitchel Blanda</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>2b624a3a-5cbc-4ffa-afc4-48a26959769a</Code>
+		<Name>Ibrahim Stark</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>82fb7714-9d34-40d2-805d-07b647944760</Code>
+		<Name>Jakob Rogahn</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>d1fd778f-34a1-46a0-87c7-d3d02c373c08</Code>
+		<Name>Hosea Thiel</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>1dbaef65-f0df-458c-8be3-15f96f72992b</Code>
+		<Name>Theresia Harvey</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>ec315a08-03d3-4543-8545-beedc81a3f97</Code>
+		<Name>Carmella O'Reilly</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>af57477b-e964-4f07-8aec-b8a97174b831</Code>
+		<Name>Gracie Gleichner</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>ce98b699-74d0-4e87-a0c6-1fbccb1ec2c1</Code>
+		<Name>Emerson Raynor</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>212e2208-822f-4dfc-8c0c-8d7a51182b75</Code>
+		<Name>Sydni Sanford</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>7da9b92b-1cb3-4ae9-b15d-f645c2d287e7</Code>
+		<Name>Alayna Deckow</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>149b54d7-1772-41b4-bd48-48903d446cad</Code>
+		<Name>Gregg Bode</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>c78009af-9c78-4de5-83e3-a3199db03151</Code>
+		<Name>Finn Bauch</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>5dc3446b-5dfc-4669-8ec6-5042cd15f527</Code>
+		<Name>Mckayla Spencer</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>abd0a867-13a2-4511-8746-2733cd9f2392</Code>
+		<Name>Felipe Hintz</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>f84cc573-1c16-4a19-a9ff-b2974fc88433</Code>
+		<Name>Ramona Klein</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>e32aa21f-4727-46b4-baa0-a546f54e0828</Code>
+		<Name>Gerard Gottlieb</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>cfadac52-91a3-4ed7-9ca8-6840508569e4</Code>
+		<Name>Ahmed Hagenes</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>981c0f7b-0d7a-420e-bb08-e826d7e9c772</Code>
+		<Name>Mohamed Mayert</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>df686b21-49d5-4061-bc88-1202c792f3bb</Code>
+		<Name>Larissa Jaskolski</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>8ec5fcf7-34aa-4aeb-a1bd-157439a625cb</Code>
+		<Name>Clifford Lemke</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>51de7afb-901f-4815-98be-ee3a46a5f90f</Code>
+		<Name>Tristian Kessler</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>7e4ccb7b-1f1a-44ae-85e1-9c9f8adc1866</Code>
+		<Name>Theodora Barton</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>608422d7-dd77-4b52-8018-ab8da78a7071</Code>
+		<Name>Preston Mante</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>83a81db6-0f5a-4406-bccd-a02f1d14aefb</Code>
+		<Name>Velma Klocko</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>fd50262f-9ef8-47f9-bcd2-36874696ccad</Code>
+		<Name>Hudson Bayer</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>e2ddb5d7-fda9-4bea-bf16-7930e08a2367</Code>
+		<Name>Eldon Labadie</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>989a404b-60fb-4739-a45e-f99fd3214b10</Code>
+		<Name>Aliyah Ledner</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>2a88b55d-c4b5-4248-85dd-fb9407244fbb</Code>
+		<Name>Jenifer Abshire</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>dfd93ded-c5ec-4c14-8b01-6837a0db1d95</Code>
+		<Name>Erna Padberg</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>7e645a1a-f161-42d7-874f-93a56f6e23e8</Code>
+		<Name>Adrian Ruecker</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>20b324fe-3d8b-48c0-a4df-1fea110eb30b</Code>
+		<Name>Nedra Lakin</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>8f38a360-9ef6-4fde-a282-91648bcdb752</Code>
+		<Name>Josefa Jenkins</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>b48b7538-7401-4a35-86b3-9c51473dfe0c</Code>
+		<Name>Julian Towne</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>3eab2c3d-702a-483b-a9a3-7718dad62984</Code>
+		<Name>Christelle McCullough</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>20e4750e-b745-4e3c-b13f-fb2d1addfc66</Code>
+		<Name>Landen Bergnaum</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>648d75d3-ff18-417a-95a6-5c6ee3182f6b</Code>
+		<Name>Roxane Green</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>975de2f6-9fe8-4fdc-a0ef-4bf2c6a45f2a</Code>
+		<Name>Bo Gusikowski</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>599c0c3e-9b50-4d18-9b52-8d1d3eb3f77d</Code>
+		<Name>August Crona</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>959a41c1-ad5a-4655-9f60-7e6df10d4d2a</Code>
+		<Name>Kirk Klein</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>8a759af1-961f-4c4d-998c-60c79472b11d</Code>
+		<Name>Marty Medhurst</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>cccaea82-6563-45c7-8160-c583d287bfcd</Code>
+		<Name>Eldon Schaefer</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>60adad00-ac97-4d26-ac7e-7e3d897b4f9e</Code>
+		<Name>Maia DuBuque</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>9fed6647-8d91-4e51-b782-61569c6cd352</Code>
+		<Name>Jonas VonRueden</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>b7ebb07e-1c52-4c24-8eb3-a55f4b81238f</Code>
+		<Name>Vicente Runolfsson</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>7af44851-d5ca-482e-bb6a-bdfc9b4bc422</Code>
+		<Name>Rosendo Stiedemann</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>8aacfcd7-8eaf-4a23-b600-53edb17fa160</Code>
+		<Name>Patience Tromp</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>3abf85e1-970f-4bb8-9be3-fe415c92bd89</Code>
+		<Name>Aisha Kreiger</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>420e1fb4-717d-40ce-8cd6-609711516ffa</Code>
+		<Name>Walter Trantow</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>0a03f21c-369f-4b92-918e-a60239b5d8ef</Code>
+		<Name>Monty O'Keefe</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>801c7b53-f6fc-4fdc-83f3-ca847c6ed926</Code>
+		<Name>Ella Weimann</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>acd607f5-94f5-4458-b015-041e9265a5af</Code>
+		<Name>Jessyca Smitham</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>f08bc857-6f70-4f9e-aa9b-64d0c495cc0a</Code>
+		<Name>Anderson Toy</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>4defb2c7-ef28-4c0c-8be3-2f50442c4c7c</Code>
+		<Name>Stone Ward</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>7816441c-e4dd-4ae0-b5c0-aeb427985f4d</Code>
+		<Name>Sven Hayes</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>b7cf4a4f-d1e8-46bb-99ca-f9c153d00c6c</Code>
+		<Name>Stanford Crooks</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>05c6546e-3dd4-4e61-9a36-f1ce507cc707</Code>
+		<Name>Edward Frami</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>2ea78be0-efb0-40a8-acd0-ee5ea9c244ee</Code>
+		<Name>Annalise Schaefer</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>de3d83d3-e76d-4093-853e-c2542a5cf9c1</Code>
+		<Name>Jerel Ortiz</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>e3be2a3a-ac90-4352-81b2-8b79ef4dd786</Code>
+		<Name>Watson Hand</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>2a421b75-65fe-49ae-9a8c-b7b079a7f785</Code>
+		<Name>Evans Waters</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>8b60ca5f-ba73-4a36-a76f-bbb6e1962c89</Code>
+		<Name>Lavern Ebert</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>64625b1e-aa3d-4be8-9d75-9f32504f7220</Code>
+		<Name>Margarette Koelpin</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>81b274a9-52c7-4c36-9236-786aa826a907</Code>
+		<Name>Emmet Schamberger</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>3523c106-108c-424f-81a0-96d228b05779</Code>
+		<Name>Bulah Torp</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>6a1e35e8-5330-45df-adc9-1b370fd6e67c</Code>
+		<Name>Aron Bruen</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>ec840445-245a-41c2-865f-ad3e8cca8f66</Code>
+		<Name>Agustina Bins</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>40820a86-0682-42dd-83d7-c9e9718be9e7</Code>
+		<Name>Tommie Kihn</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>0e6c6d1b-f2b1-4542-a706-a5ceaf60bc92</Code>
+		<Name>Amber Feil</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>44d2f510-e8fe-47e2-a4b5-01c53fc68d48</Code>
+		<Name>Haleigh Abshire</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>9bd4290f-eaba-4d7c-9f15-9fcdb5cef65a</Code>
+		<Name>Chaya Bogan</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>ddff2537-86f0-4853-bc33-4b2ad2b7c275</Code>
+		<Name>Stephany MacGyver</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>f1d6913b-5672-41d3-bf30-6f56e922bca3</Code>
+		<Name>Elmo Hagenes</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>8abdf343-3c42-455b-b624-674b53c98183</Code>
+		<Name>Gino Fahey</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>32267685-3b0c-4581-8609-4badc8cdddfe</Code>
+		<Name>Leatha Wisoky</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>366500fb-e565-4883-935e-ab4d3f8cb748</Code>
+		<Name>Estell Walker</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>f9d3ff74-019c-4f26-a5e1-c36fcbf1ec96</Code>
+		<Name>Kristofer Jast</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>f6da2df5-9951-4b8b-8b09-35435bf48af0</Code>
+		<Name>Wiley Wilkinson</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>5e62e758-b99f-44d8-878c-32a3826bb81c</Code>
+		<Name>Carroll Jast</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>5c2da0c2-2d2a-4975-9a59-e4b6e1dc6d96</Code>
+		<Name>Brooks Lockman</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>72afb682-011e-45ea-b858-e6f88c3f69d8</Code>
+		<Name>Rey Gislason</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>96f6656e-c5f3-4f4c-962e-de085558a401</Code>
+		<Name>Noemy Connelly</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>c6ed60cc-7b5c-4325-a96b-b61d2ebe296f</Code>
+		<Name>Grant Flatley</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>bdd7f46f-67a8-427e-b742-ed1bc3b50703</Code>
+		<Name>Waldo Sanford</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>3dc55fb1-d026-45e6-9d77-8d5a6a3ab3f3</Code>
+		<Name>Adele Murazik</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>6b34322e-0bc1-4ed3-ad56-e110446a38c5</Code>
+		<Name>Alexandra Harber</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>33a0c4ca-f488-4e43-9bac-a19bec1528ad</Code>
+		<Name>Vern Raynor</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>de5a51d3-5a6b-4259-ab73-41ca34236bca</Code>
+		<Name>Demetrius Shields</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>84186e2f-7012-4bfd-82f0-89abab5a8709</Code>
+		<Name>Leopoldo Dooley</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>15763f73-7d89-4857-8417-4f795f277cd6</Code>
+		<Name>Emmanuel Ritchie</Name>
+		<Active>true</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>2dbc2410-56c4-4057-a418-a7926e4aae23</Code>
+		<Name>Johathan Cruickshank</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>44211a12-a8ff-4966-a091-88e99c970d23</Code>
+		<Name>Carissa Maggio</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>6077b6a1-7508-4cd1-b3a4-778f7d52a830</Code>
+		<Name>Delia Spinka</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>6d4a8fb3-4e0b-45ce-b816-4db479930e9c</Code>
+		<Name>Nella Weber</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+	<Customer>
+		<Code>a5e1665b-e43f-4770-8f3f-b58165a9b335</Code>
+		<Name>Koby Moore</Name>
+		<Active>false</Active>
+		<MaxCredit>0</MaxCredit>
+	</Customer>
+</DefaultName>
