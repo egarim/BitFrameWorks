@@ -14,7 +14,7 @@ using System.IO;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-
+using BIT.Xpo.Extensions;
 namespace BIT.Xpo.Providers.WebApi.Server
 {
 

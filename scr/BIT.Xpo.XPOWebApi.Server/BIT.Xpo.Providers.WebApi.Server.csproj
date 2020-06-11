@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<ProjectGuid>3fc7ec9d-cb72-4d57-9b72-c3a8182f72bd</ProjectGuid>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
@@ -27,23 +27,8 @@
 	<!--Nuget Generation Section End-->
 	<!--Nuget Reference Section Start-->
 	<ItemGroup>
-		<!--<PackageReference Include="Microsoft.Extensions.Configuration" Version="2.3.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.3.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.3.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.3.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.3.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.3.0" />-->
-		<!--<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.3.0" />-->
-		<!--<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.3.0" />
-		<PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="2.3.0" />
-		<PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.3.0" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.3.0" />
-		<PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="2.3.0" />-->
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
-		<!--<PackageReference Include="MethodDecorator.Fody" Version="1.1.0" PrivateAssets="all" />
-		<PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="all" />
-		<PackageReference Include="Microsoft.AspNetCore.App" />-->
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\BIT.Data\BIT.Data.csproj" />
