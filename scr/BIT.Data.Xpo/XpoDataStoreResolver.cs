@@ -10,14 +10,14 @@ using System.Text;
 
 namespace BIT.Xpo
 {
-    public class XpoDataStoreResolver : ConfigurationResolverBase<DevExpress.Xpo.DB.IDataStore>
+    public class XpoDataStoreResolver : ConfigurationResolverBase<DevExpress.Xpo.DB.IDataStore>,IResolver<IDataStore>
     {
 
         Dictionary<string, string> AutoCreateOptions;
 
         public XpoDataStoreResolver(string configuratioName, Func<IConfiguration, string, DevExpress.Xpo.DB.IDataStore> instaceBuilder) : base(configuratioName, instaceBuilder)
         {
-           
+
         }
         public XpoDataStoreResolver(string configuratioName) : base(configuratioName, null)
         {

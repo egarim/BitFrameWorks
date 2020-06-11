@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BIT.Data.Helpers;
+using BIT.Xpo;
+using DevExpress.Xpo.DB;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +29,10 @@ namespace XpoWebApiServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            IResolver<IDataStore> DataStoreResolver = new XpoDataStoreResolver("appsettings.json");
+            services.AddSingleton<IResolver<IDataStore>>(DataStoreResolver);
+            services.AddMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

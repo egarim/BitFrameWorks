@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using BIT.Xpo.AspNetCore;
 using BIT.Data.Models;
+using BIT.AspNetCore.Controllers;
+using BIT.Data.Helpers;
+using BIT.AspNetCore.Extensions;
 
 namespace BIT.Xpo.Providers.WebApi.Server
 {
@@ -20,18 +23,27 @@ namespace BIT.Xpo.Providers.WebApi.Server
     public class XPOWebApiControllerBase : BaseController
     {
         protected const string DataStoreIdHeader = "DataStoreId";
-        protected IDataStoreResolver _Resolver;
-      
-        public XPOWebApiControllerBase(IDataStoreResolver DataStoreResolver)
+        private IResolver<IDataStore> resolver;
+        private IObjectSerializationHelper iObjectSerializationHelper;
+        private IStringSerializationHelper iStringSerializationHelper;
+
+
+        public IStringSerializationHelper StringSerializationHelper { get => iStringSerializationHelper; protected set => iStringSerializationHelper = value; }
+        public IObjectSerializationHelper ObjectSerializationHelper { get => iObjectSerializationHelper; protected set => iObjectSerializationHelper = value; }
+        public IResolver<IDataStore> Resolver { get => resolver; protected set => resolver = value; }
+
+        public XPOWebApiControllerBase(IResolver<IDataStore> DataStoreResolver,IObjectSerializationHelper objectSerializationHelper, IStringSerializationHelper stringSerializationHelper)
         {
-            _Resolver = DataStoreResolver;
+            Resolver = DataStoreResolver;
+            ObjectSerializationHelper = objectSerializationHelper;
+            StringSerializationHelper = stringSerializationHelper;
         }
         [HttpPost]
         [Route("[action]")]
 
         public virtual byte[] GetAutoCreateOptions()
         {
-            return Utilities.ToByteArray(_Resolver.GetDataStore(GetHeader(DataStoreIdHeader)).AutoCreateOption);
+            return iObjectSerializationHelper.ToByteArray(Resolver.GetById(GetHeader(DataStoreIdHeader)).AutoCreateOption);
 
 
         }
@@ -45,9 +57,9 @@ namespace BIT.Xpo.Providers.WebApi.Server
                 byte[] Bytes = null;
                 Bytes = await Request.GetRawBodyBytesAsync();
                 SelectedData SelectedData =
-                    _Resolver.GetDataStore(GetHeader(DataStoreIdHeader)).
-                    SelectData(Utilities.GetObjectsFromByteArray<SelectStatement[]>(Bytes));
-                return Ok(Utilities.ToByteArray(SelectedData));
+                    Resolver.GetById(GetHeader(DataStoreIdHeader)).
+                    SelectData(iObjectSerializationHelper.GetObjectsFromByteArray<SelectStatement[]>(Bytes));
+                return Ok(iObjectSerializationHelper.ToByteArray(SelectedData));
             }
             catch (Exception ex)
             {
@@ -66,14 +78,14 @@ namespace BIT.Xpo.Providers.WebApi.Server
             {
                 byte[] Bytes = null;
                 Bytes = await Request.GetRawBodyBytesAsync();
-                var Parameters = Utilities.GetObjectsFromByteArray<string>(Bytes);
+                var Parameters = iObjectSerializationHelper.GetObjectsFromByteArray<string>(Bytes);
 
                 var Values = JsonConvert.DeserializeObject<Dictionary<string, object>>(Parameters);
 
-                var DataStore = _Resolver.GetDataStore(GetHeader(DataStoreIdHeader));
+                var DataStore = Resolver.GetById(GetHeader(DataStoreIdHeader));
                
                 var Result = (DataStore as ICommandChannel).Do(Values["Command"].ToString(), Values["Args"]);
-                return Ok(Utilities.ToByteArray(Result));
+                return Ok(iObjectSerializationHelper.ToByteArray(Result));
             }
             catch (Exception ex)
             {
@@ -91,10 +103,10 @@ namespace BIT.Xpo.Providers.WebApi.Server
             {
                 Bytes = await Request.GetRawBodyBytesAsync();
 
-                var DmlString = Utilities.GetObjectsFromByteArray<ModificationStatement[]>(Bytes);
-                var Result = _Resolver.GetDataStore(GetHeader(DataStoreIdHeader)).
+                var DmlString = iObjectSerializationHelper.GetObjectsFromByteArray<ModificationStatement[]>(Bytes);
+                var Result = Resolver.GetById(GetHeader(DataStoreIdHeader)).
                     ModifyData(DmlString);
-                return Ok(Utilities.ToByteArray(Result));
+                return Ok(iObjectSerializationHelper.ToByteArray(Result));
             }
             catch (Exception ex)
             {
@@ -111,13 +123,13 @@ namespace BIT.Xpo.Providers.WebApi.Server
             {
                 byte[] Bytes = null;
                 Bytes = await Request.GetRawBodyBytesAsync();
-                var Parameters = Utilities.GetObjectsFromByteArray<string>(Bytes);
+                var Parameters = ObjectSerializationHelper.GetObjectsFromByteArray<string>(Bytes);
 
                 var Values = JsonConvert.DeserializeObject<Dictionary<string, object>>(Parameters);
                
 
-                DBTable[] tables = Utilities.DeserializeObjectFromString<DBTable[]>(Values["tables"].ToString());
-                UpdateSchemaResult updateSchemaResult = _Resolver.GetDataStore(GetHeader(DataStoreIdHeader)).UpdateSchema(((bool)Values["dontCreateIfFirstTableNotExist"]), tables);
+                DBTable[] tables = StringSerializationHelper.DeserializeObjectFromString<DBTable[]>(Values["tables"].ToString());
+                UpdateSchemaResult updateSchemaResult = Resolver.GetById(GetHeader(DataStoreIdHeader)).UpdateSchema(((bool)Values["dontCreateIfFirstTableNotExist"]), tables);
                 return Ok(updateSchemaResult);
             }
             catch (Exception ex)

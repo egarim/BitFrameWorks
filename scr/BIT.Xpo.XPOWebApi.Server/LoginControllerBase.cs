@@ -1,7 +1,9 @@
-﻿using BIT.Data.Helpers;
+﻿using BIT.AspNetCore.Extensions;
+using BIT.Data.Helpers;
 using BIT.Data.Models;
 using BIT.Xpo.AspNetCore;
 using DevExpress.Xpo;
+using DevExpress.Xpo.DB;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -20,13 +22,10 @@ namespace BIT.Xpo.Providers.WebApi.Server
     [ApiController]
     public class LoginControllerBase: XPOWebApiControllerBase
     {
-      
-     
-        public LoginControllerBase(IDataStoreResolver DataStoreResolver) : base(DataStoreResolver)
+        public LoginControllerBase(IResolver<IDataStore> DataStoreResolver, IObjectSerializationHelper objectSerializationHelper, IStringSerializationHelper stringSerializationHelper) : base(DataStoreResolver, objectSerializationHelper, stringSerializationHelper)
         {
-            
         }
-        
+
         protected virtual ApiAuthenticationResult Authenticate(UnitOfWork UoW,LoginParameters LoginParameters)
         {
 
@@ -61,8 +60,7 @@ namespace BIT.Xpo.Providers.WebApi.Server
             {
                 LoginResult.Token = string.Empty;
             }
-            //JwtPayload InitialPayload=new JwtPayload(Claims);
-            //LoginResult.Token= JwtHelper.GenerateToken(Key, InitialPayload);
+    
             return LoginResult;
 
         }
@@ -77,11 +75,11 @@ namespace BIT.Xpo.Providers.WebApi.Server
             {
                 Bytes = await Request.GetRawBodyBytesAsync();
 
-                var LoginParametersJsonString = Utilities.GetObjectsFromByteArray<string>(Bytes);
+                var LoginParametersJsonString = this.ObjectSerializationHelper.GetObjectsFromByteArray<string>(Bytes);
 
                 var LoginParameters = JsonConvert.DeserializeObject<LoginParameters>(LoginParametersJsonString);
                 string dataStoreId = GetHeader(DataStoreIdHeader);
-                var UoW = this._Resolver.GetUnitOfWork(dataStoreId);
+                var UoW = this.Resolver.GetUnitOfWork(dataStoreId);
 
 
                
@@ -93,19 +91,6 @@ namespace BIT.Xpo.Providers.WebApi.Server
 
                 var AuthenticationResult = Authenticate(UoW, LoginParameters);
                 var data = BuildLoginResult(Key, Issuer, AuthenticationResult);
-
-                //byte[] value = null;
-                //try
-                //{
-                //    value = Utilities.ToByteArray(data);
-                //}
-                //catch (Exception ex)
-                //{
-
-                //    var message = ex.Message;
-                //}
-
-                //return base.Ok(value);
 
                 return base.Ok(data);
 
