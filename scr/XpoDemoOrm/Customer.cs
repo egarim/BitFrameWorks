@@ -14,17 +14,15 @@ namespace XpoDemoOrm
             base.AfterConstruction();
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
-        [DevExpress.Xpo.Key(false)]
-        //HACK Xpo Attributes
-        [Indexed(Unique = true)]
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public Int32 Code
+        [DevExpress.Xpo.Key(true)]
+        
+        public Guid Code
         {
             get => code;
             set => SetPropertyValue(nameof(Code), ref code, value);
         }
 
-        Int32 code;
+        Guid code;
         decimal maxCredit;
         bool active;
         string name;

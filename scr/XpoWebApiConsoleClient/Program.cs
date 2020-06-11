@@ -11,7 +11,7 @@ namespace XpoWebApiConsoleClient
         {
             XPOWebApi.Register();
 
-            var ConnectionString = XPOWebApi.GetConnectionString("", string.Empty, "Db1");
+            var ConnectionString = XPOWebApi.GetConnectionString("https://localhost:44393", "/XpoWebApi", string.Empty, "db1");
             InstanceXpoHelper Helper = new InstanceXpoHelper();
             Helper.InitXpo(XpoDefault.GetConnectionProvider(ConnectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema));
             using (var UoW = Helper.CreateUnitOfWork())

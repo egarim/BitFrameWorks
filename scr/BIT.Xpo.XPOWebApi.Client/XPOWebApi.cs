@@ -15,28 +15,20 @@ namespace BIT.Xpo.Providers.WebApi.Client
     //TODO review this article https://www.devexpress.com/Support/Center/Question/Details/K18167/troubleshooting-how-to-resolve-the-entering-the-getobjectsnonreenterant-state-error
     public class XPOWebApi : IDataStore, ICommandChannel
     {
+        private const string UrlPart = "Url";
+        private const string TokenPart = "Token";
+        private const string DataStoreIdPart = "DataStoreId";
+        private const string ControllerPart = "Controller";
+
         public static IDataStore CreateProviderFromString(string connectionString, AutoCreateOption autoCreateOption, out IDisposable[] objectsToDisposeOnDisconnect)
         {
             objectsToDisposeOnDisconnect = null;
-            //TODO the connection string should be read in any order and I should not assume that 
-            //var ConnectionParams = connectionString.Split(';');
-
-            //"XpoProvider=RestApiAgnosticDataStoreImp;EndPoint=http://192.168.1.64/MainServer/api/DataStoreAgnosticMultiDb;Token=Empty;DataStoreId=db1";
-
-
             ConnectionStringParser Parser = new ConnectionStringParser(connectionString);
-            var EndPoint = Parser.GetPartByName("EndPoint");
-            var Token = Parser.GetPartByName("Token");
-            var DataStoreId = Parser.GetPartByName("DataStoreId");
-
-
-            //ConnectionParams.Where(cs => cs.StartsWith("EndPoint")).FirstOrDefault();
-
-            //var Server = ConnectionParams[0].Split(';')[0].Split('=')[1];
-            //var Token = ConnectionParams[1].Split(';')[0].Split('=')[1];
-            //var DataStoreId = ConnectionParams[2].Split(';')[0].Split('=')[1];
-
-            return new XPOWebApi(EndPoint, autoCreateOption, Token, DataStoreId);
+            var Url = Parser.GetPartByName(UrlPart);
+            var Token = Parser.GetPartByName(TokenPart);
+            var DataStoreId = Parser.GetPartByName(DataStoreIdPart);
+            var Controller = Parser.GetPartByName(ControllerPart);
+            return new XPOWebApi(Url, Controller, autoCreateOption, Token, DataStoreId);
         }
         static XPOWebApi()
         {
@@ -44,20 +36,21 @@ namespace BIT.Xpo.Providers.WebApi.Client
 
         }
 
-        public XPOWebApi(string server, AutoCreateOption autoCreateOption, string token, string DataStoreId)
+        public XPOWebApi(string server,string Controller, AutoCreateOption autoCreateOption, string token, string DataStoreId)
         {
             this.server = server;
+            this.controller = Controller;
             this.autoCreateOption = autoCreateOption;
             this.token = token;
             this.DataStoreId = DataStoreId;
-            store = new BitFrameworksWebApi(this.server, this.autoCreateOption, this.token, DataStoreId);
+            store = new BitFrameworksWebApi(this.server, this.controller,"LoginController", this.autoCreateOption, this.token, DataStoreId);
             //store = new BitFrameworksWebApiHttp(this.server, this.autoCreateOption, this.token, DataStoreId);
         }
 
-        public static string GetConnectionString(string EndPoint, string Token, string DataStoreId)
+        public static string GetConnectionString(string Url,string Controller, string Token, string DataStoreId)
         {
 
-            return $"{DataStoreBase.XpoProviderTypeParameterName}={XpoProviderTypeString};EndPoint={EndPoint};Token={Token};DataStoreId={DataStoreId}";
+            return $"{DataStoreBase.XpoProviderTypeParameterName}={XpoProviderTypeString};{UrlPart}={Url};{ControllerPart}={Controller};{TokenPart}={Token};{DataStoreIdPart}={DataStoreId}";
         }
         public static void Register()
         {
@@ -73,6 +66,7 @@ namespace BIT.Xpo.Providers.WebApi.Client
         //BitFrameworksWebApi store;
         public const string XpoProviderTypeString = nameof(XPOWebApi);
         private string server;
+        private string controller;
         private AutoCreateOption autoCreateOption;
         private string token;
         private string DataStoreId;
