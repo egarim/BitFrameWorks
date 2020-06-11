@@ -31,7 +31,11 @@ namespace XpoWebApiServer
             services.AddControllers();
 
             IResolver<IDataStore> DataStoreResolver = new XpoDataStoreResolver("appsettings.json");
+            IStringSerializationHelper stringSerializationHelper = new StringSerializationHelper();
+            IObjectSerializationHelper objectSerializationHelper = new SimpleObjectSerializationHelper();
             services.AddSingleton<IResolver<IDataStore>>(DataStoreResolver);
+            services.AddSingleton<IStringSerializationHelper>(stringSerializationHelper);
+            services.AddSingleton<IObjectSerializationHelper>(objectSerializationHelper);
             services.AddMemoryCache();
         }
 
