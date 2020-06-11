@@ -2,7 +2,7 @@
 	<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<ProjectGuid>c4396657-dc12-4d0a-8816-c5d0db025151</ProjectGuid>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>netstandard2.1</TargetFramework>
 		<Configurations>Debug;Release</Configurations>
 		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
 		<Authors>José Manuel Ojeda Melgar</Authors>
