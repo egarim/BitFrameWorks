@@ -39,7 +39,7 @@ namespace BIT.Xpo.Providers.WebApi.Server
             LoginResult.Username = AuthenticationResult.Username;
             LoginResult.UserId = AuthenticationResult.UserId;
             LoginResult.LastError = AuthenticationResult.LastError;
-            //System.IdentityModel.Tokens.Jwt;
+         
             List<Claim> Claims = new List<Claim>();
          
             if(AuthenticationResult != null)

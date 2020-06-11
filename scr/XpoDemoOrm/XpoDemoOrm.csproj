@@ -3,5 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
+	<ItemGroup>
+		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
+	</ItemGroup>
 </Project>
