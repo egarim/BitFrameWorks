@@ -34,7 +34,8 @@ namespace XpoWebApiServer
 
             //HACK how to add XpoWebApi
 
-            #region Manually register all services needed for XpoWebApi
+            //HACK By manually add all services needed for XpoWebApi
+            #region
 
             //IResolver<IDataStore> DataStoreResolver = new XpoDataStoreResolver("appsettings.json");
             //IStringSerializationHelper stringSerializationHelper = new StringSerializationHelper();
@@ -46,7 +47,9 @@ namespace XpoWebApiServer
 
             #endregion
 
-            //OR use the extension method AddXpoWebApi overload
+
+            //HACK by use the extension method AddXpoWebApi overload
+
 
             services.AddXpoWebApi();
 
