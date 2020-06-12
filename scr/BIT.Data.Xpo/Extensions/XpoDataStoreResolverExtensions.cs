@@ -7,7 +7,7 @@ namespace BIT.Xpo.Extensions
 {
     public static class XpoDataStoreResolverExtensions
     {
-        public static UnitOfWork GetUnitOfWork(this IResolver<IDataStore> Instance, string Id)
+        public static UnitOfWork GetUnitOfWork(this IConfigResolver<IDataStore> Instance, string Id)
         {
             var DataStore = Instance.GetById(Id);
             if(DataStore!=null)
@@ -19,7 +19,7 @@ namespace BIT.Xpo.Extensions
                 throw new Exception($"there is no configuration for the DataStore with the ID:{Id}");
             }
         }
-        public static IDataLayer GetSimpleDataLayer(this IResolver<IDataStore> Instance, string Id)
+        public static IDataLayer GetSimpleDataLayer(this IConfigResolver<IDataStore> Instance, string Id)
         {
             var DataStore = Instance.GetById(Id);
             if (DataStore != null)

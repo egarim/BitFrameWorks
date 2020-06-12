@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BIT.Data.Helpers;
 using BIT.Xpo;
+using BIT.Xpo.Providers.WebApi.Server;
 using DevExpress.Xpo.DB;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,12 +31,28 @@ namespace XpoWebApiServer
         {
             services.AddControllers();
 
-            IResolver<IDataStore> DataStoreResolver = new XpoDataStoreResolver("appsettings.json");
-            IStringSerializationHelper stringSerializationHelper = new StringSerializationHelper();
-            IObjectSerializationHelper objectSerializationHelper = new SimpleObjectSerializationHelper();
-            services.AddSingleton<IResolver<IDataStore>>(DataStoreResolver);
-            services.AddSingleton<IStringSerializationHelper>(stringSerializationHelper);
-            services.AddSingleton<IObjectSerializationHelper>(objectSerializationHelper);
+
+            //HACK how to add XpoWebApi
+
+            #region Manually register all services needed for XpoWebApi
+
+            //IResolver<IDataStore> DataStoreResolver = new XpoDataStoreResolver("appsettings.json");
+            //IStringSerializationHelper stringSerializationHelper = new StringSerializationHelper();
+            //IObjectSerializationHelper objectSerializationHelper = new SimpleObjectSerializationHelper();
+            //services.AddSingleton<IResolver<IDataStore>>(DataStoreResolver);
+            //services.AddSingleton<IStringSerializationHelper>(stringSerializationHelper);
+            //services.AddSingleton<IObjectSerializationHelper>(objectSerializationHelper);
+
+
+            #endregion
+
+            //OR use the extension method AddXpoWebApi overload
+
+            services.AddXpoWebApi();
+
+
+
+
             services.AddMemoryCache();
         }
 

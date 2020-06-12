@@ -10,7 +10,7 @@ using System.Text;
 
 namespace BIT.Xpo
 {
-    public class XpoDataStoreResolver : ConfigurationResolverBase<DevExpress.Xpo.DB.IDataStore>,IResolver<IDataStore>
+    public class XpoDataStoreResolver : ConfigurationResolverBase<DevExpress.Xpo.DB.IDataStore>,IConfigResolver<IDataStore>
     {
 
         Dictionary<string, string> AutoCreateOptions;

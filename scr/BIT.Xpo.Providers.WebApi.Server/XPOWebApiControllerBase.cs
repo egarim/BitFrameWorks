@@ -23,16 +23,16 @@ namespace BIT.Xpo.Providers.WebApi.Server
     public class XPOWebApiControllerBase : BaseController
     {
         protected const string DataStoreIdHeader = "DataStoreId";
-        private IResolver<IDataStore> resolver;
+        private IConfigResolver<IDataStore> resolver;
         private IObjectSerializationHelper iObjectSerializationHelper;
         private IStringSerializationHelper iStringSerializationHelper;
 
 
         public IStringSerializationHelper StringSerializationHelper { get => iStringSerializationHelper; protected set => iStringSerializationHelper = value; }
         public IObjectSerializationHelper ObjectSerializationHelper { get => iObjectSerializationHelper; protected set => iObjectSerializationHelper = value; }
-        public IResolver<IDataStore> Resolver { get => resolver; protected set => resolver = value; }
+        public IConfigResolver<IDataStore> Resolver { get => resolver; protected set => resolver = value; }
 
-        public XPOWebApiControllerBase(IResolver<IDataStore> DataStoreResolver,IObjectSerializationHelper objectSerializationHelper, IStringSerializationHelper stringSerializationHelper)
+        public XPOWebApiControllerBase(IConfigResolver<IDataStore> DataStoreResolver,IObjectSerializationHelper objectSerializationHelper, IStringSerializationHelper stringSerializationHelper)
         {
             Resolver = DataStoreResolver;
             ObjectSerializationHelper = objectSerializationHelper;
