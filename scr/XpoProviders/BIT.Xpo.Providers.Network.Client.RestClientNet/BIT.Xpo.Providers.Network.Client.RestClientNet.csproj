@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<PackageReference Include="RestClient.NET" Version="3.2.0" />
+		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\BIT.Data.Transfer.RestClientNet\BIT.Data.Transfer.RestClientNet.csproj" />
+	  <ProjectReference Include="..\..\Xpo\BIT.Data.Xpo\BIT.Data.Xpo.csproj" />
+	</ItemGroup>
+</Project>

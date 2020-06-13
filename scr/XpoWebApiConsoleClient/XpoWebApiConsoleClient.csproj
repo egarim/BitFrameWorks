@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BIT.Xpo.Providers.WebApi.Client\BIT.Xpo.Providers.WebApi.Client.csproj" />
-    <ProjectReference Include="..\XpoDemoOrm\XpoDemoOrm.csproj" />
+    <ProjectReference Include="..\Demos\XpoDemoOrm\XpoDemoOrm.csproj" />
+    <ProjectReference Include="..\XpoProviders\BIT.Xpo.Providers.WebApi.Client\BIT.Xpo.Providers.WebApi.Client.RestSharp.csproj" />
   </ItemGroup>
 
 </Project>

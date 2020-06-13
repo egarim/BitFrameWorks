@@ -1,4 +1,5 @@
-﻿using BIT.Xpo.Providers.WebApi.Client;
+﻿
+using BIT.Xpo.Providers.WebApi.Client;
 using DevExpress.Xpo;
 using System;
 using XpoDemoOrm;

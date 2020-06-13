@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+	<!--Nuget Reference Section Start-->
+	<ItemGroup>
+		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\BIT.Data\BIT.Data.csproj" />
+	</ItemGroup>
+	<!--NugetProject ReferencesSection End-->
+</Project>

@@ -1,6 +1,4 @@
-﻿using BIT.Data.Helpers;
-using BIT.Data.Models;
-using BIT.AspNetCore.Extensions;
+﻿using BIT.AspNetCore.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
