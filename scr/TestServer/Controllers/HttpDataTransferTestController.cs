@@ -19,7 +19,9 @@ namespace TestServer.Controllers
         {
             var stream = Request.BodyReader.AsStream();
 
-            var result = DeserializeFromStream(stream);
+            DataParameters result = DeserializeFromStream(stream);
+
+          
             //[FromBody] Parameters dataparameters
             //return File(stream, "application/octet-stream");
             var Errors = new List<string>();
