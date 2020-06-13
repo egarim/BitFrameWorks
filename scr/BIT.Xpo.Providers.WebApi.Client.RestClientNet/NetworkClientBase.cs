@@ -11,27 +11,19 @@ using System.Threading.Tasks;
 
 namespace BIT.Xpo.Providers.Network
 {
-    public class NetworkClientProviderBase : IDataStore, ICommandChannel
+    public abstract class NetworkClientProviderBase : IDataStore, ICommandChannel
     {
-        public static IDataStore CreateProviderFromString(string connectionString, AutoCreateOption autoCreateOption, out IDisposable[] objectsToDisposeOnDisconnect)
-        {
-            objectsToDisposeOnDisconnect = null;
-            ConnectionStringParser Parser = new ConnectionStringParser(connectionString);
-            var EndPoint = Parser.GetPartByName("EndPoint");
-            var Token = Parser.GetPartByName("Token");
-            var DataStoreId = Parser.GetPartByName("DataStoreId");
-
-            return new AsyncDataStoreWrapper(new NetworkClientProviderBase(null,new SimpleObjectSerializationHelper(), autoCreateOption));
-        }
+       
         static NetworkClientProviderBase()
         {
             DataStoreBase.RegisterDataStoreProvider(XpoProviderTypeString, CreateProviderFromString);
 
         }
-        IFunctionClient functionClient;
+        IFunctionClient FunctionClient { get; set; }
         IObjectSerializationHelper objectSerializationHelper;
         public NetworkClientProviderBase(IFunctionClient functionClient, IObjectSerializationHelper objectSerializationHelper, AutoCreateOption autoCreateOption)
         {
+            this.FunctionClient = functionClient;
             this.objectSerializationHelper = objectSerializationHelper;
         }
 
@@ -60,7 +52,7 @@ namespace BIT.Xpo.Providers.Network
             IDataParameters Parameters = new DataParameters();
             Parameters.MemberName = nameof(ModifyData);
             Parameters.ParametersValue = this.objectSerializationHelper.ToByteArray<ModificationStatement[]>(dmlStatements);
-            var DataResult= await functionClient.ExecuteFunction(Parameters);
+            var DataResult= await FunctionClient.ExecuteFunction(Parameters);
             var ModificationResults =  this.objectSerializationHelper.GetObjectsFromByteArray<ModificationResult>(DataResult.ResultValue);
             return ModificationResults ;
         }
@@ -70,7 +62,7 @@ namespace BIT.Xpo.Providers.Network
             IDataParameters Parameters = new DataParameters();
             Parameters.MemberName = nameof(SelectData);
             Parameters.ParametersValue = this.objectSerializationHelper.ToByteArray<SelectStatement[]>(selects);
-            var DataResult = await functionClient.ExecuteFunction(Parameters);
+            var DataResult = await FunctionClient.ExecuteFunction(Parameters);
             var SelectedData = this.objectSerializationHelper.GetObjectsFromByteArray<SelectedData>(DataResult.ResultValue);
             return SelectedData;
         }
@@ -81,7 +73,7 @@ namespace BIT.Xpo.Providers.Network
             UpdateSchemaParameters updateSchemaParameters = new UpdateSchemaParameters(dontCreateIfFirstTableNotExist, tables);
             Parameters.MemberName = nameof(UpdateSchema);
             Parameters.ParametersValue = this.objectSerializationHelper.ToByteArray<UpdateSchemaParameters>(updateSchemaParameters);
-            IDataResult DataResult = await functionClient.ExecuteFunction(Parameters);
+            IDataResult DataResult = await FunctionClient.ExecuteFunction(Parameters);
             var UpdateSchemaResult = this.objectSerializationHelper.GetObjectsFromByteArray<UpdateSchemaResult>(DataResult.ResultValue);
             return UpdateSchemaResult;
         }
@@ -92,7 +84,7 @@ namespace BIT.Xpo.Providers.Network
             CommandChannelDoParams commandChannelDoParams = new CommandChannelDoParams(command, args);
             Parameters.MemberName = nameof(UpdateSchema);
             Parameters.ParametersValue = this.objectSerializationHelper.ToByteArray<CommandChannelDoParams>(commandChannelDoParams);
-            IDataResult DataResult = await functionClient.ExecuteFunction(Parameters);
+            IDataResult DataResult = await FunctionClient.ExecuteFunction(Parameters);
             var UpdateSchemaResult = this.objectSerializationHelper.GetObjectsFromByteArray<object>(DataResult.ResultValue);
             return UpdateSchemaResult;
         }

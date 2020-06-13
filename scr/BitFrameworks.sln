@@ -68,6 +68,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Network", "Network", "{B8B4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIT.Xpo.Providers.Network.Client.RestClientNet", "BIT.Xpo.Providers.Network.Client.RestClientNet\BIT.Xpo.Providers.Network.Client.RestClientNet.csproj", "{8A0A4C4B-1A7A-41A2-9077-519443EA9218}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIT.Xpo.Providers.Network.HttpApiServer", "BIT.Xpo.Providers.Network.HttpApiServer\BIT.Xpo.Providers.Network.HttpApiServer.csproj", "{71D6C29C-B8AC-485C-B38A-3362C7A47B47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -154,6 +156,10 @@ Global
 		{8A0A4C4B-1A7A-41A2-9077-519443EA9218}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A0A4C4B-1A7A-41A2-9077-519443EA9218}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A0A4C4B-1A7A-41A2-9077-519443EA9218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71D6C29C-B8AC-485C-B38A-3362C7A47B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71D6C29C-B8AC-485C-B38A-3362C7A47B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71D6C29C-B8AC-485C-B38A-3362C7A47B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71D6C29C-B8AC-485C-B38A-3362C7A47B47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -176,6 +182,7 @@ Global
 		{2A4E487E-B4CB-40E9-99B7-6CD9FBD0A053} = {B8B43C7C-9225-4477-AD6C-919AAED2B998}
 		{B8B43C7C-9225-4477-AD6C-919AAED2B998} = {65D2D6D7-D5E9-4F1B-980F-D441438C47C9}
 		{8A0A4C4B-1A7A-41A2-9077-519443EA9218} = {B8B43C7C-9225-4477-AD6C-919AAED2B998}
+		{71D6C29C-B8AC-485C-B38A-3362C7A47B47} = {B8B43C7C-9225-4477-AD6C-919AAED2B998}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F42ADCA-F738-4569-AAE0-F1ACA0C2F6BC}

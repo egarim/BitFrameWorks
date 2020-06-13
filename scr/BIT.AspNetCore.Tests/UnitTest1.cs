@@ -44,7 +44,7 @@ namespace BIT.AspNetCore.Tests
         {
 
             var client = new Client(new NewtonsoftSerializationAdapter(), httpClientFactory: _testServerHttpClientFactory);
-            RestFunctionClient restFunctionClient = new RestFunctionClient(client, "http://localhost/HttpDataTransferTest");
+            RestClientNetFunctionClient restFunctionClient = new RestClientNetFunctionClient(client, "http://localhost/HttpDataTransferTest");
             var Result = await restFunctionClient.ExecuteFunction(new DataParameters() { MemberName = "Test" });
 
 
