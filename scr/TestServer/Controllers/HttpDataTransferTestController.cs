@@ -1,4 +1,5 @@
 ﻿using BIT.AspNetCore.Controllers;
+using BIT.Data.Helpers;
 using BIT.Data.Transfer;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,23 +13,43 @@ namespace TestServer.Controllers
     [Route("[controller]")]
     public class HttpDataTransferTestController : HttpDataTransferController
     {
-        public HttpDataTransferTestController()
+        IObjectSerializationHelper _ObjectSerializationHelper;
+        public HttpDataTransferTestController(IObjectSerializationHelper ObjectSerializationHelper)
         {
+            this.ObjectSerializationHelper = ObjectSerializationHelper;
         }
+
+        public IObjectSerializationHelper ObjectSerializationHelper { get => _ObjectSerializationHelper; set => _ObjectSerializationHelper = value; }
+
         public async override Task<DataResult> Post()
         {
             var stream = Request.BodyReader.AsStream();
 
             DataParameters result = DeserializeFromStream(stream);
 
-          
-            //[FromBody] Parameters dataparameters
-            //return File(stream, "application/octet-stream");
+            byte[] v = ObjectSerializationHelper.ToByteArray<string>("Hello Data Transfer");
             var Errors = new List<string>();
             Errors.Add("Error1");
             Errors.Add("Error2");
             Errors.Add("Error3");
-            return new DataResult() { Errors = Errors };
+
+            string v1 = Convert.ToBase64String(v);
+            switch (result.MemberName)
+            {
+                case "NoErrors":
+
+                  
+                    return new DataResult(null, v) { ResultValue2 = v1 };
+                    
+                case "Errors":
+
+                    return new DataResult(Errors, v) { ResultValue2 = v1 };
+
+
+
+            }
+            return new DataResult(Errors, v) { ResultValue2 = v1 };
+
         }
 
     }

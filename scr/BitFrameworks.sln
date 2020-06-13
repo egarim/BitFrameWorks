@@ -60,7 +60,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestServer", "TestServer\Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Data.Transfer.RestClientNet", "BIT.Data.Transfer.RestClientNet\BIT.Data.Transfer.RestClientNet.csproj", "{CC4D0F9D-9584-4791-96D8-AB7DF6747C2F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.AspNetCore.Tests", "BIT.AspNetCore.Tests\BIT.AspNetCore.Tests.csproj", "{1440D31C-6177-4DC6-BD1B-93C3DC35A523}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Data.Transfer.RestClientNet.Tests", "BIT.AspNetCore.Tests\BIT.Data.Transfer.RestClientNet.Tests.csproj", "{1440D31C-6177-4DC6-BD1B-93C3DC35A523}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIT.Xpo.Providers.Network", "BIT.Xpo.Providers.WebApi.Client.RestClientNet\BIT.Xpo.Providers.Network.csproj", "{2A4E487E-B4CB-40E9-99B7-6CD9FBD0A053}"
 EndProject

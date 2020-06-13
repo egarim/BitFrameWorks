@@ -15,16 +15,17 @@ namespace BIT.AspNetCore.Controllers
         [HttpPost]
         public virtual async Task<DataResult> Post()
         {
-            var stream = Request.Body;
+            throw new NotImplementedException();
+            //var stream = Request.Body;
 
-            var result = DeserializeFromStream(stream);
-            //[FromBody] Parameters dataparameters
-            //return File(stream, "application/octet-stream");
-            var Errors = new List<string>();
-            Errors.Add("Error1");
-            Errors.Add("Error2");
-            Errors.Add("Error3");
-            return new DataResult() { Errors = Errors };
+            //var result = DeserializeFromStream(stream);
+            ////[FromBody] Parameters dataparameters
+            ////return File(stream, "application/octet-stream");
+            //var Errors = new List<string>();
+            //Errors.Add("Error1");
+            //Errors.Add("Error2");
+            //Errors.Add("Error3");
+            //return new DataResult() { Errors = Errors };
         }
         protected virtual DataParameters DeserializeFromStream(Stream stream)
         {

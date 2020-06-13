@@ -4,49 +4,67 @@ using System.Text.Json.Serialization;
 
 namespace BIT.Data.Transfer
 {
-    public class DataResult : Dictionary<string, object>, IDataResult
+    public class DataResult :  IDataResult
     {
-
-        [JsonIgnore()]
-        public IList<string> Errors
+        public string ResultValue2 { get; set; }
+        public DateTime DateUtc { get; private set; }
+        public IList<string> Errors { get; set; }
+        public byte[] ResultValue  { get; set; }
+        public DataResult(DateTime dateUtc, IList<string> errors, byte[] resultValue)
         {
-            get
-            {
-                if (this.ContainsKey(nameof(Errors)))
-                    return this[nameof(Errors)] as IList<string>;
-                else
-                    return default(IList<string>);
-
-            }
-            set
-            {
-                if (!this.ContainsKey(nameof(Errors)))
-                    this.Add(nameof(Errors), value);
-                else
-                    this[nameof(Errors)] = value;
-
-            }
+            DateUtc = dateUtc;
+            Errors = errors;
+            ResultValue = resultValue;
         }
-        [JsonIgnore()]
-        public byte[] ResultValue
+        public DataResult(IList<string> errors, byte[] resultValue)
         {
-            get
-            {
-                if (this.ContainsKey(nameof(ResultValue)))
-                    return this[nameof(ResultValue)] as byte[];
-                else
-                    return Array.Empty<byte>();
-
-            }
-            set
-            {
-                if (!this.ContainsKey(nameof(ResultValue)))
-                    this.Add(nameof(ResultValue), value);
-                else
-                    this[nameof(ResultValue)] = value;
-
-            }
+            Errors = errors;
+            ResultValue = resultValue;
+            DateUtc = DateTime.UtcNow;
         }
+        public DataResult()
+        {
+        }
+        //[JsonIgnore()]
+        ///*public IList<string> Errors*/
+        //{
+        //    get
+        //    {
+        //        if (this.ContainsKey(nameof(Errors)))
+        //            return this[nameof(Errors)] as IList<string>;
+        //        else
+        //            return default(IList<string>);
+
+        //    }
+        //    set
+        //    {
+        //        if (!this.ContainsKey(nameof(Errors)))
+        //            this.Add(nameof(Errors), value);
+        //        else
+        //            this[nameof(Errors)] = value;
+
+        //    }
+        //}
+        //[JsonIgnore()]
+        //public byte[] ResultValue
+        //{
+        //    get
+        //    {
+        //        if (this.ContainsKey(nameof(ResultValue)))
+        //            return this[nameof(ResultValue)] as byte[];
+        //        else
+        //            return Array.Empty<byte>();
+
+        //    }
+        //    set
+        //    {
+        //        if (!this.ContainsKey(nameof(ResultValue)))
+        //            this.Add(nameof(ResultValue), value);
+        //        else
+        //            this[nameof(ResultValue)] = value;
+
+        //    }
+        //}
 
     }
 }
