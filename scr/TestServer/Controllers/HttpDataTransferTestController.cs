@@ -23,6 +23,7 @@ namespace TestServer.Controllers
 
         public async override Task<DataResult> Post()
         {
+            //TODO check why the serialization does not work when the class DataResult inherits from dictionary
             var stream = Request.BodyReader.AsStream();
 
             DataParameters result = DeserializeFromStream(stream);

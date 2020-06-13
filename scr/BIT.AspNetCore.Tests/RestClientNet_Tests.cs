@@ -53,6 +53,8 @@ namespace BIT.AspNetCore.Tests
             headers.Add(nameof(Id), Id);
             client = new Client(new NewtonsoftSerializationAdapter(), httpClientFactory: _testServerHttpClientFactory);
 
+            //TODO check why the serialization does not work when the class DataResult inherits from dictionary
+
             SimpleObjectSerializationHelper simpleObjectSerializationHelper = new SimpleObjectSerializationHelper();
             RestClientNetFunctionClient restFunctionClient = new RestClientNetFunctionClient(client, "http://localhost/HttpDataTransferTest",headers);
             IDataResult Result = await restFunctionClient.ExecuteFunction(new DataParameters() { MemberName = "NoErrors" });
