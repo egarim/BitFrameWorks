@@ -1,18 +1,20 @@
 ﻿
 using DevExpress.Xpo.DB;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.IO.Compression;
-using System.Net;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
-using System.Xml;
-using System.Xml.Serialization;
 
 namespace BIT.Data.Xpo.Models
 {
+    public class CommandChannelDoParams
+    {
+        public string Command { get; set; }
+
+        public object Args { get; set; }
+        public CommandChannelDoParams(string command, object args)
+        {
+            Command = command;
+            Args = args;
+        }
+    }
     public class UpdateSchemaParameters
     {
         public bool dontCreateIfFirstTableNotExist { get; set; }
