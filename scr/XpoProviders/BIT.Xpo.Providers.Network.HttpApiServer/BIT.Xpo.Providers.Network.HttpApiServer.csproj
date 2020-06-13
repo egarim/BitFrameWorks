@@ -8,6 +8,7 @@
 		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\..\BIT.AspNetCore\BIT.AspNetCore.csproj" />
+	  <ProjectReference Include="..\..\Core\BIT.AspNetCore\BIT.AspNetCore.csproj" />
+	  <ProjectReference Include="..\..\Core\BIT.Data\BIT.Data.csproj" />
 	</ItemGroup>
 </Project>

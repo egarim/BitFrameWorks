@@ -31,7 +31,7 @@
 		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\..\BIT.AspNetCore\BIT.AspNetCore.csproj" />
+	  <ProjectReference Include="..\..\Core\BIT.AspNetCore\BIT.AspNetCore.csproj" />
 	  <ProjectReference Include="..\..\Xpo\BIT.Data.Xpo\BIT.Data.Xpo.csproj" />
 	</ItemGroup>
 	<!--NugetProject ReferencesSection End-->

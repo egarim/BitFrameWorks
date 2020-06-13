@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BIT.AspNetCore\BIT.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\Core\BIT.AspNetCore\BIT.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\Core\BIT.Data\BIT.Data.csproj" />
   </ItemGroup>
 
 

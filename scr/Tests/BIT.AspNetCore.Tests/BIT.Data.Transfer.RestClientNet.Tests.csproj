@@ -16,7 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\BIT.Data.Transfer.RestClientNet\BIT.Data.Transfer.RestClientNet.csproj" />
+	  <ProjectReference Include="..\..\Core\BIT.Data.Transfer.RestClientNet\BIT.Data.Transfer.RestClientNet.csproj" />
 	  <ProjectReference Include="..\TestServer\TestServer.csproj" />
 	</ItemGroup>
 	<!--<ItemGroup>
