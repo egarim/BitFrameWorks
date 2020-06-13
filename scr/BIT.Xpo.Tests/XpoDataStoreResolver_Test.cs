@@ -2,7 +2,6 @@ using DevExpress.Xpo.DB;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System;
-using BIT.Xpo;
 using BIT.Data.Helpers;
 using System.Linq;
 using System.IO;

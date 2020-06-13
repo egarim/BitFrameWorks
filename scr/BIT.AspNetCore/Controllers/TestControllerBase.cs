@@ -7,11 +7,6 @@ using System.Runtime.Versioning;
 
 namespace BIT.AspNetCore.Controllers
 {
-    /// <summary>
-    /// This controller is used to test if the everything is working fine with the server
-    /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
     public class TestControllerBase : ControllerBase
     {
 

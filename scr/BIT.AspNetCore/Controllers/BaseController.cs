@@ -6,20 +6,21 @@ using System.IO;
 
 namespace BIT.AspNetCore.Controllers
 {
-    
-    public class BaseController : ControllerBase
+    public abstract class BaseController : ControllerBase
     {
+        private const string TokenHeader = "Token";
+
         protected JwtPayload GetPayload()
         {
-            var Token = this.HttpContext.Request.Headers["Token"];
+            var Token = this.HttpContext.Request.Headers[TokenHeader];
 
             return JwtHelper.ReadToken(Token);
         }
         protected string GetHeader(string HeaderName)
         {
-          return  this.HttpContext.Request.Headers[HeaderName];
+            return this.HttpContext.Request.Headers[HeaderName];
         }
-        protected  IConfigurationBuilder GetConfigurationBuilder()
+        protected IConfigurationBuilder GetConfigurationBuilder()
         {
             return new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())

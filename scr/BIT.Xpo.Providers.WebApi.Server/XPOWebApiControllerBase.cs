@@ -9,7 +9,6 @@ using DevExpress.Xpo.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using BIT.Xpo.AspNetCore;
 using BIT.Data.Models;
 using BIT.AspNetCore.Controllers;
 using BIT.Data.Helpers;
@@ -17,10 +16,8 @@ using BIT.AspNetCore.Extensions;
 
 namespace BIT.Xpo.Providers.WebApi.Server
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    //[Authenticate]
-    public class XPOWebApiControllerBase : BaseController
+    
+    public abstract class XPOWebApiControllerBase : BaseController
     {
         protected const string DataStoreIdHeader = "DataStoreId";
         private IConfigResolver<IDataStore> resolver;

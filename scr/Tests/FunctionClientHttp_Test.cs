@@ -7,19 +7,19 @@ using System.Text;
 
 namespace BIT.Data.Tests
 {
-    public class FunctionClientHttp_Test
-    {
-        IFunctionClient client;
-        [SetUp]
-        public void Setup()
-        {
-            client = new FunctionClientHttp("", "", new StringSerializationHelper());
-        }
+    //public class FunctionClientHttp_Test
+    //{
+    //    IFunctionClient client;
+    //    [SetUp]
+    //    public void Setup()
+    //    {
+    //        client = new FunctionClientHttp("", "", new StringSerializationHelper());
+    //    }
 
-        [Test]
-        void MethodName()
-        {
+    //    [Test]
+    //    void MethodName()
+    //    {
             
-        }
-    }
+    //    }
+    //}
 }

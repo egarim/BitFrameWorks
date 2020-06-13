@@ -1,0 +1,20 @@
+Webapi binary data images
+https://www.dotnetcurry.com/aspnet/1120/aspnet-webapi-binary-contents-images
+
+ByteArray in web api
+https://odetocode.com/blogs/scott/archive/2018/02/22/byte-arrays-and-asp-net-core-web-apis.aspx
+
+3 ways to return data from aspnet core api
+http://www.binaryintellect.net/articles/f36210f2-db45-42cd-9982-f5cd65a1c9a7.aspx
+
+AspNetCore WebApi Server events
+http://www.binaryintellect.net/articles/a77ac135-c756-4ee0-9e99-0a904959de94.aspx
+
+AspNetCore linux
+https://www.hanselman.com/blog/PublishingAnASPNETCoreWebsiteToACheapLinuxVMHost.aspx
+
+Introduction to blazor
+https://docs.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-3.1&viewFallbackFrom=aspnetcore-3.0
+
+AspNetCore Model Binding
+https://docs.microsoft.com/en-us/aspnet/core/mvc/models/model-binding?view=aspnetcore-3.1

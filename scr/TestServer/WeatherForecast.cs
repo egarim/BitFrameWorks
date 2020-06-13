@@ -1,6 +1,6 @@
 using System;
 
-namespace XpoWebApiServer
+namespace TestServer
 {
     public class WeatherForecast
     {
