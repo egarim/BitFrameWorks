@@ -10,6 +10,16 @@ All frameworks are released under [Microsoft Public License (Ms-PL)](https://ope
 Our philosophy is that a frameworks should be easy obtain, install and setup so we have chosen nuget packages as our distribution method
 
 
+### Core
+---
+
+
+| Library        | Description   |
+| ------------- |:-------------:| 
+|[BIT.Data](https://github.com/egarim/BitFrameWorks/tree/master/scr/Core/BIT.Data)      | This project contains all the models and base implementations of data related functionality|
+|[BIT.Data.Db.SqliteMultiTarget](https://github.com/egarim/BitFrameWorks/tree/master/scr/Core/BIT.Db.SqliteMultiTarget)      | this module gives you the ability to search all your persistent objects in a unified user interface |
+|[BIT.Data.Transfer.RestClientNet](https://github.com/egarim/BitFrameWorks/tree/master/scr/Core/BIT.Data.Transfer.RestClientNet)      | this module gives you the ability to search all your persistent objects in a unified user interface |
+|[BIT.AspNetCore](https://github.com/egarim/BitFrameWorks/tree/master/scr/Core/BIT.AspNetCore)      | this module gives you the ability to search all your persistent objects in a unified user interface |
 
 
 ### Xpo

@@ -70,6 +70,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.AspNetCore", "Core\BIT.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Data.Transfer.RestClientNet", "Core\BIT.Data.Transfer.RestClientNet\BIT.Data.Transfer.RestClientNet.csproj", "{DC46BD11-FEB3-454F-B700-AC148E69C76B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Data.Db.SqliteMultiTarget", "Core\BIT.Data.Db.SqliteMultiTarget\BIT.Data.Db.SqliteMultiTarget.csproj", "{94425B0A-2A99-45EF-BE6E-F2194ED8EF89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -144,6 +146,10 @@ Global
 		{DC46BD11-FEB3-454F-B700-AC148E69C76B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC46BD11-FEB3-454F-B700-AC148E69C76B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC46BD11-FEB3-454F-B700-AC148E69C76B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94425B0A-2A99-45EF-BE6E-F2194ED8EF89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94425B0A-2A99-45EF-BE6E-F2194ED8EF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94425B0A-2A99-45EF-BE6E-F2194ED8EF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94425B0A-2A99-45EF-BE6E-F2194ED8EF89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -170,6 +176,7 @@ Global
 		{A2FE64BF-7479-4B13-ADA1-EA2E80A95E13} = {7B41AE89-EAB7-43CC-A775-213E368E4EA4}
 		{ACD0FCE6-6ED4-4A58-8453-301DEDDBFC46} = {7B41AE89-EAB7-43CC-A775-213E368E4EA4}
 		{DC46BD11-FEB3-454F-B700-AC148E69C76B} = {7B41AE89-EAB7-43CC-A775-213E368E4EA4}
+		{94425B0A-2A99-45EF-BE6E-F2194ED8EF89} = {7B41AE89-EAB7-43CC-A775-213E368E4EA4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F42ADCA-F738-4569-AAE0-F1ACA0C2F6BC}

@@ -1,8 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
+		<Configurations>Debug;Release</Configurations>
+		<PackageTags>BitFrameworks AspNetCore NetCore</PackageTags>
+		<Description>Common Data Operations</Description>
+		<DebugType>Full</DebugType>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
+	<ItemGroup>
+		<None Include="LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
+	</ItemGroup>
+	<!--Nuget Generation Section Start-->
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AssemblyName>BIT.AspNetCore.v$(NugetVersion)</AssemblyName>
+		<Version>$(NugetVersion)</Version>
+		<PackageId>BIT.AspNetCore</PackageId>
+	</PropertyGroup>
+	<!--Nuget Generation Section End-->
+	<!--Nuget Reference Section Start-->
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
@@ -13,4 +30,10 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\BIT.Data\BIT.Data.csproj" />
 	</ItemGroup>
+	<!--NugetProject ReferencesSection End-->
+	<!--Extra Start-->
+	<!--Extra End-->
+	<Target Name="CopyPackage" AfterTargets="Pack">
+		<Copy SourceFiles="bin\$(ConfigurationName)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(USERPROFILE)\Documents\MyNugets\" />
+	</Target>
 </Project>

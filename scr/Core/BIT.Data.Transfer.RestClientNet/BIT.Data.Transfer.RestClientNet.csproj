@@ -1,8 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
+		<Configurations>Debug;Release</Configurations>
+		<PackageTags>Data Transfer, Rest, HTTP </PackageTags>
+		<Description>BIT.Data.Transfer.RestClientNet</Description>
+		<DebugType>Full</DebugType>
+		<DebugSymbols>True</DebugSymbols>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
+	<ItemGroup>
+		<None Include="LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
+	</ItemGroup>
+	<!--Nuget Generation Section Start-->
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AssemblyName>BIT.Data.Transfer.RestClientNet.v$(NugetVersion)</AssemblyName>
+		<Version>$(NugetVersion)</Version>
+		<PackageId>BIT.Data.Transfer.RestClientNet</PackageId>
+	</PropertyGroup>
+	<!--Nuget Generation Section End-->
+	<!--Nuget Reference Section Start-->
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="RestClient.NET" Version="3.2.0" />
@@ -10,4 +28,10 @@
 	<ItemGroup>
 		<ProjectReference Include="..\BIT.Data\BIT.Data.csproj" />
 	</ItemGroup>
+	<!--NugetProject ReferencesSection End-->
+	<!--Extra Start-->
+	<!--Extra End-->
+	<Target Name="CopyPackage" AfterTargets="Pack">
+		<Copy SourceFiles="bin\$(ConfigurationName)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(USERPROFILE)\Documents\MyNugets\" />
+	</Target>
 </Project>

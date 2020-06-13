@@ -1,8 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Configurations>Debug;Release</Configurations>
+		<PackageTags>DevExpress XPO XAF Xamarin AspNetCore</PackageTags>
+		<Description>Data store implementation</Description>
+		<DebugType>Full</DebugType>
+		<DebugSymbols>True</DebugSymbols>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
+	</ItemGroup>
+	<!--Nuget Generation Section Start-->
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AssemblyName>BIT.Xpo.Providers.Network.HttpApiServer.v$(NugetVersion)</AssemblyName>
+		<Version>$(NugetVersion)</Version>
+		<PackageId>BIT.Xpo.Providers.Network.HttpApiServer</PackageId>
+	</PropertyGroup>
+	<!--Nuget Generation Section End-->
+	<!--Nuget Reference Section Start-->
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
@@ -11,4 +29,10 @@
 	  <ProjectReference Include="..\..\Core\BIT.AspNetCore\BIT.AspNetCore.csproj" />
 	  <ProjectReference Include="..\..\Core\BIT.Data\BIT.Data.csproj" />
 	</ItemGroup>
+	<!--NugetProject ReferencesSection End-->
+	<!--Extra Start-->
+	<!--Extra End-->
+	<Target Name="CopyPackage" AfterTargets="Pack">
+		<Copy SourceFiles="bin\$(ConfigurationName)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(USERPROFILE)\Documents\MyNugets\" />
+	</Target>
 </Project>
