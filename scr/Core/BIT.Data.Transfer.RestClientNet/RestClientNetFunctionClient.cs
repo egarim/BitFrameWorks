@@ -48,7 +48,7 @@ namespace BIT.Data.Transfer.RestClientNet
      
         public async Task<IDataResult> ExecuteFunctionAsync(IDataParameters Parameters)
         {
-            var result= await client.PostAsync<IDataResult, IDataParameters>(Parameters, resource, Headers);
+            var result= await client.PostAsync<DataResult, IDataParameters>(Parameters, resource, Headers);
             return result.Body;
 
 
