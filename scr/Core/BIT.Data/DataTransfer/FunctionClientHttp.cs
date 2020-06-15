@@ -13,8 +13,8 @@ namespace BIT.Data.DataTransfer
     {
         private readonly HttpClient client;
         public string Url { get; private set; }
-        public IStringSerializationHelper StringSerializationHelper { get; private set; }
-        public FunctionClientHttp(string Url,string Token, IStringSerializationHelper stringSerializationHelper)
+        public IStringSerializationService StringSerializationHelper { get; private set; }
+        public FunctionClientHttp(string Url,string Token, IStringSerializationService stringSerializationHelper)
         {
             this.Url = Url;
             this.client = new HttpClient();

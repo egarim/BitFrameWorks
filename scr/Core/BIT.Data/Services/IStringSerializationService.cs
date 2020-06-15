@@ -2,7 +2,7 @@
 
 namespace BIT.Data.Services
 {
-    public interface IStringSerializationHelper
+    public interface IStringSerializationService
     {
         T DeserializeObjectFromString<T>(string Object);
        

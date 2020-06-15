@@ -28,6 +28,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Core\BIT.AspNetCore\BIT.AspNetCore.csproj" />
 	  <ProjectReference Include="..\..\Core\BIT.Data\BIT.Data.csproj" />
+	  <ProjectReference Include="..\..\Xpo\BIT.Data.Xpo\BIT.Data.Xpo.csproj" />
 	</ItemGroup>
 	<!--NugetProject ReferencesSection End-->
 	<!--Extra Start-->

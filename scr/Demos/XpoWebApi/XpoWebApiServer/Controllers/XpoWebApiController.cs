@@ -13,7 +13,7 @@ namespace XpoWebApiServer.Controllers
     [Route("[controller]")]
     public class XpoWebApiController : XPOWebApiControllerBase
     {
-        public XpoWebApiController(IConfigResolver<IDataStore> DataStoreResolver, IObjectSerializationService objectSerializationHelper, IStringSerializationHelper stringSerializationHelper) : base(DataStoreResolver, objectSerializationHelper, stringSerializationHelper)
+        public XpoWebApiController(IConfigResolver<IDataStore> DataStoreResolver, IObjectSerializationService objectSerializationHelper, IStringSerializationService stringSerializationHelper) : base(DataStoreResolver, objectSerializationHelper, stringSerializationHelper)
         {
         }
 

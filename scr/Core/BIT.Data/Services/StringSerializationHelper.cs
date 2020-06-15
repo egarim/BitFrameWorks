@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace BIT.Data.Services
 {
-    public class StringSerializationHelper : IStringSerializationHelper
+    public class StringSerializationHelper : IStringSerializationService
     {
         public virtual T DeserializeObjectFromString<T>(string Object)
         {

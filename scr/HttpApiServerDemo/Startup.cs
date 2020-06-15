@@ -1,8 +1,8 @@
-using BIT.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BIT.Xpo.Providers.Network.HttpApiServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,13 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using DevExpress.Xpo.DB;
-using BIT.Data.Xpo;
-using BIT.Data.DataTransfer;
-using BIT.Data.Xpo.Functions;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
 
-namespace TestServer
+namespace HttpApiServerDemo
 {
     public class Startup
     {
@@ -32,20 +27,7 @@ namespace TestServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            IConfigResolver<IDataStore> DataStoreResolver = new XpoDataStoreResolver("appsettings.json");
-            IStringSerializationService stringSerializationHelper = new StringSerializationHelper();
-            IObjectSerializationService objectSerializationHelper = new SimpleObjectSerializationService();
-            IFunction function = new DataStoreFunctionServer(DataStoreResolver, objectSerializationHelper);
-            services.AddSingleton<IConfigResolver<IDataStore>>(DataStoreResolver);
-            services.AddSingleton<IStringSerializationService>(stringSerializationHelper);
-            services.AddSingleton<IObjectSerializationService>(objectSerializationHelper);
-            services.AddSingleton<IFunction>(function);
-
-            //TODO review this code, at the momentis needed to use the  await for the operations in the fucntion rest client
-            //services.Configure<KestrelServerOptions>(options =>
-            //{
-            //    options.AllowSynchronousIO = true;
-            //});
+            services.AddXpoWebApiHttpDataTransfer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

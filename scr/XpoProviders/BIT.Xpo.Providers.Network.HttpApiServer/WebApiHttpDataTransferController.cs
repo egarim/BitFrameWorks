@@ -22,6 +22,11 @@ namespace BIT.Xpo.Providers.WebApi.Server
 
 
         }
+        public virtual async Task<string> Get()
+        {
+            return this.GetType().FullName;
+        }
+
         public override async Task<IDataResult> Post()
         {
             //TODO Jm should the datastore id be part of the heders or the parameters?

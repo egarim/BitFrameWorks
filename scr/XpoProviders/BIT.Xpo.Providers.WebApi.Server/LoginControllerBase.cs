@@ -20,7 +20,7 @@ namespace BIT.Xpo.Providers.WebApi.Server
     [ApiController]
     public class LoginControllerBase: XPOWebApiControllerBase
     {
-        public LoginControllerBase(IConfigResolver<IDataStore> DataStoreResolver, IObjectSerializationService objectSerializationHelper, IStringSerializationHelper stringSerializationHelper) : base(DataStoreResolver, objectSerializationHelper, stringSerializationHelper)
+        public LoginControllerBase(IConfigResolver<IDataStore> DataStoreResolver, IObjectSerializationService objectSerializationHelper, IStringSerializationService stringSerializationHelper) : base(DataStoreResolver, objectSerializationHelper, stringSerializationHelper)
         {
         }
 

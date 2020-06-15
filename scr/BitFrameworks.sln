@@ -24,9 +24,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{C206063D-E21A-483B-A4DA-889B26BDB782}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XpoWebApi", "XpoWebApi", "{0EDE70C5-7703-49AD-A019-BE3EB8BA4118}"
-	ProjectSection(SolutionItems) = preProject
-		Demos\XpoWebApi\XpoWebApiConsoleClient\XpoWebApiConsoleClient.csproj = Demos\XpoWebApi\XpoWebApiConsoleClient\XpoWebApiConsoleClient.csproj
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{DAE9EC69-9384-46C8-9897-A99B75BCCAB4}"
 EndProject
@@ -71,6 +68,14 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Data.Transfer.RestClientNet", "Core\BIT.Data.Transfer.RestClientNet\BIT.Data.Transfer.RestClientNet.csproj", "{DC46BD11-FEB3-454F-B700-AC148E69C76B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Data.Db.SqliteMultiTarget", "Core\BIT.Data.Db.SqliteMultiTarget\BIT.Data.Db.SqliteMultiTarget.csproj", "{94425B0A-2A99-45EF-BE6E-F2194ED8EF89}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Network.Client.RestClientNet", "Network.Client.RestClientNet", "{F35D020E-E917-4996-9F36-D13C0B2E0C55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpApiServerDemo", "HttpApiServerDemo\HttpApiServerDemo.csproj", "{D4C6CACA-045D-44CA-86CA-217DD2F886F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{BFB9B639-1210-4916-A8D2-823478066D0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XpoWebApiConsoleClient", "Demos\XpoWebApi\XpoWebApiConsoleClient\XpoWebApiConsoleClient.csproj", "{1F060F01-BCAB-4B3F-8356-9D6F5BBB90F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -150,6 +155,18 @@ Global
 		{94425B0A-2A99-45EF-BE6E-F2194ED8EF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94425B0A-2A99-45EF-BE6E-F2194ED8EF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94425B0A-2A99-45EF-BE6E-F2194ED8EF89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4C6CACA-045D-44CA-86CA-217DD2F886F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4C6CACA-045D-44CA-86CA-217DD2F886F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4C6CACA-045D-44CA-86CA-217DD2F886F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4C6CACA-045D-44CA-86CA-217DD2F886F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFB9B639-1210-4916-A8D2-823478066D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFB9B639-1210-4916-A8D2-823478066D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFB9B639-1210-4916-A8D2-823478066D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFB9B639-1210-4916-A8D2-823478066D0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F060F01-BCAB-4B3F-8356-9D6F5BBB90F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F060F01-BCAB-4B3F-8356-9D6F5BBB90F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F060F01-BCAB-4B3F-8356-9D6F5BBB90F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F060F01-BCAB-4B3F-8356-9D6F5BBB90F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -177,6 +194,10 @@ Global
 		{ACD0FCE6-6ED4-4A58-8453-301DEDDBFC46} = {7B41AE89-EAB7-43CC-A775-213E368E4EA4}
 		{DC46BD11-FEB3-454F-B700-AC148E69C76B} = {7B41AE89-EAB7-43CC-A775-213E368E4EA4}
 		{94425B0A-2A99-45EF-BE6E-F2194ED8EF89} = {7B41AE89-EAB7-43CC-A775-213E368E4EA4}
+		{F35D020E-E917-4996-9F36-D13C0B2E0C55} = {C206063D-E21A-483B-A4DA-889B26BDB782}
+		{D4C6CACA-045D-44CA-86CA-217DD2F886F5} = {DAE9EC69-9384-46C8-9897-A99B75BCCAB4}
+		{BFB9B639-1210-4916-A8D2-823478066D0D} = {F35D020E-E917-4996-9F36-D13C0B2E0C55}
+		{1F060F01-BCAB-4B3F-8356-9D6F5BBB90F2} = {0EDE70C5-7703-49AD-A019-BE3EB8BA4118}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F42ADCA-F738-4569-AAE0-F1ACA0C2F6BC}

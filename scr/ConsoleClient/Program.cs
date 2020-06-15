@@ -1,22 +1,21 @@
-﻿
-
-
-using BIT.Data.Xpo;
-using BIT.Xpo.Providers.WebApi.Client;
+﻿using BIT.Data.Xpo;
+using BIT.Xpo.Providers.Network.Client.RestClientNet;
 using DevExpress.Xpo;
 using System;
 using XpoDemoOrm;
 
-namespace XpoWebApiConsoleClient
+namespace ConsoleClient
 {
     class Program
     {
         static void Main(string[] args)
         {
-            XPOWebApi.Register();
 
-            var ConnectionString = XPOWebApi.GetConnectionString("https://localhost:44393", "/XpoWebApi", string.Empty, "db1");
-            XpoInitializer xpoInitializer = new XpoInitializer(ConnectionString,typeof(Invoice),typeof(Customer));
+            RestClientNetProvider.Register();
+         
+
+            var ConnectionString = RestClientNetProvider.GetConnectionString("https://localhost:44389", "/WebApiHttpDataTransferImp", string.Empty, "db1");
+            XpoInitializer xpoInitializer = new XpoInitializer(ConnectionString, typeof(Invoice), typeof(Customer));
             xpoInitializer.InitXpo(XpoDefault.GetConnectionProvider(ConnectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema));
             using (var UoW = xpoInitializer.CreateUnitOfWork())
             {
