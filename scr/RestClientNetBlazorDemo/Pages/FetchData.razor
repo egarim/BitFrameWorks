@@ -21,34 +21,41 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Active</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
+            @*@foreach (var forecast in forecasts)
+        {
+            <tr>
+                <td>@forecast.Date.ToShortDateString()</td>
+                <td>@forecast.TemperatureC</td>
+                <td>@forecast.TemperatureF</td>
+                <td>@forecast.Summary</td>
+            </tr>
+        }*@
+
+            @foreach (var customer in Customers)
             {
                 <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
+                    <td>@customer.Code</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.Active</td>
+                </tr>            }
         </tbody>
     </table>
 }
 
 @code {
     private WeatherForecast[] forecasts;
-
+    private List<Customer> Customers;
     protected override async Task OnInitializedAsync()
     {
 
         BIT.Xpo.Providers.Network.Client.RestClientNet.RestClientNetProvider.Register();
-
+        Customers = new List<Customer>();
 
         var ConnectionString = RestClientNetProvider.GetConnectionString("https://localhost:44389", "/WebApiHttpDataTransferImp", string.Empty, "001");
 
@@ -60,7 +67,7 @@ else
                         .RuleFor(p => p.Name, f => f.Name.FullName())
                         .RuleFor(p => p.Active, p => p.Random.Bool());
 
-            var Customers = faker.Generate(100);
+            Customers = faker.Generate(100);
             if (UoW.InTransaction)
                 UoW.CommitChanges();
         }
