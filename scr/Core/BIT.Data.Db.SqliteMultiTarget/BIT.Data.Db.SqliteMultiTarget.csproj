@@ -1,4 +1,4 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras/1.6.61">
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
 
   <PropertyGroup>
     <!--Work around so the conditions work below-->
@@ -44,7 +44,7 @@ https://github.com/onovotny/MSBuildSdkExtras/issues/173
 
 
   <ItemGroup>
-    <PackageReference Include="MSBuild.Sdk.Extras" Version="2.0.31" PrivateAssets="all" />
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="2.0.54" PrivateAssets="all" />
   </ItemGroup>
 
  <!--Target References-->
