@@ -1,140 +1,146 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
 
-  <PropertyGroup>
-    <!--Work around so the conditions work below-->
-    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">Xamarin.iOS10;MonoAndroid90;uap10.0.16299;net462;net47;net471;net472;net48;netcoreapp3.1;</TargetFrameworks>
-    <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">Xamarin.iOS10;MonoAndroid90</TargetFrameworks>
-    <!--Feel free to add as many targets as you need below
+	<PropertyGroup>
+		<!--Work around so the conditions work below-->
+		<TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">Xamarin.iOS10;MonoAndroid90;uap10.0.16299;net462;net47;net471;net472;net48;netcoreapp3.1;</TargetFrameworks>
+		<TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">Xamarin.iOS10;MonoAndroid90</TargetFrameworks>
+		<!--Feel free to add as many targets as you need below
     netstandard1.0;netstandard2.0;MonoAndroid81;Xamarin.iOS10;uap10.0.16299;Xamarin.TVOS10;Xamarin.WatchOS10;Xamarin.Mac20;Tizen40
     For UWP update the version number with a version number you have installed.
     -->
-    <AssemblyName>BIT.Sqlite.MultiTarget</AssemblyName>
-    <RootNamespace>BIT.Sqlite.MultiTarget</RootNamespace>
-    <DefineConstants>$(DefineConstants);</DefineConstants>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-    <Configurations>Debug;Release</Configurations>
-    <PackageId>BIT.Sqlite.MultiTarget</PackageId>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <authors>Jose Manuel Ojeda Melgar</authors>
-    <Owners>Jose Manuel Ojeda Melgar</Owners>
-    <Description>This NuGet includes all the necessary NuGet references to use SQLite with XPO. After install this NuGet you still need to install your preferred version of XPO </Description>
-    <Version>2019.1.1</Version>
-    <!--<AndroidNdkDirectory>"C:\\Users\\Joche\\AppData\\Local\\Android\\Sdk\\ndk\\20.0.5594570"</AndroidNdkDirectory>-->
-  </PropertyGroup>
-  <ItemGroup>
-    <None Include="ReadMe.txt" pack="true" PackagePath="." />
-  </ItemGroup>
-  <!--<PropertyGroup Condition=" '$(Configuration)'=='Release' ">-->
-  <Target Name="CopyPackage" AfterTargets="Pack">
-    <Copy SourceFiles="$(OutputPath)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(USERPROFILE)\Documents\MyNugets\" />
-  </Target>
+		<AssemblyName>BIT.Sqlite.MultiTarget</AssemblyName>
+		<RootNamespace>BIT.Sqlite.MultiTarget</RootNamespace>
+		<DefineConstants>$(DefineConstants);</DefineConstants>
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+		<Configurations>Debug;Release</Configurations>
+		<PackageId>BIT.Sqlite.MultiTarget</PackageId>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<authors>Jose Manuel Ojeda Melgar</authors>
+		<Owners>Jose Manuel Ojeda Melgar</Owners>
+		<Description>This NuGet includes all the necessary NuGet references to use SQLite with XPO. After install this NuGet you still need to install your preferred version of XPO </Description>
+		<Version>2019.1.1</Version>
+		<!--<AndroidNdkDirectory>"C:\\Users\\Joche\\AppData\\Local\\Android\\Sdk\\ndk\\20.0.5594570"</AndroidNdkDirectory>-->
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="ReadMe.txt" pack="true" PackagePath="." />
+	</ItemGroup>
+	<!--<PropertyGroup Condition=" '$(Configuration)'=='Release' ">-->
+	<Target Name="CopyPackage" AfterTargets="Pack">
+		<Copy SourceFiles="$(OutputPath)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(USERPROFILE)\Documents\MyNugets\" />
+	</Target>
 
 
 
-<!--this is a temporary fix for the problem with visual studio 16.20 remove it later
+	<!--this is a temporary fix for the problem with visual studio 16.20 remove it later
 https://github.com/onovotny/MSBuildSdkExtras/issues/173
 -->
-  
-  <PropertyGroup Label="Android DesignTimeBuild error workaround">
-    <DesignTimeBuild>false</DesignTimeBuild>
-   
-  </PropertyGroup>
+
+	<PropertyGroup Label="Android DesignTimeBuild error workaround">
+		<DesignTimeBuild>false</DesignTimeBuild>
+
+	</PropertyGroup>
 
 
 
-  <ItemGroup>
-    <PackageReference Include="MSBuild.Sdk.Extras" Version="2.0.54" PrivateAssets="all" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="MSBuild.Sdk.Extras" Version="2.0.54" PrivateAssets="all" />
+		<PackageReference Include="System.Net.Primitives" version="4.3.0" />
+		<PackageReference Include="System.IO.FileSystem.Primitives" version="4.3.0" />
+		<PackageReference Include="System.Text.Encoding.Extensions" version="4.3.0" />
+		<PackageReference Include="System.IO.FileSystem" version="4.3.0" />
+		<PackageReference Include="System.Diagnostics.Debug" version="4.3.0" />
+	</ItemGroup>
 
- <!--Target References-->
- <!--UAP 10.0-->
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('uap10.0')) ">
-    <PackageReference Include="Microsoft.Data.Sqlite">
-      <Version>2.2.4</Version>
-    </PackageReference>
-    <PackageReference Include="System.Reflection.Emit">
-      <Version>4.3.0</Version>
-      <ExcludeAssets>all</ExcludeAssets>
-    </PackageReference>
-  </ItemGroup>
-  <!--MonoAndroid-->
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
-    <PackageReference Include="Microsoft.Data.Sqlite" version="2.2.4" />
-    <PackageReference Include="Microsoft.Data.Sqlite.Core" version="2.2.4" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" version="2.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" version="2.0.0" />
-    <PackageReference Include="Microsoft.NETCore.Platforms" version="2.0.2" />
-    <PackageReference Include="NETStandard.Library" version="2.0.1" />
-    <PackageReference Include="SQLitePCLRaw.bundle_green" version="1.1.12" />
-    <PackageReference Include="SQLitePCLRaw.core" version="1.1.12" />
-    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.android" version="1.1.12" />
-    <PackageReference Include="SQLitePCLRaw.provider.e_sqlite3.android" version="1.1.12" />
-    <PackageReference Include="System.ComponentModel.Annotations" version="4.4.1" />
-    <PackageReference Include="System.Data.SqlClient" version="4.4.3" />
-    <PackageReference Include="System.Drawing.Common" version="4.5.0-preview2-26406-04" />
-    <PackageReference Include="System.Reflection.Emit">
-      <Version>4.3.0</Version>
-      <ExcludeAssets>all</ExcludeAssets>
-    </PackageReference>
-    <PackageReference Include="System.Reflection.Emit.Lightweight" version="4.3.0" />
-    <PackageReference Include="System.ServiceModel.Http" version="4.4.2" />
-    <PackageReference Include="System.ServiceModel.Primitives" version="4.4.2" />
-    <PackageReference Include="System.Text.Encoding.CodePages" version="4.4.0" />
-  </ItemGroup>
-  <!--Xamarin.iOS-->
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
-    <PackageReference Include="System.Reflection.Emit">
-      <Version>4.3.0</Version>
-      <ExcludeAssets>all</ExcludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Data.Sqlite" version="2.2.4" />
-    <PackageReference Include="Microsoft.Data.Sqlite.Core" version="2.2.4" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" version="2.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" version="2.0.0" />
-    <PackageReference Include="Microsoft.NETCore.Platforms" version="2.0.2" />
-    <PackageReference Include="NETStandard.Library" version="2.0.3" />
-    <PackageReference Include="SQLitePCLRaw.bundle_green" version="1.1.12" />
-    <PackageReference Include="SQLitePCLRaw.core" version="1.1.12" />
-    <PackageReference Include="SQLitePCLRaw.provider.sqlite3.ios_unified" version="1.1.12" />
-    <PackageReference Include="System.ComponentModel.Annotations" version="4.4.1" />
-    <PackageReference Include="System.Data.SqlClient" version="4.4.3" />
-    <PackageReference Include="System.Drawing.Common" version="4.7.0" />
-    <PackageReference Include="System.Reflection.Emit.Lightweight" version="4.3.0" />
-    <PackageReference Include="System.ServiceModel.Http" version="4.4.2" />
-    <PackageReference Include="System.ServiceModel.Primitives" version="4.4.2" />
-    <PackageReference Include="System.Text.Encoding.CodePages" version="4.4.0" />
-  </ItemGroup>
-  <!--net462-->
-  <!--<ItemGroup Condition="'$(TargetFramework)' == 'net462'">-->
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('net4')) ">
-    <PackageReference Include="Microsoft.Data.Sqlite">
-      <Version>2.2.4</Version>
-    </PackageReference>
-    <PackageReference Include="System.Reflection.Emit">
-      <Version>4.3.0</Version>
-      <ExcludeAssets>all</ExcludeAssets>
-    </PackageReference>
-  </ItemGroup>
-  <!--NetCore-->
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('netcore')) ">
-    <PackageReference Include="Microsoft.Data.Sqlite">
-      <Version>2.2.4</Version>
-    </PackageReference>
-    <PackageReference Include="System.Reflection.Emit">
-      <Version>4.3.0</Version>
-      <ExcludeAssets>all</ExcludeAssets>
-    </PackageReference>
-  </ItemGroup>
-  <!--Target References-->
+	<!--Target References-->
+	<!--UAP 10.0-->
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('uap10.0')) ">
+		<PackageReference Include="Microsoft.Data.Sqlite">
+			<Version>2.2.4</Version>
+		</PackageReference>
+		<PackageReference Include="System.Reflection.Emit">
+			<Version>4.3.0</Version>
+			<ExcludeAssets>all</ExcludeAssets>
+		</PackageReference>
+	
+	</ItemGroup>
+	<!--MonoAndroid-->
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+		<PackageReference Include="Microsoft.Data.Sqlite" version="2.2.4" />
+		<PackageReference Include="Microsoft.Data.Sqlite.Core" version="2.2.4" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" version="2.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" version="2.0.0" />
+		<PackageReference Include="Microsoft.NETCore.Platforms" version="2.0.2" />
+		<PackageReference Include="NETStandard.Library" version="2.0.1" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" version="1.1.12" />
+		<PackageReference Include="SQLitePCLRaw.core" version="1.1.12" />
+		<PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.android" version="1.1.12" />
+		<PackageReference Include="SQLitePCLRaw.provider.e_sqlite3.android" version="1.1.12" />
+		<PackageReference Include="System.ComponentModel.Annotations" version="4.4.1" />
+		<PackageReference Include="System.Data.SqlClient" version="4.4.3" />
+		<PackageReference Include="System.Drawing.Common" version="4.5.0-preview2-26406-04" />
+		<PackageReference Include="System.Reflection.Emit">
+			<Version>4.3.0</Version>
+			<ExcludeAssets>all</ExcludeAssets>
+		</PackageReference>
+		<PackageReference Include="System.Reflection.Emit.Lightweight" version="4.3.0" />
+		<PackageReference Include="System.ServiceModel.Http" version="4.4.2" />
+		<PackageReference Include="System.ServiceModel.Primitives" version="4.4.2" />
+		<PackageReference Include="System.Text.Encoding.CodePages" version="4.4.0" />
+	</ItemGroup>
+	<!--Xamarin.iOS-->
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+		<PackageReference Include="System.Reflection.Emit">
+			<Version>4.3.0</Version>
+			<ExcludeAssets>all</ExcludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Data.Sqlite" version="2.2.4" />
+		<PackageReference Include="Microsoft.Data.Sqlite.Core" version="2.2.4" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" version="2.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" version="2.0.0" />
+		<PackageReference Include="Microsoft.NETCore.Platforms" version="2.0.2" />
+		<PackageReference Include="NETStandard.Library" version="2.0.3" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" version="1.1.12" />
+		<PackageReference Include="SQLitePCLRaw.core" version="1.1.12" />
+		<PackageReference Include="SQLitePCLRaw.provider.sqlite3.ios_unified" version="1.1.12" />
+		<PackageReference Include="System.ComponentModel.Annotations" version="4.4.1" />
+		<PackageReference Include="System.Data.SqlClient" version="4.4.3" />
+		<PackageReference Include="System.Drawing.Common" version="4.7.0" />
+		<PackageReference Include="System.Reflection.Emit.Lightweight" version="4.3.0" />
+		<PackageReference Include="System.ServiceModel.Http" version="4.4.2" />
+		<PackageReference Include="System.ServiceModel.Primitives" version="4.4.2" />
+		<PackageReference Include="System.Text.Encoding.CodePages" version="4.4.0" />
+	</ItemGroup>
+	<!--net462-->
+	<!--<ItemGroup Condition="'$(TargetFramework)' == 'net462'">-->
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('net4')) ">
+		<PackageReference Include="Microsoft.Data.Sqlite">
+			<Version>2.2.4</Version>
+		</PackageReference>
+		<PackageReference Include="System.Reflection.Emit">
+			<Version>4.3.0</Version>
+			<ExcludeAssets>all</ExcludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<!--NetCore-->
+	<ItemGroup Condition=" $(TargetFramework.StartsWith('netcore')) ">
+		<PackageReference Include="Microsoft.Data.Sqlite">
+			<Version>2.2.4</Version>
+		</PackageReference>
+		<PackageReference Include="System.Reflection.Emit">
+			<Version>4.3.0</Version>
+			<ExcludeAssets>all</ExcludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<!--Target References-->
 
 
 
 
 
 
-  <!--Additional item groups-->
-  <!--
+	<!--Additional item groups-->
+	<!--
   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.TVOS')) ">
     <Compile Include="**\*.tvos.cs" />
   </ItemGroup>
@@ -164,9 +170,11 @@ https://github.com/onovotny/MSBuildSdkExtras/issues/173
   </ItemGroup>
   -->
 
-  <!--<Target Condition=" '$(Configuration)'=='Release'" Name="CopyPackage" AfterTargets="Pack">
+	<!--<Target Condition=" '$(Configuration)'=='Release'" Name="CopyPackage" AfterTargets="Pack">
     <Copy SourceFiles="$(OutputPath)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(SolutionDir)\ReleaseVersion\NuGet\" />
-    --><!--<Copy SourceFiles="$(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(SolutionDir)NuGet\BuildOut\" />--><!--
+    -->
+	<!--<Copy SourceFiles="$(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(SolutionDir)NuGet\BuildOut\" />-->
+	<!--
   </Target>
   <Target Condition=" '$(Configuration)'=='Release'" Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(SolutionDir)\ReleaseVersion\lib\$(TargetName).dll&quot;" />
