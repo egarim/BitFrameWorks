@@ -11,6 +11,7 @@ namespace BIT.Data.Xpo
 
         readonly Type[] entityTypes;
         readonly string connectionString;
+        IDataLayer Dal;
         public XpoInitializer(string connectionString, params Type[] entityTypes)
         {
             this.entityTypes = entityTypes;
@@ -43,7 +44,7 @@ namespace BIT.Data.Xpo
 
 
 
-            if (XpoDefault.DataLayer == null)
+            if (Dal == null)
             {
                 using (var updateDataLayer = new SimpleDataLayer(dictionary, DataStore))
                 {
@@ -52,14 +53,14 @@ namespace BIT.Data.Xpo
             }
 
             var dataStore = DataStore;
-            XpoDefault.DataLayer = new ThreadSafeDataLayer(dictionary, dataStore);
+            Dal = new SimpleDataLayer(dictionary, dataStore);
             XpoDefault.Session = null;
 
 
         }
         public UnitOfWork CreateUnitOfWork()
         {
-            return new UnitOfWork();
+            return new UnitOfWork(Dal);
         }
         XPDictionary PrepareDictionary()
         {

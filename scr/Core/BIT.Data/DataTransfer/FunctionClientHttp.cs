@@ -22,20 +22,20 @@ namespace BIT.Data.DataTransfer
             client.DefaultRequestHeaders.Authorization
                         = new AuthenticationHeaderValue("Bearer", "Your Oauth token");
         }
-        async Task<IDataResult>  PostData(IDataParameters Parameters)
+        IDataResult PostData(IDataParameters Parameters)
         {
             Dictionary<string, string> values = new Dictionary<string, string>();
             values.Add("Parameters", StringSerializationHelper.SerializeObjectToString<IDataParameters>(Parameters));
             var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PostAsync(Url, content);
+            var response =  client.PostAsync(Url, content).GetAwaiter().GetResult();
 
-            var responseString = await response.Content.ReadAsStringAsync();
+            var responseString =  response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             return StringSerializationHelper.DeserializeObjectFromString<DataResult>(responseString);
         }
-        public virtual async Task<IDataResult> ExecuteFunction(IDataParameters Parameters)
+        public virtual  IDataResult ExecuteFunction(IDataParameters Parameters)
         {
-            return await PostData(Parameters);
+            return  PostData(Parameters);
         }
 
      

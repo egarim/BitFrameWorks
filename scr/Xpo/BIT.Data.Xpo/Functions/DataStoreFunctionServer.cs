@@ -32,10 +32,11 @@ namespace BIT.Data.Xpo.Functions
         {
             this.ConfigResolver = new XpoDataStoreResolver();
         }
-        public Task<IDataResult> ExecuteFunction(IDataParameters Parameters)
+        public IDataResult ExecuteFunction(IDataParameters Parameters)
         {
             DataResult dataResult = new DataResult();
-            var DataStore = this.ConfigResolver.GetById(Parameters.AdditionalValues["Id"].ToString());
+            string id = Parameters.AdditionalValues["DataStoreId"].ToString();
+            var DataStore = this.ConfigResolver.GetById(id);
             if (Parameters.MemberName == nameof(IDataStore.SelectData))
             {
 
@@ -88,7 +89,7 @@ namespace BIT.Data.Xpo.Functions
 
             }
 
-            return Task.FromResult<IDataResult>(dataResult);
+            return dataResult;
         }
     }
 }

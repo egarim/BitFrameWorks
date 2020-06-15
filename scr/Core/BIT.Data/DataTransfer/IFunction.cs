@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace BIT.Data.DataTransfer
 {
+    public interface IFunctionAsync
+    {
+        Task<IDataResult> ExecuteFunctionAsync(IDataParameters Parameters);
+      
+    }
     public interface IFunction
     {
-        Task<IDataResult> ExecuteFunction(IDataParameters Parameters);
-      
+        IDataResult ExecuteFunction(IDataParameters Parameters);
+
     }
 }

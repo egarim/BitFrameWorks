@@ -13,8 +13,8 @@ namespace BIT.Xpo.Providers.Network.Client.RestClientNet
 {
     public class RestClientNetProvider : FunctionDataStore
     {
-        private const string TokenPart = "Token";
-        private const string DataStoreIdPart = "DataStoreId";
+        public const string TokenPart = "Token";
+        public const string DataStoreIdPart = "DataStoreId";
         private const string UrlPart = "Url";
         private const string ControllerPart = "Controller";
         public RestClientNetProvider(IFunction functionClient, IObjectSerializationService objectSerializationService, AutoCreateOption autoCreateOption) : base(functionClient, objectSerializationService, autoCreateOption)

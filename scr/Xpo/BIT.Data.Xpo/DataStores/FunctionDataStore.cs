@@ -26,72 +26,93 @@ namespace BIT.Data.Xpo.DataStores
 
         //    return $"{DataStoreBase.XpoProviderTypeParameterName}={XpoProviderTypeString};EndPoint={EndPoint};Token={param1};DataStoreId={param1}";
         //}
-  
+
         private AutoCreateOption autoCreateOption;
         public AutoCreateOption AutoCreateOption => autoCreateOption;
 
-        protected virtual async Task<ModificationResult> ModifyData(params ModificationStatement[] dmlStatements)
+        public virtual ModificationResult ModifyData(params ModificationStatement[] dmlStatements)
         {
 
             IDataParameters Parameters = new DataParameters();
             Parameters.MemberName = nameof(ModifyData);
             Parameters.ParametersValue = this.objectSerializationHelper.ToByteArray<ModificationStatement[]>(dmlStatements);
-            var DataResult = await FunctionClient.ExecuteFunction(Parameters);
+            var DataResult = FunctionClient.ExecuteFunction(Parameters);
             var ModificationResults = this.objectSerializationHelper.GetObjectsFromByteArray<ModificationResult>(DataResult.ResultValue);
             return ModificationResults;
         }
 
-        protected virtual async Task<SelectedData> SelectData(params SelectStatement[] selects)
+        public virtual SelectedData SelectData(params SelectStatement[] selects)
         {
             IDataParameters Parameters = new DataParameters();
             Parameters.MemberName = nameof(SelectData);
             Parameters.ParametersValue = this.objectSerializationHelper.ToByteArray<SelectStatement[]>(selects);
-            var DataResult = await FunctionClient.ExecuteFunction(Parameters);
+            var DataResult = FunctionClient.ExecuteFunction(Parameters);
             var SelectedData = this.objectSerializationHelper.GetObjectsFromByteArray<SelectedData>(DataResult.ResultValue);
             return SelectedData;
         }
 
-        protected virtual async Task<UpdateSchemaResult> UpdateSchema(bool dontCreateIfFirstTableNotExist, params DBTable[] tables)
+        public virtual UpdateSchemaResult UpdateSchema(bool dontCreateIfFirstTableNotExist, params DBTable[] tables)
         {
             IDataParameters Parameters = new DataParameters();
             UpdateSchemaParameters updateSchemaParameters = new UpdateSchemaParameters(dontCreateIfFirstTableNotExist, tables);
             Parameters.MemberName = nameof(UpdateSchema);
             Parameters.ParametersValue = this.objectSerializationHelper.ToByteArray<UpdateSchemaParameters>(updateSchemaParameters);
-            IDataResult DataResult = await FunctionClient.ExecuteFunction(Parameters);
+            IDataResult DataResult = FunctionClient.ExecuteFunction(Parameters);
             var UpdateSchemaResult = this.objectSerializationHelper.GetObjectsFromByteArray<UpdateSchemaResult>(DataResult.ResultValue);
             return UpdateSchemaResult;
         }
 
-        protected virtual async Task<object> Do(string command, object args)
+        protected virtual object Do(string command, object args)
         {
             IDataParameters Parameters = new DataParameters();
             CommandChannelDoParams commandChannelDoParams = new CommandChannelDoParams(command, args);
             Parameters.MemberName = nameof(UpdateSchema);
             Parameters.ParametersValue = this.objectSerializationHelper.ToByteArray<CommandChannelDoParams>(commandChannelDoParams);
-            IDataResult DataResult = await FunctionClient.ExecuteFunction(Parameters);
+            IDataResult DataResult = FunctionClient.ExecuteFunction(Parameters);
             var UpdateSchemaResult = this.objectSerializationHelper.GetObjectsFromByteArray<object>(DataResult.ResultValue);
             return UpdateSchemaResult;
         }
         object ICommandChannel.Do(string command, object args)
         {
 
-            return this.Do(command, args).GetAwaiter().GetResult();
+            throw new NotImplementedException();
+            //return this.Do(command, args).GetAwaiter().GetResult();
 
         }
+   
+    //    UpdateSchemaResult IDataStore.UpdateSchema(bool doNotCreateIfFirstTableNotExist, params DBTable[] tables)
+    //    {
+    //        UpdateSchemaResult result=new UpdateSchemaResult();
+    //        Task.Run(async () =>
+    //       {
+    //           UpdateSchemaResult result = await this.UpdateSchema(doNotCreateIfFirstTableNotExist, tables);
+    //       });
+    //        return result;
+    //        //return this.UpdateSchema(doNotCreateIfFirstTableNotExist, tables).GetAwaiter().GetResult();
+    //    }
 
-        UpdateSchemaResult IDataStore.UpdateSchema(bool doNotCreateIfFirstTableNotExist, params DBTable[] tables)
-        {
-            return this.UpdateSchema(doNotCreateIfFirstTableNotExist, tables).GetAwaiter().GetResult();
-        }
+    //    SelectedData IDataStore.SelectData(params SelectStatement[] selects)
+    //    {
+    //        SelectedData selectedData = null;
+    //        Task.Run(async () =>
+    //        {
+               
+    //            selectedData = await this.SelectData(selects);
+             
+    //        }).Wait();
+    //        return selectedData;
+    //    }
 
-        SelectedData IDataStore.SelectData(params SelectStatement[] selects)
-        {
-            return this.SelectData(selects).GetAwaiter().GetResult();
-        }
+    //    ModificationResult IDataStore.ModifyData(params ModificationStatement[] dmlStatements)
+    //    {
+    //        ModificationResult modificationResult = null;
+    //        Task.Run(async () =>
+    //        {
 
-        ModificationResult IDataStore.ModifyData(params ModificationStatement[] dmlStatements)
-        {
-            return this.ModifyData(dmlStatements).GetAwaiter().GetResult();
-        }
+    //            modificationResult = await this.ModifyData(dmlStatements);
+    //            return modificationResult;
+    //        });
+    //        return modificationResult;
+    //    }
     }
 }

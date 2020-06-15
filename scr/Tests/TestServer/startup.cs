@@ -13,6 +13,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using DevExpress.Xpo.DB;
 using BIT.Data.Xpo;
+using BIT.Data.DataTransfer;
+using BIT.Data.Xpo.Functions;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 namespace TestServer
 {
@@ -32,9 +35,17 @@ namespace TestServer
             IConfigResolver<IDataStore> DataStoreResolver = new XpoDataStoreResolver("appsettings.json");
             IStringSerializationHelper stringSerializationHelper = new StringSerializationHelper();
             IObjectSerializationService objectSerializationHelper = new SimpleObjectSerializationService();
+            IFunction function = new DataStoreFunctionServer(DataStoreResolver, objectSerializationHelper);
             services.AddSingleton<IConfigResolver<IDataStore>>(DataStoreResolver);
             services.AddSingleton<IStringSerializationHelper>(stringSerializationHelper);
             services.AddSingleton<IObjectSerializationService>(objectSerializationHelper);
+            services.AddSingleton<IFunction>(function);
+
+            //TODO review this code, at the momentis needed to use the  await for the operations in the fucntion rest client
+            //services.Configure<KestrelServerOptions>(options =>
+            //{
+            //    options.AllowSynchronousIO = true;
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

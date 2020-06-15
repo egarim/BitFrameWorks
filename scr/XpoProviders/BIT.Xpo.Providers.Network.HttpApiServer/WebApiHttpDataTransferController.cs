@@ -6,23 +6,38 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace BIT.Xpo.Providers.WebApi.Server
 {
-    public class WebApiHttpDataTransferController: HttpDataTransferController
+    public class WebApiHttpDataTransferController : HttpDataTransferController
     {
-        protected const string DataStoreIdHeader = "DataStoreId";
-        private IConfigResolver<IDataStore> resolver;
-        public IConfigResolver<IDataStore> Resolver { get => resolver; protected set => resolver = value; }
 
-        public WebApiHttpDataTransferController(IConfigResolver<IDataStore> DataStoreResolver)
+        public IFunction DataStoreFunctionServer { get; set; }
+
+        public WebApiHttpDataTransferController(IFunction DataStoreFunctionServer)
         {
-            Resolver = DataStoreResolver;
-         
+
+            this.DataStoreFunctionServer = DataStoreFunctionServer;
+
+
         }
-        public override Task<DataResult> Post()
+        public override async Task<IDataResult> Post()
         {
-            return base.Post();
+            //TODO Jm should the datastore id be part of the heders or the parameters?
+            var Header=  this.GetHeader("DataStoreId");
+            IDataParameters parameters = await DeserializeFromStream(Request.Body);
+            parameters.AdditionalValues.Add("DataStoreId", Header);
+            return DataStoreFunctionServer.ExecuteFunction(parameters);
+
         }
+        //public virtual IDataResult Post()
+        //{
+
+
+        //    IDataParameters parameters = DeserializeFromStream(Request.Body);
+        //    return DataStoreFunctionServer.ExecuteFunction(parameters);
+
+        //}
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BIT.Data.Transfer.RestClientNet
 {
-    public class RestClientNetFunctionClient : IFunction
+    public class RestClientNetFunctionClient : IFunction,IFunctionAsync
     {
         Client client;
         string Url;
@@ -27,6 +27,7 @@ namespace BIT.Data.Transfer.RestClientNet
         {
             this.Url = url;
             this.client = new Client(new NewtonsoftSerializationAdapter());
+          
             InitHearders(headers);
         }
         public RestClientNetFunctionClient(string url, ISerializationAdapter serializationAdapter, IDictionary<string, string> headers)
@@ -45,11 +46,24 @@ namespace BIT.Data.Transfer.RestClientNet
         }
 
      
-        public async Task<IDataResult> ExecuteFunction(IDataParameters Parameters)
+        public async Task<IDataResult> ExecuteFunctionAsync(IDataParameters Parameters)
         {
+            var result= await client.PostAsync<IDataResult, IDataParameters>(Parameters, resource, Headers);
+            return result.Body;
 
-            Response<DataResult> Result = await client.PostAsync<DataResult, IDataParameters>(Parameters, resource, Headers);
-            return Result.Body;
+
+        }
+        public IDataResult ExecuteFunction(IDataParameters Parameters)
+        {
+            var TaskValue = Task.Run(async () =>
+
+             await ExecuteFunctionAsync(Parameters)
+
+            );
+            TaskValue.Wait();
+            return TaskValue.Result;
+
+
         }
     }
 }

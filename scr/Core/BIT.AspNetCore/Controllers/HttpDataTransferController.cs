@@ -13,29 +13,46 @@ namespace BIT.AspNetCore.Controllers
     public class HttpDataTransferController:BaseController
     {
         [HttpPost]
-        public virtual async Task<DataResult> Post()
+        public virtual async Task<IDataResult> Post()
         {
             throw new NotImplementedException();
-            //var stream = Request.Body;
-
-            //var result = DeserializeFromStream(stream);
-            ////[FromBody] Parameters dataparameters
-            ////return File(stream, "application/octet-stream");
-            //var Errors = new List<string>();
-            //Errors.Add("Error1");
-            //Errors.Add("Error2");
-            //Errors.Add("Error3");
-            //return new DataResult() { Errors = Errors };
+         
         }
-        protected virtual DataParameters DeserializeFromStream(Stream stream)
+        protected async virtual Task<IDataParameters> DeserializeFromStream(Stream stream)
         {
-            var serializer = new JsonSerializer();
-
-            using (var sr = new StreamReader(stream))
-            using (var jsonTextReader = new JsonTextReader(sr))
+            try
             {
-                return serializer.Deserialize<DataParameters>(jsonTextReader);
+              
+                var sr = new StreamReader(stream);
+                var json= await  sr.ReadToEndAsync();
+                    return JsonConvert.DeserializeObject<DataParameters>(json);
+                
             }
+            catch (Exception ex)
+            {
+                var message = ex.Message;
+                throw;
+            }
+
         }
+        //protected virtual IDataParameters DeserializeFromStream(Stream stream)
+        //{
+        //    try
+        //    {
+        //        var serializer = new JsonSerializer();
+
+        //        using (var sr = new StreamReader(stream))
+        //        using (var jsonTextReader = new JsonTextReader(sr))
+        //        {
+        //            return serializer.Deserialize<DataParameters>(jsonTextReader);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var message = ex.Message;
+        //        throw;
+        //    }
+          
+        //}
     }
 }

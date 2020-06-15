@@ -25,7 +25,7 @@ namespace BIT.AspNetCore.Tests
 
         }
         [Test]
-        public async Task Test1()
+        public void Test1()
         {
             headers.Add(nameof(Token), Token);
             headers.Add(nameof(Id), Id);
@@ -35,7 +35,7 @@ namespace BIT.AspNetCore.Tests
 
             SimpleObjectSerializationService simpleObjectSerializationHelper = new SimpleObjectSerializationService();
             RestClientNetFunctionClient restFunctionClient = new RestClientNetFunctionClient(client, "http://localhost/HttpDataTransferTest", headers);
-            IDataResult Result = await restFunctionClient.ExecuteFunction(new DataParameters() { MemberName = "NoErrors" });
+            IDataResult Result =  restFunctionClient.ExecuteFunction(new DataParameters() { MemberName = "NoErrors" });
             var ResultValue = simpleObjectSerializationHelper.GetObjectsFromByteArray<string>(Result.ResultValue);
             Assert.AreEqual("Hello Data Transfer", ResultValue);
 

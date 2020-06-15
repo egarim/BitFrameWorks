@@ -22,12 +22,12 @@ namespace TestServer.Controllers
 
         public IObjectSerializationService ObjectSerializationHelper { get => _ObjectSerializationHelper; set => _ObjectSerializationHelper = value; }
 
-        public async override Task<DataResult> Post()
+        public async override Task<IDataResult> Post()
         {
             //TODO check why the serialization does not work when the class DataResult inherits from dictionary
             var stream = Request.BodyReader.AsStream();
 
-            DataParameters result = DeserializeFromStream(stream);
+            var result = await DeserializeFromStream(stream);
 
             byte[] v = ObjectSerializationHelper.ToByteArray<string>("Hello Data Transfer");
             var Errors = new Dictionary<string,string>();

@@ -13,13 +13,14 @@ namespace TestServer.Controllers
     [Route("[controller]")]
     public class WebApiHttpDataTransferControllerTest : WebApiHttpDataTransferController
     {
-        public WebApiHttpDataTransferControllerTest(IConfigResolver<IDataStore> DataStoreResolver) : base(DataStoreResolver)
+        public WebApiHttpDataTransferControllerTest(IFunction DataStoreFunctionServer) : base(DataStoreFunctionServer)
         {
 
         }
-        public override Task<DataResult> Post()
+        public override Task<IDataResult> Post()
         {
             return base.Post();
         }
+
     }
 }
