@@ -24,7 +24,7 @@ namespace BIT.Xpo.Providers.WebApi.Server
         }
         public virtual async Task<string> Get()
         {
-            return this.GetType().FullName;
+            return $"This is working )) {this.GetType().FullName}";
         }
 
         public override async Task<IDataResult> Post()

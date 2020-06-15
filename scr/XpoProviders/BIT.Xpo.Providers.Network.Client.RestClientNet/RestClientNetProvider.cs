@@ -37,7 +37,9 @@ namespace BIT.Xpo.Providers.Network.Client.RestClientNet
             Dictionary<string, string> Headers = new Dictionary<string, string>();
             Headers.Add(TokenPart, Token);
             Headers.Add(DataStoreIdPart, DataStoreId);
-            RestClientNetFunctionClient restClientNetFunctionClient = new RestClientNetFunctionClient(new Uri(new Uri(Url), Controller).ToString(), Headers);
+            Uri uri = new Uri(new Uri(Url), Controller);
+            string url = uri.ToString();
+            RestClientNetFunctionClient restClientNetFunctionClient = new RestClientNetFunctionClient(url, Headers);
 
             return new AsyncDataStoreWrapper(new RestClientNetProvider(restClientNetFunctionClient, new SimpleObjectSerializationService(), autoCreateOption));
         }

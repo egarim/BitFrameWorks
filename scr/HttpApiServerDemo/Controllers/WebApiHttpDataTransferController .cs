@@ -15,9 +15,14 @@ namespace HttpApiServerDemo.Controllers
         public WebApiHttpDataTransferImpController(IFunction DataStoreFunctionServer) : base(DataStoreFunctionServer)
         {
         }
-        public override Task<string> Get()
+        public async override Task<string> Get()
         { 
-            return base.Get();
+            return await base.Get();
+        }
+        public async override Task<IDataResult> Post()
+        {
+            var task = await base.Post();
+            return task;
         }
     }
 }

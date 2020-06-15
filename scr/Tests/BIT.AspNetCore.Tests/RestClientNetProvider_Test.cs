@@ -30,7 +30,7 @@ namespace BIT.AspNetCore.Tests
         public void Test1()
         {
 
-
+            //HACK ToImplmement 001
             RestClientNetProvider.Register();
 
             client = new Client(new NewtonsoftSerializationAdapter(), httpClientFactory: _testServerHttpClientFactory);
