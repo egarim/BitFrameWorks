@@ -7,7 +7,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 
-namespace BIT.Data.Helpers
+namespace BIT.Data.Services
 {
     public class CompressionHelper
     {

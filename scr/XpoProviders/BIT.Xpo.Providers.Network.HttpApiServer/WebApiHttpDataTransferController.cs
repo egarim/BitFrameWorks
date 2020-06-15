@@ -1,13 +1,15 @@
 ﻿using BIT.AspNetCore.Controllers;
-using BIT.Data.Helpers;
+using BIT.Data.DataTransfer;
+using BIT.Data.Services;
 using DevExpress.Xpo.DB;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BIT.Xpo.Providers.WebApi.Server
 {
-    class WebApiHttpDataTransferController: HttpDataTransferController
+    public class WebApiHttpDataTransferController: HttpDataTransferController
     {
         protected const string DataStoreIdHeader = "DataStoreId";
         private IConfigResolver<IDataStore> resolver;
@@ -17,6 +19,10 @@ namespace BIT.Xpo.Providers.WebApi.Server
         {
             Resolver = DataStoreResolver;
          
+        }
+        public override Task<DataResult> Post()
+        {
+            return base.Post();
         }
     }
 }

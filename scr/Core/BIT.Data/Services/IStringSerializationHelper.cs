@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BIT.Data.Helpers
+namespace BIT.Data.Services
 {
     public interface IStringSerializationHelper
     {

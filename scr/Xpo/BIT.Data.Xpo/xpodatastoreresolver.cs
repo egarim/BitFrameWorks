@@ -1,4 +1,4 @@
-﻿using BIT.Data.Helpers;
+﻿using BIT.Data.Services;
 using DevExpress.Xpo;
 using DevExpress.Xpo.DB;
 using Microsoft.Extensions.Configuration;
@@ -10,7 +10,7 @@ using System.Text;
 
 namespace BIT.Data.Xpo
 {
-    public class XpoDataStoreResolver : ConfigurationResolverBase<DevExpress.Xpo.DB.IDataStore>,IConfigResolver<IDataStore>
+    public class XpoDataStoreResolver : ConfigurationResolverBase<IDataStore>, IConfigResolver<IDataStore>
     {
 
         Dictionary<string, string> AutoCreateOptions;
@@ -24,7 +24,10 @@ namespace BIT.Data.Xpo
             this.InstaceBuilder = new Func<IConfiguration, string, IDataStore>(CreateNewDataStore);
         }
 
-
+        public XpoDataStoreResolver() : base("appsettings.json", null)
+        {
+            this.InstaceBuilder = new Func<IConfiguration, string, IDataStore>(CreateNewDataStore);
+        }
 
 
         private DevExpress.Xpo.DB.IDataStore CreateNewDataStore(IConfiguration configuration, string Id)

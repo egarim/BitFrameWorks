@@ -1,4 +1,4 @@
-﻿using BIT.Data.Helpers;
+﻿using BIT.Data.Services;
 using BIT.Xpo.Providers.WebApi.Server;
 using DevExpress.Xpo.DB;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +13,7 @@ namespace XpoWebApiServer.Controllers
     [Route("[controller]")]
     public class XpoWebApiController : XPOWebApiControllerBase
     {
-        public XpoWebApiController(IConfigResolver<IDataStore> DataStoreResolver, IObjectSerializationHelper objectSerializationHelper, IStringSerializationHelper stringSerializationHelper) : base(DataStoreResolver, objectSerializationHelper, stringSerializationHelper)
+        public XpoWebApiController(IConfigResolver<IDataStore> DataStoreResolver, IObjectSerializationService objectSerializationHelper, IStringSerializationHelper stringSerializationHelper) : base(DataStoreResolver, objectSerializationHelper, stringSerializationHelper)
         {
         }
 

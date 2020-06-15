@@ -1,4 +1,5 @@
-﻿using DevExpress.Xpo;
+﻿using BIT.Data.Collections;
+using DevExpress.Xpo;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;

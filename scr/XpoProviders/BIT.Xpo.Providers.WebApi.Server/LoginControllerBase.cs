@@ -1,6 +1,6 @@
 ﻿using BIT.AspNetCore.Extensions;
-using BIT.Data.Helpers;
 using BIT.Data.Models;
+using BIT.Data.Services;
 using DevExpress.Xpo;
 using DevExpress.Xpo.DB;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +20,7 @@ namespace BIT.Xpo.Providers.WebApi.Server
     [ApiController]
     public class LoginControllerBase: XPOWebApiControllerBase
     {
-        public LoginControllerBase(IConfigResolver<IDataStore> DataStoreResolver, IObjectSerializationHelper objectSerializationHelper, IStringSerializationHelper stringSerializationHelper) : base(DataStoreResolver, objectSerializationHelper, stringSerializationHelper)
+        public LoginControllerBase(IConfigResolver<IDataStore> DataStoreResolver, IObjectSerializationService objectSerializationHelper, IStringSerializationHelper stringSerializationHelper) : base(DataStoreResolver, objectSerializationHelper, stringSerializationHelper)
         {
         }
 

@@ -1,43 +1,33 @@
-﻿
-using BIT.Data.Helpers;
-using BIT.Data.Transfer;
+﻿using BIT.Data.DataTransfer;
+using BIT.Data.Services;
 using BIT.Data.Xpo.Models;
 using DevExpress.Xpo.DB;
 using DevExpress.Xpo.Helpers;
 using System;
 using System.Threading.Tasks;
 
+
 namespace BIT.Data.Xpo.DataStores
 {
-    public abstract class NetworkClientProviderBase : IDataStore, ICommandChannel
+    public abstract class FunctionDataStore : IDataStore, ICommandChannel
     {
 
-        
-        //{
-        //   // DataStoreBase.RegisterDataStoreProvider(XpoProviderTypeString, CreateProviderFromString);
-        //}
-        IFunctionClient FunctionClient { get; set; }
-        IObjectSerializationHelper objectSerializationHelper;
-        public NetworkClientProviderBase(IFunctionClient functionClient, IObjectSerializationHelper objectSerializationHelper, AutoCreateOption autoCreateOption)
+        IFunction FunctionClient { get; set; }
+        IObjectSerializationService objectSerializationHelper;
+        public FunctionDataStore(IFunction functionClient, IObjectSerializationService objectSerializationHelper, AutoCreateOption autoCreateOption)
         {
             this.FunctionClient = functionClient;
             this.objectSerializationHelper = objectSerializationHelper;
         }
 
-        public static string GetConnectionString(string EndPoint, string param1, string Param2)
-        {
+        //HACK you need to implement the GetConnectionString on the child classes because you might need different information for differnt functions clients
+        //public static string GetConnectionString(string EndPoint, string param1, string Param2)
+        //{
 
-            return $"{DataStoreBase.XpoProviderTypeParameterName}={XpoProviderTypeString};EndPoint={EndPoint};Token={param1};DataStoreId={param1}";
-        }
-      
-     
-
-
-        public const string XpoProviderTypeString = nameof(NetworkClientProviderBase);
-        private string server;
+        //    return $"{DataStoreBase.XpoProviderTypeParameterName}={XpoProviderTypeString};EndPoint={EndPoint};Token={param1};DataStoreId={param1}";
+        //}
+  
         private AutoCreateOption autoCreateOption;
-        private string token;
-        private string DataStoreId;
         public AutoCreateOption AutoCreateOption => autoCreateOption;
 
         protected virtual async Task<ModificationResult> ModifyData(params ModificationStatement[] dmlStatements)

@@ -1,4 +1,4 @@
-﻿using BIT.Data.Helpers;
+﻿using BIT.Data.Services;
 using DevExpress.Xpo;
 using DevExpress.Xpo.DB;
 using System;

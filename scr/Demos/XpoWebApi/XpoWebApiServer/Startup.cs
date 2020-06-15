@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BIT.Data.Helpers;
 using BIT.Xpo.Providers.WebApi.Server;
 using DevExpress.Xpo.DB;
 using Microsoft.AspNetCore.Builder;

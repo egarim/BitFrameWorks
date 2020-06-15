@@ -1,8 +1,8 @@
+using BIT.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BIT.Data.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using DevExpress.Xpo.DB;
+using BIT.Data.Xpo;
 
 namespace TestServer
 {
@@ -27,7 +29,12 @@ namespace TestServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<IObjectSerializationHelper>(new SimpleObjectSerializationHelper());
+            IConfigResolver<IDataStore> DataStoreResolver = new XpoDataStoreResolver("appsettings.json");
+            IStringSerializationHelper stringSerializationHelper = new StringSerializationHelper();
+            IObjectSerializationService objectSerializationHelper = new SimpleObjectSerializationService();
+            services.AddSingleton<IConfigResolver<IDataStore>>(DataStoreResolver);
+            services.AddSingleton<IStringSerializationHelper>(stringSerializationHelper);
+            services.AddSingleton<IObjectSerializationService>(objectSerializationHelper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

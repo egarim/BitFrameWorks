@@ -1,4 +1,4 @@
-﻿using BIT.Data.Helpers;
+﻿using BIT.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -6,15 +6,15 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BIT.Data.Transfer
+namespace BIT.Data.DataTransfer
 {
     //HACK good post about httpclients https://stackoverflow.com/questions/4015324/how-to-make-an-http-post-web-request
-    public class FunctionClientHttp : IFunctionClient
+    public class FunctionClientHttp : IFunction
     {
         private readonly HttpClient client;
         public string Url { get; private set; }
         public IStringSerializationHelper StringSerializationHelper { get; private set; }
-        public FunctionClientHttp(string Url,string Token,IStringSerializationHelper stringSerializationHelper)
+        public FunctionClientHttp(string Url,string Token, IStringSerializationHelper stringSerializationHelper)
         {
             this.Url = Url;
             this.client = new HttpClient();

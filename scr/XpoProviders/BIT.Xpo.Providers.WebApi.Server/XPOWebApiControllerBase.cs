@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using BIT.Data.Models;
+using BIT.Data.Services;
 using BIT.AspNetCore.Controllers;
-using BIT.Data.Helpers;
 using BIT.AspNetCore.Extensions;
 
 namespace BIT.Xpo.Providers.WebApi.Server
@@ -21,15 +21,15 @@ namespace BIT.Xpo.Providers.WebApi.Server
     {
         protected const string DataStoreIdHeader = "DataStoreId";
         private IConfigResolver<IDataStore> resolver;
-        private IObjectSerializationHelper iObjectSerializationHelper;
+        private IObjectSerializationService iObjectSerializationHelper;
         private IStringSerializationHelper iStringSerializationHelper;
 
 
         public IStringSerializationHelper StringSerializationHelper { get => iStringSerializationHelper; protected set => iStringSerializationHelper = value; }
-        public IObjectSerializationHelper ObjectSerializationHelper { get => iObjectSerializationHelper; protected set => iObjectSerializationHelper = value; }
+        public IObjectSerializationService ObjectSerializationHelper { get => iObjectSerializationHelper; protected set => iObjectSerializationHelper = value; }
         public IConfigResolver<IDataStore> Resolver { get => resolver; protected set => resolver = value; }
 
-        public XPOWebApiControllerBase(IConfigResolver<IDataStore> DataStoreResolver,IObjectSerializationHelper objectSerializationHelper, IStringSerializationHelper stringSerializationHelper)
+        public XPOWebApiControllerBase(IConfigResolver<IDataStore> DataStoreResolver, IObjectSerializationService objectSerializationHelper, IStringSerializationHelper stringSerializationHelper)
         {
             Resolver = DataStoreResolver;
             ObjectSerializationHelper = objectSerializationHelper;

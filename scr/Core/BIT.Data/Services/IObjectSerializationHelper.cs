@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace BIT.Data.Helpers
+namespace BIT.Data.Services
 {
-    public interface IObjectSerializationHelper
+    public interface IObjectSerializationService
     {
         T GetObjectsFromByteArray<T>(byte[] bytes);
         byte[] ToByteArray<T>(T Data);

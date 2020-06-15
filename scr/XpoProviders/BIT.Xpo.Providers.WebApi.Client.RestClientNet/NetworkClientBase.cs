@@ -1,5 +1,5 @@
-﻿using BIT.Data.Helpers;
-using BIT.Data.Transfer;
+﻿using BIT.Data.DataTransfer;
+using BIT.Data.Services;
 using BIT.Data.Xpo.DataStores;
 using BIT.Data.Xpo.Models;
 using DevExpress.Xpo.DB;
@@ -19,9 +19,9 @@ namespace BIT.Xpo.Providers.Network
             DataStoreBase.RegisterDataStoreProvider(XpoProviderTypeString, CreateProviderFromString);
 
         }
-        IFunctionClient FunctionClient { get; set; }
-        IObjectSerializationHelper objectSerializationHelper;
-        public NetworkClientProviderBase(IFunctionClient functionClient, IObjectSerializationHelper objectSerializationHelper, AutoCreateOption autoCreateOption)
+        IFunction FunctionClient { get; set; }
+        IObjectSerializationService objectSerializationHelper;
+        public NetworkClientProviderBase(IFunction functionClient, IObjectSerializationService objectSerializationHelper, AutoCreateOption autoCreateOption)
         {
             this.FunctionClient = functionClient;
             this.objectSerializationHelper = objectSerializationHelper;

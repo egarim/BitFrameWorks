@@ -10,7 +10,7 @@ using DevExpress.Xpo.DB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using BIT.AspNetCore.Extensions;
-using BIT.Data.Helpers;
+using BIT.Data.Services;
 using BIT.Data.Xpo.Models;
 
 namespace BIT.Xpo.AspNetCore.Controllers
@@ -21,9 +21,9 @@ namespace BIT.Xpo.AspNetCore.Controllers
     public class DataStoreControllerBase : BaseController
     {
         protected IDataStore _DataStore;
-        protected IObjectSerializationHelper _objectSerializationHelper;
+        protected IObjectSerializationService _objectSerializationHelper;
 
-        public DataStoreControllerBase(IDataStore DataStore, IObjectSerializationHelper objectSerializationHelper)
+        public DataStoreControllerBase(IDataStore DataStore, IObjectSerializationService objectSerializationHelper)
         {
             _DataStore = DataStore;
             _objectSerializationHelper = objectSerializationHelper;

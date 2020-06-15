@@ -1,5 +1,5 @@
-﻿using BIT.Data.Helpers;
-using BIT.Data.Models;
+﻿using BIT.Data.Models;
+using BIT.Data.Services;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;

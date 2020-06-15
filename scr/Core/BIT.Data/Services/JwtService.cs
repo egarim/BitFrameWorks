@@ -5,9 +5,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 
-namespace BIT.Data.Helpers
+namespace BIT.Data.Services
 {
-    public static class JwtHelper
+    public static class JwtService
     {
         public static string GenerateKey(int length)
         {

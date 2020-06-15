@@ -1,9 +1,9 @@
-﻿using System;
+﻿using BIT.Data.DataTransfer;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using BIT.Data.Transfer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;

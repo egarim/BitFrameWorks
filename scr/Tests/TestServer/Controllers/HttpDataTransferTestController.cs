@@ -1,6 +1,7 @@
 ﻿using BIT.AspNetCore.Controllers;
-using BIT.Data.Helpers;
-using BIT.Data.Transfer;
+using BIT.Data.DataTransfer;
+using BIT.Data.Services;
+using BIT.Xpo.Providers.WebApi.Server;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,13 +14,13 @@ namespace TestServer.Controllers
     [Route("[controller]")]
     public class HttpDataTransferTestController : HttpDataTransferController
     {
-        IObjectSerializationHelper _ObjectSerializationHelper;
-        public HttpDataTransferTestController(IObjectSerializationHelper ObjectSerializationHelper)
+        IObjectSerializationService _ObjectSerializationHelper;
+        public HttpDataTransferTestController(IObjectSerializationService ObjectSerializationHelper)
         {
             this.ObjectSerializationHelper = ObjectSerializationHelper;
         }
 
-        public IObjectSerializationHelper ObjectSerializationHelper { get => _ObjectSerializationHelper; set => _ObjectSerializationHelper = value; }
+        public IObjectSerializationService ObjectSerializationHelper { get => _ObjectSerializationHelper; set => _ObjectSerializationHelper = value; }
 
         public async override Task<DataResult> Post()
         {
@@ -29,27 +30,31 @@ namespace TestServer.Controllers
             DataParameters result = DeserializeFromStream(stream);
 
             byte[] v = ObjectSerializationHelper.ToByteArray<string>("Hello Data Transfer");
-            var Errors = new List<string>();
-            Errors.Add("Error1");
-            Errors.Add("Error2");
-            Errors.Add("Error3");
+            var Errors = new Dictionary<string,string>();
+            Errors.Add("1","Error1");
+            Errors.Add("2", "Error2");
+            Errors.Add("3","Error3");
 
             string v1 = Convert.ToBase64String(v);
             switch (result.MemberName)
             {
                 case "NoErrors":
 
-                  
-                    return new DataResult(null, v) { ResultValue2 = v1 };
+
+                    DataResult dataResult = new DataResult();
+                    //dataResult.Add("aaaa", "abc");
+                    dataResult.ResultValue = v;
+                    dataResult.Errors = Errors;
+                    return dataResult;
                     
                 case "Errors":
 
-                    return new DataResult(Errors, v) { ResultValue2 = v1 };
+                    return new DataResult();
 
 
 
             }
-            return new DataResult(Errors, v) { ResultValue2 = v1 };
+            return new DataResult();
 
         }
 

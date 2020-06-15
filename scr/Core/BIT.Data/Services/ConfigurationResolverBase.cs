@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace BIT.Data.Helpers
+namespace BIT.Data.Services
 {
     public class ConfigurationResolverBase<T>: IConfigResolver<T> where T : class
     {

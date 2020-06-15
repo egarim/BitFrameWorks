@@ -2,15 +2,15 @@
 using System.IO;
 using System.Text;
 
-namespace BIT.Data.Helpers
+namespace BIT.Data.Services
 {   
 
     //TODO JM add compression to the strings 
 
-    public class CompressedStringSerializationHelper : StringSerializationHelper
+    public class CompressedStringSerializationService : StringSerializationHelper
     {
 
-        public CompressedStringSerializationHelper()
+        public CompressedStringSerializationService()
         {
            
         }

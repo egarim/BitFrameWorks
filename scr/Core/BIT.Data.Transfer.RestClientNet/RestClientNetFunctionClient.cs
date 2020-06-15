@@ -1,4 +1,5 @@
-﻿using RestClient.Net;
+﻿using BIT.Data.DataTransfer;
+using RestClient.Net;
 using RestClient.Net.Abstractions;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BIT.Data.Transfer.RestClientNet
 {
-    public class RestClientNetFunctionClient : IFunctionClient
+    public class RestClientNetFunctionClient : IFunction
     {
         Client client;
         string Url;
@@ -18,7 +19,8 @@ namespace BIT.Data.Transfer.RestClientNet
             this.client = client;
             this.Url = url;
             resource = new Uri(Url);
-            InitHearders(headers);
+            if (headers != null) 
+                InitHearders(headers);
 
         }
         public RestClientNetFunctionClient(string url, IDictionary<string, string> headers)

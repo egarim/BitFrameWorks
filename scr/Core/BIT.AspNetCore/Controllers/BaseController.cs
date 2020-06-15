@@ -1,4 +1,4 @@
-﻿using BIT.Data.Helpers;
+﻿using BIT.Data.Services;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -14,7 +14,7 @@ namespace BIT.AspNetCore.Controllers
         {
             var Token = this.HttpContext.Request.Headers[TokenHeader];
 
-            return JwtHelper.ReadToken(Token);
+            return JwtService.ReadToken(Token);
         }
         protected string GetHeader(string HeaderName)
         {

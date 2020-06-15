@@ -1,6 +1,4 @@
-﻿
-
-using BIT.Data.Helpers;
+﻿using BIT.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Caching.Memory;
@@ -54,7 +52,7 @@ namespace BIT.AspNetCore
 
             if(IsAuthenticationOn)
             {
-                if (!JwtHelper.VerifyToken(keys, Key, Issuer))
+                if (!JwtService.VerifyToken(keys, Key, Issuer))
                 {
                     context.Result = new UnauthorizedResult();
                 }

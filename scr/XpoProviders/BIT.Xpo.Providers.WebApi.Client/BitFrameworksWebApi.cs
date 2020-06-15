@@ -1,5 +1,4 @@
 ﻿
-using BIT.Data.Helpers;
 using BIT.Data.Models;
 using DevExpress.Xpo.DB;
 using Newtonsoft.Json;
