@@ -7,6 +7,7 @@ namespace BIT.Data.Transfer.RestClientNet
 {
     public class NewtonsoftSerializationAdapter : ISerializationAdapter
     {
+
         #region Implementation
         public TResponseBody Deserialize<TResponseBody>(byte[] data, IHeadersCollection responseHeaders)
         {

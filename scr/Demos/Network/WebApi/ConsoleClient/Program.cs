@@ -15,6 +15,7 @@ namespace ConsoleClient
             RestClientNetProvider.Register();
 
             //https://localhost:44389
+            //http://localhost/DeliverySV.Server/WebApiHttpDataTransferImp
             //var ConnectionString = RestClientNetProvider.GetConnectionString("https://localhost:44389", "/WebApiHttpDataTransferImp", string.Empty, "001");
             var ConnectionString = RestClientNetProvider.GetConnectionString("http://localhost/DeliverySV.Server", "/WebApiHttpDataTransferImp", string.Empty, "001");
 
