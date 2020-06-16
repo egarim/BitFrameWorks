@@ -14,8 +14,9 @@ namespace ConsoleClient
 
             RestClientNetProvider.Register();
 
-
-            var ConnectionString = RestClientNetProvider.GetConnectionString("https://localhost:44389", "/WebApiHttpDataTransferImp", string.Empty, "001");
+            //https://localhost:44389
+            //var ConnectionString = RestClientNetProvider.GetConnectionString("https://localhost:44389", "/WebApiHttpDataTransferImp", string.Empty, "001");
+            var ConnectionString = RestClientNetProvider.GetConnectionString("http://localhost/DeliverySV.Server", "/WebApiHttpDataTransferImp", string.Empty, "001");
 
             XpoInitializer xpoInitializer = new XpoInitializer(ConnectionString, typeof(Invoice), typeof(Customer));
             xpoInitializer.InitXpo(XpoDefault.GetConnectionProvider(ConnectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema));

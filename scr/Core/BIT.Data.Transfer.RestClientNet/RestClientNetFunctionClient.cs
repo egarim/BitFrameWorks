@@ -52,8 +52,40 @@ namespace BIT.Data.Transfer.RestClientNet
 
         public async Task<IDataResult> ExecuteFunctionAsync(IDataParameters Parameters)
         {
-            var result = await client.PostAsync<DataResult, IDataParameters>(Parameters, resource, Headers);
-            return result.Body;
+            //https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#2xx_Success
+            try
+            {
+                //TODO Joche continue here
+                client.ThrowExceptionOnFailure = false;
+
+                var result = await client.PostAsync<DataResult, IDataParameters>(Parameters, resource, Headers);
+
+
+
+                if (result.StatusCode >= 1 && result.StatusCode <= 199)
+                {
+                    throw new Exception($"status code {result.StatusCode}");
+                }
+                if (result.StatusCode >= 300 && result.StatusCode <= 400)
+                {
+                    throw new Exception($"status code {result.StatusCode}");
+                }
+                if (result.StatusCode >= 401 && result.StatusCode <= 500)
+                {
+                    throw new Exception($"status code {result.StatusCode}");
+                }
+                if (result.StatusCode >= 501 && result.StatusCode <= 600)
+                {
+                    throw new Exception($"status code {result.StatusCode}");
+                }
+                return result.Body;
+            }
+            catch (Exception ex)
+            {
+                var exm = ex.Message;
+                throw;
+            }
+           
         }
         public IDataResult ExecuteFunction(IDataParameters Parameters)
         {
