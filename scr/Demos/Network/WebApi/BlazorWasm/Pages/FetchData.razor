@@ -1,0 +1,85 @@
+﻿@page "/fetchdata"
+@inject HttpClient Http
+@using BIT.Data.Xpo
+@using BIT.Xpo.Providers.Network.Client.RestClientNet
+@using DevExpress.Xpo
+@using XpoDemoOrm
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            @*@foreach (var forecast in forecasts)
+                {
+                    <tr>
+                        <td>@forecast.Date.ToShortDateString()</td>
+                        <td>@forecast.TemperatureC</td>
+                        <td>@forecast.TemperatureF</td>
+                        <td>@forecast.Summary</td>
+                    </tr>
+                }*@
+
+            @foreach (var customer in Customers)
+            {
+                <tr>
+                    <td>@customer.Code</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.Active</td>
+                </tr>
+}
+        </tbody>
+    </table>
+}
+
+@code {
+    private WeatherForecast[] forecasts;
+    private IEnumerable<Customer> Customers;
+    protected override async Task OnInitializedAsync()
+    {
+
+        BIT.Xpo.Providers.Network.Client.RestClientNet.RestClientNetProvider.Register();
+        Customers = new List<Customer>();
+
+        var ConnectionString = RestClientNetProvider.GetConnectionString("https://localhost:44389", "/WebApiHttpDataTransferImp", string.Empty, "001");
+
+        XpoInitializer xpoInitializer = new XpoInitializer(ConnectionString, typeof(Invoice), typeof(Customer));
+        xpoInitializer.InitXpo(XpoDefault.GetConnectionProvider(ConnectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema));
+        this.Customers = new XPCollection<Customer>(xpoInitializer.CreateUnitOfWork());
+        //using (var UoW = xpoInitializer.CreateUnitOfWork())
+        //{
+        //    var faker = new Bogus.Faker<Customer>().CustomInstantiator(c => new Customer(UoW))
+        //                .RuleFor(p => p.Name, f => f.Name.FullName())
+        //                .RuleFor(p => p.Active, p => p.Random.Bool());
+
+        //    Customers = faker.Generate(5);
+        //    if (UoW.InTransaction)
+        //        UoW.CommitChanges();
+        //    //forecasts = await Http.GetJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        //}
+    }
+
+    public class WeatherForecast
+    {
+        public DateTime Date { get; set; }
+
+        public int TemperatureC { get; set; }
+
+        public string Summary { get; set; }
+
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+}

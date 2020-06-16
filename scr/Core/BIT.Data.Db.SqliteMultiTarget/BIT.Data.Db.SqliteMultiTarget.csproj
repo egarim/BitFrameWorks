@@ -13,15 +13,16 @@
 		<DefineConstants>$(DefineConstants);</DefineConstants>
 		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
 		<Configurations>Debug;Release</Configurations>
-		<PackageId>BIT.Sqlite.MultiTarget</PackageId>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-		<authors>Jose Manuel Ojeda Melgar</authors>
-		<Owners>Jose Manuel Ojeda Melgar</Owners>
-		<Description>This NuGet includes all the necessary NuGet references to use SQLite with XPO. After install this NuGet you still need to install your preferred version of XPO </Description>
-		<Version>2019.1.1</Version>
 		<!--<AndroidNdkDirectory>"C:\\Users\\Joche\\AppData\\Local\\Android\\Sdk\\ndk\\20.0.5594570"</AndroidNdkDirectory>-->
 	</PropertyGroup>
+	<!--Nuget Generation Section Start-->
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AssemblyName>BIT.Sqlite.MultiTarget.v$(NugetVersion)</AssemblyName>
+		<Version>$(NugetVersion)</Version>
+		<PackageId>BIT.Sqlite.MultiTarget</PackageId>
+	</PropertyGroup>
+	<!--Nuget Generation Section End-->
 	<ItemGroup>
 		<None Include="ReadMe.txt" pack="true" PackagePath="." />
 	</ItemGroup>
@@ -38,7 +39,6 @@ https://github.com/onovotny/MSBuildSdkExtras/issues/173
 
 	<PropertyGroup Label="Android DesignTimeBuild error workaround">
 		<DesignTimeBuild>false</DesignTimeBuild>
-
 	</PropertyGroup>
 
 
