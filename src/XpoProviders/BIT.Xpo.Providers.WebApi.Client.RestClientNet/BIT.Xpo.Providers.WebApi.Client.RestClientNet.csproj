@@ -23,7 +23,7 @@
 	<!--Nuget Generation Section End-->
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-		<PackageReference Include="RestClient.NET" Version="3.2.0" />
+		<PackageReference Include="RestClient.Net" Version="$(RestClientNetVersion)" />
 		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
 	</ItemGroup>
 	<ItemGroup>

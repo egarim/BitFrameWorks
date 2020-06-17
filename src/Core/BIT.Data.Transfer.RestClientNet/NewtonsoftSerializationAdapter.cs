@@ -22,6 +22,14 @@ namespace BIT.Data.Transfer.RestClientNet
             return JsonConvert.DeserializeObject<TResponseBody>(markup);
         }
 
+        public TResponseBody Deserialize<TResponseBody>(Response response)
+        {
+            if (response.StatusCode == 200)
+                return this.Deserialize<TResponseBody>(response.GetResponseData(), response.Headers);
+            else
+                throw new Exception($"the request was not succesfull the status code returned was {response.StatusCode}");
+        }
+
         public byte[] Serialize<TRequestBody>(TRequestBody value, IHeadersCollection requestHeaders)
         {
             var json = JsonConvert.SerializeObject(value);

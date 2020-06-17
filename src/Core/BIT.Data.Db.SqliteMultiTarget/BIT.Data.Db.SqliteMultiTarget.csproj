@@ -71,14 +71,14 @@ https://github.com/onovotny/MSBuildSdkExtras/issues/173
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" version="2.0.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" version="2.0.0" />
 		<PackageReference Include="Microsoft.NETCore.Platforms" version="2.0.2" />
-		<PackageReference Include="NETStandard.Library" version="2.0.1" />
+		<PackageReference Include="NETStandard.Library" version="2.0.3" />
 		<PackageReference Include="SQLitePCLRaw.bundle_green" version="1.1.12" />
 		<PackageReference Include="SQLitePCLRaw.core" version="1.1.12" />
 		<PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.android" version="1.1.12" />
 		<PackageReference Include="SQLitePCLRaw.provider.e_sqlite3.android" version="1.1.12" />
 		<PackageReference Include="System.ComponentModel.Annotations" version="4.4.1" />
 		<PackageReference Include="System.Data.SqlClient" version="4.4.3" />
-		<PackageReference Include="System.Drawing.Common" version="4.5.0-preview2-26406-04" />
+		<PackageReference Include="System.Drawing.Common" version="4.7.0" />
 		<PackageReference Include="System.Reflection.Emit">
 			<Version>4.3.0</Version>
 			<ExcludeAssets>all</ExcludeAssets>

@@ -33,11 +33,11 @@ namespace BIT.AspNetCore.Tests
             //HACK ToImplmement 001
             RestClientNetProvider.Register();
 
-            client = new Client(new NewtonsoftSerializationAdapter(), httpClientFactory: _testServerHttpClientFactory);
+            //client = new Client(new NewtonsoftSerializationAdapter(), httpClientFactory: _testServerHttpClientFactory);
+
+            client = new Client(new NewtonsoftSerializationAdapter());
 
 
-
-          
 
             SimpleObjectSerializationService simpleObjectSerializationHelper = new SimpleObjectSerializationService();
             Dictionary<string, string> Headers = new Dictionary<string, string>();

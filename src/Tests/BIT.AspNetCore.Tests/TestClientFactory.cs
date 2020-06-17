@@ -4,7 +4,7 @@ using System.Net.Http;
 
 namespace BIT.AspNetCore.Tests
 {
-    public class TestClientFactory : IHttpClientFactory, RestClient.Net.IHttpClientFactory
+    public class TestClientFactory : IHttpClientFactory
     {
         HttpClient _testClient;
 

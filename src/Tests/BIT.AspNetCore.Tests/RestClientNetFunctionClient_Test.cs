@@ -5,6 +5,7 @@ using NUnit.Framework;
 using RestClient.Net;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace BIT.AspNetCore.Tests
@@ -29,7 +30,18 @@ namespace BIT.AspNetCore.Tests
         {
             headers.Add(nameof(Token), Token);
             headers.Add(nameof(Id), Id);
-            client = new Client(new NewtonsoftSerializationAdapter(), httpClientFactory: _testServerHttpClientFactory);
+
+
+            //https://christianfindlay.com/2020/05/15/c-delegates-with-ioc-containers-and-dependency-injection/
+
+            var test = _testServerHttpClientFactory;
+
+            //CreateHttpClient createHttpClient =new CreateHttpClient(CreateClientMethod);
+            client = new Client(new NewtonsoftSerializationAdapter() , createHttpClient: (name) => _testServerHttpClientFactory.CreateClient());
+
+            //client = new Client(new NewtonsoftSerializationAdapter(), httpClientFactory: _testServerHttpClientFactory);
+            //client = new Client(new NewtonsoftSerializationAdapter());
+
 
             //TODO check why the serialization does not work when the class DataResult inherits from dictionary
 
@@ -42,5 +54,7 @@ namespace BIT.AspNetCore.Tests
 
 
         }
+
+       
     }
 }
