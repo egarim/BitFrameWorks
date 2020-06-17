@@ -1,0 +1,15 @@
+﻿<Project>
+	<PropertyGroup>
+		<XpoVersion>$XpoVersion</XpoVersion>
+		<XafVersion>$XafVersion</XafVersion>
+		<NugetVersion>$NugetVersion</NugetVersion>
+	</PropertyGroup>
+	<PropertyGroup>
+		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+		<DebugType>Full</DebugType>
+		<Authors>José Manuel Ojeda Melgar</Authors>
+		<Company>BIT Frameworks</Company>
+		<PackageProjectUrl>https://github.com/egarim/BitFrameWorks</PackageProjectUrl>
+		<DebugSymbols>True</DebugSymbols>
+	</PropertyGroup>
+</Project>
