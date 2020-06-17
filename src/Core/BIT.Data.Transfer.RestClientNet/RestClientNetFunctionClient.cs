@@ -23,15 +23,15 @@ namespace BIT.Data.Transfer.RestClientNet
                 InitHearders(headers);
 
         }
-        public RestClientNetFunctionClient(string url, IDictionary<string, string> headers)
-        {
-            this.Url = url;
-            this.client = new Client(new NewtonsoftSerializationAdapter());
+        //public RestClientNetFunctionClient(string url, IDictionary<string, string> headers)
+        //{
+        //    this.Url = url;
+        //    this.client = new Client(new NewtonsoftSerializationAdapter());
 
-            resource = new Uri(Url);
-            if (headers != null)
-                InitHearders(headers);
-        }
+        //    resource = new Uri(Url);
+        //    if (headers != null)
+        //        InitHearders(headers);
+        //}
         public RestClientNetFunctionClient(string url, ISerializationAdapter serializationAdapter, IDictionary<string, string> headers)
         {
             this.Url = url;
@@ -52,29 +52,10 @@ namespace BIT.Data.Transfer.RestClientNet
 
         public async Task<IDataResult> ExecuteFunctionAsync(IDataParameters Parameters)
         {
-
-            //https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#2xx_Success
-            try
-            {
-                //TODO Joche continue here
-                //TODO there is a design error on the client, I put a ticket here https://github.com/MelbourneDeveloper/RestClient.Net/issues/68
-                //I will just handle the exception and thrown my own exception 
-               
-
-                var result = await client.PostAsync<DataResult, IDataParameters>(Parameters, resource, Headers);
+            var result = await client.PostAsync<DataResult, IDataParameters>(Parameters, resource, Headers);
 
 
-                return result.Body;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("There was a problem in the api call:" + ex.Message + " " + ex.StackTrace);
-            }
-
-
-
-
-
+            return result.Body;
 
             ////https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#2xx_Success
             //try
@@ -82,36 +63,17 @@ namespace BIT.Data.Transfer.RestClientNet
             //    //TODO Joche continue here
             //    //TODO there is a design error on the client, I put a ticket here https://github.com/MelbourneDeveloper/RestClient.Net/issues/68
             //    //I will just handle the exception and thrown my own exception 
-            //    client.ThrowExceptionOnFailure = false;
+
 
             //    var result = await client.PostAsync<DataResult, IDataParameters>(Parameters, resource, Headers);
 
 
-
-            //    if (result.StatusCode >= 1 && result.StatusCode <= 199)
-            //    {
-            //        throw new Exception($"status code {result.StatusCode}");
-            //    }
-            //    if (result.StatusCode >= 300 && result.StatusCode <= 400)
-            //    {
-            //        throw new Exception($"status code {result.StatusCode}");
-            //    }
-            //    if (result.StatusCode >= 401 && result.StatusCode <= 500)
-            //    {
-            //        throw new Exception($"status code {result.StatusCode}");
-            //    }
-            //    if (result.StatusCode >= 501 && result.StatusCode <= 600)
-            //    {
-            //        throw new Exception($"status code {result.StatusCode}");
-            //    }
             //    return result.Body;
             //}
             //catch (Exception ex)
             //{
-            //    var exm = ex.Message;
-            //    throw;
+            //    throw new Exception("There was a problem in the api call:" + ex.Message + " " + ex.StackTrace);
             //}
-
         }
         public IDataResult ExecuteFunction(IDataParameters Parameters)
         {
