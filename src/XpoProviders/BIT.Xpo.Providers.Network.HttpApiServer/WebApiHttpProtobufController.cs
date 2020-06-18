@@ -32,7 +32,7 @@ namespace BIT.Xpo.Providers.Network.HttpApiServer
         [HttpPut]
         public async Task<IActionResult> Put()
         {
-            //var stream = Request.BodyReader.AsStream();
+            //var stream = Request.Body;
             //var person = Person.Parser.ParseFrom(stream);
             //if (!Request.Headers.ContainsKey("PersonKey")) throw new Exception("No key");
             //person.PersonKey = Request.Headers["PersonKey"];

@@ -19,7 +19,7 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<AssemblyName>BIT.Sqlite.MultiTarget.v$(NugetVersion)</AssemblyName>
-		<Version>$(NugetVersion)</Version>
+		<Version>1</Version>
 		<PackageId>BIT.Sqlite.MultiTarget</PackageId>
 	</PropertyGroup>
 	<!--Nuget Generation Section End-->

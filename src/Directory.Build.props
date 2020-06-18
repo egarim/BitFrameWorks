@@ -4,7 +4,7 @@
 		<XafVersion>20.1.3</XafVersion>
 		<RestClientNetVersion>4.0.0</RestClientNetVersion>
 		<!--<RestClientNetVersion>3.2.0</RestClientNetVersion>-->
-		<NugetVersion>20.1.3.578808466501</NugetVersion>
+		<NugetVersion>20.1.3.578808</NugetVersion>
 	</PropertyGroup>
 	<PropertyGroup>
 		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
