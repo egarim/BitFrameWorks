@@ -16,6 +16,7 @@ using BIT.Data.Xpo;
 using BIT.Data.DataTransfer;
 using BIT.Data.Xpo.Functions;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using BIT.Xpo.Providers.WebApi.Server;
 
 namespace TestServer
 {
@@ -40,6 +41,7 @@ namespace TestServer
             services.AddSingleton<IStringSerializationService>(stringSerializationHelper);
             services.AddSingleton<IObjectSerializationService>(objectSerializationHelper);
             services.AddSingleton<IFunction>(function);
+            services.AddXpoWebApi();
 
             //TODO review this code, at the momentis needed to use the  await for the operations in the fucntion rest client
             //services.Configure<KestrelServerOptions>(options =>

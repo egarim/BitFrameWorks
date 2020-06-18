@@ -1,18 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
 
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="nunit" Version="3.12.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="nunit" Version="3.12.0" />
+		<PackageReference Include="NUnit3TestAdapter" Version="3.16.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
+		<ProjectReference Include="..\..\Demos\XpoDemoOrm\XpoDemoOrm.csproj" />
+		<ProjectReference Include="..\..\XpoProviders\BIT.Xpo.Providers.WebApi.Client\BIT.Xpo.Providers.WebApi.Client.RestSharp.csproj" />
+		<ProjectReference Include="..\..\Xpo\BIT.Data.Xpo\BIT.Data.Xpo.csproj" />
+		<ProjectReference Include="..\Test.Shared\Test.Shared.csproj" />
+	</ItemGroup>
 
 </Project>
