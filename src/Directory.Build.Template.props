@@ -3,6 +3,8 @@
 		<XpoVersion>$XpoVersion</XpoVersion>
 		<XafVersion>$XafVersion</XafVersion>
 		<NugetVersion>$NugetVersion</NugetVersion>
+		<NetStandardVersion>netstandard2.0</NetStandardVersion>
+	    <RestClientNetVersion>4.0.0</RestClientNetVersion>
 	</PropertyGroup>
 	<PropertyGroup>
 		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
