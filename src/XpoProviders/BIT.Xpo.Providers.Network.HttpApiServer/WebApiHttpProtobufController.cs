@@ -38,6 +38,7 @@ namespace BIT.Xpo.Providers.Network.HttpApiServer
             //person.PersonKey = Request.Headers["PersonKey"];
             //var data = person.ToByteArray();
             //return File(data, "application/octet-stream");
+            throw new NotImplementedException();
         }
 
     }
