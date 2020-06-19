@@ -23,7 +23,7 @@ namespace BIT.Data.Services
             }
         }
 
-        public T GetObjectsFromByteArray<T>(byte[] bytes)
+        public T GetObjectsFromByteArray<T>(byte[] bytes)// where T : new()
         {
             var Type = typeof(T);
             using (MemoryStream fs = new MemoryStream(bytes))
@@ -38,7 +38,7 @@ namespace BIT.Data.Services
                 }
             }
         }
-        public byte[] ToByteArray<T>(T Data)
+        public byte[] ToByteArray<T>(T Data) //where T : new()
         {
             try
             {

@@ -20,20 +20,20 @@ namespace BIT.Xpo.AspNetCore.Controllers
    
     public class DataStoreControllerBase : BaseController
     {
-        protected IDataStore _DataStore;
-        protected IObjectSerializationService _objectSerializationHelper;
+        protected IDataStore dataStore;
+        protected IObjectSerializationService objectSerializationService;
 
-        public DataStoreControllerBase(IDataStore DataStore, IObjectSerializationService objectSerializationHelper)
+        public DataStoreControllerBase(IDataStore dataStore, IObjectSerializationService objectSerializationService)
         {
-            _DataStore = DataStore;
-            _objectSerializationHelper = objectSerializationHelper;
+            this.dataStore = dataStore;
+            this.objectSerializationService = objectSerializationService;
         }
         [HttpPost]
         [Route("[action]")]
 
         public virtual byte[] GetAutoCreateOptions()
         {
-            return _objectSerializationHelper.ToByteArray(_DataStore.AutoCreateOption);
+            return objectSerializationService.ToByteArray(dataStore.AutoCreateOption);
 
         }
         [HttpPost]
@@ -45,8 +45,8 @@ namespace BIT.Xpo.AspNetCore.Controllers
             {
                 byte[] Bytes = null;
                 Bytes = await Request.GetRawBodyBytesAsync();
-                SelectedData SelectedData = _DataStore.SelectData(_objectSerializationHelper.GetObjectsFromByteArray<SelectStatement[]>(Bytes));
-                return  Ok(_objectSerializationHelper.ToByteArray(SelectedData));
+                SelectedData SelectedData = dataStore.SelectData(objectSerializationService.GetObjectsFromByteArray<SelectStatement[]>(Bytes));
+                return  Ok(objectSerializationService.ToByteArray(SelectedData));
             }
             catch (Exception ex)
             {
@@ -66,8 +66,8 @@ namespace BIT.Xpo.AspNetCore.Controllers
             {
                 Bytes = await Request.GetRawBodyBytesAsync();
 
-                var Result = _DataStore.ModifyData(_objectSerializationHelper.GetObjectsFromByteArray<ModificationStatement[]>(Bytes));
-                return Ok(_objectSerializationHelper.ToByteArray(Result));
+                var Result = dataStore.ModifyData(objectSerializationService.GetObjectsFromByteArray<ModificationStatement[]>(Bytes));
+                return Ok(objectSerializationService.ToByteArray(Result));
             }
             catch (Exception ex)
             {
@@ -84,8 +84,8 @@ namespace BIT.Xpo.AspNetCore.Controllers
             {
                 byte[] Bytes = null;
                 Bytes = await Request.GetRawBodyBytesAsync();
-                var Parameters = _objectSerializationHelper.GetObjectsFromByteArray<UpdateSchemaParameters>(Bytes);
-                UpdateSchemaResult updateSchemaResult = _DataStore.UpdateSchema(Parameters.dontCreateIfFirstTableNotExist, Parameters.tables);
+                var Parameters = objectSerializationService.GetObjectsFromByteArray<UpdateSchemaParameters>(Bytes);
+                UpdateSchemaResult updateSchemaResult = dataStore.UpdateSchema(Parameters.dontCreateIfFirstTableNotExist, Parameters.tables);
                 return Ok(updateSchemaResult);
             }
             catch (Exception ex)
