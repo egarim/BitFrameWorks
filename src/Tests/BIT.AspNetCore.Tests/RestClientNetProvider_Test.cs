@@ -2,12 +2,13 @@ using BIT.Data.DataTransfer;
 using BIT.Data.Services;
 using BIT.Data.Transfer.RestClientNet;
 using BIT.Data.Xpo;
-
+using BIT.Xpo.Providers.Network.Client.RestClientNet;
 using DevExpress.Data.Filtering;
 using NUnit.Framework;
 using RestClient.Net;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using XpoDemoOrm;
 
@@ -33,11 +34,9 @@ namespace BIT.AspNetCore.Tests
             //HACK ToImplmement 001
             RestClientNetProvider.Register();
 
-            //client = new Client(new NewtonsoftSerializationAdapter(), httpClientFactory: _testServerHttpClientFactory);
+            client = new Client(new NewtonsoftSerializationAdapter(), createHttpClient: (name) => _testServerHttpClientFactory.CreateClient());
 
-            client = new Client(new NewtonsoftSerializationAdapter());
-
-
+          
 
             SimpleObjectSerializationService simpleObjectSerializationHelper = new SimpleObjectSerializationService();
             Dictionary<string, string> Headers = new Dictionary<string, string>();

@@ -41,7 +41,7 @@ namespace TestServer
             services.AddSingleton<IStringSerializationService>(stringSerializationHelper);
             services.AddSingleton<IObjectSerializationService>(objectSerializationHelper);
             services.AddSingleton<IFunction>(function);
-            services.AddXpoWebApi();
+            //services.AddXpoWebApi();
 
             //TODO review this code, at the momentis needed to use the  await for the operations in the fucntion rest client
             //services.Configure<KestrelServerOptions>(options =>
