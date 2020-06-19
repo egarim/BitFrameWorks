@@ -18,7 +18,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\Core\BIT.Data.Transfer.RestClientNet\BIT.Data.Transfer.RestClientNet.csproj" />
 		<ProjectReference Include="..\..\Demos\XpoDemoOrm\XpoDemoOrm.csproj" />
-		<ProjectReference Include="..\..\XpoProviders\BIT.Xpo.Providers.Network.Client.RestClientNet\BIT.Xpo.Providers.Network.Client.RestClientNet.csproj" />
 		<ProjectReference Include="..\TestServer\TestServer.csproj" />
 	</ItemGroup>
 </Project>

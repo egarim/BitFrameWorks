@@ -2,7 +2,11 @@ using BIT.Data.Xpo;
 using BIT.Xpo.Providers.WebApi.Client;
 using DevExpress.Data.Filtering;
 using DevExpress.Xpo;
+using Newtonsoft.Json;
 using NUnit.Framework;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 using Test.Shared;
 using XpoDemoOrm;
 
@@ -17,14 +21,31 @@ namespace BIT.Xpo.Providers.WebApi.Test
         }
 
         [Test]
-        public void Test1()
+        public async Task Test1()
         {
             XPOWebApi.Register();
+            XPOWebApiHttp.Register();
 
-            var Cnx = XPOWebApi.GetConnectionString("", "", "001","");
+            //var Cnx = XPOWebApi.GetConnectionString(BaseServerTest.LocalBaseUriString, "/XpoWebApiTest", "", "002");
+            var Cnx = XPOWebApiHttp.GetConnectionString(BaseServerTest.LocalBaseUriString, "/XpoWebApiTest", "", "002");
 
+
+            //const string RequestUri = BaseServerTest.LocalBaseUriString + "/XpoWebApiTest";
+            //var resu=  await TEstClient.GetAsync(RequestUri);
+
+
+
+            //var json = JsonConvert.SerializeObject("Hello");
+            //var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            ////var url = "https://httpbin.org/post";
+            ////using var client = new HttpClient();
+
+            //var response = await TEstClient.PostAsync(RequestUri+ "/SelectData", data);
+
+            HttpClient InternalClient = this._testServerHttpClientFactory.CreateClient("Test");
             XpoInitializer xpoInitializer = new XpoInitializer(Cnx, typeof(Customer), typeof(Invoice));
-            xpoInitializer.InitXpo(XpoDefault.GetConnectionProvider(Cnx, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema));
+            xpoInitializer.InitXpo(new XPOWebApiHttp(BaseServerTest.LocalBaseUriString, "/XpoWebApiTest", DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema,"","002", InternalClient));
 
 
             var UoW = xpoInitializer.CreateUnitOfWork();

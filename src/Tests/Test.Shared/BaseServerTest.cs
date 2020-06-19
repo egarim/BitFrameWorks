@@ -24,7 +24,9 @@ namespace Test.Shared
         public virtual void Setup()
         {
             _testServerHttpClientFactory = GetTestClientFactory();
-         
+           
+
+
         }
         private static Microsoft.AspNetCore.TestHost.TestServer _testServer;
         public static TestClientFactory GetTestClientFactory()

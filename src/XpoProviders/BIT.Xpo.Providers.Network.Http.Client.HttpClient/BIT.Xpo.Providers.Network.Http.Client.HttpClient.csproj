@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>$(NetStandardVersion)</TargetFramework>
 		<Configurations>Debug;Release</Configurations>
@@ -15,19 +15,20 @@
 	<!--Nuget Generation Section Start-->
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<AssemblyName>BIT.Xpo.Providers.WebApi.Server.v$(NugetVersion)</AssemblyName>
+		<AssemblyName>BIT.Xpo.Providers.Network.Client.RestClientNet.v$(NugetVersion)</AssemblyName>
 		<Version>$(NugetVersion)</Version>
-		<PackageId>BIT.Xpo.Providers.WebApi.Server</PackageId>
+		<PackageId>BIT.Xpo.Providers.Network.Client.RestClientNet</PackageId>
 	</PropertyGroup>
 	<!--Nuget Generation Section End-->
 	<!--Nuget Reference Section Start-->
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<PackageReference Include="RestClient.Net" Version="$(RestClientNetVersion)" />
 		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Core\BIT.AspNetCore\BIT.AspNetCore.csproj" />
-	  <ProjectReference Include="..\..\Xpo\BIT.Data.Xpo\BIT.Data.Xpo.csproj" />
+		<ProjectReference Include="..\..\Core\BIT.Data.Transfer.RestClientNet\BIT.Data.Transfer.RestClientNet.csproj" />
+		<ProjectReference Include="..\..\Xpo\BIT.Data.Xpo\BIT.Data.Xpo.csproj" />
 	</ItemGroup>
 	<!--NugetProject ReferencesSection End-->
 	<!--Extra Start-->

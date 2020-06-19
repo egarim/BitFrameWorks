@@ -35,24 +35,6 @@ namespace BIT.AspNetCore.Controllers
             }
 
         }
-        //protected virtual IDataParameters DeserializeFromStream(Stream stream)
-        //{
-        //    try
-        //    {
-        //        var serializer = new JsonSerializer();
-
-        //        using (var sr = new StreamReader(stream))
-        //        using (var jsonTextReader = new JsonTextReader(sr))
-        //        {
-        //            return serializer.Deserialize<DataParameters>(jsonTextReader);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        var message = ex.Message;
-        //        throw;
-        //    }
-          
-        //}
+      
     }
 }

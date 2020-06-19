@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\XpoProviders\BIT.Xpo.Providers.Network.HttpApiServer\BIT.Xpo.Providers.Network.HttpApiServer.csproj" />
+    <ProjectReference Include="..\XpoProviders\BIT.Xpo.Providers.Network.HttpApiServer\BIT.Xpo.Providers.Network.Server.Http.csproj" />
   </ItemGroup>
 
 

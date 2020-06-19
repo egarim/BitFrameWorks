@@ -1,5 +1,4 @@
-﻿using BIT.Data.Xpo;
-using BIT.Xpo.Providers.Network.Client.RestClientNet;
+﻿
 using DevExpress.Xpo;
 using XpoDemoOrm;
 using System;

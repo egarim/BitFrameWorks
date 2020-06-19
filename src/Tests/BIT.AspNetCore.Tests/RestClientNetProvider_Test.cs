@@ -2,7 +2,7 @@ using BIT.Data.DataTransfer;
 using BIT.Data.Services;
 using BIT.Data.Transfer.RestClientNet;
 using BIT.Data.Xpo;
-using BIT.Xpo.Providers.Network.Client.RestClientNet;
+
 using DevExpress.Data.Filtering;
 using NUnit.Framework;
 using RestClient.Net;

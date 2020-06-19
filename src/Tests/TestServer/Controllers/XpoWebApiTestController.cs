@@ -17,5 +17,35 @@ namespace TestServer.Controllers
         {
 
         }
+        public string Get()
+        {
+            return "Hello world";
+        }
+      
+
+        public override Task<IActionResult> Do()
+        {
+            return base.Do();
+        }
+
+        public override byte[] GetAutoCreateOptions()
+        {
+            return base.GetAutoCreateOptions();
+        }
+
+        public override Task<IActionResult> ModifyData()
+        {
+            return base.ModifyData();
+        }
+
+        public override Task<IActionResult> SelectData()
+        {
+            return base.SelectData();
+        }
+
+        public override Task<IActionResult> UpdateSchema()
+        {
+            return base.UpdateSchema();
+        }
     }
 }

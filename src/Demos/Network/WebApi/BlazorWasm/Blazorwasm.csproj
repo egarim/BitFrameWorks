@@ -13,7 +13,6 @@
 	<PackageReference Include="Bogus" Version="29.0.2" />
   </ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\..\XpoProviders\BIT.Xpo.Providers.Network.Client.RestClientNet\BIT.Xpo.Providers.Network.Client.RestClientNet.csproj" />
 		<ProjectReference Include="..\..\..\..\Xpo\BIT.Data.Xpo\BIT.Data.Xpo.csproj" />
 		<ProjectReference Include="..\..\..\XpoDemoOrm\XpoDemoOrm.csproj" />
 	</ItemGroup>

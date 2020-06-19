@@ -18,7 +18,6 @@
 	<ItemGroup>
 		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
 		<ProjectReference Include="..\..\Demos\XpoDemoOrm\XpoDemoOrm.csproj" />
-		<ProjectReference Include="..\..\XpoProviders\BIT.Xpo.Providers.WebApi.Client\BIT.Xpo.Providers.WebApi.Client.RestSharp.csproj" />
 		<ProjectReference Include="..\..\Xpo\BIT.Data.Xpo\BIT.Data.Xpo.csproj" />
 		<ProjectReference Include="..\Test.Shared\Test.Shared.csproj" />
 	</ItemGroup>
