@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(NetStandardVersion)</TargetFramework>
+		<Configurations>Debug;Release</Configurations>
+		<PackageTags>DevExpress XPO XAF Xamarin AspNetCore</PackageTags>
+		<Description>Xpo common functions for Asp Net Core</Description>
+		<DebugType>Full</DebugType>
+		<DebugSymbols>True</DebugSymbols>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="LICENSE.txt" />
+	</ItemGroup>
+	<!--Nuget Generation Section Start-->
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AssemblyName>BIT.SingularOrm.Xpo.v$(NugetVersion)</AssemblyName>
+		<Version>$(NugetVersion)</Version>
+		<PackageId>BIT.SingularOrm.Xpo</PackageId>
+	</PropertyGroup>
+	<!--Nuget Generation Section End-->
+	<!--Nuget Reference Section Start-->
+	<ItemGroup>
+		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Core\BIT.Data\BIT.Data.csproj" />
+		<ProjectReference Include="..\BIT.SingularOrm\BIT.SingularOrm.csproj" />
+	</ItemGroup>
+	<!--NugetProject ReferencesSection End-->
+	<!--Extra Start-->
+	<!--Extra End-->
+	<Target Name="CopyPackage" AfterTargets="Pack">
+		<Copy SourceFiles="bin\$(ConfigurationName)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(USERPROFILE)\Documents\MyNugets\" />
+	</Target>
+</Project>
