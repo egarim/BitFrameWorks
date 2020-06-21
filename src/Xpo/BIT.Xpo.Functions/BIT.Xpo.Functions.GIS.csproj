@@ -25,7 +25,7 @@
 		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\BIT.Data.Xpo\BIT.Data.Xpo.csproj" />
+	  <ProjectReference Include="..\BIT.Data.Xpo\BIT.Xpo.csproj" />
 	</ItemGroup>
 	<!--NugetProject ReferencesSection End-->
 	<!--Extra Start-->

@@ -18,3 +18,9 @@ https://docs.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-3.1&viewFal
 
 AspNetCore Model Binding
 https://docs.microsoft.com/en-us/aspnet/core/mvc/models/model-binding?view=aspnetcore-3.1
+
+Entity Framework Archictecture 
+https://www.entityframeworktutorial.net/EntityFramework-Architecture.aspx
+
+Entity Framework Entity State
+https://www.entityframeworktutorial.net/basics/entity-states.aspx

@@ -1,4 +1,4 @@
-﻿using BIT.Data.Xpo.CoreFunctions;
+﻿using BIT.Xpo.CoreFunctions;
 using DevExpress.Data.Filtering;
 using DevExpress.Xpo;
 using DevExpress.Xpo.DB;

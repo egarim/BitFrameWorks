@@ -3,7 +3,7 @@ using DevExpress.Xpo;
 using DevExpress.Xpo.DB;
 using System;
 
-namespace BIT.Data.Xpo.Extensions
+namespace BIT.Xpo.Extensions
 {
     public static class XpoDataStoreResolverExtensions
     {

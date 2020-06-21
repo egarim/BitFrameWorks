@@ -4,7 +4,6 @@ using NUnit.Framework;
 using System;
 using System.Linq;
 using System.IO;
-using BIT.Data.Xpo;
 
 namespace BIT.Xpo.Tests
 {

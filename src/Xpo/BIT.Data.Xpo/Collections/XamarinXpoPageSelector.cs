@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace BIT.Data.Xpo.Collections
+namespace BIT.Xpo.Collections
 {
     public class XamarinXpoPageSelector<T> : INotifyPropertyChanged
     {

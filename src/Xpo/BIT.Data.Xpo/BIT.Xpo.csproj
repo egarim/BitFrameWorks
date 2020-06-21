@@ -15,9 +15,9 @@
 	<!--Nuget Generation Section Start-->
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<AssemblyName>BIT.Data.Xpo.v$(NugetVersion)</AssemblyName>
+		<AssemblyName>BIT.Xpo.v$(NugetVersion)</AssemblyName>
 		<Version>$(NugetVersion)</Version>
-		<PackageId>BIT.Data.Xpo</PackageId>
+		<PackageId>BIT.Xpo</PackageId>
 	</PropertyGroup>
 	<!--Nuget Generation Section End-->
 	<!--Nuget Reference Section Start-->

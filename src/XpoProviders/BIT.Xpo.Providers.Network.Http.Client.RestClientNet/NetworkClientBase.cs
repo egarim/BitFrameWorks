@@ -1,7 +1,6 @@
 ﻿using BIT.Data.DataTransfer;
 using BIT.Data.Services;
-using BIT.Data.Xpo.DataStores;
-using BIT.Data.Xpo.Models;
+using BIT.Xpo.Models;
 using DevExpress.Xpo.DB;
 using DevExpress.Xpo.DB.Helpers;
 using DevExpress.Xpo.Helpers;

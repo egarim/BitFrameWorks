@@ -1,7 +1,6 @@
 ﻿using BIT.Data.DataTransfer;
 using BIT.Data.Services;
-using BIT.Data.Xpo;
-using BIT.Data.Xpo.Functions;
+using BIT.Xpo.Functions;
 using DevExpress.Xpo.DB;
 using Microsoft.Extensions.DependencyInjection;
 using System;

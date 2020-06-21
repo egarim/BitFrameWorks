@@ -4,7 +4,7 @@ using DevExpress.Xpo.Metadata;
 using System;
 using System.Linq;
 
-namespace BIT.Data.Xpo
+namespace BIT.Xpo
 {
     public class XpoInitializer
     {

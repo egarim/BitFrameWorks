@@ -1,4 +1,6 @@
 using BIT.Data.Services;
+using BIT.Xpo;
+using BIT.Xpo.Functions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using DevExpress.Xpo.DB;
-using BIT.Data.Xpo;
 using BIT.Data.DataTransfer;
-using BIT.Data.Xpo.Functions;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using BIT.Xpo.Providers.WebApi.Server;
 

@@ -1,4 +1,4 @@
-﻿using BIT.Data.Xpo.Converters;
+﻿using BIT.Xpo.Converters;
 using DevExpress.Utils;
 using DevExpress.Xpo;
 using DevExpress.Xpo.Metadata;
@@ -8,7 +8,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Text;
 
-namespace BIT.Data.Xpo.Types
+namespace BIT.Xpo.Types
 {
     public class DbFileStorage : DevExpress.Xpo.XPObject
     {

@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Xpo\BIT.Data.Xpo\BIT.Data.Xpo.csproj" />
+    <ProjectReference Include="..\..\Xpo\BIT.Data.Xpo\BIT.Xpo.csproj" />
   </ItemGroup>
 
 </Project>

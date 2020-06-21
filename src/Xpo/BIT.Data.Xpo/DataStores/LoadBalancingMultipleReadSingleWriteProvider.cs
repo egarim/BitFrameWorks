@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BIT.Data.Xpo.DataStores
+namespace BIT.Xpo.DataStores
 {
 
     /// <summary>

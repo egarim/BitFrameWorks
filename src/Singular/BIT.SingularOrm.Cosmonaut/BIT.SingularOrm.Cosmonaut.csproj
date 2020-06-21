@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Core\BIT.Data\BIT.Data.csproj" />
+		<ProjectReference Include="..\BIT.SingularOrm\BIT.SingularOrm.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Cosmonaut" Version="2.11.3" />
+		<PackageReference Include="Cosmonaut.Extensions.Microsoft.DependencyInjection" Version="2.3.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+		<PackageReference Include="NUlid" Version="1.4.0" />
+		<PackageReference Include="System.Net.NameResolution" Version="4.3.0" />
+	</ItemGroup>
+</Project>

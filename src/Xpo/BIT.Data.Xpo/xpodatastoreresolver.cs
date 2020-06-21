@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace BIT.Data.Xpo
+namespace BIT.Xpo
 {
     public class XpoDataStoreResolver : ConfigurationResolverBase<IDataStore>, IConfigResolver<IDataStore>
     {

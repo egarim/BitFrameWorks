@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace BIT.Data.Xpo.DataStores
+namespace BIT.Xpo.DataStores
 {
     /// <summary>
     /// This provider will write on any of the free data store and will read from any of the free datastore

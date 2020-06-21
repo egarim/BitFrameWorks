@@ -1,4 +1,3 @@
-using BIT.Data.Xpo;
 
 using DevExpress.Data.Filtering;
 using DevExpress.Xpo;

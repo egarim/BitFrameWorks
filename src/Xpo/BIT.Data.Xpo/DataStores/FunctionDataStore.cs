@@ -1,13 +1,13 @@
 ﻿using BIT.Data.DataTransfer;
 using BIT.Data.Services;
-using BIT.Data.Xpo.Models;
+using BIT.Xpo.Models;
 using DevExpress.Xpo.DB;
 using DevExpress.Xpo.Helpers;
 using System;
 using System.Threading.Tasks;
 
 
-namespace BIT.Data.Xpo.DataStores
+namespace BIT.Xpo.DataStores
 {
     public abstract class FunctionDataStore : IDataStore, ICommandChannel
     {

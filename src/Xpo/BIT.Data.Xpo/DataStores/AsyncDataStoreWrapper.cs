@@ -9,7 +9,7 @@ using DevExpress.Xpo.Helpers;
 using DevExpress.Data.Helpers;
 using System.Threading.Tasks;
 
-namespace BIT.Data.Xpo.DataStores
+namespace BIT.Xpo.DataStores
 {
     public class AsyncDataStoreWrapper : IDataStore, IDataStoreAsync, IDataStoreSchemaExplorer, ICommandChannel, ICommandChannelAsync
     {

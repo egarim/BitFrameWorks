@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BIT.Data.Xpo.Models
+namespace BIT.Xpo.Models
 {
     public class CommandChannelDoParams
     {

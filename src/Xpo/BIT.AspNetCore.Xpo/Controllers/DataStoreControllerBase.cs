@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using BIT.AspNetCore.Extensions;
 using BIT.Data.Services;
-using BIT.Data.Xpo.Models;
+using BIT.Xpo.Models;
 
 namespace BIT.Xpo.AspNetCore.Controllers
 {

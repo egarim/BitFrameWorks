@@ -28,7 +28,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Core\BIT.Data.Transfer.RestClientNet\BIT.Data.Transfer.RestClientNet.csproj" />
-		<ProjectReference Include="..\..\Xpo\BIT.Data.Xpo\BIT.Data.Xpo.csproj" />
+		<ProjectReference Include="..\..\Xpo\BIT.Data.Xpo\BIT.Xpo.csproj" />
 	</ItemGroup>
 	<!--NugetProject ReferencesSection End-->
 	<!--Extra Start-->

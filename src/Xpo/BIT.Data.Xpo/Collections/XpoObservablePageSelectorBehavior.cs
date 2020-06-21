@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace BIT.Data.Xpo.Collections
+namespace BIT.Xpo.Collections
 {
     public enum XpoObservablePageSelectorBehavior
     {

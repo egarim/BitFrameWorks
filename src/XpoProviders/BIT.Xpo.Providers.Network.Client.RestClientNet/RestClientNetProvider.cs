@@ -1,7 +1,7 @@
 ﻿using BIT.Data.DataTransfer;
 using BIT.Data.Services;
 using BIT.Data.Transfer.RestClientNet;
-using BIT.Data.Xpo.DataStores;
+using BIT.Xpo.DataStores;
 using DevExpress.Data.Helpers;
 using DevExpress.Xpo.DB;
 using DevExpress.Xpo.DB.Helpers;

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BIT.Data.Xpo.CoreFunctions
+namespace BIT.Xpo.CoreFunctions
 {
     public interface IRegistableFunction
     {

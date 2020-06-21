@@ -1,11 +1,11 @@
-﻿using BIT.Data.Xpo.CoreFunctions;
+﻿using BIT.Xpo.CoreFunctions;
 using DevExpress.Xpo;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace BIT.Data.Xpo
+namespace BIT.Xpo
 {
     public static class BitFrameworksDefault
     {

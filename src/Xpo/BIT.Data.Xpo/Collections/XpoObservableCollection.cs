@@ -10,7 +10,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 
-namespace BIT.Data.Xpo.Collections
+namespace BIT.Xpo.Collections
 {
     /// <summary>
     /// A descendant  of a  XPCollection<T> that implements INotifyCollectionChanged

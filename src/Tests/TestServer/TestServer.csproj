@@ -8,7 +8,7 @@
     <ProjectReference Include="..\..\Core\BIT.AspNetCore\BIT.AspNetCore.csproj" />
     <ProjectReference Include="..\..\Core\BIT.Data\BIT.Data.csproj" />
     <ProjectReference Include="..\..\XpoProviders\BIT.Xpo.Providers.Network.HttpApiServer\BIT.Xpo.Providers.Network.Server.Http.csproj" />
-    <ProjectReference Include="..\..\Xpo\BIT.Data.Xpo\BIT.Data.Xpo.csproj" />
+    <ProjectReference Include="..\..\Xpo\BIT.Data.Xpo\BIT.Xpo.csproj" />
   </ItemGroup>
 
 
