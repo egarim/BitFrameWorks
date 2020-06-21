@@ -10,15 +10,19 @@ namespace BIT.Xpo
     {
 
         readonly Type[] entityTypes;
-        readonly string connectionString;
-        IDataLayer Dal;
+
+        private IDataLayer UpdateDal;
         public XpoInitializer(string connectionString, params Type[] entityTypes)
         {
             this.entityTypes = entityTypes;
-            this.connectionString = connectionString;
+            UpdateDal = XpoDefault.GetDataLayer(connectionString,this.PrepareDictionary(),AutoCreateOption.DatabaseAndSchema);
         }
-
-        public void InitXpo()
+        public XpoInitializer(IDataStore DataStore, params Type[] entityTypes)
+        {
+            this.entityTypes = entityTypes;
+            UpdateDal = new SimpleDataLayer(this.PrepareDictionary(), DataStore);
+        }
+        public void InitSchema()
         {
             var dictionary = PrepareDictionary();
 
@@ -26,41 +30,17 @@ namespace BIT.Xpo
 
             if (XpoDefault.DataLayer == null)
             {
-                using (var updateDataLayer = XpoDefault.GetDataLayer(connectionString, dictionary, AutoCreateOption.DatabaseAndSchema))
-                {
-                    updateDataLayer.UpdateSchema(false, dictionary.CollectClassInfos(entityTypes));
-                }
+                this.UpdateDal.UpdateSchema(false, dictionary.CollectClassInfos(entityTypes));
             }
 
-            var dataStore = XpoDefault.GetConnectionProvider(connectionString, AutoCreateOption.SchemaAlreadyExists);
-            XpoDefault.DataLayer = new ThreadSafeDataLayer(dictionary, dataStore);
-            XpoDefault.Session = null;
+          
 
 
         }
-        public void InitXpo(IDataStore DataStore)
-        {
-            var dictionary = PrepareDictionary();
-
-
-
-            if (Dal == null)
-            {
-                using (var updateDataLayer = new SimpleDataLayer(dictionary, DataStore))
-                {
-                    updateDataLayer.UpdateSchema(false, dictionary.CollectClassInfos(entityTypes));
-                }
-            }
-
-            var dataStore = DataStore;
-            Dal = new SimpleDataLayer(dictionary, dataStore);
-            XpoDefault.Session = null;
-
-
-        }
+   
         public UnitOfWork CreateUnitOfWork()
         {
-            return new UnitOfWork(Dal);
+            return new UnitOfWork(this.UpdateDal);
         }
         XPDictionary PrepareDictionary()
         {

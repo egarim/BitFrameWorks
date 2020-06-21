@@ -52,9 +52,9 @@ namespace BIT.AspNetCore.Tests
 
 
 
-            XpoInitializer xpoInitializer = new XpoInitializer(Cnx, typeof(Customer), typeof(Invoice));
+            XpoInitializer xpoInitializer = new XpoInitializer(restClientNetProvider, typeof(Customer), typeof(Invoice));
 
-            xpoInitializer.InitXpo(restClientNetProvider);
+            xpoInitializer.InitChema;
 
 
             var UoW = xpoInitializer.CreateUnitOfWork();
