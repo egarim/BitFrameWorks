@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Demos\XpoDemoOrm\XpoDemoOrm.csproj" />
     <ProjectReference Include="..\..\Xpo\BIT.Data.Xpo\BIT.Xpo.csproj" />
   </ItemGroup>
 

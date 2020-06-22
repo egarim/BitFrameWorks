@@ -54,7 +54,7 @@ namespace BIT.AspNetCore.Tests
 
             XpoInitializer xpoInitializer = new XpoInitializer(restClientNetProvider, typeof(Customer), typeof(Invoice));
 
-            xpoInitializer.InitChema;
+            xpoInitializer.InitSchema();
 
 
             var UoW = xpoInitializer.CreateUnitOfWork();
@@ -95,7 +95,7 @@ namespace BIT.AspNetCore.Tests
 
             XpoInitializer xpoInitializer = new XpoInitializer(Cnx, typeof(Customer), typeof(Invoice));
 
-            xpoInitializer.InitXpo(restClientNetProvider);
+            xpoInitializer.InitSchema();
 
 
             var UoW = xpoInitializer.CreateUnitOfWork();

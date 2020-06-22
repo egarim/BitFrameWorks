@@ -9,22 +9,25 @@ namespace BIT.Xpo
     public class XpoInitializer
     {
 
-        readonly Type[] entityTypes;
+       
 
         private IDataLayer UpdateDal;
+        XPDictionary dictionary;
+        Type[] entityTypes;
         public XpoInitializer(string connectionString, params Type[] entityTypes)
+           : this(XpoDefault.GetConnectionProvider(connectionString, AutoCreateOption.DatabaseAndSchema), entityTypes)
         {
-            this.entityTypes = entityTypes;
-            UpdateDal = XpoDefault.GetDataLayer(connectionString,this.PrepareDictionary(),AutoCreateOption.DatabaseAndSchema);
+            
         }
         public XpoInitializer(IDataStore DataStore, params Type[] entityTypes)
         {
             this.entityTypes = entityTypes;
-            UpdateDal = new SimpleDataLayer(this.PrepareDictionary(), DataStore);
+            dictionary = this.PrepareDictionary(entityTypes);
+            UpdateDal = new SimpleDataLayer(this.PrepareDictionary(entityTypes), DataStore);
         }
         public void InitSchema()
         {
-            var dictionary = PrepareDictionary();
+        
 
 
 
@@ -42,7 +45,7 @@ namespace BIT.Xpo
         {
             return new UnitOfWork(this.UpdateDal);
         }
-        XPDictionary PrepareDictionary()
+        XPDictionary PrepareDictionary(Type[] entityTypes)
         {
             var dict = new ReflectionDictionary();
             dict.GetDataStoreSchema(entityTypes);
