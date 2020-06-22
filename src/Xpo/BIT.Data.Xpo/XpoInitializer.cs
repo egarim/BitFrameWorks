@@ -23,7 +23,7 @@ namespace BIT.Xpo
         {
             this.entityTypes = entityTypes;
             dictionary = this.PrepareDictionary(entityTypes);
-            UpdateDal = new SimpleDataLayer(this.PrepareDictionary(entityTypes), DataStore);
+            UpdateDal = new SimpleDataLayer(dictionary, DataStore);
         }
         public void InitSchema()
         {
