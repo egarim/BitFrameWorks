@@ -13,27 +13,27 @@ namespace BIT.SingularOrm.Xpo
     {
         private const string Message = "Please provide an array of persistent types or an array of assemblies";
 
-        //public XpoDataSpaceProvider(IBrevitasAppConfiguration AppConfiguration, string ConnectionString,
-        //    params Assembly[] Assemblies) : base(AppConfiguration)
-        //{
-        //    if (string.IsNullOrEmpty(ConnectionString) || string.IsNullOrWhiteSpace(ConnectionString))
-        //        throw new ArgumentNullException(nameof(ConnectionString));
+        public XpoDataSpaceProvider( string ConnectionString,
+            params Assembly[] Assemblies) 
+        {
+            if (string.IsNullOrEmpty(ConnectionString) || string.IsNullOrWhiteSpace(ConnectionString))
+                throw new ArgumentNullException(nameof(ConnectionString));
 
-        //    this.ConnectionString = ConnectionString;
-        //    this.Assemblies = Assemblies;
-        //    PersistentTypes = null;
-        //}
+            this.ConnectionString = ConnectionString;
+            this.Assemblies = Assemblies;
+            PersistentTypes = null;
+        }
 
-        //public XpoDataSpaceProvider(IBrevitasAppConfiguration AppConfiguration, string ConnectionString,
-        //    params Type[] PersistentTypes) : base(AppConfiguration)
-        //{
-        //    if (string.IsNullOrEmpty(ConnectionString) || string.IsNullOrWhiteSpace(ConnectionString))
-        //        throw new ArgumentNullException(nameof(ConnectionString));
+        public XpoDataSpaceProvider(string ConnectionString,
+            params Type[] PersistentTypes) 
+        {
+            if (string.IsNullOrEmpty(ConnectionString) || string.IsNullOrWhiteSpace(ConnectionString))
+                throw new ArgumentNullException(nameof(ConnectionString));
 
-        //    this.ConnectionString = ConnectionString;
-        //    this.PersistentTypes = PersistentTypes;
-        //    Assemblies = null;
-        //}
+            this.ConnectionString = ConnectionString;
+            this.PersistentTypes = PersistentTypes;
+            Assemblies = null;
+        }
 
         public XPDictionary Dictionary { get; protected set; }
         public Type[] PersistentTypes { get; protected set; }

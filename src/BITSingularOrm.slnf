@@ -1,0 +1,13 @@
+{
+  "solution": {
+    "path": "BitFrameworks.sln",
+    "projects": [
+      "Demos\\XpoDemoOrm\\XpoDemoOrm.csproj",
+      "BIT.SingularOrm.EntityFramework\\BIT.SingularOrm.EntityFramework.csproj",
+      "Singular\\BIT.SingularOrm.Cosmonaut\\BIT.SingularOrm.Cosmonaut.csproj",
+      "Singular\\BIT.SingularOrm.Xpo\\BIT.SingularOrm.Xpo.csproj",
+      "Singular\\BIT.SingularOrm\\BIT.SingularOrm.csproj",
+      "Tests\\BIT.SingularOrm.Tests\\BIT.SingularOrm.Tests.csproj"
+    ]
+  }
+}

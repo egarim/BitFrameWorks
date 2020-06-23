@@ -4,13 +4,7 @@ namespace BIT.SingularOrm
 {
     public class DataSpaceProvider : IDataSpaceProvider
     {
-        //public DataSpaceProvider(IBrevitasAppConfiguration appConfiguration)
-        //{
-        //    AppConfiguration = appConfiguration;
-        //}
-
-        //public IBrevitasAppConfiguration AppConfiguration { get; protected set; }
-
+       
         public virtual IDataSpace CreateDataSpace()
         {
             throw new NotImplementedException();

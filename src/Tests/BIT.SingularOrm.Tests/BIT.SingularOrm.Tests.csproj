@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\BIT.SingularOrm.EntityFramework\BIT.SingularOrm.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\Demos\XpoDemoOrm\XpoDemoOrm.csproj" />
     <ProjectReference Include="..\..\Singular\BIT.SingularOrm.Cosmonaut\BIT.SingularOrm.Cosmonaut.csproj" />
     <ProjectReference Include="..\..\Singular\BIT.SingularOrm.Xpo\BIT.SingularOrm.Xpo.csproj" />
     <ProjectReference Include="..\..\Singular\BIT.SingularOrm\BIT.SingularOrm.csproj" />
