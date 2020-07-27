@@ -36,10 +36,10 @@ class Build : NukeBuild
     readonly string NugetVersion = IsLocalBuild ? "20.1.3.1": "20.1.3.1";
 
     [Parameter("Configuration to build XpoVersion - Default is 'Debug' (local) or 'Release' (server)")]
-    readonly string XpoVersion = IsLocalBuild ? "19.2.8" : "19.2.8";
+    readonly string XpoVersion = IsLocalBuild ? "20.1.3" : "20.1.3";
 
     [Parameter("Configuration to build XafVersion - Default is 'Debug' (local) or 'Release' (server)")]
-    readonly string XafVersion = IsLocalBuild ? "19.2.8" : "19.2.8";
+    readonly string XafVersion = IsLocalBuild ? "20.1.3" : "20.1.3";
 
     [Solution] readonly Solution Solution;
     [GitRepository] readonly GitRepository GitRepository;

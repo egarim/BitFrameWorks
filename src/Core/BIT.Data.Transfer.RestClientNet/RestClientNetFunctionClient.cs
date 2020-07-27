@@ -45,7 +45,11 @@ namespace BIT.Data.Transfer.RestClientNet
             Headers = new RequestHeadersCollection();
             foreach (KeyValuePair<string, string> Current in headers)
             {
-                Headers.Add(Current.Key, Current.Value);
+                if (!Headers.Contains(Current.Key))
+                {
+                    Headers.Add(Current.Key, Current.Value);
+                }
+                //Headers.Add(Current.Key, Current.Value);
             }
         }
 
