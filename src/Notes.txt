@@ -1,3 +1,6 @@
+How to build
+ .\build.ps1 --configuration release --nugetversion "20.1.4" --xpoversion "20.1.4"  --xafversion "20.1.4"
+
 Webapi binary data images
 https://www.dotnetcurry.com/aspnet/1120/aspnet-webapi-binary-contents-images
 

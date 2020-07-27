@@ -1,7 +1,6 @@
 ﻿@page "/fetchdata"
 @inject HttpClient Http
-@using BIT.Data.Xpo
-@using BIT.Xpo.Providers.Network.Client.RestClientNet
+
 @using DevExpress.Xpo
 @using XpoDemoOrm
 <h1>Weather forecast</h1>
@@ -51,14 +50,14 @@ else
     protected override async Task OnInitializedAsync()
     {
 
-        BIT.Xpo.Providers.Network.Client.RestClientNet.RestClientNetProvider.Register();
-        Customers = new List<Customer>();
+        //RestClientNetProvider.Register();
+        //Customers = new List<Customer>();
 
-        var ConnectionString = RestClientNetProvider.GetConnectionString("https://localhost:44389", "/WebApiHttpDataTransferImp", string.Empty, "001");
+        //var ConnectionString = RestClientNetProvider.GetConnectionString("https://localhost:44389", "/WebApiHttpDataTransferImp", string.Empty, "001");
 
-        XpoInitializer xpoInitializer = new XpoInitializer(ConnectionString, typeof(Invoice), typeof(Customer));
-        xpoInitializer.InitXpo(XpoDefault.GetConnectionProvider(ConnectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema));
-        this.Customers = new XPCollection<Customer>(xpoInitializer.CreateUnitOfWork());
+        //XpoInitializer xpoInitializer = new XpoInitializer(ConnectionString, typeof(Invoice), typeof(Customer));
+        //xpoInitializer.InitXpo(XpoDefault.GetConnectionProvider(ConnectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema));
+        //this.Customers = new XPCollection<Customer>(xpoInitializer.CreateUnitOfWork());
         //using (var UoW = xpoInitializer.CreateUnitOfWork())
         //{
         //    var faker = new Bogus.Faker<Customer>().CustomInstantiator(c => new Customer(UoW))

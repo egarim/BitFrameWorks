@@ -1,8 +1,8 @@
 ﻿@page "/fetchdata"
 
 @using RestClientNetBlazorDemo.Data
-@using BIT.Data.Xpo
-@using BIT.Xpo.Providers.Network.Client.RestClientNet
+@*@using BIT.Xpo;
+@using BIT.Xpo.Providers.Network.Client.RestClientNet*@
 @using DevExpress.Xpo
 @using XpoDemoOrm
 
@@ -54,23 +54,23 @@ else
     protected override async Task OnInitializedAsync()
     {
 
-        BIT.Xpo.Providers.Network.Client.RestClientNet.RestClientNetProvider.Register();
-        Customers = new List<Customer>();
+        //BIT.Xpo.Providers.Network.Client.RestClientNet.RestClientNetProvider.Register();
+        //Customers = new List<Customer>();
 
-        var ConnectionString = RestClientNetProvider.GetConnectionString("https://localhost:44389", "/WebApiHttpDataTransferImp", string.Empty, "001");
+        //var ConnectionString = RestClientNetProvider.GetConnectionString("https://localhost:44389", "/WebApiHttpDataTransferImp", string.Empty, "001");
 
-        XpoInitializer xpoInitializer = new XpoInitializer(ConnectionString, typeof(Invoice), typeof(Customer));
-        xpoInitializer.InitXpo(XpoDefault.GetConnectionProvider(ConnectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema));
-        using (var UoW = xpoInitializer.CreateUnitOfWork())
-        {
-            var faker = new Bogus.Faker<Customer>().CustomInstantiator(c => new Customer(UoW))
-                        .RuleFor(p => p.Name, f => f.Name.FullName())
-                        .RuleFor(p => p.Active, p => p.Random.Bool());
+        //XpoInitializer xpoInitializer = new XpoInitializer(ConnectionString, typeof(Invoice), typeof(Customer));
+        //xpoInitializer.InitXpo(XpoDefault.GetConnectionProvider(ConnectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema));
+        //using (var UoW = xpoInitializer.CreateUnitOfWork())
+        //{
+        //    var faker = new Bogus.Faker<Customer>().CustomInstantiator(c => new Customer(UoW))
+        //                .RuleFor(p => p.Name, f => f.Name.FullName())
+        //                .RuleFor(p => p.Active, p => p.Random.Bool());
 
-            Customers = faker.Generate(100);
-            if (UoW.InTransaction)
-                UoW.CommitChanges();
-        }
+        //    Customers = faker.Generate(100);
+        //    if (UoW.InTransaction)
+        //        UoW.CommitChanges();
+        //}
 
 
 

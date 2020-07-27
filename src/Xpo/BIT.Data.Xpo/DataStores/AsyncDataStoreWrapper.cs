@@ -64,6 +64,27 @@ namespace BIT.Xpo.DataStores
             }
             return dataStoreAsync.ModifyDataAsync(cancellationToken, dmlStatements);
         }
+
+
+        public async Task<UpdateSchemaResult> UpdateSchemaAsync(CancellationToken cancellationToken, bool doNotCreateIfFirstTableNotExist, params DBTable[] tables)
+        {
+            //IDataStore provider = await AcquireUpdateSchemaProviderAsync(cancellationToken).ConfigureAwait(false);
+            //var providerAsync = provider as IDataStoreAsync;
+            //try
+            //{
+            //    if (providerAsync == null)
+            //    {
+            //        throw new InvalidOperationException(DbRes.GetString(DbRes.Async_ConnectionProviderDoesNotImplementIDataStoreAsync, (provider != null) ? provider.GetType().FullName : ""));
+            //    }
+            //    return await providerAsync.UpdateSchemaAsync(cancellationToken, doNotCreateIfFirstTableNotExist, tables).ConfigureAwait(false);
+            //}
+            //finally
+            //{
+            //    ReleaseUpdateSchemaProvider(provider);
+            //}
+            throw new NotImplementedException();
+        }
+
         #endregion
         #region IDataStoreSchemaExplorer Members
         public string[] GetStorageTablesList(bool includeViews)
