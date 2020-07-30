@@ -3,7 +3,7 @@
 
 BIT Frameworks is a set of open source frameworks to extend the capabilites of the .NET application framework [DevExpress XAF](https://www.devexpress.com/products/net/application_framework/)
 
-Ultra modules for XAF project is created José Manuel Ojeda Melgar, A.K.A [Joche Ojeda](https://www.jocheojeda.com).
+Ultra modules for XAF project is created JosÃ© Manuel Ojeda Melgar, A.K.A [Joche Ojeda](https://www.jocheojeda.com).
 
 All frameworks are released under [Microsoft Public License (Ms-PL)](https://opensource.org/licenses/MS-PL)
 
@@ -69,4 +69,19 @@ There are several ways in which you can contribute. Here are some:
 - Share this repository with everyone who uses XAF (people, teams, communities, companies or any other entity).
 - Invite others to share this project and continue to spread the word.
 - Of course you are more than welcome to submit other features and bugfixes as well.
+
+
+
+### Libraries
+---
+
+
+| Library        | Description   |
+| ------------- |:-------------:| 
+|[BIT.Data](https://github.com/egarim/BitFrameWorks/tree/master/scr/Core/BIT.Data)      | This project contains all the models and base implementations of data related functionality|
+
+
+
+
+
 
