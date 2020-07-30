@@ -83,7 +83,9 @@ There are several ways in which you can contribute. Here are some:
 |[Demos](https://github.com/egarim/BitFrameWorks/tree/master/src/Demos)      | Demos|
 |[HttpApiServerDemo](https://github.com/egarim/BitFrameWorks/tree/master/src/HttpApiServerDemo)      | HttpApiServerDemo|
 |[Singular](https://github.com/egarim/BitFrameWorks/tree/master/src/Singular)      | Singular|
-
+|[Tests](https://github.com/egarim/BitFrameWorks/tree/master/src/Tests)      | Tests|
+|[Xpo](https://github.com/egarim/BitFrameWorks/tree/master/src/Xpo)      | Xpo|
+|[XpoProviders](https://github.com/egarim/BitFrameWorks/tree/master/src/XpoProviders)      | XpoProviders|
 
 
 
