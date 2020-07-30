@@ -86,6 +86,9 @@ There are several ways in which you can contribute. Here are some:
 |[Tests](https://github.com/egarim/BitFrameWorks/tree/master/src/Tests)      | Tests|
 |[Xpo](https://github.com/egarim/BitFrameWorks/tree/master/src/Xpo)      | Xpo|
 |[XpoProviders](https://github.com/egarim/BitFrameWorks/tree/master/src/XpoProviders)      | XpoProviders|
+|[XpoWebApi.Legacy.NetCore.Console](https://github.com/egarim/BitFrameWorks/tree/master/src/XpoWebApi.Legacy.NetCore.Console)      | XpoWebApi Legacy NetCore Console|
+|[XpoWebApi.LegacyServer](https://github.com/egarim/BitFrameWorks/tree/master/src/XpoWebApi.LegacyServer)      | XpoWebApi LegacyServer|
+|[XpoWebApi.LegacyServer.Tests](https://github.com/egarim/BitFrameWorks/tree/master/src/XpoWebApiLegacy/XpoWebApi.LegacyServer.Tests)      | XpoWebApi LegacyServer Tests|
 |[Build](https://github.com/egarim/BitFrameWorks/tree/master/src/build)      | Build|
 |[Tools](https://github.com/egarim/BitFrameWorks/tree/master/src/tools)      | Tools|
 
