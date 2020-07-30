@@ -14,3 +14,6 @@ Coming Soon...
 | Library        | Description   |
 | ------------- |:-------------:| 
 |[BIT.SingularOrm.Cosmonaut](https://github.com/egarim/BitFrameWorks/tree/master/src/Singular/BIT.SingularOrm.Cosmonaut)      | BIT.SingularOrm.Cosmonaut|
+|[BIT.SingularOrm.EntityFramework](https://github.com/egarim/BitFrameWorks/tree/master/src/Singular/BIT.SingularOrm.EntityFramework)      | BIT SingularOrm EntityFramework|
+
+
