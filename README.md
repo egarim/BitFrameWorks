@@ -86,7 +86,8 @@ There are several ways in which you can contribute. Here are some:
 |[Tests](https://github.com/egarim/BitFrameWorks/tree/master/src/Tests)      | Tests|
 |[Xpo](https://github.com/egarim/BitFrameWorks/tree/master/src/Xpo)      | Xpo|
 |[XpoProviders](https://github.com/egarim/BitFrameWorks/tree/master/src/XpoProviders)      | XpoProviders|
-
+|[Build](https://github.com/egarim/BitFrameWorks/tree/master/src/build)      | Build|
+|[Tools](https://github.com/egarim/BitFrameWorks/tree/master/src/tools)      | Tools|
 
 
 
