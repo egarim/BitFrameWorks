@@ -78,7 +78,8 @@ There are several ways in which you can contribute. Here are some:
 
 | Library        | Description   |
 | ------------- |:-------------:| 
-|[BIT.Data](https://github.com/egarim/BitFrameWorks/tree/master/scr/Core/BIT.Data)      | This project contains all the models and base implementations of data related functionality|
+|[BIT.SingularOrm.EntityFramework](https://github.com/egarim/BitFrameWorks/tree/master/src/BIT.SingularOrm.EntityFramework)      | Bit Singular ORM EntityFramework|
+|[Core](https://github.com/egarim/BitFrameWorks/tree/master/src/Core)      | Core|
 
 
 
