@@ -1,4 +1,4 @@
-# BIT.SingularOrm.EntityFramework
+# BIT SingularOrm EntityFramework
 
 Coming Soon...
 
