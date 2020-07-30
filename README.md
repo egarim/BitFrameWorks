@@ -80,6 +80,7 @@ There are several ways in which you can contribute. Here are some:
 | ------------- |:-------------:| 
 |[BIT.SingularOrm.EntityFramework](https://github.com/egarim/BitFrameWorks/tree/master/src/BIT.SingularOrm.EntityFramework)      | Bit Singular ORM EntityFramework|
 |[Core](https://github.com/egarim/BitFrameWorks/tree/master/src/Core)      | Core|
+|[Demos](https://github.com/egarim/BitFrameWorks/tree/master/src/Demos)      | Demos|
 
 
 
