@@ -8,7 +8,7 @@ using DevExpress.Xpo.DB.Helpers;
 using RestClient.Net.Abstractions;
 using System;
 using System.Collections.Generic;
-using System.Security.Policy;
+//using System.Security.Policy;
 
 namespace BIT.Xpo.Providers.Network.Client.RestClientNet
 {
