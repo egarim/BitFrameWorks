@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Configurations>Debug;Release</Configurations>
+		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+		<Authors>José Manuel Ojeda Melgar</Authors>
+		<PackageTags>DevExpress XPO XAF</PackageTags>
+		<Company>BIT Frameworks</Company>
+		<Description>Common Data Operations</Description>
+		<DebugType>Full</DebugType>
+		<PackageProjectUrl>https://www.bitframeworks.com</PackageProjectUrl>
+		<DebugSymbols>True</DebugSymbols>
+		<!--<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>-->
+		<!--<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>-->
+		<Product>BIT.Xpo.Providers.CipherSQLiteConnectionProvider</Product>
+	</PropertyGroup>
+	<!--Nuget Generation Section Start-->
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AssemblyName>BIT.Xpo.Providers.CipherSQLiteConnectionProvider.v$(NugetVersion)</AssemblyName>
+		<Version>$(NugetVersion)</Version>
+		<PackageId>BIT.Xpo.Providers.CipherSQLiteConnectionProvider</PackageId>
+	</PropertyGroup>
+	<!--Nuget Generation Section End-->
+	<ItemGroup>
+		<PackageReference Include="BIT.Sqlite.MultiTarget" Version="1.1.12" />
+		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
+		<PackageReference Include="Microsoft.Data.Sqlite.Core" Version="2.2.6" />
+		<PackageReference Include="SQLitePCLRaw.bundle_sqlcipher" Version="1.1.14" />
+	</ItemGroup>
+
+</Project>
