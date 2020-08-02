@@ -5,9 +5,9 @@ using Microsoft.Data.Sqlite;
 using System;
 using System.Data;
 
-namespace BIT.Xpo.SqliteEncrypted
+namespace BIT.Xpo.Providers.CipherSQLite
 {
-    public class EncriptedSQLiteConnectionProvider : SQLiteConnectionProvider
+    public class CipherSQLiteConnectionProvider : SQLiteConnectionProvider
     {
 
         public new static void Register()
@@ -17,17 +17,17 @@ namespace BIT.Xpo.SqliteEncrypted
             DataStoreBase.RegisterDataStoreProvider(XpoProviderTypeString, CreateProviderFromConnection);
 
         }
-        static EncriptedSQLiteConnectionProvider()
+        static CipherSQLiteConnectionProvider()
         {
             RequestPassword = null;
         }
-        public new const string XpoProviderTypeString = nameof(EncriptedSQLiteConnectionProvider);
+        public new const string XpoProviderTypeString = nameof(CipherSQLiteConnectionProvider);
         private static string EncryptionKey = string.Empty;
         private static Func<string> requestPassword;
 
         public static Func<string> RequestPassword { get => requestPassword; set => requestPassword = value; }
 
-        public EncriptedSQLiteConnectionProvider(IDbConnection connection, AutoCreateOption autoCreateOption, string encryptionKey) : base(connection, autoCreateOption)
+        public CipherSQLiteConnectionProvider(IDbConnection connection, AutoCreateOption autoCreateOption, string encryptionKey) : base(connection, autoCreateOption)
         {
 
             EncryptionKey = encryptionKey;
@@ -40,12 +40,12 @@ namespace BIT.Xpo.SqliteEncrypted
             connectionString = parser.GetConnectionString();
             IDbConnection connection = new SqliteConnection(connectionString);
             objectsToDisposeOnDisconnect = new IDisposable[] { connection };
-            return EncriptedSQLiteConnectionProvider.CreateProviderFromConnection(connection, autoCreateOption, EncryptionKey);
+            return CipherSQLiteConnectionProvider.CreateProviderFromConnection(connection, autoCreateOption, EncryptionKey);
         }
         public static IDataStore CreateProviderFromConnection(IDbConnection connection, AutoCreateOption autoCreateOption, string EncryptionKey)
         {
 
-            return new EncriptedSQLiteConnectionProvider(AddPragmaKey(connection, EncryptionKey), autoCreateOption, EncryptionKey);
+            return new CipherSQLiteConnectionProvider(AddPragmaKey(connection, EncryptionKey), autoCreateOption, EncryptionKey);
 
         }
         protected override IDbConnection CreateConnection()
@@ -67,7 +67,7 @@ namespace BIT.Xpo.SqliteEncrypted
                 else
                 {
                     throw new ArgumentNullException(
-                        $"Please provide an {nameof(EncryptionKey)} in the connection string, constructor or by implementing the function {nameof(EncriptedSQLiteConnectionProvider.RequestPassword)}");
+                        $"Please provide an {nameof(EncryptionKey)} in the connection string, constructor or by implementing the function {nameof(CipherSQLiteConnectionProvider.RequestPassword)}");
                 }
             }
             connection.Open();

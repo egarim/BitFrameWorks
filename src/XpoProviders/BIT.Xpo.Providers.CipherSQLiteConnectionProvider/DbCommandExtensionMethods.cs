@@ -4,7 +4,7 @@ using Microsoft.Data.Sqlite;
 using System;
 using System.Data;
 
-namespace BIT.Xpo.SqliteEncrypted
+namespace BIT.Xpo.Providers.CipherSQLite
 {
     public static class DbCommandExtensionMethods
     {
