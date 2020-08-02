@@ -15,14 +15,14 @@
 		<DebugSymbols>True</DebugSymbols>
 		<!--<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>-->
 		<!--<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>-->
-		<Product>BIT.Xpo.Providers.SqliteEncrypted</Product>
+		<Product>BIT.Xpo.Providers.CipherSQLiteConnectionProvider</Product>
 	</PropertyGroup>
 	<!--Nuget Generation Section Start-->
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<AssemblyName>BIT.Xpo.Providers.SqliteEncrypted.v$(NugetVersion)</AssemblyName>
+		<AssemblyName>BIT.Xpo.Providers.CipherSQLiteConnectionProvider.v$(NugetVersion)</AssemblyName>
 		<Version>$(NugetVersion)</Version>
-		<PackageId>BIT.Xpo.Providers.SqliteEncrypted</PackageId>
+		<PackageId>BIT.Xpo.Providers.CipherSQLiteConnectionProvider</PackageId>
 	</PropertyGroup>
 	<!--Nuget Generation Section End-->
 	<ItemGroup>
