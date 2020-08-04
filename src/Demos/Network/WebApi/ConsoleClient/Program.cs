@@ -2,8 +2,7 @@
 using DevExpress.Xpo;
 using XpoDemoOrm;
 using System;
-using BIT.Xpo.Providers.Network.Client.RestClientNet;
-using BIT.Xpo;
+
 
 namespace ConsoleClient
 {

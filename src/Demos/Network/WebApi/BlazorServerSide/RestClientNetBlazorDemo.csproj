@@ -7,7 +7,6 @@
 		<PackageReference Include="Bogus" Version="29.0.2" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\..\Xpo\BIT.Data.Xpo\BIT.Data.Xpo.csproj" />
 	  <ProjectReference Include="..\..\..\XpoDemoOrm\XpoDemoOrm.csproj" />
 	</ItemGroup>
 </Project>
