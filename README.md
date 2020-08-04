@@ -79,6 +79,7 @@ There are several ways in which you can contribute. Here are some:
 | Library        | Description   |
 | ------------- |:-------------:| 
 |[BIT.SingularOrm.EntityFramework](https://github.com/egarim/BitFrameWorks/tree/master/src/BIT.SingularOrm.EntityFramework)      | Bit Singular ORM EntityFramework|
+|[HttpNetFramework](https://github.com/egarim/BitFrameWorks/tree/master/src/BIT.Xpo.Providers.Network.Server.HttpNetFramework)      | Http Net Framework|
 |[Core](https://github.com/egarim/BitFrameWorks/tree/master/src/Core)      | Core|
 |[Demos](https://github.com/egarim/BitFrameWorks/tree/master/src/Demos)      | Demos|
 |[HttpApiServerDemo](https://github.com/egarim/BitFrameWorks/tree/master/src/HttpApiServerDemo)      | HttpApiServerDemo|
