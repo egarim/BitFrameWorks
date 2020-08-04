@@ -2,9 +2,10 @@
 using BIT.Data.Services;
 using System;
 using System.Web.Http;
-
+using BIT.Xpo.Functions;
 namespace BIT.Xpo.Providers.WebApi.AspNet
 {
+
     public class XpoWebApiController : ApiController
     {
         //DataParameters
@@ -20,7 +21,7 @@ namespace BIT.Xpo.Providers.WebApi.AspNet
             this.DataStoreFunctionServer = DataStoreFunctionServer;
 
 
-            IFunction function = new BIT.Xpo.Functions.DataStoreFunctionServer(new XpoDataStoreResolver(""), new SimpleObjectSerializationService());
+            IFunction function = new DataStoreFunctionServer(new XpoDataStoreResolver(""), new SimpleObjectSerializationService());
 
         }
     }
