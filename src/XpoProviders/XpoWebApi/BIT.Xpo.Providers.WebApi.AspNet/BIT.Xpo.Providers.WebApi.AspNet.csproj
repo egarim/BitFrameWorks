@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\BIT.Data\BIT.Data.csproj" />
+    <ProjectReference Include="..\..\..\Xpo\BIT.Data.Xpo\BIT.Xpo.csproj" />
+  </ItemGroup>
+
+</Project>

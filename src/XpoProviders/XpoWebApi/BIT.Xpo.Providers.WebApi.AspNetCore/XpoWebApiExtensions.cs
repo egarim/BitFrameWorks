@@ -21,7 +21,7 @@ namespace BIT.Xpo.Providers.WebApi.AspNetCore
         public static IServiceCollection AddXpoWebApiHttpDataTransfer(this IServiceCollection serviceCollection, string appsettingsjson, IStringSerializationService stringSerializationHelper, IObjectSerializationService simpleObjectSerializationHelper)
         {
             return serviceCollection.AddXpoWebApiHttpDataTransfer(new XpoDataStoreResolver(appsettingsjson), stringSerializationHelper, simpleObjectSerializationHelper);
-        }
+        }   
         public static IServiceCollection AddXpoWebApiHttpDataTransfer(this IServiceCollection serviceCollection, IConfigResolver<IDataStore> dataStoreResolver, IStringSerializationService stringSerializationHelper, IObjectSerializationService simpleObjectSerializationService)
         {
 

@@ -157,6 +157,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\XpoWebApiControllerImp.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -245,6 +246,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\BIT.Data\BIT.Data.csproj">
+      <Project>{A2FE64BF-7479-4B13-ADA1-EA2E80A95E13}</Project>
+      <Name>BIT.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\XpoProviders\XpoWebApi\BIT.Xpo.Providers.WebApi.AspNet\BIT.Xpo.Providers.WebApi.AspNet.csproj">
+      <Project>{af76018c-13d3-4201-875b-680ca98ff620}</Project>
+      <Name>BIT.Xpo.Providers.WebApi.AspNet</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

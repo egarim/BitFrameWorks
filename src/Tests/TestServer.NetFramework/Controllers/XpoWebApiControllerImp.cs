@@ -1,12 +1,19 @@
-﻿using BIT.Xpo.Providers.WebApi.AspNet;
+﻿using BIT.Data.DataTransfer;
+using BIT.Xpo.Providers.WebApi.AspNet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-public class ValuesController : ApiController
+
+namespace TestServer.NetFramework.Controllers
+{
+    public class XpoWebApiControllerImp : XpoWebApiController
     {
+        public XpoWebApiControllerImp(IFunction DataStoreFunctionServer) : base(DataStoreFunctionServer)
+        {
+
+        }
+
         // GET api/values
         public IEnumerable<string> Get()
         {
@@ -18,7 +25,7 @@ public class ValuesController : ApiController
         {
             return "value";
         }
-
+        //DataParameters
         // POST api/values
         public void Post([FromBody]string value)
         {
@@ -34,3 +41,4 @@ public class ValuesController : ApiController
         {
         }
     }
+}
