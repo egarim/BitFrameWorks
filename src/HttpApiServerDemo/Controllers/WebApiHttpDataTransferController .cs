@@ -1,5 +1,5 @@
 ﻿using BIT.Data.DataTransfer;
-using BIT.Xpo.Providers.WebApi.Server;
+using BIT.Xpo.Providers.WebApi.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

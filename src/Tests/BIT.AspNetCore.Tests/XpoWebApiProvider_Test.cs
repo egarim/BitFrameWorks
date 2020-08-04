@@ -2,7 +2,7 @@ using BIT.Data.DataTransfer;
 using BIT.Data.Services;
 using BIT.Data.Transfer.RestClientNet;
 using BIT.Xpo;
-using BIT.Xpo.Providers.Network.Client.RestClientNet;
+using BIT.Xpo.Providers.WebApi.Client;
 using DevExpress.Data.Filtering;
 using DevExpress.Xpo;
 using NUnit.Framework;
@@ -16,10 +16,12 @@ using XpoDemoOrm;
 
 namespace BIT.AspNetCore.Tests
 {
-    public class RestClientNetProvider_Test : BaseTest
+    public class XpoWebApiProvider_Test : BaseTest
     {
+        private const string Controller = "/WebApiHttpDataTransferController";
+        private const string Url = "http://localhost/WebApiHttpDataTransferControllerTest";
 
-        public RestClientNetProvider_Test()
+        public XpoWebApiProvider_Test()
         {
 
         }
@@ -34,7 +36,7 @@ namespace BIT.AspNetCore.Tests
         {
 
             //HACK ToImplmement 001
-            RestClientNetProvider.Register();
+            XpoWebApiProvider.Register();
 
             client = new Client(new NewtonsoftSerializationAdapter(), createHttpClient: (name) => _testServerHttpClientFactory.CreateClient());
 
@@ -42,13 +44,13 @@ namespace BIT.AspNetCore.Tests
 
             SimpleObjectSerializationService simpleObjectSerializationHelper = new SimpleObjectSerializationService();
             Dictionary<string, string> Headers = new Dictionary<string, string>();
-            Headers.Add(RestClientNetProvider.TokenPart, "");
-            Headers.Add(RestClientNetProvider.DataStoreIdPart, "001");
-            RestClientNetFunctionClient restFunctionClient = new RestClientNetFunctionClient(client, "http://localhost/WebApiHttpDataTransferControllerTest", Headers);
+            Headers.Add(XpoWebApiProvider.TokenPart, "");
+            Headers.Add(XpoWebApiProvider.DataStoreIdPart, "001");
+            RestClientNetFunctionClient restFunctionClient = new RestClientNetFunctionClient(client, Url, Headers);
 
 
-            var Cnx = RestClientNetProvider.GetConnectionString("http://localhost", "/WebApiHttpDataTransferController", "", "001");
-            RestClientNetProvider restClientNetProvider = new RestClientNetProvider(restFunctionClient, new SimpleObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
+            var Cnx = XpoWebApiProvider.GetConnectionString("http://localhost", Controller, "", "001");
+            XpoWebApiProvider restClientNetProvider = new XpoWebApiProvider(restFunctionClient, new SimpleObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
 
 
 
@@ -75,7 +77,7 @@ namespace BIT.AspNetCore.Tests
         {
 
             //HACK ToImplmement 001
-            RestClientNetProvider.Register();
+            XpoWebApiProvider.Register();
 
             client = new Client(new NewtonsoftSerializationAdapter(), createHttpClient: (name) => _testServerHttpClientFactory.CreateClient());
 
@@ -83,13 +85,13 @@ namespace BIT.AspNetCore.Tests
 
             SimpleObjectSerializationService simpleObjectSerializationHelper = new SimpleObjectSerializationService();
             Dictionary<string, string> Headers = new Dictionary<string, string>();
-            Headers.Add(RestClientNetProvider.TokenPart, "");
-            Headers.Add(RestClientNetProvider.DataStoreIdPart, "001");
-            RestClientNetFunctionClient restFunctionClient = new RestClientNetFunctionClient(client, "http://localhost/WebApiHttpDataTransferControllerTest", Headers);
+            Headers.Add(XpoWebApiProvider.TokenPart, "");
+            Headers.Add(XpoWebApiProvider.DataStoreIdPart, "001");
+            RestClientNetFunctionClient restFunctionClient = new RestClientNetFunctionClient(client, Url, Headers);
 
 
-            var Cnx = RestClientNetProvider.GetConnectionString("http://localhost", "/WebApiHttpDataTransferController", "", "001");
-            RestClientNetProvider restClientNetProvider = new RestClientNetProvider(restFunctionClient, new SimpleObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
+            var Cnx = XpoWebApiProvider.GetConnectionString("http://localhost", Controller, "", "001");
+            XpoWebApiProvider restClientNetProvider = new XpoWebApiProvider(restFunctionClient, new SimpleObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
 
 
 

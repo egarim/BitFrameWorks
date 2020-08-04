@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BIT.Xpo.Providers.Network.HttpApiServer
+namespace BIT.Xpo.Providers.WebApi.AspNetCore
 {
     public static class WebApiHttpDataTransferExtensions
     {

@@ -90,11 +90,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestServer.NetFramework", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestServer.NetFramework.Tests", "Tests\TestServer.NetFramework.Tests\TestServer.NetFramework.Tests.csproj", "{E0C11C10-12F1-4A9C-A522-681E0DF01E74}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Xpo.Providers.Network.Server.Http", "XpoProviders\XpoWebApi\BIT.Xpo.Providers.Network.HttpApiServer\BIT.Xpo.Providers.Network.Server.Http.csproj", "{4F45A2FE-7C48-4980-B983-6C5F36013C29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Xpo.Providers.WebApi.AspNetCore", "XpoProviders\XpoWebApi\BIT.Xpo.Providers.WebApi.AspNetCore\BIT.Xpo.Providers.WebApi.AspNetCore.csproj", "{4F45A2FE-7C48-4980-B983-6C5F36013C29}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Xpo.Providers.WebApi.Client.RestClientNet", "XpoProviders\XpoWebApi\BIT.Xpo.Providers.Network.Http.Client.RestClientNet\BIT.Xpo.Providers.WebApi.Client.RestClientNet.csproj", "{ADECD640-AA4B-424D-81BB-E5D703B988B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Xpo.Providers.Network.Http.Client.RestClientNet", "XpoProviders\XpoWebApi\BIT.Xpo.Providers.Network.Client.RestClientNet\BIT.Xpo.Providers.Network.Http.Client.RestClientNet.csproj", "{ED19C4A5-4EF4-476C-958C-15731C6975C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Xpo.Providers.WebApi.Client", "XpoProviders\XpoWebApi\BIT.Xpo.Providers.WebApi.Client\BIT.Xpo.Providers.WebApi.Client.csproj", "{ED19C4A5-4EF4-476C-958C-15731C6975C0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Xpo.Providers.CipherSQLite", "XpoProviders\BIT.Xpo.Providers.CipherSQLiteConnectionProvider\BIT.Xpo.Providers.CipherSQLite.csproj", "{062C4297-625A-424D-B0CD-35EAD66D57F4}"
 EndProject

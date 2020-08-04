@@ -2,7 +2,6 @@
 using BIT.Data.Services;
 using BIT.Data.Transfer.RestClientNet;
 using BIT.Xpo.DataStores;
-using DevExpress.Data.Helpers;
 using DevExpress.Xpo.DB;
 using DevExpress.Xpo.DB.Helpers;
 using RestClient.Net.Abstractions;
@@ -10,17 +9,17 @@ using System;
 using System.Collections.Generic;
 //using System.Security.Policy;
 
-namespace BIT.Xpo.Providers.Network.Client.RestClientNet
+namespace BIT.Xpo.Providers.WebApi.Client
 {
    
-    public class RestClientNetProvider : FunctionDataStore
+    public class XpoWebApiProvider : FunctionDataStore
     {
         public const string TokenPart = "Token";
         public const string DataStoreIdPart = "DataStoreId";
         private const string UrlPart = "Url";
         private const string ControllerPart = "Controller";
         private const string SerializationPart = "Serialization";
-        public RestClientNetProvider(IFunction functionClient, IObjectSerializationService objectSerializationService, AutoCreateOption autoCreateOption) : base(functionClient, objectSerializationService, autoCreateOption)
+        public XpoWebApiProvider(IFunction functionClient, IObjectSerializationService objectSerializationService, AutoCreateOption autoCreateOption) : base(functionClient, objectSerializationService, autoCreateOption)
         {
         }
         public static string GetConnectionString(string Url, string Controller, string Token, string DataStoreId)
@@ -28,7 +27,7 @@ namespace BIT.Xpo.Providers.Network.Client.RestClientNet
 
             return $"{DataStoreBase.XpoProviderTypeParameterName}={XpoProviderTypeString};{UrlPart}={Url};{ControllerPart}={Controller};{TokenPart}={Token};{DataStoreIdPart}={DataStoreId}";
         }
-        public const string XpoProviderTypeString = nameof(RestClientNetProvider);
+        public const string XpoProviderTypeString = nameof(XpoWebApiProvider);
         public static IDataStore CreateProviderFromString(string connectionString, AutoCreateOption autoCreateOption, out IDisposable[] objectsToDisposeOnDisconnect)
         {
             objectsToDisposeOnDisconnect = null;
@@ -58,7 +57,7 @@ namespace BIT.Xpo.Providers.Network.Client.RestClientNet
 
             RestClientNetFunctionClient restClientNetFunctionClient = new RestClientNetFunctionClient(url, Adapter, Headers);
 
-            return new AsyncDataStoreWrapper(new RestClientNetProvider(restClientNetFunctionClient, new SimpleObjectSerializationService(), autoCreateOption));
+            return new AsyncDataStoreWrapper(new XpoWebApiProvider(restClientNetFunctionClient, new SimpleObjectSerializationService(), autoCreateOption));
         }
         public static void Register()
         {

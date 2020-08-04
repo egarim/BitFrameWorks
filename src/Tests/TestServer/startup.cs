@@ -16,7 +16,6 @@ using Microsoft.Extensions.Logging;
 using DevExpress.Xpo.DB;
 using BIT.Data.DataTransfer;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using BIT.Xpo.Providers.WebApi.Server;
 
 namespace TestServer
 {

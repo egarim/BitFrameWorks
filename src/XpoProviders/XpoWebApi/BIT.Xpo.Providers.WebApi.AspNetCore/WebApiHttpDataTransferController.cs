@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace BIT.Xpo.Providers.WebApi.Server
+namespace BIT.Xpo.Providers.WebApi.AspNetCore
 {
     public class WebApiHttpDataTransferController : HttpDataTransferController
     {

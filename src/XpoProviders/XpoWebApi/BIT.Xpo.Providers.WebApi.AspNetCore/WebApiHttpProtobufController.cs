@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BIT.Xpo.Providers.Network.HttpApiServer
+namespace BIT.Xpo.Providers.WebApi.AspNetCore
 {
     public class WebApiHttpProtobufController: BaseController
     {
