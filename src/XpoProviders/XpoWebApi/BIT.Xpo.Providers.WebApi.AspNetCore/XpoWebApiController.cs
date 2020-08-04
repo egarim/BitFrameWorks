@@ -10,12 +10,12 @@ using Microsoft.AspNetCore.Http;
 
 namespace BIT.Xpo.Providers.WebApi.AspNetCore
 {
-    public class WebApiHttpDataTransferController : HttpDataTransferController
+    public class XpoWebApiController : HttpDataTransferController
     {
 
         public IFunction DataStoreFunctionServer { get; set; }
 
-        public WebApiHttpDataTransferController(IFunction DataStoreFunctionServer)
+        public XpoWebApiController(IFunction DataStoreFunctionServer)
         {
 
             this.DataStoreFunctionServer = DataStoreFunctionServer;
@@ -36,13 +36,7 @@ namespace BIT.Xpo.Providers.WebApi.AspNetCore
             return DataStoreFunctionServer.ExecuteFunction(parameters);
 
         }
-        //public virtual IDataResult Post()
-        //{
-
-
-        //    IDataParameters parameters = DeserializeFromStream(Request.Body);
-        //    return DataStoreFunctionServer.ExecuteFunction(parameters);
-
-        //}
+   
+       
     }
 }

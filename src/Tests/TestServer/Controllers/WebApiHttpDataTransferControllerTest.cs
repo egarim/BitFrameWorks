@@ -11,7 +11,7 @@ namespace TestServer.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WebApiHttpDataTransferControllerTest : WebApiHttpDataTransferController
+    public class WebApiHttpDataTransferControllerTest : XpoWebApiController
     {
         public WebApiHttpDataTransferControllerTest(IFunction DataStoreFunctionServer) : base(DataStoreFunctionServer)
         {

@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace HttpApiServerDemo.Controllers
 {
+    //TODO rename controller
     [ApiController]
     [Route("[controller]")]
-    public class WebApiHttpDataTransferImpController : WebApiHttpDataTransferController
+    public class WebApiHttpDataTransferImpController : XpoWebApiController
     {
         public WebApiHttpDataTransferImpController(IFunction DataStoreFunctionServer) : base(DataStoreFunctionServer)
         {

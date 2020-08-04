@@ -9,7 +9,7 @@ using System.Text;
 
 namespace BIT.Xpo.Providers.WebApi.AspNetCore
 {
-    public static class WebApiHttpDataTransferExtensions
+    public static class XpoWebApiExtensions
     {
 
         public static IServiceCollection AddXpoWebApiHttpDataTransfer(this IServiceCollection serviceCollection)
