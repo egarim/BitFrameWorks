@@ -6,7 +6,7 @@ using BIT.Xpo.Functions;
 namespace BIT.Xpo.Providers.WebApi.AspNet
 {
 
-    public class XpoWebApiController : ApiController
+    public abstract class XpoWebApiControllerBase : ApiController
     {
         //DataParameters
         // POST api/values
@@ -15,13 +15,13 @@ namespace BIT.Xpo.Providers.WebApi.AspNet
         }
         public IFunction DataStoreFunctionServer { get; set; }
 
-        public XpoWebApiController(IFunction DataStoreFunctionServer)
+        public XpoWebApiControllerBase(IFunction DataStoreFunctionServer)
         {
 
             this.DataStoreFunctionServer = DataStoreFunctionServer;
 
 
-            IFunction function = new DataStoreFunctionServer(new XpoDataStoreResolver(""), new SimpleObjectSerializationService());
+            //IFunction function = new DataStoreFunctionServer(new XpoDataStoreResolver(""), new SimpleObjectSerializationService());
 
         }
     }

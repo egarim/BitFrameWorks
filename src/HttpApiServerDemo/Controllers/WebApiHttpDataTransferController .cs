@@ -11,7 +11,7 @@ namespace HttpApiServerDemo.Controllers
     //TODO rename controller
     [ApiController]
     [Route("[controller]")]
-    public class WebApiHttpDataTransferImpController : XpoWebApiController
+    public class WebApiHttpDataTransferImpController : XpoWebApiControllerBase
     {
         public WebApiHttpDataTransferImpController(IFunction DataStoreFunctionServer) : base(DataStoreFunctionServer)
         {

@@ -10,12 +10,12 @@ using Microsoft.AspNetCore.Http;
 
 namespace BIT.Xpo.Providers.WebApi.AspNetCore
 {
-    public class XpoWebApiController : HttpDataTransferController
+    public abstract class XpoWebApiControllerBase : HttpDataTransferController
     {
 
         public IFunction DataStoreFunctionServer { get; set; }
 
-        public XpoWebApiController(IFunction DataStoreFunctionServer)
+        public XpoWebApiControllerBase(IFunction DataStoreFunctionServer)
         {
 
             this.DataStoreFunctionServer = DataStoreFunctionServer;
