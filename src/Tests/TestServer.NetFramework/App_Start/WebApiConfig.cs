@@ -19,10 +19,6 @@ namespace TestServer.NetFramework
             // Web API configuration and services
             var container = new UnityContainer();
 
-
-
-            // IFunction function = new DataStoreFunctionServer(dataStoreResolver, simpleObjectSerializationService);
-            //container.RegisterInstance<IConfigResolver<IDataStore>>(new XpoDataStoreResolver());
             container.RegisterInstance<IFunction>(new DataStoreFunctionServer(new XpoDataStoreResolver(), new SimpleObjectSerializationService()));
             config.DependencyResolver = new UnityResolver(container);
 

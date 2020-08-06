@@ -10,19 +10,27 @@ namespace BIT.Xpo.Providers.WebApi.AspNet
     {
         //DataParameters
         // POST api/values
-        public void Post([FromBody] DataParameters value)
+        public IHttpActionResult Post([FromBody] DataParameters value)
         {
+
+            //TODO get headers 
+            //IDataParameters parameters = await DeserializeFromStream(Request.Body);
+            //parameters.AdditionalValues.Add("DataStoreId", Header);
+            return Ok(this.DataStoreFunctionServer.ExecuteFunction(value));
+            //return Ok(new { Name="Jose",LastName="Ojeda" });
         }
+        public IHttpActionResult Get()
+        {
+            return Ok($"This is working )) {this.GetType().FullName}");
+        }
+
+
         public IFunction DataStoreFunctionServer { get; set; }
 
         public XpoWebApiControllerBase(IFunction DataStoreFunctionServer)
         {
 
             this.DataStoreFunctionServer = DataStoreFunctionServer;
-
-
-            //IFunction function = new DataStoreFunctionServer(new XpoDataStoreResolver(""), new SimpleObjectSerializationService());
-
         }
     }
 }

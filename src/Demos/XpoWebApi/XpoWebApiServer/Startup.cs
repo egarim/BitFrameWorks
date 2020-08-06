@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BIT.Xpo.Providers.WebApi.Server;
+using BIT.Xpo.Providers.WebApi.AspNetCore;
 using DevExpress.Xpo.DB;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

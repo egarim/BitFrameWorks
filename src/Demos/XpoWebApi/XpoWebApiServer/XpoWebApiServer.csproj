@@ -4,5 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\XpoProviders\XpoWebApi\BIT.Xpo.Providers.WebApi.AspNetCore\BIT.Xpo.Providers.WebApi.AspNetCore.csproj" />
+  </ItemGroup>
+
 
 </Project>

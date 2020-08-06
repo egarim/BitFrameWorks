@@ -12,17 +12,17 @@ namespace BIT.Xpo.Providers.WebApi.AspNetCore
     public static class XpoWebApiExtensions
     {
 
-        public static IServiceCollection AddXpoWebApiHttpDataTransfer(this IServiceCollection serviceCollection)
+        public static IServiceCollection AddXpoWebApi(this IServiceCollection serviceCollection)
         {
 
-            return serviceCollection.AddXpoWebApiHttpDataTransfer("appsettings.json", new StringSerializationHelper(), new SimpleObjectSerializationService());
+            return serviceCollection.AddXpoWebApi("appsettings.json", new StringSerializationHelper(), new SimpleObjectSerializationService());
         }
 
-        public static IServiceCollection AddXpoWebApiHttpDataTransfer(this IServiceCollection serviceCollection, string appsettingsjson, IStringSerializationService stringSerializationHelper, IObjectSerializationService simpleObjectSerializationHelper)
+        public static IServiceCollection AddXpoWebApi(this IServiceCollection serviceCollection, string appsettingsjson, IStringSerializationService stringSerializationHelper, IObjectSerializationService simpleObjectSerializationHelper)
         {
-            return serviceCollection.AddXpoWebApiHttpDataTransfer(new XpoDataStoreResolver(appsettingsjson), stringSerializationHelper, simpleObjectSerializationHelper);
+            return serviceCollection.AddXpoWebApi(new XpoDataStoreResolver(appsettingsjson), stringSerializationHelper, simpleObjectSerializationHelper);
         }   
-        public static IServiceCollection AddXpoWebApiHttpDataTransfer(this IServiceCollection serviceCollection, IConfigResolver<IDataStore> dataStoreResolver, IStringSerializationService stringSerializationHelper, IObjectSerializationService simpleObjectSerializationService)
+        public static IServiceCollection AddXpoWebApi(this IServiceCollection serviceCollection, IConfigResolver<IDataStore> dataStoreResolver, IStringSerializationService stringSerializationHelper, IObjectSerializationService simpleObjectSerializationService)
         {
 
       
