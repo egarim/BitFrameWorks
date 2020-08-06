@@ -12,7 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using BIT.Xpo.Providers.WebApi.AspNetCore;
 
-namespace HttpApiServerDemo
+namespace XpoWebApiAspNetCore
 {
     public class Startup
     {

@@ -6,14 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HttpApiServerDemo.Controllers
+namespace XpoWebApiAspNetCore.Controllers
 {
     //TODO rename controller
     [ApiController]
     [Route("[controller]")]
-    public class WebApiHttpDataTransferImpController : XpoWebApiControllerBase
+    public class XpoWebApiController : XpoWebApiControllerBase
     {
-        public WebApiHttpDataTransferImpController(IFunction DataStoreFunctionServer) : base(DataStoreFunctionServer)
+        public XpoWebApiController(IFunction DataStoreFunctionServer) : base(DataStoreFunctionServer)
         {
         }
         public async override Task<string> Get()
