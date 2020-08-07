@@ -12,15 +12,16 @@ namespace BIT.Data.Transfer.RestClientNet
         Client client;
         string Url;
         Uri resource;
-        RequestHeadersCollection Headers;
+        //RequestHeadersCollection Headers;
 
         public RestClientNetFunctionClient(Client client, string url, IDictionary<string, string> headers)
         {
             this.client = client;
             this.Url = url;
             resource = new Uri(Url);
-            if (headers != null)
-                InitHearders(headers);
+            Headers = headers;
+            //if (headers != null)
+            //    InitHearders(headers);
 
         }
         //public RestClientNetFunctionClient(string url, IDictionary<string, string> headers)
@@ -37,29 +38,41 @@ namespace BIT.Data.Transfer.RestClientNet
             this.Url = url;
             this.client = new Client(serializationAdapter);
             resource = new Uri(Url);
-            if (headers != null)
-                InitHearders(headers);
+
+            Headers = headers;
+            //if (headers != null)
+            //    InitHearders(headers);
         }
-        private void InitHearders(IDictionary<string, string> headers)
+        IDictionary<string, string> Headers;
+        private RequestHeadersCollection GetHeaders()
         {
-            Headers = new RequestHeadersCollection();
-            foreach (KeyValuePair<string, string> Current in headers)
+
+
+            var NewHeaders = new RequestHeadersCollection();
+            if (Headers == null)
+                return NewHeaders;
+
+            foreach (KeyValuePair<string, string> Current in Headers)
             {
-                if (!Headers.Contains(Current.Key))
+                if (!NewHeaders.Contains(Current.Key))
                 {
-                    Headers.Add(Current.Key, Current.Value);
+                    NewHeaders.Add(Current.Key, Current.Value);
                 }
-                //Headers.Add(Current.Key, Current.Value);
+
             }
+            return NewHeaders;
         }
 
 
         public async Task<IDataResult> ExecuteFunctionAsync(IDataParameters Parameters)
         {
-            var result = await client.PostAsync<DataResult, IDataParameters>(Parameters, resource, Headers);
-
+            var result = await client.PostAsync<DataResult, IDataParameters>(Parameters, resource, GetHeaders());
 
             return result.Body;
+
+
+
+
 
             ////https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#2xx_Success
             //try
@@ -83,7 +96,7 @@ namespace BIT.Data.Transfer.RestClientNet
         {
             var TaskValue = Task.Run(async () => await ExecuteFunctionAsync(Parameters));
             TaskValue.Wait();
-            return TaskValue.Result;       
+            return TaskValue.Result;
         }
     }
 }
