@@ -1,11 +1,14 @@
-﻿
-using DevExpress.Xpo;
-using XpoDemoOrm;
-using System;
-using BIT.Xpo;
+﻿using BIT.Xpo;
 using BIT.Xpo.Providers.WebApi.Client;
+using DevExpress.Xpo;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using XpoDemoOrm;
 
-namespace ConsoleClient
+namespace NetFrameworkConsoleClient
 {
     class Program
     {
@@ -14,13 +17,13 @@ namespace ConsoleClient
             //Register XpoWebApiProvider 
             XpoWebApiProvider.Register();
 
-           
-          
+
+
             var ConnectionString = XpoWebApiProvider.GetConnectionString("https://localhost:44389", "/XpoWebApi", string.Empty, "001");
 
             XpoInitializer xpoInitializer = new XpoInitializer(ConnectionString, typeof(Invoice), typeof(Customer));
             xpoInitializer.InitSchema();
-          
+
             using (var UoW = xpoInitializer.CreateUnitOfWork())
             {
                 var faker = new Bogus.Faker<Customer>().CustomInstantiator(c => new Customer(UoW))
@@ -38,8 +41,7 @@ namespace ConsoleClient
                 {
                     Console.WriteLine(item.Name);
                 }
-            };
-
+            }
         }
     }
 }
