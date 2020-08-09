@@ -27,3 +27,6 @@ https://www.entityframeworktutorial.net/EntityFramework-Architecture.aspx
 
 Entity Framework Entity State
 https://www.entityframeworktutorial.net/basics/entity-states.aspx
+
+List of http status codes
+https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#2xx_Success
