@@ -41,6 +41,7 @@ namespace NetFrameworkConsoleClient
                 {
                     Console.WriteLine(item.Name);
                 }
+                Console.ReadKey();
             }
         }
     }

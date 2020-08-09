@@ -1,10 +1,10 @@
 <Project>
 	<PropertyGroup>
-		<XpoVersion>19.2.5</XpoVersion>
-		<XafVersion>19.2.5</XafVersion>
-		<NugetVersion>19.2.5.582569771</NugetVersion>
+		<XpoVersion>20.1.6</XpoVersion>
+		<XafVersion>20.1.6</XafVersion>
+		<NugetVersion>20.1.6.582569771</NugetVersion>
 		<NetStandardVersion>netstandard2.0</NetStandardVersion>
-	    <RestClientNetVersion>4.0.0</RestClientNetVersion>
+	    <RestClientNetVersion>4.1.0</RestClientNetVersion>
 	</PropertyGroup>
 	<PropertyGroup>
 		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>

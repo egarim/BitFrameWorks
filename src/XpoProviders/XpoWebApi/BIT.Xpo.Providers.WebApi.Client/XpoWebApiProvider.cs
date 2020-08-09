@@ -55,7 +55,7 @@ namespace BIT.Xpo.Providers.WebApi.Client
             //TODO remove this line when we got an anser from https://github.com/MelbourneDeveloper/RestClient.Net/issues/75
             Adapter = new NewtonsoftSerializationAdapter();
 
-            RestClientNetFunctionClient restClientNetFunctionClient = new RestClientNetFunctionClient(url, Adapter, Headers);
+            FunctionClient restClientNetFunctionClient = new FunctionClient(url, Adapter, Headers);
 
             return new AsyncDataStoreWrapper(new XpoWebApiProvider(restClientNetFunctionClient, new SimpleObjectSerializationService(), autoCreateOption));
         }

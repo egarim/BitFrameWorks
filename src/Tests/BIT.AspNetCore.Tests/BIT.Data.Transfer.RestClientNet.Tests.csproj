@@ -27,7 +27,6 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Core\BIT.Data.Transfer.RestClientNet\BIT.Data.Transfer.RestClientNet.csproj" />
 	  <ProjectReference Include="..\..\Demos\XpoDemoOrm\XpoDemoOrm.csproj" />
-	  <ProjectReference Include="..\..\XpoProviders\XpoWebApi\BIT.Xpo.Providers.Network.Client.RestClientNet\BIT.Xpo.Providers.WebApi.Client.csproj" />
 	  <ProjectReference Include="..\..\XpoProviders\XpoWebApi\BIT.Xpo.Providers.WebApi.Client\BIT.Xpo.Providers.WebApi.Client.csproj" />
 	  <ProjectReference Include="..\TestServer\TestServer.csproj" />
 	</ItemGroup>

@@ -46,7 +46,7 @@ namespace BIT.AspNetCore.Tests
             Dictionary<string, string> Headers = new Dictionary<string, string>();
             Headers.Add(XpoWebApiProvider.TokenPart, "");
             Headers.Add(XpoWebApiProvider.DataStoreIdPart, "001");
-            RestClientNetFunctionClient restFunctionClient = new RestClientNetFunctionClient(client, Url, Headers);
+            FunctionClient restFunctionClient = new FunctionClient(client, Url, Headers);
 
 
             var Cnx = XpoWebApiProvider.GetConnectionString("http://localhost", Controller, "", "001");
@@ -87,7 +87,7 @@ namespace BIT.AspNetCore.Tests
             Dictionary<string, string> Headers = new Dictionary<string, string>();
             Headers.Add(XpoWebApiProvider.TokenPart, "");
             Headers.Add(XpoWebApiProvider.DataStoreIdPart, "001");
-            RestClientNetFunctionClient restFunctionClient = new RestClientNetFunctionClient(client, Url, Headers);
+            FunctionClient restFunctionClient = new FunctionClient(client, Url, Headers);
 
 
             var Cnx = XpoWebApiProvider.GetConnectionString("http://localhost", Controller, "", "001");

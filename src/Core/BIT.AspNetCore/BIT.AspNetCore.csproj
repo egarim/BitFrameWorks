@@ -18,6 +18,9 @@
 		<Version>$(NugetVersion)</Version>
 		<PackageId>BIT.AspNetCore</PackageId>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <DefineConstants>TRACE;XpoVersion</DefineConstants>
+	</PropertyGroup>
 	<!--Nuget Generation Section End-->
 	<!--Nuget Reference Section Start-->
 	<ItemGroup>
