@@ -14,7 +14,7 @@ namespace XpoDemoOrm
             base.AfterConstruction();
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
-        [DevExpress.Xpo.Key(true)]
+        [DevExpress.Xpo.Key(false)]
         
         public Guid Code
         {

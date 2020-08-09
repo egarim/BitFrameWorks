@@ -1,6 +1,6 @@
 ﻿using BIT.Data.DataTransfer;
 using BIT.Data.Services;
-using BIT.Xpo.Providers.WebApi.Server;
+using BIT.Xpo.Providers.WebApi.AspNetCore;
 using DevExpress.Xpo.DB;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,7 +11,7 @@ namespace TestServer.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WebApiHttpDataTransferControllerTest : WebApiHttpDataTransferController
+    public class WebApiHttpDataTransferControllerTest : XpoWebApiControllerBase
     {
         public WebApiHttpDataTransferControllerTest(IFunction DataStoreFunctionServer) : base(DataStoreFunctionServer)
         {

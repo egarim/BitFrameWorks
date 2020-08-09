@@ -1,4 +1,4 @@
-# XpoWebApi
+# WebApi
 
 Coming Soon...
 
@@ -8,13 +8,9 @@ Coming Soon...
 
 ## YouTube Videos
 
-
-
-
 | Library        | Description   |
 | ------------- |:-------------:| 
-|[Uno](https://github.com/egarim/BitFrameWorks/tree/master/src/Demos/XpoWebApi/Uno)                                            | Uno|
-|[XpoWebApiConsoleClient](https://github.com/egarim/BitFrameWorks/tree/master/src/Demos/XpoWebApi/XpoWebApiConsoleClient)      | XpoWebApiConsoleClient|
-|[XpoWebApi](https://github.com/egarim/BitFrameWorks/tree/master/src/Demos/XpoWebApi/XpoWebApiServer)                          | XpoWebApi|
-
+|[BlazorServerSide](https://github.com/egarim/BitFrameWorks/tree/master/src/Demos/Network/WebApi/BlazorServerSide)      | BlazorServerSide|
+|[BlazorWasm](https://github.com/egarim/BitFrameWorks/tree/master/src/Demos/Network/WebApi/BlazorWasm)      | BlazorWasm|
+|[ConsoleClient](https://github.com/egarim/BitFrameWorks/tree/master/src/Demos/Network/WebApi/ConsoleClient)      | ConsoleClient|
 

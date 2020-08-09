@@ -1,5 +1,5 @@
 How to build
- .\build.ps1 --configuration release --nugetversion "20.1.4" --xpoversion "20.1.4"  --xafversion "20.1.4"
+ .\build.ps1 --configuration release --nugetversion "20.1.6" --xpoversion "20.1.6"  --xafversion "20.1.6"
 
 Webapi binary data images
 https://www.dotnetcurry.com/aspnet/1120/aspnet-webapi-binary-contents-images
@@ -27,3 +27,6 @@ https://www.entityframeworktutorial.net/EntityFramework-Architecture.aspx
 
 Entity Framework Entity State
 https://www.entityframeworktutorial.net/basics/entity-states.aspx
+
+List of http status codes
+https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#2xx_Success
