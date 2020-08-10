@@ -17,7 +17,9 @@ namespace XpoWebApiAspNet
             // Web API configuration and services
             var container = new UnityContainer();
 
-            container.RegisterInstance<IFunction>(new DataStoreFunctionServer(new XpoDataStoreResolver(), new SimpleObjectSerializationService()));
+            //TODO update this line to reflect the location of the config file in your local setup
+
+            container.RegisterInstance<IFunction>(new DataStoreFunctionServer(new XpoDataStoreResolver(@"C:\Users\Joche\source\repos\BitFrameWorks\src\Demos\XpoWebApi\XpoWebApiAspNet\appsettings.json"), new SimpleObjectSerializationService()));
             config.DependencyResolver = new UnityResolver(container);
             // Web API routes
             config.MapHttpAttributeRoutes();

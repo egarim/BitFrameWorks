@@ -36,7 +36,18 @@ namespace BIT.Xpo.Functions
         {
             DataResult dataResult = new DataResult();
             string id = Parameters.AdditionalValues["DataStoreId"].ToString();
-            var DataStore = this.ConfigResolver.GetById(id);
+            IDataStore DataStore = null;
+            try
+            {
+             
+                DataStore = this.ConfigResolver.GetById(id);
+            }
+            catch (Exception ex)
+            {
+                var test = ex.Message;
+                throw;
+            }
+         
             if (Parameters.MemberName == nameof(IDataStore.SelectData))
             {
 
