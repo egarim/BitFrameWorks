@@ -26,12 +26,7 @@ namespace BIT.Xpo.Providers.WebApi.AspNet
             IDataResult content = this.DataStoreFunctionServer.ExecuteFunction(parameters);
             return base.Ok(content);
 
-            //return Ok("this is ok");
-            //TODO get headers 
-            //IDataParameters parameters = await DeserializeFromStream(Request.Body);
-            //parameters.AdditionalValues.Add("DataStoreId", Header);
-            //return Ok(this.DataStoreFunctionServer.ExecuteFunction(value));
-            //return Ok(new { Name="Jose",LastName="Ojeda" });
+            
         }
         public IHttpActionResult Get()
         {
@@ -40,19 +35,9 @@ namespace BIT.Xpo.Providers.WebApi.AspNet
 
         protected async virtual Task<IDataParameters> DeserializeFromStream(Stream stream)
         {
-            try
-            {
-
-                var sr = new StreamReader(stream);
-                var json = await sr.ReadToEndAsync();
-                return JsonConvert.DeserializeObject<DataParameters>(json);
-
-            }
-            catch (Exception ex)
-            {
-                var message = ex.Message;
-                throw;
-            }
+            var sr = new StreamReader(stream);
+            var json = await sr.ReadToEndAsync();
+            return JsonConvert.DeserializeObject<DataParameters>(json);
 
         }
         public IFunction DataStoreFunctionServer { get; set; }

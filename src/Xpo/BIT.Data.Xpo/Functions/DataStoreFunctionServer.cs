@@ -4,10 +4,6 @@ using BIT.Xpo.Models;
 using DevExpress.Xpo.DB;
 using DevExpress.Xpo.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BIT.Xpo.Functions
 {
@@ -37,16 +33,8 @@ namespace BIT.Xpo.Functions
             DataResult dataResult = new DataResult();
             string id = Parameters.AdditionalValues["DataStoreId"].ToString();
             IDataStore DataStore = null;
-            try
-            {
-             
-                DataStore = this.ConfigResolver.GetById(id);
-            }
-            catch (Exception ex)
-            {
-                var test = ex.Message;
-                throw;
-            }
+            DataStore = this.ConfigResolver.GetById(id);
+           
          
             if (Parameters.MemberName == nameof(IDataStore.SelectData))
             {

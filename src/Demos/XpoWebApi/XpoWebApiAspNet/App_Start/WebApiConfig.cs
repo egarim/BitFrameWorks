@@ -17,6 +17,7 @@ namespace XpoWebApiAspNet
             // Web API configuration and services
             var container = new UnityContainer();
 
+            //HACK for AspNet you need to pass the actual route of the appsettings.json since the web server might not be pointing to the root folder of this application
             //TODO update this line to reflect the location of the config file in your local setup
 
             container.RegisterInstance<IFunction>(new DataStoreFunctionServer(new XpoDataStoreResolver(@"C:\Users\Joche\source\repos\BitFrameWorks\src\Demos\XpoWebApi\XpoWebApiAspNet\appsettings.json"), new SimpleObjectSerializationService()));
