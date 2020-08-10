@@ -12,6 +12,8 @@ namespace XpoDemoOrm
         public override void AfterConstruction()
         {
             base.AfterConstruction();
+            if (this.Code == Guid.Empty)
+                this.Code = Guid.NewGuid();
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
         [DevExpress.Xpo.Key(false)]

@@ -49,7 +49,7 @@ namespace BIT.AspNetCore.Tests
             ApiFunction restFunctionClient = new ApiFunction(client, Url, Headers);
 
 
-            var Cnx = XpoWebApiProvider.GetConnectionString("http://localhost", Controller, "", "001");
+            //var Cnx = XpoWebApiProvider.GetConnectionString("http://localhost", Controller, "", "001");
             XpoWebApiProvider restClientNetProvider = new XpoWebApiProvider(restFunctionClient, new SimpleObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
 
 
@@ -77,21 +77,60 @@ namespace BIT.AspNetCore.Tests
         {
 
             //HACK ToImplmement 001
+            //XpoWebApiProvider.Register();
+
+            //client = new Client(new NewtonsoftSerializationAdapter(), createHttpClient: (name) => _testServerHttpClientFactory.CreateClient());
+
+
+
+            //SimpleObjectSerializationService simpleObjectSerializationHelper = new SimpleObjectSerializationService();
+            //Dictionary<string, string> Headers = new Dictionary<string, string>();
+            //Headers.Add(XpoWebApiProvider.TokenPart, "");
+            //Headers.Add(XpoWebApiProvider.DataStoreIdPart, "002");
+            //ApiFunction restFunctionClient = new ApiFunction(client, Url, Headers);
+
+
+            //var Cnx = XpoWebApiProvider.GetConnectionString("http://localhost", Controller, "", "002");
+            //XpoWebApiProvider restClientNetProvider = new XpoWebApiProvider(restFunctionClient, new SimpleObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
+
+
+
+            //XpoInitializer xpoInitializer = new XpoInitializer(restClientNetProvider, typeof(Customer), typeof(Invoice));
+
+            //xpoInitializer.InitSchema();
+
+
+            //var UoW = xpoInitializer.CreateUnitOfWork();
+            //Customer customer = new Customer(UoW);
+            //customer.Name = "Jose Manuel Ojeda Melgar";
+            //if (UoW.InTransaction)
+            //    UoW.CommitChanges();
+
+
+            //var UoW2 = xpoInitializer.CreateUnitOfWork();
+            //var CustomerFromDataStore = UoW.FindObject<Customer>(new BinaryOperator(nameof(customer.Code), customer.Code));
+
+            //Assert.AreEqual(customer.Name, CustomerFromDataStore.Name);
+
+
+
+
+            //HACK ToImplmement 001
             XpoWebApiProvider.Register();
 
             client = new Client(new NewtonsoftSerializationAdapter(), createHttpClient: (name) => _testServerHttpClientFactory.CreateClient());
 
 
 
-            SimpleObjectSerializationService simpleObjectSerializationHelper = new SimpleObjectSerializationService();
-            Dictionary<string, string> Headers = new Dictionary<string, string>();
-            Headers.Add(XpoWebApiProvider.TokenPart, "");
-            Headers.Add(XpoWebApiProvider.DataStoreIdPart, "001");
-            ApiFunction restFunctionClient = new ApiFunction(client, Url, Headers);
+            //SimpleObjectSerializationService simpleObjectSerializationHelper = new SimpleObjectSerializationService();
+            //Dictionary<string, string> Headers = new Dictionary<string, string>();
+            //Headers.Add(XpoWebApiProvider.TokenPart, "");
+            //Headers.Add(XpoWebApiProvider.DataStoreIdPart, "002");
+            //ApiFunction restFunctionClient = new ApiFunction(client, Url, Headers);
 
 
-            var Cnx = XpoWebApiProvider.GetConnectionString("http://localhost", Controller, "", "001");
-            XpoWebApiProvider restClientNetProvider = new XpoWebApiProvider(restFunctionClient, new SimpleObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
+            var Cnx = XpoWebApiProvider.GetConnectionString("http://localhost", Controller, "", "002");
+            //XpoWebApiProvider restClientNetProvider = new XpoWebApiProvider(restFunctionClient, new SimpleObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
 
 
 

@@ -36,11 +36,10 @@ namespace BIT.AspNetCore.Tests
 
             var test = _testServerHttpClientFactory;
 
-            //CreateHttpClient createHttpClient =new CreateHttpClient(CreateClientMethod);
+         
+
             client = new Client(new NewtonsoftSerializationAdapter() , createHttpClient: (name) => _testServerHttpClientFactory.CreateClient());
 
-            //client = new Client(new NewtonsoftSerializationAdapter(), httpClientFactory: _testServerHttpClientFactory);
-            //client = new Client(new NewtonsoftSerializationAdapter());
 
 
             //TODO check why the serialization does not work when the class DataResult inherits from dictionary
