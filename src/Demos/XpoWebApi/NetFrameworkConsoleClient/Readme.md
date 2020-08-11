@@ -1,4 +1,4 @@
-# BIT SingularOrm EntityFramework
+# NetFrameworkConsoleClient
 
 Coming Soon...
 
