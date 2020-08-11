@@ -1,4 +1,4 @@
-# BIT Xpo Providers SqliteEncrypted
+# BIT Xpo Providers CipherSQLiteConnectionProvider
 
 
 Coming Soon...
