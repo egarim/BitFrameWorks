@@ -6,23 +6,24 @@ using BIT.Xpo.Functions;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace BIT.Xpo.Providers.WebApi.AspNet
 {
-
+   
     public abstract class XpoWebApiControllerBase : ApiController
     {
-       
-      
+        private const string Key = "DataStoreId";
+
         public async virtual Task<IHttpActionResult> Post()
         {
             var body=this.Request.Content;
-
-
+            var DataStoreId=this.Request.Headers.FirstOrDefault(x => x.Key == Key).Value.FirstOrDefault();
+            
 
             IDataParameters parameters = await DeserializeFromStream(await body.ReadAsStreamAsync());
 
-            parameters.AdditionalValues.Add("DataStoreId", "001");
+            parameters.AdditionalValues.Add(Key, DataStoreId);
             IDataResult content = this.DataStoreFunctionServer.ExecuteFunction(parameters);
             return base.Ok(content);
 

@@ -2,6 +2,7 @@
 using BIT.Xpo.Providers.WebApi.AspNet;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace XpoWebApiAspNet.Controllers
@@ -11,6 +12,11 @@ namespace XpoWebApiAspNet.Controllers
         public XpoWebApiController(IFunction DataStoreFunctionServer) : base(DataStoreFunctionServer)
         {
 
+        }
+        public override Task<IHttpActionResult> Post()
+        {
+            Task<IHttpActionResult> task = base.Post();
+            return task;
         }
         //public IHttpActionResult Post()
         //{
