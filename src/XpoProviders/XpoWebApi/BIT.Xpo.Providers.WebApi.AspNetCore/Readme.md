@@ -1,4 +1,4 @@
-# BIT Xpo Providers Network Http Client RestClientNet
+# BIT Xpo Providers WebApi AspNetCore
 
 Coming Soon...
 
@@ -7,6 +7,3 @@ Coming Soon...
 ## Getting Started
 
 ## YouTube Videos
-
-
-
