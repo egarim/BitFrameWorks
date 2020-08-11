@@ -79,19 +79,15 @@ There are several ways in which you can contribute. Here are some:
 | Library        | Description   |
 | ------------- |:-------------:| 
 |[BIT.SingularOrm.EntityFramework](https://github.com/egarim/BitFrameWorks/tree/master/src/BIT.SingularOrm.EntityFramework)      | Bit Singular ORM EntityFramework|
+|[BIT.Xpo.Providers.Network.Server.HttpNetFramework](https://github.com/egarim/BitFrameWorks/tree/master/src/BIT.Xpo.Providers.Network.Server.HttpNetFramework)      | BIT Xpo Providers Network Server HttpNetFramework|
 |[Core](https://github.com/egarim/BitFrameWorks/tree/master/src/Core)      | Core|
 |[Demos](https://github.com/egarim/BitFrameWorks/tree/master/src/Demos)      | Demos|
-|[HttpApiServerDemo](https://github.com/egarim/BitFrameWorks/tree/master/src/HttpApiServerDemo)      | HttpApiServerDemo|
 |[Singular](https://github.com/egarim/BitFrameWorks/tree/master/src/Singular)      | Singular|
 |[Tests](https://github.com/egarim/BitFrameWorks/tree/master/src/Tests)      | Tests|
 |[Xpo](https://github.com/egarim/BitFrameWorks/tree/master/src/Xpo)      | Xpo|
 |[XpoProviders](https://github.com/egarim/BitFrameWorks/tree/master/src/XpoProviders)      | XpoProviders|
-|[XpoWebApi.Legacy.NetCore.Console](https://github.com/egarim/BitFrameWorks/tree/master/src/XpoWebApi.Legacy.NetCore.Console)      | XpoWebApi Legacy NetCore Console|
-|[XpoWebApi.LegacyServer](https://github.com/egarim/BitFrameWorks/tree/master/src/XpoWebApi.LegacyServer)      | XpoWebApi LegacyServer|
-|[XpoWebApi.LegacyServer.Tests](https://github.com/egarim/BitFrameWorks/tree/master/src/XpoWebApiLegacy/XpoWebApi.LegacyServer.Tests)      | XpoWebApi LegacyServer Tests|
 |[Build](https://github.com/egarim/BitFrameWorks/tree/master/src/build)      | Build|
 |[Tools](https://github.com/egarim/BitFrameWorks/tree/master/src/tools)      | Tools|
-
 
 
 
