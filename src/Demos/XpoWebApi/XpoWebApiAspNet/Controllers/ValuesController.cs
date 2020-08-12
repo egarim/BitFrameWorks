@@ -1,5 +1,4 @@
-﻿using BIT.Xpo.Providers.WebApi.AspNet;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -8,7 +7,7 @@ using System.Web.Http;
 
 namespace XpoWebApiAspNet.Controllers
 {
-        public class ValuesController : ApiController
+    public class ValuesController : ApiController
     {
         // GET api/values
         public IEnumerable<string> Get()

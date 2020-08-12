@@ -2,9 +2,9 @@
 	<PropertyGroup>
 		<XpoVersion>20.1.6</XpoVersion>
 		<XafVersion>20.1.6</XafVersion>
-		<NugetVersion>20.1.6.582569771</NugetVersion>
+		<NugetVersion>20.1.6.583700904</NugetVersion>
 		<NetStandardVersion>netstandard2.0</NetStandardVersion>
-	    <RestClientNetVersion>4.1.0</RestClientNetVersion>
+	    <RestClientNetVersion>4.0.0</RestClientNetVersion>
 	</PropertyGroup>
 	<PropertyGroup>
 		<GenerateAssemblyInfo>True</GenerateAssemblyInfo>
