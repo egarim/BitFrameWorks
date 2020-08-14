@@ -23,7 +23,6 @@
 	</PropertyGroup>
 	<!--Nuget Generation Section End-->
 	<ItemGroup>
-		<PackageReference Include="BIT.Sqlite.MultiTarget" Version="1.1.12" />
 		<PackageReference Include="DevExpress.Xpo" Version="$(XpoVersion)" />
 		<PackageReference Include="Microsoft.Data.Sqlite.Core" Version="2.2.6" />
 		<PackageReference Include="SQLitePCLRaw.bundle_sqlcipher" Version="1.1.14" />
