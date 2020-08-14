@@ -27,6 +27,11 @@ class Build : NukeBuild
     ///   - Microsoft VSCode           https://nuke.build/vscode
 
     public static int Main() => Execute<Build>(x => x.Compile);
+    //HACK this is the path that will be use if execute the scripts build.X from the src director
+    private const string BuildProps = "../Directory.Build.props";
+
+    //HACK this is the path that will be use if build using the _build project 
+    //private const string BuildProps = "../../../Directory.Build.props";
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
@@ -66,7 +71,12 @@ class Build : NukeBuild
           if (File.Exists("Directory.Build.props_backup"))
               File.Delete("Directory.Build.props_backup");
 
-          File.Copy("Directory.Build.props", "Directory.Build.props_backup");
+          if (!File.Exists(BuildProps))
+          {
+              Console.WriteLine("Missing prop file");
+              throw new Exception("Missing prop file");
+          }
+          File.Copy(BuildProps, "Directory.Build.props_backup");
 
           var props = File.ReadAllText("Directory.Build.props_backup");
 
@@ -77,13 +87,13 @@ class Build : NukeBuild
 
 
 
-          var Template = File.ReadAllText("Directory.Build.Template.props")
+          var Template = File.ReadAllText(BuildProps)
                 .Replace("$XpoVersion", XpoVersion)
                 .Replace("$XafVersion", XafVersion)
                 .Replace("$NugetVersion", $"{NugetVersion}.{v}");//$".{new DateTimeOffset(DateTime.Now).ToUnixTime()}");
 
           //Write the new props, later we will restore the origi
-          File.WriteAllText("Directory.Build.props", Template);
+          File.WriteAllText(BuildProps, Template);
       });
 
 
