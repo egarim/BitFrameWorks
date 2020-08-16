@@ -1,0 +1,14 @@
+{
+  "solution": {
+    "path": "BitFrameworks.sln",
+    "projects": [
+      "..\\build\\_build.csproj",
+      "Core\\BIT.Data.Transfer.RestClientNet\\BIT.Data.Transfer.RestClientNet.csproj",
+      "Demos\\XpoDemoOrm\\XpoDemoOrm.csproj",
+      "Tests\\BIT.AspNetCore.Tests\\BIT.Data.Transfer.RestClientNet.Tests.csproj",
+      "Tests\\TestServer\\TestServer.csproj",
+      "XpoProviders\\XpoWebApi\\BIT.Xpo.Providers.WebApi.Client\\BIT.Xpo.Providers.WebApi.Client.csproj",
+      "Xpo\\BIT.Data.Xpo\\BIT.Xpo.csproj"
+    ]
+  }
+}

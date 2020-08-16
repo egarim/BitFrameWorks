@@ -66,17 +66,45 @@ namespace BIT.Xpo.DataStores
         {
             IDataParameters Parameters = new DataParameters();
             CommandChannelDoParams commandChannelDoParams = new CommandChannelDoParams(command, args);
-            Parameters.MemberName = nameof(UpdateSchema);
+            Parameters.MemberName = nameof(Do);
             Parameters.ParametersValue = this.objectSerializationHelper.ToByteArray<CommandChannelDoParams>(commandChannelDoParams);
             IDataResult DataResult = FunctionClient.ExecuteFunction(Parameters);
-            var UpdateSchemaResult = this.objectSerializationHelper.GetObjectsFromByteArray<object>(DataResult.ResultValue);
-            return UpdateSchemaResult;
+
+
+            switch (commandChannelDoParams.Command)
+            {
+
+                case CommandChannelHelper.Command_ExecuteScalarSQL:
+                case CommandChannelHelper.Command_ExecuteScalarSQLWithParams:
+                    return this.objectSerializationHelper.GetObjectsFromByteArray<object>(DataResult.ResultValue);
+                    
+
+                case CommandChannelHelper.Command_ExecuteQuerySQL:
+                case CommandChannelHelper.Command_ExecuteQuerySQLWithParams:
+                case CommandChannelHelper.Command_ExecuteQuerySQLWithMetadata:
+                case CommandChannelHelper.Command_ExecuteQuerySQLWithMetadataWithParams:
+                case CommandChannelHelper.Command_ExecuteStoredProcedure:
+                case CommandChannelHelper.Command_ExecuteStoredProcedureParametrized:
+                    return this.objectSerializationHelper.GetObjectsFromByteArray <SelectedData>(DataResult.ResultValue);
+                    
+
+                case CommandChannelHelper.Command_ExecuteNonQuerySQL:
+                case CommandChannelHelper.Command_ExecuteNonQuerySQLWithParams:
+                    return this.objectSerializationHelper.GetObjectsFromByteArray<int>(DataResult.ResultValue);
+                  
+
+                default:
+                    throw new Exception($"ICommandChannel Do method retuned an unknow data type while processing {commandChannelDoParams.Command}");
+            }
+
+
+        
         }
         object ICommandChannel.Do(string command, object args)
         {
 
-            throw new NotImplementedException();
-            //return this.Do(command, args).GetAwaiter().GetResult();
+            
+            return this.Do(command, args);
 
         }
    

@@ -7,7 +7,7 @@ using System.IO;
 
 namespace BIT.AspNetCore
 {
-    public class AuthenticateAttribute : ActionFilterAttribute
+    public class JwtAuthenticationAttribute : ActionFilterAttribute
     {
 
 
@@ -25,6 +25,8 @@ namespace BIT.AspNetCore
             string Key = string.Empty;
             string Issuer = string.Empty;
             bool IsAuthenticationOn = true;
+
+
             if ((!memoryCache.TryGetValue(nameof(Key), out Key)) || (!memoryCache.TryGetValue(nameof(Issuer), out Issuer))|| (!memoryCache.TryGetValue(nameof(IsAuthenticationOn), out IsAuthenticationOn)))
             {
 
