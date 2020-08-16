@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="2.2.6" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Core\BIT.AspNetCore\BIT.AspNetCore.csproj" />
     <ProjectReference Include="..\..\Core\BIT.Data\BIT.Data.csproj" />
     <ProjectReference Include="..\..\Demos\XpoWebApi\XpoWebApiAspNetCore\XpoWebApiAspNetCore.csproj" />

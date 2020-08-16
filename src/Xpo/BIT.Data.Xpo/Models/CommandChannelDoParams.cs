@@ -12,5 +12,8 @@ namespace BIT.Xpo.Models
             Command = command;
             Args = args;
         }
+        public CommandChannelDoParams()
+        {
+        }
     }
 }

@@ -10,9 +10,11 @@ namespace BIT.Xpo.Functions
 
 
 
-   
+
     public class DataStoreFunctionServer : IFunction
     {
+        private const string DataStoreId = "DataStoreId";
+
         public IConfigResolver<IDataStore> ConfigResolver { get; set; }
         public IObjectSerializationService ObjectSerializationService { get; set; }
         public DataStoreFunctionServer(IConfigResolver<IDataStore> configResolver, IObjectSerializationService objectSerializationService)
@@ -31,11 +33,11 @@ namespace BIT.Xpo.Functions
         public IDataResult ExecuteFunction(IDataParameters Parameters)
         {
             DataResult dataResult = new DataResult();
-            string id = Parameters.AdditionalValues["DataStoreId"].ToString();
+            string id = Parameters.AdditionalValues[DataStoreId].ToString();
             IDataStore DataStore = null;
             DataStore = this.ConfigResolver.GetById(id);
-           
-         
+
+
             if (Parameters.MemberName == nameof(IDataStore.SelectData))
             {
 
@@ -73,21 +75,55 @@ namespace BIT.Xpo.Functions
             if (Parameters.MemberName == nameof(ICommandChannel.Do))
             {
                 CommandChannelDoParams DoParams = ObjectSerializationService
-                          .GetObjectsFromByteArray<CommandChannelDoParams>(Parameters.ParametersValue);
+                       .GetObjectsFromByteArray<CommandChannelDoParams>(Parameters.ParametersValue);
 
                 ICommandChannel commandChannel = DataStore as ICommandChannel;
                 if (commandChannel != null)
                 {
-                    dataResult.ResultValue =
-                                 ObjectSerializationService
-                                 .ToByteArray(
-                                     commandChannel.Do(DoParams.Command,
-                                     DoParams.Args)
-                                     );
+                    object data = commandChannel.Do(DoParams.Command,
+                                     DoParams.Args);
+
+
+                    switch (DoParams.Command)
+                    {
+                       
+                        case CommandChannelHelper.Command_ExecuteScalarSQL:
+                        case CommandChannelHelper.Command_ExecuteScalarSQLWithParams:
+                            dataResult.ResultValue =
+                                        ObjectSerializationService
+                                        .ToByteArray<object>(
+                                        data
+                                        );
+                            break;
+
+                        case CommandChannelHelper.Command_ExecuteQuerySQL:
+                        case CommandChannelHelper.Command_ExecuteQuerySQLWithParams:
+                        case CommandChannelHelper.Command_ExecuteQuerySQLWithMetadata:
+                        case CommandChannelHelper.Command_ExecuteQuerySQLWithMetadataWithParams:
+                        case CommandChannelHelper.Command_ExecuteStoredProcedure:
+                        case CommandChannelHelper.Command_ExecuteStoredProcedureParametrized:
+                            dataResult.ResultValue =
+                                        ObjectSerializationService
+                                        .ToByteArray<SelectedData>(
+                                        data as SelectedData
+                                        );
+
+                            break;
+
+                        case CommandChannelHelper.Command_ExecuteNonQuerySQL:
+                        case CommandChannelHelper.Command_ExecuteNonQuerySQLWithParams:
+                            dataResult.ResultValue =
+                                        ObjectSerializationService
+                                        .ToByteArray<int>(
+                                        (int)data
+                                        );
+                            break;
+
+                        default:
+                            throw new Exception($"ICommandChannel Do method retuned an unknow data type while processing {DoParams.Command}");
+                    }
                 }
-
             }
-
             return dataResult;
         }
     }
