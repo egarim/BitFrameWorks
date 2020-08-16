@@ -77,62 +77,10 @@ namespace BIT.Xpo
             DevExpress.Xpo.DB.IDataStore DataStore = XpoDefault.GetConnectionProvider(ConnectionString, autoCreateOptionEnum, out DisposableObjects);
             return DataStore;
 
-
-
-
-            //throw new Exception($"there is no configuration for the DataStore with the ID:{Id}");
+        
         }
 
 
-        //public UnitOfWork GetUnitOfWork(string DataStoreId)
-        //{
-        //    //TODO we might need to use a thread safe
-        //    if (DataStores.ContainsKey(DataStoreId))
-        //        return new UnitOfWork(new SimpleDataLayer(DataStores[DataStoreId]));
-        //    else
-        //    {
-        //        LoadConfiguration();
-        //        IDataStore DataStore = InitDataStore(DataStoreId, AutoCreateOptions[DataStoreId]);
-        //        return new UnitOfWork(new SimpleDataLayer(DataStore));
-        //    }
-        //    throw new Exception($"there is no configuration for the DataStore with the ID:{DataStoreId}");
-        //}
-        //private IDataStore InitDataStore(string DataStoreId, string AutoCreateOptions)
-        //{
-
-        //    AutoCreateOption autoCreateOptionEnum = AutoCreateOption.None;
-
-        //    switch (AutoCreateOptions)
-        //    {
-        //        case "DatabaseAndSchema":
-        //            autoCreateOptionEnum = AutoCreateOption.DatabaseAndSchema;
-        //            break;
-        //        case "SchemaOnly":
-        //            autoCreateOptionEnum = AutoCreateOption.SchemaOnly;
-        //            break;
-        //        case "None ":
-        //            autoCreateOptionEnum = AutoCreateOption.None;
-        //            break;
-        //        case "SchemaAlreadyExists":
-        //            autoCreateOptionEnum = AutoCreateOption.SchemaAlreadyExists;//HACK aqui esto estaba equivocado
-        //            break;
-        //    }
-
-        //    var ConnectionString = configuration.GetConnectionString(DataStoreId);
-        //    IDisposable[] DisposableObjects = null;
-        //    //TODO read autocreate options from the config
-        //    var DataStore = XpoDefault.GetConnectionProvider(ConnectionString, autoCreateOptionEnum, out DisposableObjects);
-        //    if (DataStore != null)
-        //    {
-        //        DataStores.Add(DataStoreId, DataStore);
-        //    }
-
-        //    return DataStore;
-        //}
-
-        //public IDataStore GetById(string Id)
-        //{
-        //    throw new NotImplementedException();
-        //}
+    
     }
 }
