@@ -77,7 +77,7 @@ there should be matching entry on the DatabaseAutoCreateOptions section
 
 #### Client
 
-1. Add reference to XpoWebApi client **BIT.Xpo.Providers.WebApi.Client**
+1. Add reference to XpoWebApi client nuget **BIT.Xpo.Providers.WebApi.Client**
 2. Register our provider as soon as you can in your application lifetime by using the following line:
 
 ```<language>
