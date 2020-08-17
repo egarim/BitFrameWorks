@@ -1,96 +1,110 @@
-### BIT Frameworks
+### XpoWebApi
 ---
 
-BIT Frameworks is a set of open source frameworks to extend the capabilites of the .NET application framework [DevExpress XAF](https://www.devexpress.com/products/net/application_framework/)
-
-Ultra modules for XAF project is created José Manuel Ojeda Melgar, A.K.A [Joche Ojeda](https://www.jocheojeda.com).
-
-All frameworks are released under [Microsoft Public License (Ms-PL)](https://opensource.org/licenses/MS-PL)
-
-Our philosophy is that a frameworks should be easy obtain, install and setup so we have chosen nuget packages as our distribution method
+XpoWebApi is an open source XPO provider that allow your application to communicate to a data store hosted in a Web API
 
 
 
 
-### Core
----
+### AspNetCore Getting Started
 
+#### Server
 
-| Library        | Description   |
-| ------------- |:-------------:| 
-|[BIT.Data](https://github.com/egarim/BitFrameWorks/tree/master/scr/Core/BIT.Data)      | This project contains all the models and base implementations of data related functionality|
-|[BIT.Data.Db.SqliteMultiTarget](https://github.com/egarim/BitFrameWorks/tree/master/scr/Core/BIT.Db.SqliteMultiTarget)      | this module gives you the ability to search all your persistent objects in a unified user interface |
-|[BIT.Data.Transfer.RestClientNet](https://github.com/egarim/BitFrameWorks/tree/master/scr/Core/BIT.Data.Transfer.RestClientNet)      | this module gives you the ability to search all your persistent objects in a unified user interface |
-|[BIT.AspNetCore](https://github.com/egarim/BitFrameWorks/tree/master/scr/Core/BIT.AspNetCore)      | this module gives you the ability to search all your persistent objects in a unified user interface |
-
-
-### Xpo
----
-
-
-| Provider        | Description   |
-| ------------- |:-------------:| 
-|[BIT.AspNetCore.Xpo](https://github.com/egarim/Ultra/tree/master/Ultra.UniversalSearch)      | this module gives you the ability to search all your persistent objects in a unified user interface |
-|[BIT.Data.Xpo](https://github.com/egarim/Ultra/tree/master/Ultra.UniversalSearch)      | this module gives you the ability to search all your persistent objects in a unified user interface |
-|[BIT.Xpo.Functions.GIS](https://github.com/egarim/Ultra/tree/master/Ultra.UniversalSearch)      | this module gives you the ability to search all your persistent objects in a unified user interface |
-
-
-
-### Xpo Providers
----
-
-
-| Provider        | Description   |
-| ------------- |:-------------:| 
-|[AsyncDataStoreWrapper](https://github.com/egarim/Ultra/tree/master/Ultra.UniversalSearch)      | this module gives you the ability to search all your persistent objects in a unified user interface |
-|[LoadBalancingFirstFreeReadWriteProvider](https://github.com/egarim/Ultra/tree/master/Ultra.UniversalSearch)      | this module gives you the ability to search all your persistent objects in a unified user interface |
-|[LoadBalancingMultipleReadSingleWriteProvider](https://github.com/egarim/Ultra/tree/master/Ultra.UniversalSearch)      | this module gives you the ability to search all your persistent objects in a unified user interface |
-|[WebApi](https://github.com/egarim/Ultra/tree/master/Ultra.Email)      | To locate the log of the email module search for the entry "Sending email", below this entry you will find the parameters used to send the email and any exception information if an exception happened |
-|[Network](https://github.com/egarim/Ultra/tree/master/Ultra.Email)      | To locate the log of the email module search for the entry "Sending email", below this entry you will find the parameters used to send the email and any exception information if an exception happened |    
- 
-
-
-### Nuget Version Numbers
-
-
-Each nuget package has a version number as part of its identity. As such, two nugets that differ by version number are considered by the runtime to be completely different nuget packages. This version number is physically represented as a four-part string with the following format:
+1. Create an AspNetCore Web Api project
+2. Add references to the nuget **BIT.Xpo.Providers.WebApi.AspNetCore**
+3. Add XpoWebApi to the list of services in your startup class
 
 ```<language>
-<major version>.<minor version>.<build number>.<module version>
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddControllers();
+    services.AddXpoWebApi();
+}
+```
+4. Implement a controller that inherit from XpoWebApiControllerBase
+
+```<language>
+using BIT.Data.DataTransfer;
+using BIT.Xpo.Providers.WebApi.AspNetCore;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
+
+namespace XpoWebApiDemo.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class XpoWebApiController : XpoWebApiControllerBase
+    {
+        public XpoWebApiController(IFunction DataStoreFunctionServer) : base(DataStoreFunctionServer)
+        {
+        }
+    }
+}
+
+```
+5. Setup your connection strings in your appsettings.json, for each entry on the ConnectionStrings section
+there should be matching entry on the DatabaseAutoCreateOptions section
+
+```<language>
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "ConnectionString": "XpoProvider=InMemoryDataStore;case sensitive=False",
+    "001": "XpoProvider=InMemoryDataStore;case sensitive=False"
+  
+  
+
+  },
+  "DatabaseAutoCreateOptions": {
+    "ConnectionString": "DatabaseAndSchema",
+    "001": "DatabaseAndSchema"
+  
+  }
+}
+
+```
+6. Test your setup, navigate to the url of the XpoWebApi controller that you implemented on step 4, the url should be something like https://localhost/api/XpoWebApi, this user might be different depending on your setup, you should see a message like this:
+
+   "This is working )) YourProjectName.Controllers.XpoWebApiController"
+
+#### Client
+
+1. Add reference to XpoWebApi client **BIT.Xpo.Providers.WebApi.Client**
+2. Register our provider as soon as you can in your application lifetime by using the following line:
+
+```<language>
+
+   XpoWebApiProvider.Register();
+
+```
+3. Use the following connection string in your application
+
+```<language>
+XpoProvider=XpoWebApiProvider;Url=UrlOfYourApi;Controller=ControllerPath;Token=YourTokenIfYouHaveOne;DataStoreId=TheIdOfYourDataStore
 ```
 
-For example, version 18.2.4.1 indicates 18 as the major version, 2 as the minor version, 4 as the build number, and 1 as the version number of the ultra module.The first 3 numbers
-represent the version of DevExpress nuget.
+You can also use the static method GetConnectionString of the XpoWebApiProvider class as shown in the example below 
+```<language>
 
+   var XpoWebApiAspNetCore = XpoWebApiProvider.GetConnectionString("https://localhost:44359", "/XpoWebApi", string.Empty, DataStoreId);
 
-### Help us get better?
+```
+### AspNet Getting Started
 
-There are several ways in which you can contribute. Here are some:
+Coming soon
 
-- Send a pull-request to this repository with your suggestions.
-- Share this repository with everyone who uses XAF (people, teams, communities, companies or any other entity).
-- Invite others to share this project and continue to spread the word.
-- Of course you are more than welcome to submit other features and bugfixes as well.
+### Videos on youtube
 
-
-
-### Libraries
----
-
-
-| Library        | Description   |
-| ------------- |:-------------:| 
-|[BIT.SingularOrm.EntityFramework](https://github.com/egarim/BitFrameWorks/tree/master/src/BIT.SingularOrm.EntityFramework)      | Bit Singular ORM EntityFramework|
-|[BIT.Xpo.Providers.Network.Server.HttpNetFramework](https://github.com/egarim/BitFrameWorks/tree/master/src/BIT.Xpo.Providers.Network.Server.HttpNetFramework)      | BIT Xpo Providers Network Server HttpNetFramework|
-|[Core](https://github.com/egarim/BitFrameWorks/tree/master/src/Core)      | Core|
-|[Demos](https://github.com/egarim/BitFrameWorks/tree/master/src/Demos)      | Demos|
-|[Singular](https://github.com/egarim/BitFrameWorks/tree/master/src/Singular)      | Singular|
-|[Tests](https://github.com/egarim/BitFrameWorks/tree/master/src/Tests)      | Tests|
-|[Xpo](https://github.com/egarim/BitFrameWorks/tree/master/src/Xpo)      | Xpo|
-|[XpoProviders](https://github.com/egarim/BitFrameWorks/tree/master/src/XpoProviders)      | XpoProviders|
-|[Build](https://github.com/egarim/BitFrameWorks/tree/master/src/build)      | Build|
-|[Tools](https://github.com/egarim/BitFrameWorks/tree/master/src/tools)      | Tools|
-
-
+1. XpoWebApi for AspNetCore Getting Started https://youtu.be/2IJOKE7yfr0
+2. XpoWebApi for AspNetCore Using Multiple DataStore https://youtu.be/RTDg4fZL-5g
+3. Using unsupported databases in netcore through XpoWebApi https://youtu.be/2eJrqPui9Sk
 
 
