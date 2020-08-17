@@ -1,5 +1,5 @@
 ﻿using BIT.AspNetCore.Controllers;
-using BIT.Data.DataTransfer;
+using BIT.Data.Functions;
 using BIT.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,7 +11,7 @@ namespace TestServer.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class HttpDataTransferTestController : HttpDataTransferController
+    public class HttpDataTransferTestController : FunctionControllerBase
     {
         IObjectSerializationService _ObjectSerializationHelper;
         public HttpDataTransferTestController(IObjectSerializationService ObjectSerializationHelper)

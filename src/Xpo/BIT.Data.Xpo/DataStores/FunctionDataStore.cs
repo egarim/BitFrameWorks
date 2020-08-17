@@ -1,4 +1,4 @@
-﻿using BIT.Data.DataTransfer;
+﻿using BIT.Data.Functions;
 using BIT.Data.Services;
 using BIT.Xpo.Models;
 using DevExpress.Xpo.DB;

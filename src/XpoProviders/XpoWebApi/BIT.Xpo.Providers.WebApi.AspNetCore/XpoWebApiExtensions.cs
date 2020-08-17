@@ -1,4 +1,4 @@
-﻿using BIT.Data.DataTransfer;
+﻿using BIT.Data.Functions;
 using BIT.Data.Services;
 using BIT.Xpo.Functions;
 using DevExpress.Xpo.DB;
@@ -25,9 +25,9 @@ namespace BIT.Xpo.Providers.WebApi.AspNetCore
         public static IServiceCollection AddXpoWebApi(this IServiceCollection serviceCollection, IConfigResolver<IDataStore> dataStoreResolver, IStringSerializationService stringSerializationHelper, IObjectSerializationService simpleObjectSerializationService)
         {
 
-      
-       
-           
+
+
+
             IFunction function = new DataStoreFunctionServer(dataStoreResolver, simpleObjectSerializationService);
             serviceCollection.AddSingleton<IConfigResolver<IDataStore>>(dataStoreResolver);
             serviceCollection.AddSingleton<IStringSerializationService>(stringSerializationHelper);

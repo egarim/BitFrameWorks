@@ -1,5 +1,5 @@
 ﻿using BIT.AspNetCore.Controllers;
-using BIT.Data.DataTransfer;
+using BIT.Data.Functions;
 using BIT.Data.Services;
 using DevExpress.Xpo.DB;
 using System;
@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace BIT.Xpo.Providers.WebApi.AspNetCore
 {
-    public abstract class XpoWebApiControllerBase : HttpDataTransferController
+    public abstract class XpoWebApiControllerBase : FunctionControllerBase
     {
 
         public IFunction DataStoreFunctionServer { get; set; }
@@ -22,7 +22,9 @@ namespace BIT.Xpo.Providers.WebApi.AspNetCore
 
 
         }
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public virtual async Task<string> Get()
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return $"This is working )) {this.GetType().FullName}";
         }

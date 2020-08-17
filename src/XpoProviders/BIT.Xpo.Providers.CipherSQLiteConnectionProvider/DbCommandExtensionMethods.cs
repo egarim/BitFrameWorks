@@ -1,7 +1,4 @@
-﻿using DevExpress.Xpo.DB;
-using Microsoft.Data.Sqlite;
-//using Microsoft.Data.Sqlite;
-using System;
+﻿using System;
 using System.Data;
 
 namespace BIT.Xpo.Providers.CipherSQLite
