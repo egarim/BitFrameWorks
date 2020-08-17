@@ -1,16 +1,16 @@
+
 using BIT.Data.Functions;
 using BIT.Data.Functions.RestClientNet;
 using BIT.Data.Services;
 using NUnit.Framework;
 using RestClient.Net;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Threading.Tasks;
+using Test.Shared;
 
 namespace BIT.AspNetCore.Tests
 {
-    public class RestClientNetFunctionClient_Test : BaseTest
+    public class RestClientNetFunctionClient_Test : BaseServerTest
     {
         Dictionary<string, string> headers = new Dictionary<string, string>();
         public const string Token = "abcde";
@@ -34,11 +34,11 @@ namespace BIT.AspNetCore.Tests
 
             //https://christianfindlay.com/2020/05/15/c-delegates-with-ioc-containers-and-dependency-injection/
 
-            var test = _testServerHttpClientFactory;
+           
 
-         
 
-            client = new Client(new NewtonsoftSerializationAdapter() , createHttpClient: (name) => _testServerHttpClientFactory.CreateClient());
+            client = new Client(new NewtonsoftSerializationAdapter(), createHttpClient: (name) => _testServerHttpClientFactory.CreateClient());
+        
 
 
 

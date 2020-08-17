@@ -12,11 +12,12 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Test.Shared;
 using XpoDemoOrm;
 
 namespace BIT.AspNetCore.Tests
 {
-    public class XpoWebApiProvider_Test : BaseTest
+    public class XpoWebApiProvider_Test : BaseServerTest
     {
         //for these test the provider should be created manually with the constructor that takes the IFucntion as first parameter otherwise is imposible to connect to the test controller
         private const string Url = "http://localhost/WebApiHttpDataTransferControllerTest";

@@ -32,7 +32,6 @@
     <!--<PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />-->
     <PackageReference Include="Microsoft.NETCore.App" Version="2.2.8" />
-	<PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="nunit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.16.1">
       <PrivateAssets>all</PrivateAssets>
@@ -43,6 +42,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\BIT.Data\BIT.Data.csproj" />
+    <ProjectReference Include="..\Test.Shared\Test.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
