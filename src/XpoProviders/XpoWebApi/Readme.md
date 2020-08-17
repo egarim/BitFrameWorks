@@ -107,4 +107,13 @@ Coming soon
 2. XpoWebApi for AspNetCore Using Multiple DataStore https://youtu.be/RTDg4fZL-5g
 3. Using unsupported databases in netcore through XpoWebApi https://youtu.be/2eJrqPui9Sk
 
+### Examples
+
+1. XpoWebApi for AspNetCore Getting Started https://github.com/egarim/XpoWebApi-for-AspNetCore-GettingStarted
+2. XpoWebApi for AspNetCore Using Multiple DataStore https://github.com/egarim/XpoWebApi-for-AspNetCore-Using-Multiple-DataStore
+3. Using unsupported databases in netcore through XpoWebApi https://github.com/egarim/Using-unsupported-databases-in-netcore-through-XpoWebApi
+
+
+
+
 
