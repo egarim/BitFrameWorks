@@ -1,6 +1,4 @@
-using BIT.Data.DataTransfer;
 using BIT.Data.Services;
-using BIT.Data.Transfer.RestClientNet;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using NUnit.Framework;

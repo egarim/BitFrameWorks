@@ -1,6 +1,5 @@
-using BIT.Data.DataTransfer;
+using BIT.Data.Functions.RestClientNet;
 using BIT.Data.Services;
-using BIT.Data.Transfer.RestClientNet;
 using BIT.Xpo;
 using BIT.Xpo.Providers.WebApi.Client;
 using DevExpress.Data.Filtering;

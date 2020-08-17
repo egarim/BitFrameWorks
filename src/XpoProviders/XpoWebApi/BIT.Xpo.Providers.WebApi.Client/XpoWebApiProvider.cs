@@ -1,13 +1,12 @@
-﻿using BIT.Data.DataTransfer;
+﻿using BIT.Data.Functions;
+using BIT.Data.Functions.RestClientNet;
 using BIT.Data.Services;
-using BIT.Data.Transfer.RestClientNet;
 using BIT.Xpo.DataStores;
 using DevExpress.Xpo.DB;
 using DevExpress.Xpo.DB.Helpers;
 using RestClient.Net.Abstractions;
 using System;
 using System.Collections.Generic;
-//using System.Security.Policy;
 
 namespace BIT.Xpo.Providers.WebApi.Client
 {

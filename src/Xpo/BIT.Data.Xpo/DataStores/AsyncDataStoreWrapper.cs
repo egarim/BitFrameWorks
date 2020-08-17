@@ -65,8 +65,10 @@ namespace BIT.Xpo.DataStores
             return dataStoreAsync.ModifyDataAsync(cancellationToken, dmlStatements);
         }
 
-
+        //TODO Implement https://supportcenter.devexpress.com/ticket/details/t917965/how-should-i-implement-updateschemaasync-and-createobjecttypeasync-for-the-interface
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<UpdateSchemaResult> UpdateSchemaAsync(CancellationToken cancellationToken, bool doNotCreateIfFirstTableNotExist, params DBTable[] tables)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             //IDataStore provider = await AcquireUpdateSchemaProviderAsync(cancellationToken).ConfigureAwait(false);
             //var providerAsync = provider as IDataStoreAsync;

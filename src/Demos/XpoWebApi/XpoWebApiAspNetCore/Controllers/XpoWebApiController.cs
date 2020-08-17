@@ -1,4 +1,4 @@
-﻿using BIT.Data.DataTransfer;
+﻿using BIT.Data.Functions;
 using BIT.Xpo.Providers.WebApi.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using System;

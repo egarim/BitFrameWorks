@@ -1,6 +1,6 @@
-using BIT.Data.DataTransfer;
+using BIT.Data.Functions;
+using BIT.Data.Functions.RestClientNet;
 using BIT.Data.Services;
-using BIT.Data.Transfer.RestClientNet;
 using NUnit.Framework;
 using RestClient.Net;
 using System;
