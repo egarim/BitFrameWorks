@@ -14,22 +14,23 @@ namespace BIT.Xpo
     {
         Func<string, IResolver<IDataStore>, IXpoInitializer> _DalBuilder;
         IResolver<IDataStore> _DataStoreResolver;
-       
-        public XpoInitializerResolver(IResolver<IDataStore> DataStoreResolver):this(DataStoreResolver,null)
+        Type[] _entityTypes;
+        public XpoInitializerResolver(IResolver<IDataStore> DataStoreResolver, params Type[] entityTypes) :this(DataStoreResolver,null, entityTypes)
         {
 
             this._DalBuilder = new Func<string, IResolver<IDataStore>, IXpoInitializer>(Build);
         }
-        public XpoInitializerResolver(IResolver<IDataStore> DataStoreResolver, Func<string, IResolver<IDataStore>, IXpoInitializer> DalBuilder)
+        public XpoInitializerResolver(IResolver<IDataStore> DataStoreResolver, Func<string, IResolver<IDataStore>, IXpoInitializer> DalBuilder, params Type[] entityTypes)
         {
             _DalBuilder = DalBuilder;
             _DataStoreResolver = DataStoreResolver;
+            _entityTypes= entityTypes;
 
         }
 
         private IXpoInitializer Build(string DataStoreId, IResolver<IDataStore> DataStoreResolver)
         {
-            return new XpoInitializer(DataStoreResolver.GetById(DataStoreId), null);
+            return new XpoInitializer(DataStoreResolver.GetById(DataStoreId), _entityTypes);
         }
 
         public IXpoInitializer GetById(string Id)

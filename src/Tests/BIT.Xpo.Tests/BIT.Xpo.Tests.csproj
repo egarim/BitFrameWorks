@@ -9,9 +9,15 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="NewConnectionString.json" />
+    <None Remove="XpoInitializerResolver_appsettings.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="XpoInitializerResolver_appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
