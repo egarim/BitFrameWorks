@@ -9,7 +9,7 @@ using System.Text;
 
 namespace BIT.Data.Services
 {
-    public class ConfigurationResolverBase<T>: IConfigResolver<T> where T : class
+    public class ConfigurationResolverBase<T>: IResolver<T> where T : class
     {
         protected Dictionary<string, T> Instances = new Dictionary<string, T>();
        

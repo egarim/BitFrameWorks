@@ -15,9 +15,9 @@ namespace BIT.Xpo.Functions
     {
         private const string DataStoreId = "DataStoreId";
 
-        public IConfigResolver<IDataStore> ConfigResolver { get; set; }
+        public IResolver<IDataStore> ConfigResolver { get; set; }
         public IObjectSerializationService ObjectSerializationService { get; set; }
-        public DataStoreFunctionServer(IConfigResolver<IDataStore> configResolver, IObjectSerializationService objectSerializationService)
+        public DataStoreFunctionServer(IResolver<IDataStore> configResolver, IObjectSerializationService objectSerializationService)
         {
             ConfigResolver = configResolver;
             ObjectSerializationService = objectSerializationService;

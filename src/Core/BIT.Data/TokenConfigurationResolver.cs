@@ -9,7 +9,7 @@ using System.Text;
 
 namespace BIT.Data
 {
-    public class TokenConfigurationResolver : ConfigurationResolverBase<JwtAuthInfo>, IConfigResolver<JwtAuthInfo>
+    public class TokenConfigurationResolver : ConfigurationResolverBase<JwtAuthInfo>, IResolver<JwtAuthInfo>
     {
 
         Dictionary<string, JwtAuthInfo> TokenInfo;

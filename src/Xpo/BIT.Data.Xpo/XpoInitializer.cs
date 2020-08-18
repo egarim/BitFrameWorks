@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace BIT.Xpo
 {
-    public class XpoInitializer
+    public class XpoInitializer : IXpoInitializer
     {
 
 
