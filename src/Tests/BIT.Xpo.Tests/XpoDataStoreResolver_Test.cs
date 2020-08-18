@@ -1,4 +1,4 @@
-using DevExpress.Xpo.DB;
+﻿using DevExpress.Xpo.DB;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System;
@@ -57,7 +57,7 @@ namespace BIT.Xpo.Tests
             var NewConfig = File.ReadAllText("NewConnectionString.json");
             File.WriteAllText("appsettings.json", NewConfig);
 
-          
+
             var db99 = configurationResolverBase.GetById("db99");
             Assert.IsNotNull(db99);
 

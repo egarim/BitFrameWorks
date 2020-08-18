@@ -6,13 +6,11 @@
   },
   "AllowedHosts": "*",
   "ConnectionStrings": {
-    "ConnectionString": "XpoProvider=InMemoryDataStore;case sensitive=False",
     "db1": "XpoProvider=InMemoryDataStore;case sensitive=False",
-    "db99": "XpoProvider=InMemoryDataStore;case sensitive=False"
-
+    "db2": "XpoProvider=InMemoryDataStore;case sensitive=False"
   },
   "DatabaseAutoCreateOptions": {
     "db1": "DatabaseAndSchema",
-    "db99": "DatabaseAndSchema"
+    "db2": "DatabaseAndSchema"
   }
 }
