@@ -32,11 +32,11 @@ namespace TestServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            IConfigResolver<IDataStore> DataStoreResolver = new XpoDataStoreResolver("appsettings.json");
+            IResolver<IDataStore> DataStoreResolver = new XpoDataStoreResolver("appsettings.json");
             IStringSerializationService stringSerializationHelper = new StringSerializationHelper();
             IObjectSerializationService objectSerializationHelper = new SimpleObjectSerializationService();
             IFunction function = new DataStoreFunctionServer(DataStoreResolver, objectSerializationHelper);
-            services.AddSingleton<IConfigResolver<IDataStore>>(DataStoreResolver);
+            services.AddSingleton<IResolver<IDataStore>>(DataStoreResolver);
             services.AddSingleton<IStringSerializationService>(stringSerializationHelper);
             services.AddSingleton<IObjectSerializationService>(objectSerializationHelper);
             services.AddSingleton<IFunction>(function);

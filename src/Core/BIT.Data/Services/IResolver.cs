@@ -5,7 +5,7 @@ using System.Text;
 namespace BIT.Data.Services
 {
     
-    public interface IConfigResolver<T>
+    public interface IResolver<T>
     {
         
         T GetById(string Id);

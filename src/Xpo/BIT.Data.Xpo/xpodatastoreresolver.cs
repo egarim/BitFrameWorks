@@ -4,13 +4,11 @@ using DevExpress.Xpo.DB;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace BIT.Xpo
 {
-    public class XpoDataStoreResolver : ConfigurationResolverBase<IDataStore>, IConfigResolver<IDataStore>
+    public class XpoDataStoreResolver : ConfigurationResolverBase<IDataStore>, IResolver<IDataStore>
     {
 
         Dictionary<string, string> AutoCreateOptions;
@@ -77,10 +75,10 @@ namespace BIT.Xpo
             DevExpress.Xpo.DB.IDataStore DataStore = XpoDefault.GetConnectionProvider(ConnectionString, autoCreateOptionEnum, out DisposableObjects);
             return DataStore;
 
-        
+
         }
 
 
-    
+
     }
 }
