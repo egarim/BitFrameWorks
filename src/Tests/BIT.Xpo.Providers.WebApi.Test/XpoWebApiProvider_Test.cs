@@ -6,6 +6,7 @@ using DevExpress.Data.Filtering;
 using DevExpress.Xpo;
 using NUnit.Framework;
 using RestClient.Net;
+using RestClient.Net.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,11 +14,72 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Test.Shared;
+using TestServer;
 using XpoDemoOrm;
 
 namespace BIT.AspNetCore.Tests
 {
-    public class XpoWebApiProvider_Test : BaseServerTest
+    public class XpoWebApiWithDal_Test: XpoWebApiBaseServerTest
+    {
+        private const string Url = "http://localhost/WebApiHttpDataTransferControllerTest";
+        private const string UrlGet = "http://localhost/XpoWebApiWithDal";
+        public XpoWebApiWithDal_Test()
+        {
+            
+        }
+        [SetUp]
+        public override void Setup()
+        {
+            _testServerHttpClientFactory = GetXpoWebApiTestClientFactory(typeof(StartupXpoWebApiWithDal));
+
+        }
+        [Test]
+        public async Task CreateAndReadRecordTest()
+        {
+
+
+            XpoWebApiProvider.Register();
+
+            client = new Client(new NewtonsoftSerializationAdapter(), createHttpClient: (name) => _testServerHttpClientFactory.CreateClient());
+
+
+
+            SimpleObjectSerializationService simpleObjectSerializationHelper = new SimpleObjectSerializationService();
+            Dictionary<string, string> Headers = new Dictionary<string, string>();
+            Headers.Add(XpoWebApiProvider.TokenPart, "");
+            Headers.Add(XpoWebApiProvider.DataStoreIdPart, "001");
+            ApiFunction restFunctionClient = new ApiFunction(client, Url, Headers);
+
+
+         
+            XpoWebApiProvider restClientNetProvider = new XpoWebApiProvider(restFunctionClient, new SimpleObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
+
+
+
+            XpoInitializer xpoInitializer = new XpoInitializer(restClientNetProvider, typeof(Customer), typeof(Invoice));
+
+            xpoInitializer.InitSchema();
+
+
+            var UoW = xpoInitializer.CreateUnitOfWork();
+            Customer customer = new Customer(UoW);
+            customer.Name = "Jose Manuel Ojeda Melgar";
+            if (UoW.InTransaction)
+                UoW.CommitChanges();
+
+
+
+            var CustomerFromDataStore = UoW.FindObject<Customer>(new BinaryOperator(nameof(customer.Code), customer.Code));
+            Response<int> count = await client.GetAsync<int>(new Uri(UrlGet + "/?DataStoreId=001", UriKind.Absolute));
+
+            Assert.AreEqual(count.Body,1);
+            Assert.AreEqual(customer.Name, CustomerFromDataStore.Name);
+
+
+          
+        }
+    }
+    public class XpoWebApiProvider_Test : XpoWebApiBaseServerTest
     {
         //for these test the provider should be created manually with the constructor that takes the IFucntion as first parameter otherwise is imposible to connect to the test controller
         private const string Url = "http://localhost/WebApiHttpDataTransferControllerTest";

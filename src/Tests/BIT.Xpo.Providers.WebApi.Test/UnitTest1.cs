@@ -11,7 +11,7 @@ using XpoDemoOrm;
 
 namespace BIT.Xpo.Providers.WebApi.Test
 {
-    public class Tests: BaseServerTest
+    public class Tests: XpoWebApiBaseServerTest
     {
        
         public override void Setup()

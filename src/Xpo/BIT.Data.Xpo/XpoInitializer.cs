@@ -19,7 +19,7 @@ namespace BIT.Xpo
 
         XPDictionary dictionary;
         Type[] entityTypes;
-
+        IDataStore dataStore;
         public DataLayerType DataLayerType => dataLayerType;
 
         public XpoInitializer(string connectionString, DataLayerType DataLayerType, params Type[] entityTypes)
@@ -31,8 +31,9 @@ namespace BIT.Xpo
         {
             this.entityTypes = entityTypes;
             this.dataLayerType = DataLayerType;
+            this.dataStore = DataStore;
             dictionary = this.PrepareDictionary(entityTypes);
-            UpdateDal = new SimpleDataLayer(dictionary, DataStore);
+          
             switch (DataLayerType)
             {
                 case DataLayerType.Simple:
@@ -58,7 +59,7 @@ namespace BIT.Xpo
 
 
 
-
+            UpdateDal = new SimpleDataLayer(dictionary, dataStore);
             if (XpoDefault.DataLayer == null)
             {
                 this.UpdateDal.UpdateSchema(false, dictionary.CollectClassInfos(entityTypes));

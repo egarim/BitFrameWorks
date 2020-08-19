@@ -10,7 +10,7 @@ using Test.Shared;
 
 namespace BIT.AspNetCore.Tests
 {
-    public class RestClientNetFunctionClient_Test : BaseServerTest
+    public class RestClientNetFunctionClient_Test : XpoWebApiBaseServerTest
     {
         Dictionary<string, string> headers = new Dictionary<string, string>();
         public const string Token = "abcde";

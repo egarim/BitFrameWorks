@@ -12,7 +12,7 @@ using TestServer;
 
 namespace Test.Shared
 {
-    public class BaseServerTest
+    public class XpoWebApiBaseServerTest
     {
         protected Client client;
         
@@ -21,18 +21,18 @@ namespace Test.Shared
         [SetUp]
         public virtual void Setup()
         {
-            _testServerHttpClientFactory = GetTestClientFactory();
+            _testServerHttpClientFactory = GetXpoWebApiTestClientFactory(typeof(StartupXpoWebApi));
            
 
 
         }
         private static Microsoft.AspNetCore.TestHost.TestServer _testServer;
-        public static TestClientFactory GetTestClientFactory()
+        public static TestClientFactory GetXpoWebApiTestClientFactory(Type startupType)
         {
             if (_testServer == null)
             {
                 var hostBuilder = new WebHostBuilder();
-                hostBuilder.UseStartup<Startup>();
+                hostBuilder.UseStartup(startupType);
                 _testServer = new Microsoft.AspNetCore.TestHost.TestServer(hostBuilder);
             }
 
