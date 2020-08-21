@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace BIT.Data.Services
 {
-    public class SimpleObjectSerializationService : IObjectSerializationService
+        public class CompressXmlObjectSerializationService : IObjectSerializationService
     {
         private byte[] Compress(byte[] raw)
         {
@@ -73,7 +73,7 @@ namespace BIT.Data.Services
             }
             return null;
         }
-        public SimpleObjectSerializationService()
+        public CompressXmlObjectSerializationService()
         {
 
         }

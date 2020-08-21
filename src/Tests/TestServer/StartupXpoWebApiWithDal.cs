@@ -2,26 +2,22 @@ using BIT.Data.Functions;
 using BIT.Data.Services;
 using BIT.Xpo;
 using BIT.Xpo.Functions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using BIT.Xpo.Providers.WebApi.AspNetCore;
+using DevExpress.Xpo.DB;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using DevExpress.Xpo.DB;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
+using System;
+using System.Linq;
+using XpoDemoOrm;
 
 namespace TestServer
 {
-    public class Startup
+    public class StartupXpoWebApiWithDal
     {
-        public Startup(IConfiguration configuration)
+        public StartupXpoWebApiWithDal(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -32,14 +28,18 @@ namespace TestServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            IResolver<IDataStore> DataStoreResolver = new XpoDataStoreResolver("appsettings.json");
-            IStringSerializationService stringSerializationHelper = new StringSerializationHelper();
-            IObjectSerializationService objectSerializationHelper = new SimpleObjectSerializationService();
-            IFunction function = new DataStoreFunctionServer(DataStoreResolver, objectSerializationHelper);
-            services.AddSingleton<IResolver<IDataStore>>(DataStoreResolver);
-            services.AddSingleton<IStringSerializationService>(stringSerializationHelper);
-            services.AddSingleton<IObjectSerializationService>(objectSerializationHelper);
-            services.AddSingleton<IFunction>(function);
+            //IResolver<IDataStore> DataStoreResolver = new XpoDataStoreResolver("appsettings.json");
+            //IStringSerializationService stringSerializationHelper = new StringSerializationHelper();
+            //IObjectSerializationService objectSerializationHelper = new SimpleObjectSerializationService();
+
+            //IFunction function = new DataStoreFunctionServer(DataStoreResolver, objectSerializationHelper);
+            //services.AddSingleton<IResolver<IDataStore>>(DataStoreResolver);
+            //services.AddSingleton<IStringSerializationService>(stringSerializationHelper);
+            //services.AddSingleton<IObjectSerializationService>(objectSerializationHelper);
+            //services.AddSingleton<IFunction>(function);
+
+            services.AddXpoWebApiWithDal(typeof(Invoice), typeof(Customer));
+
             //services.AddXpoWebApi();
 
             //TODO review this code, at the momentis needed to use the  await for the operations in the fucntion rest client

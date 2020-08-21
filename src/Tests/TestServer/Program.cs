@@ -20,7 +20,7 @@ namespace TestServer
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<StartupXpoWebApi>();
                 });
     }
 }

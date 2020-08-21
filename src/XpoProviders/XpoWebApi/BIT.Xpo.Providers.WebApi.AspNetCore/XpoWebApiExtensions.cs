@@ -17,13 +17,13 @@ namespace BIT.Xpo.Providers.WebApi.AspNetCore
         public static IServiceCollection AddXpoWebApiWithDal(this IServiceCollection serviceCollection, params Type[] entityTypes)
         {
 
-            return serviceCollection.AddXpoWebApiWithDal("appsettings.json", new StringSerializationHelper(), new SimpleObjectSerializationService());
+            return serviceCollection.AddXpoWebApiWithDal("appsettings.json", new StringSerializationHelper(), new CompressXmlObjectSerializationService(), entityTypes);
         }
         public static IServiceCollection AddXpoWebApiWithDal(this IServiceCollection serviceCollection, string appsettingsjson, IStringSerializationService stringSerializationHelper, IObjectSerializationService simpleObjectSerializationHelper, params Type[] entityTypes)
         {
             XpoDataStoreResolver dataStoreResolver = new XpoDataStoreResolver(appsettingsjson);
-
-            return serviceCollection.AddXpoWebApi(dataStoreResolver, stringSerializationHelper, simpleObjectSerializationHelper);
+            return AddXpoWebApiWithDal(serviceCollection, dataStoreResolver, stringSerializationHelper, simpleObjectSerializationHelper, new XpoInitializerResolver(dataStoreResolver, entityTypes));
+            //return serviceCollection.AddXpoWebApi(dataStoreResolver, stringSerializationHelper, simpleObjectSerializationHelper);
         }
         public static IServiceCollection AddXpoWebApiWithDal(this IServiceCollection serviceCollection, IResolver<IDataStore> dataStoreResolver, IStringSerializationService stringSerializationHelper, IObjectSerializationService simpleObjectSerializationService, IResolver<IXpoInitializer> XpoInitializerResolver)
         {
@@ -37,7 +37,7 @@ namespace BIT.Xpo.Providers.WebApi.AspNetCore
         public static IServiceCollection AddXpoWebApi(this IServiceCollection serviceCollection)
         {
 
-            return serviceCollection.AddXpoWebApi("appsettings.json", new StringSerializationHelper(), new SimpleObjectSerializationService());
+            return serviceCollection.AddXpoWebApi("appsettings.json", new StringSerializationHelper(), new CompressXmlObjectSerializationService());
         }
 
         public static IServiceCollection AddXpoWebApi(this IServiceCollection serviceCollection, string appsettingsjson, IStringSerializationService stringSerializationHelper, IObjectSerializationService simpleObjectSerializationHelper)
