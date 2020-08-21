@@ -44,7 +44,7 @@ namespace BIT.AspNetCore.Tests
 
 
 
-            SimpleObjectSerializationService simpleObjectSerializationHelper = new SimpleObjectSerializationService();
+            CompressXmlObjectSerializationService simpleObjectSerializationHelper = new CompressXmlObjectSerializationService();
             Dictionary<string, string> Headers = new Dictionary<string, string>();
             Headers.Add(XpoWebApiProvider.TokenPart, "");
             Headers.Add(XpoWebApiProvider.DataStoreIdPart, "001");
@@ -52,7 +52,7 @@ namespace BIT.AspNetCore.Tests
 
 
          
-            XpoWebApiProvider restClientNetProvider = new XpoWebApiProvider(restFunctionClient, new SimpleObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
+            XpoWebApiProvider restClientNetProvider = new XpoWebApiProvider(restFunctionClient, new CompressXmlObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
 
 
 
@@ -105,7 +105,7 @@ namespace BIT.AspNetCore.Tests
 
           
 
-            SimpleObjectSerializationService simpleObjectSerializationHelper = new SimpleObjectSerializationService();
+            CompressXmlObjectSerializationService simpleObjectSerializationHelper = new CompressXmlObjectSerializationService();
             Dictionary<string, string> Headers = new Dictionary<string, string>();
             Headers.Add(XpoWebApiProvider.TokenPart, "");
             Headers.Add(XpoWebApiProvider.DataStoreIdPart, "001");
@@ -113,7 +113,7 @@ namespace BIT.AspNetCore.Tests
 
 
             //var Cnx = XpoWebApiProvider.GetConnectionString("http://localhost", Controller, "", "001");
-            XpoWebApiProvider restClientNetProvider = new XpoWebApiProvider(restFunctionClient, new SimpleObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
+            XpoWebApiProvider restClientNetProvider = new XpoWebApiProvider(restFunctionClient, new CompressXmlObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
 
 
 
@@ -148,14 +148,14 @@ namespace BIT.AspNetCore.Tests
             if (File.Exists("db011.db"))
                 File.Delete("db011.db");
 
-            SimpleObjectSerializationService simpleObjectSerializationHelper = new SimpleObjectSerializationService();
+            CompressXmlObjectSerializationService simpleObjectSerializationHelper = new CompressXmlObjectSerializationService();
             Dictionary<string, string> Headers = new Dictionary<string, string>();
             Headers.Add(XpoWebApiProvider.TokenPart, "");
             Headers.Add(XpoWebApiProvider.DataStoreIdPart, "011");
             ApiFunction restFunctionClient = new ApiFunction(client, Url, Headers);
 
         
-            XpoWebApiProvider restClientNetProvider = new XpoWebApiProvider(restFunctionClient, new SimpleObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
+            XpoWebApiProvider restClientNetProvider = new XpoWebApiProvider(restFunctionClient, new CompressXmlObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
 
 
 
@@ -203,13 +203,13 @@ namespace BIT.AspNetCore.Tests
 
 
 
-            SimpleObjectSerializationService simpleObjectSerializationHelper = new SimpleObjectSerializationService();
+            CompressXmlObjectSerializationService simpleObjectSerializationHelper = new CompressXmlObjectSerializationService();
             Dictionary<string, string> Headers = new Dictionary<string, string>();
             Headers.Add(XpoWebApiProvider.TokenPart, "");
             Headers.Add(XpoWebApiProvider.DataStoreIdPart, "002");
             ApiFunction restFunctionClient = new ApiFunction(client, Url, Headers);
 
-            XpoWebApiProvider restClientNetProvider = new XpoWebApiProvider(restFunctionClient, new SimpleObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
+            XpoWebApiProvider restClientNetProvider = new XpoWebApiProvider(restFunctionClient, new CompressXmlObjectSerializationService(), DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema);
 
             XpoInitializer xpoInitializer = new XpoInitializer(restClientNetProvider, typeof(Customer), typeof(Invoice));
 

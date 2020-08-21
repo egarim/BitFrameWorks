@@ -44,7 +44,7 @@ namespace BIT.AspNetCore.Tests
 
             //TODO check why the serialization does not work when the class DataResult inherits from dictionary
 
-            SimpleObjectSerializationService simpleObjectSerializationHelper = new SimpleObjectSerializationService();
+            CompressXmlObjectSerializationService simpleObjectSerializationHelper = new CompressXmlObjectSerializationService();
             ApiFunction restFunctionClient = new ApiFunction(client, "http://localhost/HttpDataTransferTest", headers);
             IDataResult Result =  restFunctionClient.ExecuteFunction(new DataParameters() { MemberName = "NoErrors" });
             var ResultValue = simpleObjectSerializationHelper.GetObjectsFromByteArray<string>(Result.ResultValue);

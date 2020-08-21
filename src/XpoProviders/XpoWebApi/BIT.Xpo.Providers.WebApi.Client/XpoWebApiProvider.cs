@@ -56,7 +56,7 @@ namespace BIT.Xpo.Providers.WebApi.Client
 
             ApiFunction restClientNetFunctionClient = new ApiFunction(url, Adapter, Headers);
 
-            return new XpoWebApiProvider(restClientNetFunctionClient, new SimpleObjectSerializationService(), autoCreateOption);
+            return new XpoWebApiProvider(restClientNetFunctionClient, new CompressXmlObjectSerializationService(), autoCreateOption);
             //return new AsyncDataStoreWrapper(new XpoWebApiProvider(restClientNetFunctionClient, new SimpleObjectSerializationService(), autoCreateOption));
         }
         public static void Register()

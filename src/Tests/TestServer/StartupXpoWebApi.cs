@@ -34,7 +34,7 @@ namespace TestServer
             services.AddControllers();
             IResolver<IDataStore> DataStoreResolver = new XpoDataStoreResolver("appsettings.json");
             IStringSerializationService stringSerializationHelper = new StringSerializationHelper();
-            IObjectSerializationService objectSerializationHelper = new SimpleObjectSerializationService();
+            IObjectSerializationService objectSerializationHelper = new CompressXmlObjectSerializationService();
             IFunction function = new DataStoreFunctionServer(DataStoreResolver, objectSerializationHelper);
             services.AddSingleton<IResolver<IDataStore>>(DataStoreResolver);
             services.AddSingleton<IStringSerializationService>(stringSerializationHelper);

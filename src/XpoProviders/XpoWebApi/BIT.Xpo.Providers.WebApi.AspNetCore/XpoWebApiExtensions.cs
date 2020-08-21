@@ -17,7 +17,7 @@ namespace BIT.Xpo.Providers.WebApi.AspNetCore
         public static IServiceCollection AddXpoWebApiWithDal(this IServiceCollection serviceCollection, params Type[] entityTypes)
         {
 
-            return serviceCollection.AddXpoWebApiWithDal("appsettings.json", new StringSerializationHelper(), new SimpleObjectSerializationService(), entityTypes);
+            return serviceCollection.AddXpoWebApiWithDal("appsettings.json", new StringSerializationHelper(), new CompressXmlObjectSerializationService(), entityTypes);
         }
         public static IServiceCollection AddXpoWebApiWithDal(this IServiceCollection serviceCollection, string appsettingsjson, IStringSerializationService stringSerializationHelper, IObjectSerializationService simpleObjectSerializationHelper, params Type[] entityTypes)
         {
@@ -37,7 +37,7 @@ namespace BIT.Xpo.Providers.WebApi.AspNetCore
         public static IServiceCollection AddXpoWebApi(this IServiceCollection serviceCollection)
         {
 
-            return serviceCollection.AddXpoWebApi("appsettings.json", new StringSerializationHelper(), new SimpleObjectSerializationService());
+            return serviceCollection.AddXpoWebApi("appsettings.json", new StringSerializationHelper(), new CompressXmlObjectSerializationService());
         }
 
         public static IServiceCollection AddXpoWebApi(this IServiceCollection serviceCollection, string appsettingsjson, IStringSerializationService stringSerializationHelper, IObjectSerializationService simpleObjectSerializationHelper)
