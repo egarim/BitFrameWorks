@@ -37,7 +37,7 @@ namespace BIT.Xpo.Providers.WebApi.Client
             var DataStoreId = Parser.GetPartByName(DataStoreIdPart);
             var Serialization = Parser.GetPartByName(SerializationPart);
             Dictionary<string, string> Headers = new Dictionary<string, string>();
-            Headers.Add(TokenPart, Token);
+            Headers.Add("Authorization", "Bearer " + Token);
             Headers.Add(DataStoreIdPart, DataStoreId);
             Uri uri = new Uri(new Uri(Url), Controller);
             string url = uri.ToString();
@@ -51,7 +51,7 @@ namespace BIT.Xpo.Providers.WebApi.Client
             {
                 Adapter = new ProtobufSerializationAdapter();
             }
-            //TODO remove this line when we got an anser from https://github.com/MelbourneDeveloper/RestClient.Net/issues/75
+            //TODO remove this line when we got an answer from https://github.com/MelbourneDeveloper/RestClient.Net/issues/75
             Adapter = new NewtonsoftSerializationAdapter();
 
             ApiFunction restClientNetFunctionClient = new ApiFunction(url, Adapter, Headers);

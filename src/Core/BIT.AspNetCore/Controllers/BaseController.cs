@@ -8,7 +8,7 @@ namespace BIT.AspNetCore.Controllers
 {
     public abstract class BaseController : ControllerBase
     {
-        private const string TokenHeader = "Token";
+        private const string TokenHeader = "Authorization";
         IJwtService jwtService { get; set; }
         public BaseController(IJwtService jwtService)
         {
@@ -17,8 +17,8 @@ namespace BIT.AspNetCore.Controllers
         protected JwtPayload GetPayload()
         {
             var Token = this.HttpContext.Request.Headers[TokenHeader];
-
-            return this.jwtService.TokenToJwtPayload(Token);
+            var StringToken = Token.ToString().Replace("Bearer ", string.Empty);
+            return this.jwtService.TokenToJwtPayload(StringToken);
         }
         protected string GetHeader(string HeaderName)
         {
