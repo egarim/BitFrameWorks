@@ -7,9 +7,9 @@ using System.Text;
 
 namespace BIT.Data.Services
 {
-    public static class JwtService
+    public class JwtService : IJwtService
     {
-        public static string GenerateKey(int length)
+        public virtual string GenerateKey(int length)
         {
             Random random = new Random();
 
@@ -18,7 +18,7 @@ namespace BIT.Data.Services
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        public static bool VerifyToken(string token, string key, string Issuer)
+        public virtual bool VerifyToken(string token, string key, string Issuer)
         {
             var validationParameters = new TokenValidationParameters()
 ;
@@ -50,7 +50,7 @@ namespace BIT.Data.Services
             return validatedToken != null;
         }
 
-        public static JwtPayload ReadToken(string StringToken)
+        public virtual JwtPayload TokenToJwtPayload(string StringToken)
         {
             var Handler = new JwtSecurityTokenHandler();
 
@@ -60,14 +60,14 @@ namespace BIT.Data.Services
             return Payload;
         }
 
-        public static long ConvertToUnixTime(DateTime datetime)
+        public virtual long ConvertToUnixTime(DateTime datetime)
         {
             DateTime sTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
             return (long)(datetime - sTime).TotalSeconds;
         }
 
-        public static string GenerateToken(string key, JwtPayload Payload)
+        public virtual string JwtPayloadToToken(string key, JwtPayload Payload)
         {
             var StringLenght = key.Length;
             var ByteLenght = System.Text.ASCIIEncoding.Unicode.GetByteCount(key);

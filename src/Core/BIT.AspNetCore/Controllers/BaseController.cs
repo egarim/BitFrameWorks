@@ -9,12 +9,16 @@ namespace BIT.AspNetCore.Controllers
     public abstract class BaseController : ControllerBase
     {
         private const string TokenHeader = "Token";
-
+        IJwtService jwtService { get; set; }
+        public BaseController(IJwtService jwtService)
+        {
+            this.jwtService = jwtService;
+        }
         protected JwtPayload GetPayload()
         {
             var Token = this.HttpContext.Request.Headers[TokenHeader];
 
-            return JwtService.ReadToken(Token);
+            return this.jwtService.TokenToJwtPayload(Token);
         }
         protected string GetHeader(string HeaderName)
         {
