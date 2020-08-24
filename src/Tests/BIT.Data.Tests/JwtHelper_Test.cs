@@ -21,8 +21,9 @@ namespace BIT.Data.Tests
         [Test]
         public void GenerateValidToken_ShouldPass()
         {
+            JwtService service = new JwtService();
             //in production you should not generate a random key but use a fixed key
-            var Key = JwtService.GenerateKey(128);
+            var Key = service.GenerateKey(128);
             Debug.WriteLine(string.Format("{0}:{1}", "Key", Key));
 
             //List of standard Payload claims https://en.wikipedia.org/wiki/JSON_Web_Token#Standard_fields
@@ -32,22 +33,25 @@ namespace BIT.Data.Tests
             JwtPayload InitialPayload;
             InitialPayload = new JwtPayload {
                 { "UserOid ", "001" },
-                { JwtRegisteredClaimNames.Iat, JwtService.ConvertToUnixTime(DateTime.Now).ToString() },
+                { JwtRegisteredClaimNames.Iat, service.ConvertToUnixTime(DateTime.Now).ToString() },
                   { JwtRegisteredClaimNames.Iss, Issuer },
             };
 
-            var StringToken = JwtService.GenerateToken(Key, InitialPayload);
+            var StringToken = service.JwtPayloadToToken(Key, InitialPayload);
             Debug.WriteLine(string.Format("{0}:{1}", "Token", StringToken));
 
 
-            Assert.True(JwtService.VerifyToken(StringToken, Key, Issuer));
+            Assert.True(service.VerifyToken(StringToken, Key, Issuer));
 
         }
         [Test]
         public void CompareTokens_ShouldPass()
         {
+
+            JwtService service = new JwtService();
+
             //in production you should not generate a random key but use a fixed key
-            var Key = JwtService.GenerateKey(128);
+            var Key = service.GenerateKey(128);
             Debug.WriteLine(string.Format("{0}:{1}", "Key", Key));
 
             //List of standard Payload claims https://en.wikipedia.org/wiki/JSON_Web_Token#Standard_fields
@@ -57,15 +61,15 @@ namespace BIT.Data.Tests
             JwtPayload InitialPayload;
             InitialPayload = new JwtPayload {
                         { "UserOid ", "001" },
-                        { JwtRegisteredClaimNames.Iat, JwtService.ConvertToUnixTime(DateTime.Now).ToString() },
+                        { JwtRegisteredClaimNames.Iat, service.ConvertToUnixTime(DateTime.Now).ToString() },
                           { JwtRegisteredClaimNames.Iss, Issuer },
                     };
 
-            var StringToken = JwtService.GenerateToken(Key, InitialPayload);
+            var StringToken = service.JwtPayloadToToken(Key, InitialPayload);
             Debug.WriteLine(string.Format("{0}:{1}", "Token", StringToken));
 
 
-            var PayloadFromValidation = JwtService.ReadToken(StringToken);
+            var PayloadFromValidation = service.TokenToJwtPayload(StringToken);
 
             Assert.AreEqual(InitialPayload.SerializeToJson(), PayloadFromValidation.SerializeToJson());
 
@@ -73,6 +77,10 @@ namespace BIT.Data.Tests
         [Test]
         public void GenerateTokenWithInvalidKey_ShouldFail()
         {
+
+
+            JwtService service = new JwtService();
+
             //in production you should not generate a random key but use a fixed key
             var Key = "abcd";
 
@@ -85,12 +93,12 @@ namespace BIT.Data.Tests
             InitialPayload = new JwtPayload 
             {
                         { "UserOid ", "001" },
-                        { JwtRegisteredClaimNames.Iat, JwtService.ConvertToUnixTime(DateTime.Now).ToString() },
+                        { JwtRegisteredClaimNames.Iat, service.ConvertToUnixTime(DateTime.Now).ToString() },
                           { JwtRegisteredClaimNames.Iss, Issuer },
             };
 
             Assert.Throws<ArgumentException>(() =>
-            JwtService.GenerateToken(Key, InitialPayload));
+            service.JwtPayloadToToken(Key, InitialPayload));
 
 
 
