@@ -22,7 +22,7 @@ namespace JwtTokenGenerator
 
             JwtPayload InitialPayload;
             InitialPayload = new JwtPayload {
-                { JwtRegisteredClaimNames.Iat, service.ConvertToUnixTime(DateTime.Now).ToString() },
+                { JwtRegisteredClaimNames.Iat, service.DateToNumber(DateTime.Now).ToString() },
                 { JwtRegisteredClaimNames.Iss, Issuer },
             };
 

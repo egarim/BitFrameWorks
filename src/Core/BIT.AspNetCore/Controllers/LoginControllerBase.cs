@@ -13,96 +13,90 @@ using BIT.Data.Models;
 namespace BIT.AspNetCore.Controllers
 {
 
-    public abstract class LoginControllerBase : BaseController
-    {
+//    public class LoginControllerJwt: LoginControllerBase
+//    {
+        
+//        public LoginControllerJwt()
+//        {
+            
+//        }
+//        protected IJwtService jwtService;
+//        public LoginControllerJwt(IStringSerializationService stringSerializationHelper, IObjectSerializationService objectSerializationHelper,IJwtService jwtService) : base(stringSerializationHelper, objectSerializationHelper)
+//        {
+//            this.jwtService = jwtService;
+//        }
+//        protected override LoginResult BuildLoginResult(ApiAuthenticationResult AuthenticationResult, params object[] Parameters)
+//        {
+//            return base.BuildLoginResult(AuthenticationResult, Parameters);
+//        }
+//    }
+//    public abstract class LoginControllerBase : FunctionControllerBase
+//    {
+//        public LoginControllerBase()       
+//        {
 
-    
+//        }
 
-        public IStringSerializationService StringSerializationHelper { get; set; }
-        public IObjectSerializationService ObjectSerializationHelper { get; set; }
-
-
-        public LoginControllerBase(IStringSerializationService stringSerializationHelper , IObjectSerializationService objectSerializationHelper )
-        {
-           
-            ObjectSerializationHelper = objectSerializationHelper;
-            StringSerializationHelper = stringSerializationHelper;
-        }
-        protected virtual ApiAuthenticationResult Authenticate(LoginParameters LoginParameters)
-        {
-
-            throw new NotImplementedException();
-        }
-
-        protected virtual LoginResult BuildLoginResult(string Key, string Issuer, ApiAuthenticationResult AuthenticationResult)
-        {
-            LoginResult LoginResult = new LoginResult();
-            LoginResult.Authenticated = AuthenticationResult.Authenticated;
-            LoginResult.Username = AuthenticationResult.Username;
-            LoginResult.UserId = AuthenticationResult.UserId;
-            LoginResult.LastError = AuthenticationResult.LastError;
-
-            List<Claim> Claims = new List<Claim>();
-
-            if (AuthenticationResult != null)
-            {
-                foreach (KeyValuePair<string, object> Parameter in AuthenticationResult)
-                {
-                    Claims.Add(new Claim(Parameter.Key, Parameter.Value?.ToString()));
-                }
-            }
-            if (AuthenticationResult.Authenticated)
-            {
-                Claims.Add(new Claim(JwtRegisteredClaimNames.Iat, JwtHelper.ConvertToUnixTime(DateTime.Now).ToString()));
-                Claims.Add(new Claim(JwtRegisteredClaimNames.Iss, Issuer));
-                JwtPayload InitialPayload = new JwtPayload(Claims);
-                LoginResult.Token = JwtHelper.GenerateToken(Key, InitialPayload);
-            }
-            else
-            {
-                LoginResult.Token = string.Empty;
-            }
-
-            return LoginResult;
-
-        }
-        [HttpPost]
-        [Route("[action]")]
-        public virtual async Task<IActionResult> Login()
-        {
+//        protected IStringSerializationService StringSerializationHelper { get; set; }
+//        protected IObjectSerializationService ObjectSerializationHelper { get; set; }
 
 
-            byte[] Bytes = null;
-            try
-            {
-                Bytes = await Request.GetRawBodyBytesAsync();
+//        public LoginControllerBase(IStringSerializationService stringSerializationHelper, IObjectSerializationService objectSerializationHelper)
+//        {
 
-                var LoginParametersJsonString = this.ObjectSerializationHelper.GetObjectsFromByteArray<string>(Bytes);
+//            ObjectSerializationHelper = objectSerializationHelper;
+//            StringSerializationHelper = stringSerializationHelper;
+//        }
+//        protected virtual ApiAuthenticationResult Authenticate(LoginParameters LoginParameters)
+//        {
 
-                var LoginParameters = JsonConvert.DeserializeObject<LoginParameters>(LoginParametersJsonString);
-                string dataStoreId = GetHeader(HeaderId);
+//            return BuildLoginResult(LoginParameters);
+//        }
+
+//        protected virtual LoginResult BuildLoginResult(ApiAuthenticationResult AuthenticationResult, params object[] Parameters)
+//        {
+
+//            throw new NotImplementedException();
+//        }
+////        [HttpPost]
+////        [Route("[action]")]
+////#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+////        public virtual async Task<IActionResult> Login()
+////#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+////        {
+
+////            throw new NotImplementedException();
+////            //byte[] Bytes = null;
+////            //try
+////            //{
+////            //    Bytes = await Request.GetRawBodyBytesAsync();
+
+////            //    var LoginParametersJsonString = this.ObjectSerializationHelper.GetObjectsFromByteArray<string>(Bytes);
+
+////            //    var LoginParameters = JsonConvert.DeserializeObject<LoginParameters>(LoginParametersJsonString);
+////            //    string dataStoreId = GetHeader(HeaderId);
 
 
-                IConfigurationRoot Configuration = GetConfigurationBuilder().Build();
+////            //    IConfigurationRoot Configuration = GetConfigurationBuilder().Build();
 
-                var Key = Configuration["Token:Key"];
-                var Issuer = Configuration["Token:Issuer"];
+////            //    var Key = Configuration["Token:Key"];
+////            //    var Issuer = Configuration["Token:Issuer"];
 
-                var AuthenticationResult = Authenticate(LoginParameters);
-                var data = BuildLoginResult(Key, Issuer, AuthenticationResult);
+////            //    var AuthenticationResult = Authenticate(LoginParameters);
+////            //    var data = BuildLoginResult(Key, Issuer, AuthenticationResult);
 
-                return base.Ok(data);
+////            //    return base.Ok(data);
 
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
+////            //}
+////            //catch (Exception ex)
+////            //{
+////            //    return BadRequest(ex);
+////            //}
 
 
-        }
+////        }
 
-    }
+//    }
 
     //public abstract class LoginControllerBase : BaseController
     //{

@@ -60,12 +60,7 @@ namespace BIT.Data.Services
             return Payload;
         }
 
-        public virtual long ConvertToUnixTime(DateTime datetime)
-        {
-            DateTime sTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-
-            return (long)(datetime - sTime).TotalSeconds;
-        }
+    
 
         public virtual string JwtPayloadToToken(string key, JwtPayload Payload)
         {
@@ -94,6 +89,18 @@ namespace BIT.Data.Services
             // Convert the token to string and send it to your client
             string TokenString = Handler.WriteToken(SecurityToken);
             return TokenString;
+        }
+
+        public long DateToNumber(DateTime dateTime)
+        {
+             DateTimeOffset dto = new DateTimeOffset(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second, TimeSpan.Zero);
+            return dto.ToUnixTimeSeconds();
+        }
+
+        public DateTime NumberToDate(long date)
+        {
+
+            return DateTimeOffset.FromUnixTimeSeconds(date).DateTime;
         }
     }
 }

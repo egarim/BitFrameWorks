@@ -1,4 +1,5 @@
 ﻿using BIT.Data.Functions;
+using BIT.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -9,6 +10,8 @@ namespace BIT.AspNetCore.Controllers
 {
     public abstract class FunctionControllerBase:BaseController
     {
+      
+
         [HttpPost]
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public virtual async Task<IDataResult> Post()

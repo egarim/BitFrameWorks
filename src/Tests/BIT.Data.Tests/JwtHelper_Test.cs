@@ -33,7 +33,7 @@ namespace BIT.Data.Tests
             JwtPayload InitialPayload;
             InitialPayload = new JwtPayload {
                 { "UserOid ", "001" },
-                { JwtRegisteredClaimNames.Iat, service.ConvertToUnixTime(DateTime.Now).ToString() },
+                { JwtRegisteredClaimNames.Iat, service.DateToNumber(DateTime.Now).ToString() },
                   { JwtRegisteredClaimNames.Iss, Issuer },
             };
 
@@ -61,7 +61,7 @@ namespace BIT.Data.Tests
             JwtPayload InitialPayload;
             InitialPayload = new JwtPayload {
                         { "UserOid ", "001" },
-                        { JwtRegisteredClaimNames.Iat, service.ConvertToUnixTime(DateTime.Now).ToString() },
+                        { JwtRegisteredClaimNames.Iat, service.DateToNumber(DateTime.Now).ToString() },
                           { JwtRegisteredClaimNames.Iss, Issuer },
                     };
 
@@ -93,7 +93,7 @@ namespace BIT.Data.Tests
             InitialPayload = new JwtPayload 
             {
                         { "UserOid ", "001" },
-                        { JwtRegisteredClaimNames.Iat, service.ConvertToUnixTime(DateTime.Now).ToString() },
+                        { JwtRegisteredClaimNames.Iat, service.DateToNumber(DateTime.Now).ToString() },
                           { JwtRegisteredClaimNames.Iss, Issuer },
             };
 

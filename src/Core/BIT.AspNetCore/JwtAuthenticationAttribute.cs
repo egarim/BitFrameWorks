@@ -1,16 +1,21 @@
-﻿using BIT.Data.Services;
+﻿using BIT.AspNetCore.Services;
+using BIT.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 
 namespace BIT.AspNetCore
 {
     public class JwtAuthenticationAttribute : ActionFilterAttribute
     {
-
-
+        ITokenService<JwtPayload> TokenService { get; set; }
+        public JwtAuthenticationAttribute(ITokenService<JwtPayload> tokenService)
+        {
+            this.TokenService = tokenService;
+        }
         //TODO implement protection https://github.com/cuongle/Hmac.WebApi/blob/master/Hmac.Api/Filters/AuthenticateAttribute.cs
         //TODO implement protection https://stackoverflow.com/questions/11775594/how-to-secure-an-asp-net-web-api
         public override void OnActionExecuting(ActionExecutingContext context)
@@ -27,7 +32,11 @@ namespace BIT.AspNetCore
             bool IsAuthenticationOn = true;
 
 
-            if ((!memoryCache.TryGetValue(nameof(Key), out Key)) || (!memoryCache.TryGetValue(nameof(Issuer), out Issuer))|| (!memoryCache.TryGetValue(nameof(IsAuthenticationOn), out IsAuthenticationOn)))
+            if (
+                (!memoryCache.TryGetValue(nameof(Key), out Key)) || 
+                (!memoryCache.TryGetValue(nameof(Issuer), out Issuer))|| 
+                (!memoryCache.TryGetValue(nameof(IsAuthenticationOn), out IsAuthenticationOn))
+                )
             {
 
                 var builder = new ConfigurationBuilder()
@@ -56,10 +65,11 @@ namespace BIT.AspNetCore
 
             if(IsAuthenticationOn)
             {
-                if (!JwtService.VerifyToken(keys, Key, Issuer))
-                {
-                    context.Result = new UnauthorizedResult();
-                }
+                //todo FIX AFTER JWT TOKEN
+                //if (!this.TokenService.VerifyToken(keys, Key, Issuer))
+                //{
+                //    context.Result = new UnauthorizedResult();
+                //}
             }
 
 
