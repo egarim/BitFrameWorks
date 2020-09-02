@@ -48,7 +48,7 @@ namespace BIT.Xpo
             }
 
             if (!AutoCreateOptions.ContainsKey(Id))
-                throw new ArgumentException($"Missin AutoCreateOptions:{Id}");
+                throw new ArgumentException($"Missing AutoCreateOptions:{Id}");
 
 
             AutoCreateOption autoCreateOptionEnum = AutoCreateOption.None;

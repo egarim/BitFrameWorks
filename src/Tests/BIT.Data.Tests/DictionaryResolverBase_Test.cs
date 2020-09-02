@@ -15,44 +15,32 @@ namespace BIT.Data.Tests
         {
         }
 
-        IDictionary<string, string> NewInstanceFunction(IConfiguration arg1, string arg2)
-        {
-            throw new NotImplementedException();
-        }
+      
         [Test]
-        public void ConfigurationResolverBase_GetById_ShouldPass()
+        public void GetById_DictionaryNotNull()
         {
 
             DictionaryResolver configurationResolverBase = new DictionaryResolver("DictionaryConfiguration.json", "Dictionary1");
-            var Dictionary1 = configurationResolverBase.GetById("db1");
-            Assert.NotNull(Dictionary1);
+            var Dictionary = configurationResolverBase.GetById("Config1");
+            Assert.NotNull(Dictionary);
 
 
-            //DictionaryResolver configurationResolverBase = new DictionaryResolver("", new Func<IConfiguration, string, System.Collections.Generic.IDictionary<string, string>>(NewInstanceFunction), "Dictionary1");
-
-            //    //new ConfigurationResolverBase<string>("appsettings.json", (IConfiguration arg1, string arg2) =>
-            //    //{
-
-            //    //    System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, string>> enumerable = arg1.GetSection("ConnectionStrings").AsEnumerable();
-            //    //    var ConnectionString = enumerable.Where(c => c.Key == $"ConnectionStrings:{arg2}").FirstOrDefault();
-            //    //    return ConnectionString.Value;
-            //    //});
-
-            //var db1 = configurationResolverBase.GetById("db1");
-            //Assert.AreEqual("XpoProvider=MSSqlServer;Data Source=Computer;User ID=sa;Password=ChangeMe123;Initial Catalog=UnitTest;Persist Security Info=true", db1);
+     
 
         }
         [Test]
-        public void ConfigurationResolverBase_GetById_ShouldFail()
+        public void GetById_CountShouldBe3()
         {
-            ConfigurationResolverBase<string> configurationResolverBase =
-            new ConfigurationResolverBase<string>("appsettings.json", (IConfiguration arg1, string arg2) =>
-            {
 
-                System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, string>> enumerable = arg1.GetSection("ConnectionStrings").AsEnumerable();
-                var ConnectionString = enumerable.Where(c => c.Key == $"ConnectionStrings:{arg2}").FirstOrDefault();
-                return ConnectionString.Value;
-            });
+            DictionaryResolver configurationResolverBase = new DictionaryResolver("DictionaryConfiguration.json", "Dictionary1");
+            var Dictionary = configurationResolverBase.GetById("Config2");
+            Assert.AreEqual(Dictionary.Count,3);
+
+        }
+        [Test]
+        public void GetById_ShouldFail()
+        {
+            DictionaryResolver configurationResolverBase = new DictionaryResolver("DictionaryConfiguration.json", "Dictionary1");
 
             Assert.Throws<ArgumentException>(() =>
                     configurationResolverBase.GetById("db99")
@@ -63,27 +51,20 @@ namespace BIT.Data.Tests
         [Test]
         public void ConfigurationResolverBase_ResolveRuntime_ShouldPass()
         {
-            ConfigurationResolverBase<string> configurationResolverBase =
-            new ConfigurationResolverBase<string>("appsettings.json", (IConfiguration arg1, string arg2) =>
-            {
-
-                System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, string>> enumerable = arg1.GetSection("ConnectionStrings").AsEnumerable();
-                var ConnectionString = enumerable.Where(c => c.Key == $"ConnectionStrings:{arg2}").FirstOrDefault();
-                return ConnectionString.Value;
-            });
+             DictionaryResolver configurationResolverBase = new DictionaryResolver("TestDictionaryConfiguration.json", "Dictionary1");
 
 
-            var builder = new ConfigurationBuilder()
-                           .SetBasePath(Directory.GetCurrentDirectory())
-                           .AddJsonFile("appsettings.json");
-            builder.Build();
+            //var builder = new ConfigurationBuilder()
+            //               .SetBasePath(Directory.GetCurrentDirectory())
+            //               .AddJsonFile("appsettings.json");
+            //builder.Build();
 
 
-            var NewConfig = File.ReadAllText("NewConnectionString.json");
-            File.WriteAllText("appsettings.json", NewConfig);
+            var NewConfig = File.ReadAllText("NewDictionaryConfiguration.json");
+            File.WriteAllText("TestDictionaryConfiguration.json", NewConfig);
 
-            var db99 = configurationResolverBase.GetById("db99");
-            Assert.AreEqual("XpoProvider=MSSqlServer;Data Source=Computer;User ID=sa;Password=ChangeMe123;Initial Catalog=UnitTest;Persist Security Info=true", db99);
+            var NewItem = configurationResolverBase.GetById("NewItem");
+            Assert.NotNull(NewItem);
 
         }
 

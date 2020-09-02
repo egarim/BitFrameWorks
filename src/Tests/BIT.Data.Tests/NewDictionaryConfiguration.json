@@ -15,7 +15,8 @@
   },
   "Dictionary1": {
     "Config1": "XpoProvider=MSSqlServer;data source=Server1;user id=user1;password=password1;initial catalog=Db1;Persist Security Info=true",
-    "Config2": "key=9hxFcrQah802faqJj53VveXz27Aex03vA4DboR8xP1unQMNDi0iv92i0yBlQG6QnWGY0Y2o9qJpDpY6r6HNkjFgJGGnP5X1M8Lu846R6c40fbg7iiIf4h1GDQmCGM8Qv;Issuer=Taurus;IsAuthenticationOn=false" 
+    "Config2": "XpoProvider=MSSqlServer;data source=Server1;user id=user1;password=password1;initial catalog=Db1;Persist Security Info=true",
+    "NewItem": "key=9hxFcrQah802faqJj53VveXz27Aex03vA4DboR8xP1unQMNDi0iv92i0yBlQG6QnWGY0Y2o9qJpDpY6r6HNkjFgJGGnP5X1M8Lu846R6c40fbg7iiIf4h1GDQmCGM8Qv;Issuer=Taurus;IsAuthenticationOn=false"
   }
 }
 
