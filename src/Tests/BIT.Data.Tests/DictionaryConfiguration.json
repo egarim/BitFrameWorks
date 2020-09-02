@@ -1,0 +1,28 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "ConnectionString": "XpoProvider=MSSqlServer;data source=Server1;user id=user1;password=password1;initial catalog=Db1;Persist Security Info=true",
+    "db1": "XpoProvider=MSSqlServer;Data Source=Computer;User ID=sa;Password=ChangeMe123;Initial Catalog=UnitTest;Persist Security Info=true" //,
+
+  },
+  "DatabaseAutoCreateOptions": {
+    "db1": "DatabaseAndSchema"
+  },
+  "Dictionary1": {
+    "db1": {
+      "Param1": "val1",
+      "Param2": 30,
+      "Param3": null
+    },
+    "db2": {
+      "Param4": "John",
+      "Param5": 30.4,
+      "Param6": null
+    }
+  }
+}

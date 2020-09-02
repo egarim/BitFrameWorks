@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="DevExpress.Persistent.BaseImpl" Version="$(XafVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Xpo\BIT.Data.Xpo\BIT.Xpo.csproj" />
+	</ItemGroup>
+</Project>

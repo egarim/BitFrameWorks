@@ -19,12 +19,12 @@ namespace BIT.Xpo
         }
         public XpoDataStoreResolver(string configuratioName) : base(configuratioName, null)
         {
-            this.InstaceBuilder = new Func<IConfiguration, string, IDataStore>(CreateNewDataStore);
+            this.InstanceBuilder = new Func<IConfiguration, string, IDataStore>(CreateNewDataStore);
         }
 
         public XpoDataStoreResolver() : base("appsettings.json", null)
         {
-            this.InstaceBuilder = new Func<IConfiguration, string, IDataStore>(CreateNewDataStore);
+            this.InstanceBuilder = new Func<IConfiguration, string, IDataStore>(CreateNewDataStore);
         }
 
 

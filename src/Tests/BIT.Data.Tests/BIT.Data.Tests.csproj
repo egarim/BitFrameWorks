@@ -8,11 +8,16 @@
 
   <ItemGroup>
     <None Remove="appsettings.json" />
+    <None Remove="DictionaryAppSettings.json" />
+    <None Remove="DictionaryConfiguration.json" />
     <None Remove="NewConnectionString.json" />
     <None Remove="StringDate.xml" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="DictionaryConfiguration.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="NewConnectionString.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
@@ -44,6 +49,8 @@
     <ProjectReference Include="..\..\Core\BIT.Data\BIT.Data.csproj" />
     <ProjectReference Include="..\Test.Shared\Test.Shared.csproj" />
   </ItemGroup>
+
+ 
 
   <ItemGroup>
     <Compile Update="SerializationHelper_Test.cs">

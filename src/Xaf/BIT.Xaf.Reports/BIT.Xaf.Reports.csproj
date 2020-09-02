@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="DevExpress.Persistent.BaseImpl" Version="$(XafVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.ReportsV2" Version="$(XafVersion)" />
+	</ItemGroup>
+</Project>

@@ -1,6 +1,7 @@
 ﻿
 
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,13 +15,13 @@ namespace BIT.Data.Services
         protected Dictionary<string, T> Instances = new Dictionary<string, T>();
        
         private string ConfigurationName { get;set; }
-        protected Func<IConfiguration,string, T> InstaceBuilder;
+        protected Func<IConfiguration,string, T> InstanceBuilder;
         public T GetById(string Id)
         {
             if (!Instances.ContainsKey(Id))
             {
 
-                T Instance = InstaceBuilder.Invoke(LoadConfiguration(), Id);
+                T Instance = InstanceBuilder.Invoke(LoadConfiguration(), Id);
 
 
                 if(Instance==null)
@@ -36,7 +37,7 @@ namespace BIT.Data.Services
         public ConfigurationResolverBase(string configuratioName,Func<IConfiguration,string,T> instaceBuilder)
         {
             ConfigurationName = configuratioName;
-            InstaceBuilder = instaceBuilder;
+            InstanceBuilder = instaceBuilder;
         }
         private IConfigurationRoot LoadConfiguration()
         {
