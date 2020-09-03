@@ -14,7 +14,7 @@ namespace BIT.Data.Services
     {
         protected Dictionary<string, T> Instances = new Dictionary<string, T>();
        
-        private string ConfigurationName { get;set; }
+        protected string ConfigurationName { get;set; }
         protected Func<IConfiguration,string, T> InstanceBuilder;
         public T GetById(string Id)
         {

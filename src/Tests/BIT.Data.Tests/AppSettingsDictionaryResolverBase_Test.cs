@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace BIT.Data.Tests
 {
-    public class DictionaryResolverBase_Test
+    public class AppSettingsDictionaryResolverBase_Test
     {
         [SetUp]
         public void Setup()
@@ -20,7 +20,7 @@ namespace BIT.Data.Tests
         public void GetById_DictionaryNotNull()
         {
 
-            DictionaryResolver configurationResolverBase = new DictionaryResolver("DictionaryConfiguration.json", "Dictionary1");
+            AppSettingsDictionaryResolverBase configurationResolverBase = new AppSettingsDictionaryResolverBase("DictionaryConfiguration.json", "Dictionary1");
             var Dictionary = configurationResolverBase.GetById("Config1");
             Assert.NotNull(Dictionary);
 
@@ -32,7 +32,7 @@ namespace BIT.Data.Tests
         public void GetById_CountShouldBe3()
         {
 
-            DictionaryResolver configurationResolverBase = new DictionaryResolver("DictionaryConfiguration.json", "Dictionary1");
+            AppSettingsDictionaryResolverBase configurationResolverBase = new AppSettingsDictionaryResolverBase("DictionaryConfiguration.json", "Dictionary1");
             var Dictionary = configurationResolverBase.GetById("Config2");
             Assert.AreEqual(Dictionary.Count,3);
 
@@ -40,7 +40,7 @@ namespace BIT.Data.Tests
         [Test]
         public void GetById_ShouldFail()
         {
-            DictionaryResolver configurationResolverBase = new DictionaryResolver("DictionaryConfiguration.json", "Dictionary1");
+            AppSettingsDictionaryResolverBase configurationResolverBase = new AppSettingsDictionaryResolverBase("DictionaryConfiguration.json", "Dictionary1");
 
             Assert.Throws<ArgumentException>(() =>
                     configurationResolverBase.GetById("db99")
@@ -51,7 +51,7 @@ namespace BIT.Data.Tests
         [Test]
         public void ConfigurationResolverBase_ResolveRuntime_ShouldPass()
         {
-             DictionaryResolver configurationResolverBase = new DictionaryResolver("TestDictionaryConfiguration.json", "Dictionary1");
+             AppSettingsDictionaryResolverBase configurationResolverBase = new AppSettingsDictionaryResolverBase("TestDictionaryConfiguration.json", "Dictionary1");
 
 
             //var builder = new ConfigurationBuilder()

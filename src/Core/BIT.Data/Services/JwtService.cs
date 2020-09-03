@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace BIT.Data.Services
@@ -17,13 +18,19 @@ namespace BIT.Data.Services
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-
-        public virtual bool VerifyToken(string token, string key, string Issuer)
+        protected string Key;
+        protected string Issuer;
+        public JwtService(string Key,string Issuer)
+        {
+            this.Key = Key;
+            this.Issuer = Issuer;
+        }
+        public virtual bool VerifyToken(string token)
         {
             var validationParameters = new TokenValidationParameters()
 ;
-            validationParameters.ValidIssuer = Issuer;
-            validationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+            validationParameters.ValidIssuer = this.Issuer;
+            validationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.Key));
             validationParameters.ValidateLifetime = false;
             validationParameters.ValidateAudience = false;
             validationParameters.ValidateIssuer = true;
@@ -62,10 +69,10 @@ namespace BIT.Data.Services
 
     
 
-        public virtual string JwtPayloadToToken(string key, JwtPayload Payload)
+        public virtual string JwtPayloadToToken(JwtPayload Payload)
         {
-            var StringLenght = key.Length;
-            var ByteLenght = System.Text.ASCIIEncoding.Unicode.GetByteCount(key);
+            
+            var ByteLenght = System.Text.ASCIIEncoding.Unicode.GetByteCount(this.Key);
             if (ByteLenght < 256)
             {
                 throw new ArgumentException($"the byte count of the key should be greater than 256 bytes,the current length is:{ByteLenght}");
@@ -73,7 +80,7 @@ namespace BIT.Data.Services
 
             // Create Security key  using private key above:
             // not that latest version of JWT using Microsoft namespace instead of System
-            var SecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+            var SecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.Key));
 
             // securityKey length MUST be >256 based on the length of the key
             var credentials = new Microsoft.IdentityModel.Tokens.SigningCredentials(SecurityKey, SecurityAlgorithms.HmacSha256Signature);

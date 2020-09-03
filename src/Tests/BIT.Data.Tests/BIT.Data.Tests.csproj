@@ -14,6 +14,7 @@
     <None Remove="appsettings.json" />
     <None Remove="DictionaryAppSettings.json" />
     <None Remove="DictionaryConfiguration.json" />
+    <None Remove="JwtSettings.json" />
     <None Remove="NewConnectionString.json" />
     <None Remove="NewDictionaryConfiguration.json" />
     <None Remove="StringDate.xml" />
@@ -22,6 +23,9 @@
 
   <ItemGroup>
     <Content Include="DictionaryConfiguration.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JwtSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="NewConnectionString.json">

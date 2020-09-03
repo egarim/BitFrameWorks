@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace BIT.Data.Services
 {
-    public class DictionaryResolver : ConfigurationResolverBase<IDictionary<string, string>>, IResolver<IDictionary<string, string>>
+    public class AppSettingsDictionaryResolverBase : ConfigurationResolverBase<IDictionary<string, string>>, IResolver<IDictionary<string, string>>
 
     {
 
@@ -15,7 +15,7 @@ namespace BIT.Data.Services
         string DictionaryName = string.Empty;
         
 
-        public DictionaryResolver(string configuratioName, Func<IConfiguration, string, IDictionary<string, string>> instaceBuilder,string DictionaryName) : base(configuratioName, instaceBuilder)
+        public AppSettingsDictionaryResolverBase(string configuratioName, Func<IConfiguration, string, IDictionary<string, string>> instaceBuilder,string DictionaryName) : base(configuratioName, instaceBuilder)
         {
             this.instaceBuilder = instaceBuilder;
           
@@ -25,7 +25,7 @@ namespace BIT.Data.Services
 
 
 
-        public DictionaryResolver(string configuratioName, string DictionaryName) : base(configuratioName, null)
+        public AppSettingsDictionaryResolverBase(string configuratioName, string DictionaryName) : base(configuratioName, null)
         {
             this.DictionaryName = DictionaryName;
             this.InstanceBuilder = new Func<IConfiguration, string, IDictionary<string, string>>(CreateNewInstance);
@@ -67,7 +67,7 @@ namespace BIT.Data.Services
             }
 
             if (!Dictionaries.ContainsKey(Id))
-                throw new ArgumentException($"Missing AutoCreateOptions:{Id}");
+                throw new ArgumentException($"The entry:{Id} is missing on {this.ConfigurationName}");
 
 
 

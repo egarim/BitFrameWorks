@@ -13,59 +13,50 @@ namespace BIT.Data.Tests
 
     public class JwtHelper_Test
     {
+        AppSettingsDictionaryResolverBase _configurationResolverBase;
         [SetUp]
         public void Setup()
         {
+            _configurationResolverBase = new AppSettingsDictionaryResolverBase("JwtSettings.json", "Tokens");
         }
 
         [Test]
         public void GenerateValidToken_ShouldPass()
         {
-            JwtService service = new JwtService();
-            //in production you should not generate a random key but use a fixed key
-            var Key = service.GenerateKey(128);
-            Debug.WriteLine(string.Format("{0}:{1}", "Key", Key));
+            var Dictionary=  _configurationResolverBase.GetById("db1");
 
-            //List of standard Payload claims https://en.wikipedia.org/wiki/JSON_Web_Token#Standard_fields
-
-            const string Issuer = "Jose Manuel Ojeda";
-
+            JwtService service = new JwtService(Dictionary["Key"], Dictionary["ValidIssuer"]);
+          
             JwtPayload InitialPayload;
             InitialPayload = new JwtPayload {
                 { "UserOid ", "001" },
                 { JwtRegisteredClaimNames.Iat, service.DateToNumber(DateTime.Now).ToString() },
-                  { JwtRegisteredClaimNames.Iss, Issuer },
+                  { JwtRegisteredClaimNames.Iss, Dictionary["ValidIssuer"] },
             };
 
-            var StringToken = service.JwtPayloadToToken(Key, InitialPayload);
+            var StringToken = service.JwtPayloadToToken(InitialPayload);
             Debug.WriteLine(string.Format("{0}:{1}", "Token", StringToken));
 
 
-            Assert.True(service.VerifyToken(StringToken, Key, Issuer));
+            Assert.True(service.VerifyToken(StringToken));
 
         }
         [Test]
         public void CompareTokens_ShouldPass()
         {
 
-            JwtService service = new JwtService();
+            var Dictionary = _configurationResolverBase.GetById("db1");
 
-            //in production you should not generate a random key but use a fixed key
-            var Key = service.GenerateKey(128);
-            Debug.WriteLine(string.Format("{0}:{1}", "Key", Key));
-
-            //List of standard Payload claims https://en.wikipedia.org/wiki/JSON_Web_Token#Standard_fields
-
-            const string Issuer = "Jose Manuel Ojeda";
+            JwtService service = new JwtService(Dictionary["Key"], Dictionary["ValidIssuer"]);
 
             JwtPayload InitialPayload;
             InitialPayload = new JwtPayload {
-                        { "UserOid ", "001" },
-                        { JwtRegisteredClaimNames.Iat, service.DateToNumber(DateTime.Now).ToString() },
-                          { JwtRegisteredClaimNames.Iss, Issuer },
-                    };
+                { "UserOid ", "001" },
+                { JwtRegisteredClaimNames.Iat, service.DateToNumber(DateTime.Now).ToString() },
+                  { JwtRegisteredClaimNames.Iss, Dictionary["ValidIssuer"] },
+            };
 
-            var StringToken = service.JwtPayloadToToken(Key, InitialPayload);
+            var StringToken = service.JwtPayloadToToken(InitialPayload);
             Debug.WriteLine(string.Format("{0}:{1}", "Token", StringToken));
 
 
@@ -79,26 +70,24 @@ namespace BIT.Data.Tests
         {
 
 
-            JwtService service = new JwtService();
+            var Dictionary = _configurationResolverBase.GetById("db1");
 
-            //in production you should not generate a random key but use a fixed key
-            var Key = "abcd";
-
-
-
-
-            const string Issuer = "Jose Manuel Ojeda";
+            JwtService service = new JwtService("InvalidKey", Dictionary["ValidIssuer"]);
 
             JwtPayload InitialPayload;
-            InitialPayload = new JwtPayload 
-            {
-                        { "UserOid ", "001" },
-                        { JwtRegisteredClaimNames.Iat, service.DateToNumber(DateTime.Now).ToString() },
-                          { JwtRegisteredClaimNames.Iss, Issuer },
+            InitialPayload = new JwtPayload {
+                { "UserOid ", "001" },
+                { JwtRegisteredClaimNames.Iat, service.DateToNumber(DateTime.Now).ToString() },
+                  { JwtRegisteredClaimNames.Iss, Dictionary["ValidIssuer"] },
             };
 
+       
+
             Assert.Throws<ArgumentException>(() =>
-            service.JwtPayloadToToken(Key, InitialPayload));
+
+            service.JwtPayloadToToken(InitialPayload)
+
+            );
 
 
 
