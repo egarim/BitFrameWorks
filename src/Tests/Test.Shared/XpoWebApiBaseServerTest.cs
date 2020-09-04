@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Test.Shared;
 using TestServer;
 public class XpoWebApiBaseServerTest
     {
@@ -44,4 +45,3 @@ public class XpoWebApiBaseServerTest
         public const string LocalBaseUriString = "http://localhost:8080";
         
     }
-}

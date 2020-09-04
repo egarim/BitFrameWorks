@@ -8,11 +8,11 @@ namespace TestServer.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [JwtAuthentication()]
+    //[JwtAuthentication()]
     public class AuthenticationTestController
     {
 
-        AuthenticationTestController()
+        public AuthenticationTestController()
         {
 
         }
