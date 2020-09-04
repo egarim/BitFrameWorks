@@ -36,7 +36,7 @@ namespace BIT.AspNetCore
                 JwtService = resolver.GetById(AuthId);
              
 
-                if (JwtService.VerifyToken(Token))
+                if (!JwtService.VerifyToken(Token))
                 {
                     context.Result = new UnauthorizedResult();
                 }

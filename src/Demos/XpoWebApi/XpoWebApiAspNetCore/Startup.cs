@@ -28,6 +28,7 @@ namespace XpoWebApiAspNetCore
         {
             services.AddControllers();
             services.AddXpoWebApi();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
