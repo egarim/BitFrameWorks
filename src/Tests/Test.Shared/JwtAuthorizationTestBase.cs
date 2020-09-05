@@ -1,30 +1,28 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
 using NUnit.Framework;
 using RestClient.Net;
-using RestClient.Net.Abstractions;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Threading.Tasks;
-using Test.Shared;
 using TestServer;
-public class XpoWebApiBaseServerTest
+
+namespace Test.Shared
+{
+    public class JwtAuthorizationTestBase
     {
         protected Client client;
-        
-      
-        
+
+
+
         [SetUp]
         public virtual void Setup()
         {
-            _testServerHttpClientFactory = GetXpoWebApiTestClientFactory(typeof(StartupXpoWebApi));
-           
+            _testServerHttpClientFactory = GetTestClientFactory(typeof(StartupJwt));
+
 
 
         }
         private static Microsoft.AspNetCore.TestHost.TestServer _testServer;
-        public static TestClientFactory GetXpoWebApiTestClientFactory(Type startupType)
+        public static TestClientFactory GetTestClientFactory(Type startupType)
         {
             if (_testServer == null)
             {
@@ -43,5 +41,6 @@ public class XpoWebApiBaseServerTest
             return _testServer.CreateClient();
         }
         public const string LocalBaseUriString = "http://localhost:8080";
-        
+
     }
+}

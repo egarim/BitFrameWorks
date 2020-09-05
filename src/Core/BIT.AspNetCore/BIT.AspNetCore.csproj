@@ -33,6 +33,9 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\BIT.Data\BIT.Data.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Services\" />
+	</ItemGroup>
 	<!--NugetProject ReferencesSection End-->
 	<!--Extra Start-->
 	<!--Extra End-->

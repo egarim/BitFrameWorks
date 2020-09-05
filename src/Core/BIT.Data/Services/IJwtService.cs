@@ -10,9 +10,9 @@ namespace BIT.Data.Services
     {
       
       
-        string JwtPayloadToToken(string key, JwtPayload Payload);
+        string JwtPayloadToToken(JwtPayload Payload);
         JwtPayload TokenToJwtPayload(string StringToken);
-        bool VerifyToken(string token, string key, string Issuer);
+        bool VerifyToken(string token);
         long DateToNumber(DateTime dateTime);
         DateTime NumberToDate(long date);
     }

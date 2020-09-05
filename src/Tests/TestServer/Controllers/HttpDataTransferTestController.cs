@@ -2,6 +2,7 @@
 using BIT.Data.Functions;
 using BIT.Data.Services;
 using BIT.Xpo;
+using DevExpress.Utils.Filtering.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -31,10 +32,10 @@ namespace TestServer.Controllers
             var result = await DeserializeFromStream(stream);
 
             byte[] v = ObjectSerializationHelper.ToByteArray<string>("Hello Data Transfer");
-            var Errors = new Dictionary<string,string>();
-            Errors.Add("1","Error1");
+            var Errors = new Dictionary<string, string>();
+            Errors.Add("1", "Error1");
             Errors.Add("2", "Error2");
-            Errors.Add("3","Error3");
+            Errors.Add("3", "Error3");
 
             string v1 = Convert.ToBase64String(v);
             switch (result.MemberName)
@@ -47,7 +48,7 @@ namespace TestServer.Controllers
                     dataResult.ResultValue = v;
                     dataResult.Errors = Errors;
                     return dataResult;
-                    
+
                 case "Errors":
 
                     return new DataResult();

@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace BIT.Data.Services
 {
-    public class BinaryObjectSerializationService : IObjectSerializationService
+	public class BinaryObjectSerializationService : IObjectSerializationService
     {
         StreamType _StreamType;
         public BinaryObjectSerializationService(StreamType StreamType)

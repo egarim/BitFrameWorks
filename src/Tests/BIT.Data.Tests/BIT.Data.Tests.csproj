@@ -7,12 +7,27 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="appsettings.json" />
-    <None Remove="NewConnectionString.json" />
-    <None Remove="StringDate.xml" />
+    <Compile Remove="TokenConfigurationResolver_Test.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="appsettings.json" />
+    <None Remove="DictionaryAppSettings.json" />
+    <None Remove="DictionaryConfiguration.json" />
+    <None Remove="JwtSettings.json" />
+    <None Remove="NewConnectionString.json" />
+    <None Remove="NewDictionaryConfiguration.json" />
+    <None Remove="StringDate.xml" />
+    <None Remove="TestDictionaryConfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="DictionaryConfiguration.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JwtSettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="NewConnectionString.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
@@ -23,8 +38,14 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="NewDictionaryConfiguration.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="StringDate.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TokenConfigurationResolver_Test.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
@@ -44,6 +65,12 @@
     <ProjectReference Include="..\..\Core\BIT.Data\BIT.Data.csproj" />
     <ProjectReference Include="..\Test.Shared\Test.Shared.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="TestDictionaryConfig.json" />
+  </ItemGroup>
+
+ 
 
   <ItemGroup>
     <Compile Update="SerializationHelper_Test.cs">

@@ -19,12 +19,12 @@ namespace BIT.Xpo
         }
         public XpoDataStoreResolver(string configuratioName) : base(configuratioName, null)
         {
-            this.InstaceBuilder = new Func<IConfiguration, string, IDataStore>(CreateNewDataStore);
+            this.InstanceBuilder = new Func<IConfiguration, string, IDataStore>(CreateNewDataStore);
         }
 
         public XpoDataStoreResolver() : base("appsettings.json", null)
         {
-            this.InstaceBuilder = new Func<IConfiguration, string, IDataStore>(CreateNewDataStore);
+            this.InstanceBuilder = new Func<IConfiguration, string, IDataStore>(CreateNewDataStore);
         }
 
 
@@ -48,7 +48,7 @@ namespace BIT.Xpo
             }
 
             if (!AutoCreateOptions.ContainsKey(Id))
-                throw new ArgumentException($"Missin AutoCreateOptions:{Id}");
+                throw new ArgumentException($"Missing AutoCreateOptions:{Id}");
 
 
             AutoCreateOption autoCreateOptionEnum = AutoCreateOption.None;

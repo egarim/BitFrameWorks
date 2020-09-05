@@ -5,22 +5,22 @@ using System.Runtime.Serialization;
 
 namespace BIT.Data.Models
 {
-  
-    public class LoginParameters:Dictionary<string,object>
+
+    public class LoginParameters : Dictionary<string, object>, ILoginParameters
     {
 
         private object _Username;
         public string Username
         {
-            get 
+            get
             {
-                this.TryGetValue(nameof(Username),out _Username);
+                this.TryGetValue(nameof(Username), out _Username);
 
-                return _Username?.ToString(); 
+                return _Username?.ToString();
             }
-            set 
+            set
             {
-                if(!this.ContainsKey(nameof(Username)))
+                if (!this.ContainsKey(nameof(Username)))
                     this.Add(nameof(Username), value);
                 else
                     this[nameof(Username)] = value;
@@ -41,7 +41,7 @@ namespace BIT.Data.Models
                 if (!this.ContainsKey(nameof(Password)))
                     this.Add(nameof(Password), value);
                 else
-                    this[nameof(Password)]=value;
+                    this[nameof(Password)] = value;
 
             }
         }
@@ -55,10 +55,10 @@ namespace BIT.Data.Models
         }
         public LoginParameters()
         {
-          
+
 
         }
 
-       
+
     }
 }

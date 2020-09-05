@@ -20,7 +20,7 @@ namespace BIT.Data
         }
         public TokenConfigurationResolver(string configuratioName) : base(configuratioName, null)
         {
-            this.InstaceBuilder = new Func<IConfiguration, string, JwtAuthInfo>(GetToken);
+            this.InstanceBuilder = new Func<IConfiguration, string, JwtAuthInfo>(GetToken);
         }
 
 
