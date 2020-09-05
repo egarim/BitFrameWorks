@@ -1,12 +1,14 @@
 ﻿using BIT.Data.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 
 namespace BIT.AspNetCore.Extensions
 {
-    public static class JwtExtensions
+    public static class JwtServiceCollectionExtensions
     {
         public static IServiceCollection AddJwtAuthorization(this IServiceCollection serviceCollection)
         {
