@@ -3,6 +3,7 @@ using RestClient.Net;
 using RestClient.Net.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BIT.Data.Functions.RestClientNet
@@ -75,9 +76,9 @@ namespace BIT.Data.Functions.RestClientNet
         /// </summary>
         /// <param name="Parameters">An implementation of IDataParameters</param>
         /// <returns>A task with the result of the function</returns>
-        public async Task<IDataResult> ExecuteFunctionAsync(IDataParameters Parameters)
+        public async Task<IDataResult> ExecuteFunctionAsync(IDataParameters Parameters, CancellationToken cancellationToken = default)
         {
-            var result = await client.PostAsync<DataResult, IDataParameters>(Parameters, resource, GetHeaders());
+            var result = await client.PostAsync<DataResult, IDataParameters>(Parameters, resource, GetHeaders(), cancellationToken);
 
             return result.Body;
 
