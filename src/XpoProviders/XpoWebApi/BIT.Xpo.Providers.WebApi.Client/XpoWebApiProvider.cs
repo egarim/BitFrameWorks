@@ -18,6 +18,7 @@ namespace BIT.Xpo.Providers.WebApi.Client
         private const string UrlPart = "Url";
         private const string ControllerPart = "Controller";
         private const string SerializationPart = "Serialization";
+        private const string ClientPart = "Client";
         public XpoWebApiProvider(IFunction functionClient, IObjectSerializationService objectSerializationService, AutoCreateOption autoCreateOption) : base(functionClient, objectSerializationService, autoCreateOption)
         {
         }
@@ -36,6 +37,7 @@ namespace BIT.Xpo.Providers.WebApi.Client
             var Token = Parser.GetPartByName(TokenPart);
             var DataStoreId = Parser.GetPartByName(DataStoreIdPart);
             var Serialization = Parser.GetPartByName(SerializationPart);
+            var Client = Parser.GetPartByName(ClientPart);
             Dictionary<string, string> Headers = new Dictionary<string, string>();
             Headers.Add("Authorization", "Bearer " + Token);
             Headers.Add(DataStoreIdPart, DataStoreId);
@@ -54,9 +56,17 @@ namespace BIT.Xpo.Providers.WebApi.Client
             //TODO remove this line when we got an answer from https://github.com/MelbourneDeveloper/RestClient.Net/issues/75
             Adapter = new NewtonsoftSerializationAdapter();
 
+            if (!string.IsNullOrEmpty(Client) && Client == "Http")
+            {
+                HttpClientFunction httpClientFunctionClient = new HttpClientFunction(url, Headers);
+
+                return new XpoWebApiProvider(httpClientFunctionClient, new CompressXmlObjectSerializationService(), autoCreateOption);
+            }
+
             ApiFunction restClientNetFunctionClient = new ApiFunction(url, Adapter, Headers);
 
             return new XpoWebApiProvider(restClientNetFunctionClient, new CompressXmlObjectSerializationService(), autoCreateOption);
+
             //return new AsyncDataStoreWrapper(new XpoWebApiProvider(restClientNetFunctionClient, new SimpleObjectSerializationService(), autoCreateOption));
         }
         public static void Register()
