@@ -7,7 +7,10 @@
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (forecasts == null)
+<button @onclick="() => Refresh()">Refresh</button>
+<button @onclick="CreateNew">Create New</button>
+
+@if (Customers == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -16,22 +19,12 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Active</th>
+                <th style="cursor: pointer;" @onclick="() => Refresh(nameof(Customer.Code))">Code</th>
+                <th style="cursor: pointer;" @onclick="() => Refresh(nameof(Customer.Name))">Name</th>
+                <th style="cursor: pointer;" @onclick="() => Refresh(nameof(Customer.Active))">Active</th>
             </tr>
         </thead>
         <tbody>
-            @*@foreach (var forecast in forecasts)
-                {
-                    <tr>
-                        <td>@forecast.Date.ToShortDateString()</td>
-                        <td>@forecast.TemperatureC</td>
-                        <td>@forecast.TemperatureF</td>
-                        <td>@forecast.Summary</td>
-                    </tr>
-                }*@
-
             @foreach (var customer in Customers)
             {
                 <tr>
@@ -45,40 +38,70 @@ else
 }
 
 @code {
-    private WeatherForecast[] forecasts;
     private IEnumerable<Customer> Customers;
+    private XpoInitializer xpoInitializer;
     protected override async Task OnInitializedAsync()
     {
+        if (xpoInitializer == null)
+        {
+            //https://localhost:44359/api/XpoWebApi
 
-        //RestClientNetProvider.Register();
-        //Customers = new List<Customer>();
+            var XpoWebApiAspNetCore = XpoWebApiProvider.GetConnectionString("https://localhost:44389", "/XpoWebApi", string.Empty, "001", "Http");
+            //var XpoWebApiAspNet = XpoWebApiProvider.GetConnectionString("https://localhost:44359", "/api/XpoWebApi", string.Empty, "001", "Http");
 
-        //var ConnectionString = RestClientNetProvider.GetConnectionString("https://localhost:44389", "/WebApiHttpDataTransferImp", string.Empty, "001");
 
-        //XpoInitializer xpoInitializer = new XpoInitializer(ConnectionString, typeof(Invoice), typeof(Customer));
-        //xpoInitializer.InitXpo(XpoDefault.GetConnectionProvider(ConnectionString, DevExpress.Xpo.DB.AutoCreateOption.DatabaseAndSchema));
-        //this.Customers = new XPCollection<Customer>(xpoInitializer.CreateUnitOfWork());
-        //using (var UoW = xpoInitializer.CreateUnitOfWork())
-        //{
-        //    var faker = new Bogus.Faker<Customer>().CustomInstantiator(c => new Customer(UoW))
-        //                .RuleFor(p => p.Name, f => f.Name.FullName())
-        //                .RuleFor(p => p.Active, p => p.Random.Bool());
+            //XpoInitializer xpoInitializer = new XpoInitializer(XpoWebApiAspNet, typeof(Invoice), typeof(Customer));
+            xpoInitializer = new XpoInitializer(XpoWebApiAspNetCore, typeof(Invoice), typeof(Customer));
 
-        //    Customers = faker.Generate(5);
-        //    if (UoW.InTransaction)
-        //        UoW.CommitChanges();
-        //    //forecasts = await Http.GetJsonAsync<WeatherForecast[]>("sample-data/weather.json");
-        //}
+            await xpoInitializer.InitSchemaAsync();
+            await Refresh();
+        }
     }
 
-    public class WeatherForecast
+    async Task Refresh(string? orderBy = null)
     {
-        public DateTime Date { get; set; }
+        if (xpoInitializer == null) return;
+        using (var uow = xpoInitializer.CreateUnitOfWork())
+        {
+            if (orderBy == null)
+            {
+                orderBy = nameof(Customer.Name);
+            }
+            switch (orderBy)
+            {
+                case nameof(Customer.Name):
+                    Customers = await uow.Query<Customer>().OrderBy(m => m.Name).ToListAsync();
+                    break;
+                case nameof(Customer.Code):
+                    Customers = await uow.Query<Customer>().OrderBy(m => m.Code).ToListAsync();
+                    break;
+                case nameof(Customer.Active):
+                    Customers = await uow.Query<Customer>().OrderBy(m => m.Active).ToListAsync();
+                    break;
+                default:
+                    break;
+            }
 
-        public int TemperatureC { get; set; }
 
-        public string Summary { get; set; }
+        }
+    }
 
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    async Task CreateNew()
+    {
+        if (xpoInitializer == null) return;
+        using (var UoW = xpoInitializer.CreateUnitOfWork())
+        {
+            var faker = new Bogus.Faker<Customer>().CustomInstantiator(c => new Customer(UoW))
+                        .RuleFor(p => p.Code, f => f.Random.Guid())
+                        .RuleFor(p => p.Name, f => f.Name.FullName())
+                        .RuleFor(p => p.Active, p => p.Random.Bool());
+
+            var Customers = faker.Generate(100);
+            if (UoW.InTransaction)
+            {
+                await UoW.CommitChangesAsync();
+            }
+            await Refresh();
+        }
     }
 }

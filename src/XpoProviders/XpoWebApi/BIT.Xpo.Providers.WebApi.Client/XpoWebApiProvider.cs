@@ -22,11 +22,12 @@ namespace BIT.Xpo.Providers.WebApi.Client
         public XpoWebApiProvider(IFunction functionClient, IObjectSerializationService objectSerializationService, AutoCreateOption autoCreateOption) : base(functionClient, objectSerializationService, autoCreateOption)
         {
         }
-        public static string GetConnectionString(string Url, string Controller, string Token, string DataStoreId)
-        {
 
-            return $"{DataStoreBase.XpoProviderTypeParameterName}={XpoProviderTypeString};{UrlPart}={Url};{ControllerPart}={Controller};{TokenPart}={Token};{DataStoreIdPart}={DataStoreId}";
+        public static string GetConnectionString(string Url, string Controller, string Token, string DataStoreId, string Client= null)
+        {
+            return $"{DataStoreBase.XpoProviderTypeParameterName}={XpoProviderTypeString};{UrlPart}={Url};{ControllerPart}={Controller};{TokenPart}={Token};{DataStoreIdPart}={DataStoreId}{(Client == null ? string.Empty : $";{ClientPart}={Client}")}";
         }
+
         public const string XpoProviderTypeString = nameof(XpoWebApiProvider);
         public static IDataStore CreateProviderFromString(string connectionString, AutoCreateOption autoCreateOption, out IDisposable[] objectsToDisposeOnDisconnect)
         {

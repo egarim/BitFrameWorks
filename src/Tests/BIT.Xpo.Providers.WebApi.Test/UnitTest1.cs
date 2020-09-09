@@ -20,7 +20,7 @@ namespace BIT.Xpo.Providers.WebApi.Test
         }
 
         [Test]
-        public async Task Test1()
+        public void Test1()
         {
             //XPOWebApi.Register();
             //XPOWebApiHttp.Register();
