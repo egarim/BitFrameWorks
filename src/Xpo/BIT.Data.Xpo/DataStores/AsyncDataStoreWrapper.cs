@@ -11,14 +11,16 @@ using System.Threading.Tasks;
 
 namespace BIT.Xpo.DataStores
 {
+
+    
     public class AsyncDataStoreWrapper : IDataStore, IDataStoreAsync, IDataStoreSchemaExplorer, ICommandChannel, ICommandChannelAsync
     {
-        readonly IDataStore DataStore;
+        readonly IDataStore dataStore;
         public AsyncDataStoreWrapper() { }
         public AsyncDataStoreWrapper(IDataStore dataStore)
             : this()
         {
-            this.DataStore = dataStore;
+            this.dataStore = dataStore;
         }
         static bool IsStaCurrentThread
         {
@@ -29,38 +31,41 @@ namespace BIT.Xpo.DataStores
         {
             get
             {
-                return StaSafeHelper.Invoke(() => DataStore.AutoCreateOption);
+                return StaSafeHelper.Invoke(() => dataStore.AutoCreateOption);
             }
         }
+
+        public IDataStore InternalDataStore => dataStore;
+
         public ModificationResult ModifyData(params ModificationStatement[] dmlStatements)
         {
-            return StaSafeHelper.Invoke(() => DataStore.ModifyData(dmlStatements));
+            return StaSafeHelper.Invoke(() => dataStore.ModifyData(dmlStatements));
         }
         public SelectedData SelectData(params SelectStatement[] selects)
         {
-            return StaSafeHelper.Invoke(() => DataStore.SelectData(selects));
+            return StaSafeHelper.Invoke(() => dataStore.SelectData(selects));
         }
         public UpdateSchemaResult UpdateSchema(bool doNotCreateIfFirstTableNotExist, params DBTable[] tables)
         {
-            return StaSafeHelper.Invoke(() => DataStore.UpdateSchema(doNotCreateIfFirstTableNotExist, tables));
+            return StaSafeHelper.Invoke(() => dataStore.UpdateSchema(doNotCreateIfFirstTableNotExist, tables));
         }
         #endregion
         #region IDataStoreAsync Members
         public Task<SelectedData> SelectDataAsync(CancellationToken cancellationToken, params SelectStatement[] selects)
         {
-            var dataStoreAsync = DataStore as IDataStoreAsync;
+            var dataStoreAsync = dataStore as IDataStoreAsync;
             if (dataStoreAsync == null || IsStaCurrentThread)
             {
-                return Task.Factory.StartNew(() => DataStore.SelectData(selects), cancellationToken, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+                return Task.Factory.StartNew(() => dataStore.SelectData(selects), cancellationToken, TaskCreationOptions.LongRunning, TaskScheduler.Default);
             }
             return dataStoreAsync.SelectDataAsync(cancellationToken, selects);
         }
         public Task<ModificationResult> ModifyDataAsync(CancellationToken cancellationToken, params ModificationStatement[] dmlStatements)
         {
-            var dataStoreAsync = DataStore as IDataStoreAsync;
+            var dataStoreAsync = dataStore as IDataStoreAsync;
             if (dataStoreAsync == null || IsStaCurrentThread)
             {
-                return Task.Factory.StartNew(() => DataStore.ModifyData(dmlStatements), cancellationToken, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+                return Task.Factory.StartNew(() => dataStore.ModifyData(dmlStatements), cancellationToken, TaskCreationOptions.LongRunning, TaskScheduler.Default);
             }
             return dataStoreAsync.ModifyDataAsync(cancellationToken, dmlStatements);
         }
@@ -91,34 +96,34 @@ namespace BIT.Xpo.DataStores
         #region IDataStoreSchemaExplorer Members
         public string[] GetStorageTablesList(bool includeViews)
         {
-            return StaSafeHelper.Invoke(() => ((IDataStoreSchemaExplorer)DataStore).GetStorageTablesList(includeViews));
+            return StaSafeHelper.Invoke(() => ((IDataStoreSchemaExplorer)dataStore).GetStorageTablesList(includeViews));
         }
         public DBTable[] GetStorageTables(params string[] tables)
         {
-            return StaSafeHelper.Invoke(() => ((IDataStoreSchemaExplorer)DataStore).GetStorageTables(tables));
+            return StaSafeHelper.Invoke(() => ((IDataStoreSchemaExplorer)dataStore).GetStorageTables(tables));
         }
         #endregion
         #region ICommandChannel / ICommandChannelAsync Members
         public object Do(string command, object args)
         {
-            ICommandChannel nestedCommandChannel = DataStore as ICommandChannel;
+            ICommandChannel nestedCommandChannel = dataStore as ICommandChannel;
             if (nestedCommandChannel == null)
             {
-                if (DataStore == null) throw new NotSupportedException(string.Format(CommandChannelHelper.Message_CommandIsNotSupported, command));
-                else throw new NotSupportedException(string.Format(CommandChannelHelper.Message_CommandIsNotSupportedEx, command, DataStore.GetType()));
+                if (dataStore == null) throw new NotSupportedException(string.Format(CommandChannelHelper.Message_CommandIsNotSupported, command));
+                else throw new NotSupportedException(string.Format(CommandChannelHelper.Message_CommandIsNotSupportedEx, command, dataStore.GetType()));
             }
             return StaSafeHelper.Invoke(() => nestedCommandChannel.Do(command, args));
         }
         public Task<object> DoAsync(string command, object args, CancellationToken cancellationToken = default(CancellationToken))
         {
-            ICommandChannelAsync nestedCommandChannelAsync = DataStore as ICommandChannelAsync;
+            ICommandChannelAsync nestedCommandChannelAsync = dataStore as ICommandChannelAsync;
             if (nestedCommandChannelAsync == null || IsStaCurrentThread)
             {
-                ICommandChannel nestedCommandChannel = DataStore as ICommandChannel;
+                ICommandChannel nestedCommandChannel = dataStore as ICommandChannel;
                 if (nestedCommandChannel == null)
                 {
-                    if (DataStore == null) throw new NotSupportedException(string.Format(CommandChannelHelper.Message_CommandIsNotSupported, command));
-                    else throw new NotSupportedException(string.Format(CommandChannelHelper.Message_CommandIsNotSupportedEx, command, DataStore.GetType()));
+                    if (dataStore == null) throw new NotSupportedException(string.Format(CommandChannelHelper.Message_CommandIsNotSupported, command));
+                    else throw new NotSupportedException(string.Format(CommandChannelHelper.Message_CommandIsNotSupportedEx, command, dataStore.GetType()));
                 }
                 return Task.Factory.StartNew(() => nestedCommandChannel.Do(command, args), cancellationToken, TaskCreationOptions.LongRunning, TaskScheduler.Default);
             }

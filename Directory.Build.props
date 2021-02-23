@@ -1,8 +1,8 @@
 <Project>
 	<PropertyGroup>
-		<XpoVersion>20.1.6</XpoVersion>
-		<XafVersion>20.1.6</XafVersion>
-		<NugetVersion>20.1.6.583700904</NugetVersion>
+		<XpoVersion>20.2.5</XpoVersion>
+		<XafVersion>20.2.5</XafVersion>
+		<NugetVersion>20.2.5.5840</NugetVersion>
 		<NetStandardVersion>netstandard2.0</NetStandardVersion>
 	    <RestClientNetVersion>4.1.0</RestClientNetVersion>
 	</PropertyGroup>
