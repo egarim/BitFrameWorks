@@ -3,10 +3,12 @@ using DevExpress.Xpo.DB;
 using DevExpress.Xpo.Metadata;
 using System;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace BIT.Xpo
 {
-    public class XpoInitializer : IXpoInitializer
+    public class XpoInitializer : IXpoInitializer, IAsyncXpoInitializer
     {
 
 
@@ -56,20 +58,24 @@ namespace BIT.Xpo
         {
 
         }
-        public void InitSchema()
+
+        public UpdateSchemaResult? InitSchema()
         {
-
-
-
             UpdateDal = new SimpleDataLayer(dictionary, dataStore);
             if (XpoDefault.DataLayer == null)
             {
-                this.UpdateDal.UpdateSchema(false, dictionary.CollectClassInfos(entityTypes));
+                return UpdateDal.UpdateSchema(false, dictionary.CollectClassInfos(entityTypes));
             }
-
-
-
-
+            return null;
+        }
+        public async Task<UpdateSchemaResult?> InitSchemaAsync(CancellationToken cancellationToken = default)
+        {
+            UpdateDal = new SimpleDataLayer(dictionary, dataStore);
+            if (XpoDefault.DataLayer == null && UpdateDal is IDataLayerAsync dataLayerAsync)
+            {
+                return await dataLayerAsync.UpdateSchemaAsync(cancellationToken, false, dictionary.CollectClassInfos(entityTypes));
+            }
+            return null;
         }
 
         public UnitOfWork CreateUnitOfWork()

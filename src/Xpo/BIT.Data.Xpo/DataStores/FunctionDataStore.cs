@@ -4,19 +4,25 @@ using BIT.Xpo.Models;
 using DevExpress.Xpo.DB;
 using DevExpress.Xpo.Helpers;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 
 namespace BIT.Xpo.DataStores
 {
-    public abstract class FunctionDataStore : IDataStore, ICommandChannel
+    public abstract class FunctionDataStore : IDataStore, IDataStoreAsync, ICommandChannel
     {
 
         IFunction FunctionClient { get; set; }
+        IFunctionAsync FunctionClientAsync { get; set; }
         IObjectSerializationService objectSerializationHelper;
         public FunctionDataStore(IFunction functionClient, IObjectSerializationService objectSerializationHelper, AutoCreateOption autoCreateOption)
         {
             this.FunctionClient = functionClient;
+            if (functionClient is IFunctionAsync functionAsync)
+            {
+                this.FunctionClientAsync = functionAsync;
+            }
             this.objectSerializationHelper = objectSerializationHelper;
         }
 
@@ -40,6 +46,15 @@ namespace BIT.Xpo.DataStores
             var ModificationResults = this.objectSerializationHelper.GetObjectsFromByteArray<ModificationResult>(DataResult.ResultValue);
             return ModificationResults;
         }
+        public async virtual Task<ModificationResult> ModifyDataAsync(CancellationToken cancellationToken, params ModificationStatement[] dmlStatements)
+        {
+            IDataParameters Parameters = new DataParameters();
+            Parameters.MemberName = nameof(ModifyData);
+            Parameters.ParametersValue = this.objectSerializationHelper.ToByteArray<ModificationStatement[]>(dmlStatements);
+            var DataResult = await FunctionClientAsync.ExecuteFunctionAsync(Parameters, cancellationToken);
+            var ModificationResults = this.objectSerializationHelper.GetObjectsFromByteArray<ModificationResult>(DataResult.ResultValue);
+            return ModificationResults;
+        }
 
         public virtual SelectedData SelectData(params SelectStatement[] selects)
         {
@@ -47,6 +62,15 @@ namespace BIT.Xpo.DataStores
             Parameters.MemberName = nameof(SelectData);
             Parameters.ParametersValue = this.objectSerializationHelper.ToByteArray<SelectStatement[]>(selects);
             var DataResult = FunctionClient.ExecuteFunction(Parameters);
+            var SelectedData = this.objectSerializationHelper.GetObjectsFromByteArray<SelectedData>(DataResult.ResultValue);
+            return SelectedData;
+        }
+        public async virtual Task<SelectedData> SelectDataAsync(CancellationToken cancellationToken, params SelectStatement[] selects)
+        {
+            IDataParameters Parameters = new DataParameters();
+            Parameters.MemberName = nameof(SelectData);
+            Parameters.ParametersValue = this.objectSerializationHelper.ToByteArray<SelectStatement[]>(selects);
+            var DataResult = await FunctionClientAsync.ExecuteFunctionAsync(Parameters, cancellationToken);
             var SelectedData = this.objectSerializationHelper.GetObjectsFromByteArray<SelectedData>(DataResult.ResultValue);
             return SelectedData;
         }
@@ -58,6 +82,16 @@ namespace BIT.Xpo.DataStores
             Parameters.MemberName = nameof(UpdateSchema);
             Parameters.ParametersValue = this.objectSerializationHelper.ToByteArray<UpdateSchemaParameters>(updateSchemaParameters);
             IDataResult DataResult = FunctionClient.ExecuteFunction(Parameters);
+            var UpdateSchemaResult = this.objectSerializationHelper.GetObjectsFromByteArray<UpdateSchemaResult>(DataResult.ResultValue);
+            return UpdateSchemaResult;
+        }
+        public async virtual Task<UpdateSchemaResult> UpdateSchemaAsync(CancellationToken cancellationToken, bool doNotCreateIfFirstTableNotExist, params DBTable[] tables)
+        {
+            IDataParameters Parameters = new DataParameters();
+            UpdateSchemaParameters updateSchemaParameters = new UpdateSchemaParameters(doNotCreateIfFirstTableNotExist, tables);
+            Parameters.MemberName = nameof(UpdateSchema);
+            Parameters.ParametersValue = this.objectSerializationHelper.ToByteArray<UpdateSchemaParameters>(updateSchemaParameters);
+            IDataResult DataResult = await FunctionClientAsync.ExecuteFunctionAsync(Parameters, cancellationToken);
             var UpdateSchemaResult = this.objectSerializationHelper.GetObjectsFromByteArray<UpdateSchemaResult>(DataResult.ResultValue);
             return UpdateSchemaResult;
         }

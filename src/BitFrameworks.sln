@@ -103,6 +103,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BIT.Xaf.Reports", "Xaf\BIT.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIT.AspNetCore.Tests", "Tests\BIT.AspNetCore.Tests\BIT.AspNetCore.Tests.csproj", "{D3F4F7B6-9440-44A6-BCBA-D43E48C4C8B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazorwasm", "Demos\XpoWebApi\BlazorWasm\Blazorwasm.csproj", "{204307C9-24BA-4C26-9B59-C1647A75114C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -355,6 +357,14 @@ Global
 		{D3F4F7B6-9440-44A6-BCBA-D43E48C4C8B0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D3F4F7B6-9440-44A6-BCBA-D43E48C4C8B0}.Release|x86.ActiveCfg = Release|Any CPU
 		{D3F4F7B6-9440-44A6-BCBA-D43E48C4C8B0}.Release|x86.Build.0 = Release|Any CPU
+		{204307C9-24BA-4C26-9B59-C1647A75114C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{204307C9-24BA-4C26-9B59-C1647A75114C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{204307C9-24BA-4C26-9B59-C1647A75114C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{204307C9-24BA-4C26-9B59-C1647A75114C}.Debug|x86.Build.0 = Debug|Any CPU
+		{204307C9-24BA-4C26-9B59-C1647A75114C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{204307C9-24BA-4C26-9B59-C1647A75114C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{204307C9-24BA-4C26-9B59-C1647A75114C}.Release|x86.ActiveCfg = Release|Any CPU
+		{204307C9-24BA-4C26-9B59-C1647A75114C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -392,6 +402,7 @@ Global
 		{06D8DDA2-98A9-4998-B491-CCBB21E1E24C} = {6EBC9932-466E-4FC6-B056-506B489523B1}
 		{D13D37BB-250A-4A6A-8A8D-0CD629287B12} = {6EBC9932-466E-4FC6-B056-506B489523B1}
 		{D3F4F7B6-9440-44A6-BCBA-D43E48C4C8B0} = {5054F9BD-CEF8-44C3-BA6B-B36745297033}
+		{204307C9-24BA-4C26-9B59-C1647A75114C} = {0EDE70C5-7703-49AD-A019-BE3EB8BA4118}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F42ADCA-F738-4569-AAE0-F1ACA0C2F6BC}
